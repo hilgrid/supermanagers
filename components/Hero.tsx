@@ -18,7 +18,8 @@ const Hero: React.FC = () => {
       <div className="flex flex-col items-center space-y-2 mt-8 z-20">
         <a href="https://hils.substack.com" target="_blank" rel="noopener noreferrer" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Writerbuilder newsletter</a>
         <a href="https://maven.com/hilary-gridley/ai-powered-people-management" target="_blank" rel="noopener noreferrer" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Supermanagers course</a>
-        <a href="/jobsearch" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Job Search Tools</a>
+        <a href="/jobsearch" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Job search tools</a>
+        <a href="https://docs.google.com/spreadsheets/d/1zJ4rbi9YcQuGqGxc6-AQD0-44oT9l4Eyono0AdpgJbA/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">30 days of AI</a>
         <Link to="/steeringwheel" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">AI steering wheel</Link>
         <Link to="/about" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">About me</Link>
       </div>
