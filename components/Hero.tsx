@@ -21,6 +21,7 @@ const Hero: React.FC = () => {
         <a href="/jobsearch" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Job search tools</a>
         <a href="https://docs.google.com/spreadsheets/d/1zJ4rbi9YcQuGqGxc6-AQD0-44oT9l4Eyono0AdpgJbA/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">30 days of AI</a>
         <Link to="/steeringwheel" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">AI steering wheel</Link>
+        <a href="https://cal-snapshot-scribe.lovable.app" target="_blank" rel="noopener noreferrer" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Calendar Extractor</a>
         <Link to="/about" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">About me</Link>
       </div>
     </section>
