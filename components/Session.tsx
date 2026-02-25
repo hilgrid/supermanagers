@@ -379,6 +379,19 @@ const Session: React.FC = () => {
 
             <p className="text-stone-800 text-base leading-relaxed">
               <a
+                href="https://maven.com/hilary-gridley/ai-powered-people-management/feb-2026/home#62887a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline hover:text-stone-600"
+              >
+                Driving AI Adoption on Your Team &rarr;
+              </a>
+              <br />
+              <span className="text-stone-600">Bonus course videos on how to think about adoption, training, and getting your team to actually use these tools.</span>
+            </p>
+
+            <p className="text-stone-800 text-base leading-relaxed">
+              <a
                 href="https://maven.com/hilary-gridley/ai-powered-people-management/feb-2026/home#275430"
                 target="_blank"
                 rel="noopener noreferrer"
