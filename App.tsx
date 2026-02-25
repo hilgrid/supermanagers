@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Session from './components/Session';
+import ManagerCopilot from './components/ManagerCopilot';
 import { SteeringWheelPage } from './components/steeringwheel/SteeringWheelPage';
 
 const App: React.FC = () => {
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         } />
         <Route path="/about" element={<About />} />
         <Route path="/session4" element={<Session />} />
+        <Route path="/managercopilot" element={<ManagerCopilot />} />
         <Route path="/steeringwheel" element={<SteeringWheelPage />} />
       </Routes>
       <Analytics />
