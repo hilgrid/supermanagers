@@ -38,6 +38,19 @@ const About: React.FC = () => {
             </li>
           </ul>
         </div>
+
+        <div className="mt-8">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-widest text-stone-800 uppercase mb-2">Heroes</h2>
+          <ul className="space-y-1 text-stone-800 text-lg">
+            <li>• Lisa Simpson</li>
+            <li>• Pink Panther</li>
+          </ul>
+          <img
+            src="/wileecoyote.gif"
+            alt="Wile E. Coyote business card - Genius - Have Brain Will Travel"
+            className="mt-4 max-w-sm rounded shadow-md"
+          />
+        </div>
       </div>
     </section>
   );
