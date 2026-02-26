@@ -124,17 +124,18 @@ const ManagerCopilot: React.FC = () => {
             Two things: a <strong>system prompt</strong> (the instructions that tell the AI how to run the conversation) and a <strong>knowledge base</strong> (4 files that give it depth at each step).
           </p>
           <div className="bg-white border-2 border-stone-300 rounded p-5 text-stone-800 text-base leading-loose mb-4">
-            <p><strong>understanding-the-problem.md</strong> Helps the copilot dig into what's really going on. The actual problem, not just what you think you need.</p>
-            <p><strong>recommending-an-approach.md</strong> Guides the recommendation: should you build something, or is this a problem to think through?</p>
-            <p><strong>scoping-a-tool.md</strong> Walks you through defining what to build. Exploring options, writing the spec, getting to a finished prompt or plan.</p>
-            <p><strong>planning-a-thinking-process.md</strong> Structures hard problems into a step-by-step plan you can work through with any AI tool.</p>
+            <p><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600 transition-colors">understanding-the-problem.md</a> Helps the copilot dig into what's really going on. The actual problem, not just what you think you need.</p>
+            <p><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600 transition-colors">recommending-an-approach.md</a> Guides the recommendation: should you build something, or is this a problem to think through?</p>
+            <p><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600 transition-colors">scoping-a-tool.md</a> Walks you through defining what to build. Exploring options, writing the spec, getting to a finished prompt or plan.</p>
+            <p><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600 transition-colors">planning-a-thinking-process.md</a> Structures hard problems into a step-by-step plan you can work through with any AI tool.</p>
           </div>
           <p className="text-stone-700 text-lg leading-relaxed">
             <a
               href={DRIVE_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold hover:text-stone-600 hover:underline transition-colors"
+              style={{ color: '#ee8a82' }}
+              className="font-bold underline hover:opacity-80 transition-colors"
             >
               Download the knowledge base files (Google Drive) &rarr;
             </a>
