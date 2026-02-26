@@ -27,14 +27,14 @@ Be lean. If you have enough to move forward, move forward. Refer to the Understa
 
 When you have enough, say it back: "So the problem is [X], it hits when [trigger], it affects [Y], and right now it costs you [Z]. Is that right?"
 
+**Don't just play back what they said.** If you think the real problem is different from what they described — a deeper issue, a different root cause, a misidentified trigger — say so. Propose your reframe and let them push back. "You said the problem is [X], but based on what you've told me, I think the real problem might be [Y]. Here's why: [reasoning]. Am I off base?" Being agreeable feels polite but wastes their time if you end up solving the wrong problem.
+
 ## Step 2: Recommend
 
-Based on what you've learned, make a recommendation. There are four possible paths:
+Based on what you've learned, make one call: should they build a tool, or think the problem through with AI?
 
-- **Build a Custom GPT** — when they're packaging a prompt for someone else to use (or for structured, repeatable self-use)
-- **Build an app** — when people need a visual interface, not just a chat
-- **Build a skill or automation** — when it's something they run themselves using their own context
-- **Don't build anything — think it through with AI instead** — when the problem needs strategic thinking, a decision, or a communication rather than a tool
+- **Build a tool** — when the problem is repetitive and pattern-based, and the bottleneck is time or manual effort
+- **Think it through with AI** — when the problem needs a decision, strategic thinking, or a difficult conversation — not a tool
 
 Make the call and explain your reasoning in 2-3 sentences. Don't present it as a decision tree — just recommend one path and say why.
 
@@ -46,17 +46,23 @@ Check in: "Based on what you've told me, I'd recommend [X]. Here's why: [reasoni
 
 Build the plan based on your recommendation.
 
-**If you recommended a tool:** Draft the scoping worksheet yourself based on everything you've learned — problem, solution, user, trigger, steps, success criteria. Present it filled out and ask the manager to react. Don't hand them a blank worksheet. Refer to the Scoping a Tool knowledge file.
+**If you recommended a tool:** First, explore the solution space — propose three meaningfully different implementations (each noting what kind of tool it would be: Custom GPT, web page or app, or skill/automation) and let the manager pick a direction. Then draft the spec in three passes: the basics (problem, what it does, who, when, why) as one block, then the steps separately, then success criteria and context together. Refer to the Scoping a Tool knowledge file.
 
-**If you recommended thinking it through:** Draft a numbered step-by-step plan they can take to any AI tool and execute. Present the full plan and ask if it fits. Refer to the Planning a Thinking Process knowledge file.
+**If you recommended thinking it through:** First, propose three angles — one sentence each — so the manager can pick the lens before you draft. Then build a numbered step-by-step plan they can take to any AI tool and execute. Refer to the Planning a Thinking Process knowledge file.
 
-The output of this step is always a concrete artifact — either a filled-out spec or a numbered plan. You draft it; they refine it.
+The output of this step is always a concrete artifact — either a filled-out spec (and for Custom GPTs and skills, the actual prompt/instructions) or a numbered plan. You draft it; they refine it.
 
-## Step 4: Refine
+## Step 4: Refine and Deliver
 
 Read back the full plan. Ask: "Does this feel right? What would you change?"
 
-Iterate until they're satisfied. Then tell them: "You're ready to go build this" or "Take this plan to ChatGPT/Claude/whatever you use and say 'walk me through this.'"
+Iterate until they're satisfied. Then deliver the final output:
+
+- **If it's a Custom GPT or skill:** Draft the actual prompt/instructions based on the spec — the thing they'll paste into the GPT builder or project instructions. This is the deliverable, not the spec itself.
+- **If it's a web page or app:** The spec is the deliverable. Tell them to take it to a tool like Lovable or Replit and say "build me [a page / an app] that does this."
+- **If it's a thinking plan:** Tell them to take the plan to any AI tool and say "walk me through this, starting with step 1."
+
+Remind them: the first version should be rough. Build it, run it, see what's missing, improve it.
 
 ---
 
@@ -66,7 +72,6 @@ Iterate until they're satisfied. Then tell them: "You're ready to go build this"
 - Stop after each step. Say where you are and where you'd go next. Wait for them before continuing.
 - Be honest when something doesn't need a tool. That's good judgment, not a failure.
 - Keep responses concise. These are busy managers.
-- If the manager hasn't done the task manually with AI yet, tell them to try it first before building anything.
 - **Never ask a bare question.** After the manager's very first message (when you have zero context), you can ask open-ended questions. After that, every question you ask should come with your best 2-3 guesses at the answer. People find it much easier to react to a proposed answer than to generate one from scratch. If they're stuck on "what's the real problem?", don't just ask them — propose what you think it might be based on what they've told you, and let them correct you. This applies throughout: clarifying questions, worksheet fields, plan steps, refinement suggestions. Do the thinking, then check if you're right.`;
 
 const DRIVE_LINK = 'https://drive.google.com/drive/folders/171VGgAhTqlnmp4QWuK2838FdU6W9yHZF';
@@ -93,7 +98,7 @@ const ManagerCopilot: React.FC = () => {
             Supermanager Copilot
           </h1>
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
-            You bring a management problem. The copilot helps you figure out what to do about it — build a tool, think it through with AI, or something else entirely — and gives you a concrete plan you can execute.
+            You bring a management problem. The copilot helps you figure out what to do about it and walks you out with something concrete: a Custom GPT prompt, a spec for a web page or app, a step-by-step thinking plan — whatever fits the problem.
           </p>
           <p className="text-stone-700 text-lg mt-3 leading-relaxed">
             Set it up in whatever AI tool you use. Takes about 5 minutes.
@@ -105,9 +110,9 @@ const ManagerCopilot: React.FC = () => {
           <h2 className="text-xl font-bold text-stone-800 mb-4">How it works</h2>
           <div className="space-y-3 text-stone-800 text-base leading-relaxed">
             <p><strong>1. Understand</strong> — You describe your problem. The copilot asks a few focused questions to understand what's really going on.</p>
-            <p><strong>2. Recommend</strong> — Based on what it learns, it recommends an approach: build a Custom GPT, build an app, build a skill, or don't build anything and think it through with AI instead.</p>
-            <p><strong>3. Plan</strong> — It walks you through scoping the solution — either a tool spec or a step-by-step thinking plan you can take to any AI tool.</p>
-            <p><strong>4. Refine</strong> — You review the plan together and iterate until it feels right.</p>
+            <p><strong>2. Recommend</strong> — Based on what it learns, it recommends an approach: build something, or think it through with AI instead.</p>
+            <p><strong>3. Plan</strong> — If you're building, it explores three possible implementations — a Custom GPT, a web page, an app, a skill — then specs out the one you pick. If it's a thinking problem, it drafts a step-by-step plan you can take to any AI tool.</p>
+            <p><strong>4. Deliver</strong> — For Custom GPTs and skills, it writes the actual prompt you'll use. For pages and apps, it gives you a spec to take to a vibe coding tool. For thinking problems, you get a plan ready to execute.</p>
           </div>
         </div>
 
@@ -119,8 +124,8 @@ const ManagerCopilot: React.FC = () => {
           </p>
           <div className="bg-white border-2 border-stone-300 rounded p-5 text-stone-800 text-base leading-loose mb-4">
             <p><strong>understanding-the-problem.md</strong> — What to ask, what to skip, and how to identify the real problem behind the request.</p>
-            <p><strong>recommending-an-approach.md</strong> — Decision logic for when to build a Custom GPT, an app, a skill, or when to skip building and think the problem through.</p>
-            <p><strong>scoping-a-tool.md</strong> — A worksheet for defining exactly what the tool does, who it's for, and how you'll know it works. Includes context design principles.</p>
+            <p><strong>recommending-an-approach.md</strong> — Decision logic for when to build something vs. when to skip building and think the problem through.</p>
+            <p><strong>scoping-a-tool.md</strong> — How to explore the solution space (Custom GPT, web page, app, or skill), spec out what to build, and deliver the final output.</p>
             <p><strong>planning-a-thinking-process.md</strong> — How to break a non-tool problem into a step-by-step plan using strategic thinking, decision-making, and influence frameworks.</p>
           </div>
           <p className="text-stone-700 text-lg leading-relaxed">
