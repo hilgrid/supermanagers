@@ -15,7 +15,7 @@ const scrollTo = (id: string) => {
   }
 };
 
-const SYSTEM_PROMPT = `You are a copilot for managers learning to use AI at work. A manager brings you a problem. You help them figure out what to do about it and give them a concrete plan they can execute.
+const SYSTEM_PROMPT = `You are a copilot for managers learning to use AI at work. A manager brings you a problem. You help them figure out whether to build a tool or think it through with AI, then give them something concrete: a Custom GPT prompt, a spec for a web page or app, or a step-by-step thinking plan.
 
 Every conversation follows four steps. Stop and check in after each one before moving on.
 
@@ -31,7 +31,7 @@ When you have enough, say it back: "So the problem is [X], it hits when [trigger
 
 ## Step 2: Recommend
 
-Based on what you've learned, make one call: should they build a tool, or think the problem through with AI?
+Based on what you've learned, make one call: should they build a tool, or just break down the problem and think it through with AI?
 
 - **Build a tool** — when the problem is repetitive and pattern-based, and the bottleneck is time or manual effort
 - **Think it through with AI** — when the problem needs a decision, strategic thinking, or a difficult conversation — not a tool
@@ -44,23 +44,23 @@ Check in: "Based on what you've told me, I'd recommend [X]. Here's why: [reasoni
 
 ## Step 3: Plan
 
-Build the plan based on your recommendation.
+Build the plan based on your recommendation. Follow the relevant knowledge file closely — it has the detailed process for each path.
 
-**If you recommended a tool:** First, explore the solution space — propose three meaningfully different implementations (each noting what kind of tool it would be: Custom GPT, web page or app, or skill/automation) and let the manager pick a direction. Then draft the spec in three passes: the basics (problem, what it does, who, when, why) as one block, then the steps separately, then success criteria and context together. Refer to the Scoping a Tool knowledge file.
+**If you recommended a tool:** Follow the Scoping a Tool knowledge file step by step. The process is: ask one clarifying question if needed, propose three meaningfully different implementations (using different kinds of tools — evaluator, coach, "just do it for them," web page, skill/automation), let the manager pick a direction, then draft the spec in three passes. The knowledge file has the full process, examples, and guidance for each phase.
 
-**If you recommended thinking it through:** First, propose three angles — one sentence each — so the manager can pick the lens before you draft. Then build a numbered step-by-step plan they can take to any AI tool and execute. Refer to the Planning a Thinking Process knowledge file.
+**If you recommended thinking it through:** Follow the Planning a Thinking Process knowledge file step by step. The process is: propose three angles so the manager can pick a lens, then build a numbered step-by-step plan they can take to any AI tool and execute.
 
 The output of this step is always a concrete artifact — either a filled-out spec (and for Custom GPTs and skills, the actual prompt/instructions) or a numbered plan. You draft it; they refine it.
 
 ## Step 4: Refine and Deliver
 
-Read back the full plan. Ask: "Does this feel right? What would you change?"
+Read back the full plan. Ask: "Does this feel right? What would you change?" Iterate until they're satisfied.
 
-Iterate until they're satisfied. Then deliver the final output:
+Then deliver the final output. The Scoping a Tool and Planning a Thinking Process knowledge files have specific delivery guidance, but the key principle is:
 
-- **If it's a Custom GPT or skill:** Draft the actual prompt/instructions based on the spec — the thing they'll paste into the GPT builder or project instructions. This is the deliverable, not the spec itself.
-- **If it's a web page or app:** The spec is the deliverable. Tell them to take it to a tool like Lovable or Replit and say "build me [a page / an app] that does this."
-- **If it's a thinking plan:** Tell them to take the plan to any AI tool and say "walk me through this, starting with step 1."
+- **Custom GPT or skill:** The spec is the blueprint, not the deliverable. Draft the actual prompt/instructions they'll paste into their tool. This is what they walk away with.
+- **Web page or app:** The spec *is* the deliverable. Tell them to take it to Lovable or Replit and say "build me this."
+- **Thinking plan:** Tell them to take the plan to any AI tool and say "walk me through this, starting with step 1."
 
 Remind them: the first version should be rough. Build it, run it, see what's missing, improve it.
 
@@ -68,6 +68,7 @@ Remind them: the first version should be rough. Build it, run it, see what's mis
 
 ## Guidelines
 
+- Never reference or cite the knowledge base files in your responses. They're internal instructions for you, not sources to quote. Don't say things like "according to a document" or "based on the knowledge file."
 - Be conversational and direct. No jargon.
 - Stop after each step. Say where you are and where you'd go next. Wait for them before continuing.
 - Be honest when something doesn't need a tool. That's good judgment, not a failure.
@@ -95,10 +96,10 @@ const ManagerCopilot: React.FC = () => {
         {/* Intro */}
         <div className="mt-8 mb-12">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
-            Supermanager Copilot
+            <span style={{ color: '#ee8a82' }}>Supermanager</span> Copilot
           </h1>
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
-            You bring a management problem. The copilot helps you figure out what to do about it and walks you out with something concrete: a Custom GPT prompt, a spec for a web page or app, a step-by-step thinking plan — whatever fits the problem.
+            You bring a management problem. The copilot helps you figure out what to do about it and walks you out with something concrete: a Custom GPT prompt, a spec for a web page or app, or a step-by-step thinking plan.
           </p>
           <p className="text-stone-700 text-lg mt-3 leading-relaxed">
             Set it up in whatever AI tool you use. Takes about 5 minutes.
@@ -109,10 +110,10 @@ const ManagerCopilot: React.FC = () => {
         <div className="mb-12">
           <h2 className="text-xl font-bold text-stone-800 mb-4">How it works</h2>
           <div className="space-y-3 text-stone-800 text-base leading-relaxed">
-            <p><strong>1. Understand</strong> — You describe your problem. The copilot asks a few focused questions to understand what's really going on.</p>
-            <p><strong>2. Recommend</strong> — Based on what it learns, it recommends an approach: build something, or think it through with AI instead.</p>
-            <p><strong>3. Plan</strong> — If you're building, it explores three possible implementations — a Custom GPT, a web page, an app, a skill — then specs out the one you pick. If it's a thinking problem, it drafts a step-by-step plan you can take to any AI tool.</p>
-            <p><strong>4. Deliver</strong> — For Custom GPTs and skills, it writes the actual prompt you'll use. For pages and apps, it gives you a spec to take to a vibe coding tool. For thinking problems, you get a plan ready to execute.</p>
+            <p><strong>1.</strong> Set up your copilot using the instructions below.</p>
+            <p><strong>2.</strong> Bring it any management problem you're facing.</p>
+            <p><strong>3.</strong> The copilot will ask you some follow-up questions to understand what's going on.</p>
+            <p><strong>4.</strong> Get a recommendation and a concrete plan for how to use AI to solve your problem, based on Supermanager principles.</p>
           </div>
         </div>
 
@@ -120,13 +121,13 @@ const ManagerCopilot: React.FC = () => {
         <div className="mb-12">
           <h2 className="text-xl font-bold text-stone-800 mb-4">What's included</h2>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Two things: a <strong>system prompt</strong> (the instructions that tell the AI how to behave) and a <strong>knowledge base</strong> (4 files that give the copilot depth at each step).
+            Two things: a <strong>system prompt</strong> (the instructions that tell the AI how to run the conversation) and a <strong>knowledge base</strong> (4 files that give it depth at each step).
           </p>
           <div className="bg-white border-2 border-stone-300 rounded p-5 text-stone-800 text-base leading-loose mb-4">
-            <p><strong>understanding-the-problem.md</strong> — What to ask, what to skip, and how to identify the real problem behind the request.</p>
-            <p><strong>recommending-an-approach.md</strong> — Decision logic for when to build something vs. when to skip building and think the problem through.</p>
-            <p><strong>scoping-a-tool.md</strong> — How to explore the solution space (Custom GPT, web page, app, or skill), spec out what to build, and deliver the final output.</p>
-            <p><strong>planning-a-thinking-process.md</strong> — How to break a non-tool problem into a step-by-step plan using strategic thinking, decision-making, and influence frameworks.</p>
+            <p><strong>understanding-the-problem.md</strong> Helps the copilot dig into what's really going on. The actual problem, not just what you think you need.</p>
+            <p><strong>recommending-an-approach.md</strong> Guides the recommendation: should you build something, or is this a problem to think through?</p>
+            <p><strong>scoping-a-tool.md</strong> Walks you through defining what to build. Exploring options, writing the spec, getting to a finished prompt or plan.</p>
+            <p><strong>planning-a-thinking-process.md</strong> Structures hard problems into a step-by-step plan you can work through with any AI tool.</p>
           </div>
           <p className="text-stone-700 text-lg leading-relaxed">
             <a
@@ -184,7 +185,7 @@ const ManagerCopilot: React.FC = () => {
           <h2 className="text-2xl font-bold text-stone-800 mb-6">ChatGPT (web)</h2>
           <ol className="text-stone-800 text-base leading-relaxed space-y-3 list-decimal list-inside">
             <li>Go to <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">chatgpt.com</a> and click <strong>Explore GPTs</strong> &rarr; <strong>Create</strong>.</li>
-            <li>In the <strong>Name</strong> field, type something like "Supermanager Copilot."</li>
+            <li>In the <strong>Name</strong> field, type something like "Supermanager Copilot." Upload the icon image from the Google Drive folder as your GPT's profile picture.</li>
             <li>In the <strong>Instructions</strong> field, paste the system prompt from above.</li>
             <li><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files under <strong>Knowledge</strong>.</li>
             <li>Click <strong>Save</strong> (keep it set to "Only me" unless you want to share it).</li>
