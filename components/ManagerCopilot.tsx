@@ -134,8 +134,7 @@ const ManagerCopilot: React.FC = () => {
               href={DRIVE_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#ee8a82' }}
-              className="font-bold underline hover:opacity-80 transition-colors"
+              className="font-bold underline text-stone-800 hover:text-stone-600 transition-colors"
             >
               Download the knowledge base files (Google Drive) &rarr;
             </a>
