@@ -118,20 +118,41 @@ const Session1: React.FC = () => {
             Now it's your turn. You're doing it the good way.
           </p>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Align on how the tool works</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Explore other approaches</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Open ChatGPT or Claude and paste your worksheet. Ask it:
+            Open ChatGPT or Claude and paste your worksheet. Before committing to your idea, ask:
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "I'm going to ask you to write a system prompt for a Custom GPT based on this worksheet. But before you write anything, I want to align on exactly how this thing is going to work. Tell me what you think I'm asking you to build — who uses it, when, and what they get out of it."
+              "Here's the problem I want to solve and my idea for a Custom GPT. Before we build it, do you have any other ideas for how I could solve this problem with a Custom GPT?"
+            </p>
+          </div>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Then ask:
+          </p>
+          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
+            <p className="text-stone-800 text-base font-mono leading-relaxed">
+              "Can you rank these ideas in terms of how effective they'd be and how feasible they are to build as a Custom GPT?"
+            </p>
+          </div>
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
+            Pick the winner. It might be your original idea — or you might find a better angle you hadn't considered.
+          </p>
+
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Align on how the tool works</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Now that you've picked your approach, ask:
+          </p>
+          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
+            <p className="text-stone-800 text-base font-mono leading-relaxed">
+              "Okay, let's go with that one. Before you write anything, tell me exactly how you think this is going to work — who uses it, when, and what they get out of it."
             </p>
           </div>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
             Review its understanding. Correct anything that's off.
           </p>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Get the steps before the prompt</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Get the steps before the prompt</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
             Once you're aligned on what the tool does, ask:
           </p>
@@ -144,7 +165,7 @@ const Session1: React.FC = () => {
             Review the steps. Do they match how you'd want this to work? Adjust before moving on.
           </p>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Write the prompt</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 4: Write the prompt</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
             Now tell it to write the system prompt based on the steps you just agreed on.
           </p>
@@ -157,7 +178,7 @@ const Session1: React.FC = () => {
             <li><strong>Is it framed for the user, not just for you?</strong> "Evaluate whether this meets my standards" feels like a hoop to jump through. "Help make sure this lands the way your work deserves" feels like it's on their side.</li>
           </ul>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 4: Set it up in ChatGPT</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 5: Set it up in ChatGPT</h4>
           <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
             <li>Go to ChatGPT &rarr; Explore GPTs &rarr; Create</li>
             <li>Use the <strong>Configure</strong> tab (not the Create chat tab)</li>
