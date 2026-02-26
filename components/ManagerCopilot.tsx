@@ -191,6 +191,7 @@ const ManagerCopilot: React.FC = () => {
             <li>Click <strong>Save</strong> (keep it set to "Only me" unless you want to share it).</li>
             <li>Open your new GPT and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></li>
           </ol>
+          <p className="text-stone-600 text-sm mt-3 italic">Note: Creating Custom GPTs requires a Plus plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files, but you'll need to redo this each time.</p>
         </div>
 
         <hr className="border-stone-300 mb-12" />
@@ -205,7 +206,7 @@ const ManagerCopilot: React.FC = () => {
             <li><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files to <strong>Project Knowledge</strong>.</li>
             <li>Start a new chat in the project and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></li>
           </ol>
-          <p className="text-stone-600 text-sm mt-3 italic">Note: Claude Projects require a Pro plan ($20/month).</p>
+          <p className="text-stone-600 text-sm mt-3 italic">Note: Projects require a Pro plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files to the conversation, but you'll need to redo this each time.</p>
         </div>
 
         <hr className="border-stone-300 mb-12" />
@@ -220,7 +221,7 @@ const ManagerCopilot: React.FC = () => {
             <li><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files under the instructions.</li>
             <li>Click <strong>Save</strong>, then open the Gem and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></li>
           </ol>
-          <p className="text-stone-600 text-sm mt-3 italic">Note: Gems require a Gemini Advanced plan.</p>
+          <p className="text-stone-600 text-sm mt-3 italic">Note: Gems require a Gemini Advanced plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files, but you'll need to redo this each time.</p>
         </div>
 
         <hr className="border-stone-300 mb-12" />
@@ -234,7 +235,7 @@ const ManagerCopilot: React.FC = () => {
             <li><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and attach all 4 files to the conversation (click the paperclip icon).</li>
             <li>Then say: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></li>
           </ol>
-          <p className="text-stone-600 text-sm mt-3 italic">Note: You'll need to re-paste the instructions and re-attach the files each time you start a new conversation. For persistent setup, use Copilot Studio if your organization has access.</p>
+          <p className="text-stone-600 text-sm mt-3 italic">Note: Works on the free plan. You'll need to re-paste the instructions and re-attach the files each time you start a new conversation. For persistent setup, use Copilot Studio if your organization has access.</p>
         </div>
 
       </div>
