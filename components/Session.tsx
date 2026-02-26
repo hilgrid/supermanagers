@@ -43,6 +43,16 @@ const Session: React.FC = () => {
               Get the Manager OS folder (Google Drive) &rarr;
             </a>
           </p>
+          <p className="text-stone-700 text-lg mt-3 leading-relaxed">
+            <a
+              href="https://docs.google.com/presentation/d/1W59nmK-Fz39K6_j6rqgNH657R4ElJ9R4E6XONPDJnW0/edit?slide=id.p#slide=id.p"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:text-stone-600 hover:underline transition-colors"
+            >
+              Session 4 slides &rarr;
+            </a>
+          </p>
         </div>
 
         {/* Tool selector */}
@@ -414,7 +424,7 @@ const Session: React.FC = () => {
             <li>Post-course video: how I use my whole system day-to-day</li>
             <li>Guide: ideas for things to vibe code</li>
             <li>Guide: ideas for automations and how to set them up</li>
-            <li>Copilot access — details coming soon</li>
+            <li><Link to="/managercopilot" className="font-bold underline hover:text-stone-600">Supermanager Copilot</Link> — bring it any management problem. It helps you figure out what to build and walks you out with a prompt, a spec, or a plan.</li>
           </ul>
         </div>
       </div>
