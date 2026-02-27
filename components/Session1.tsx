@@ -211,35 +211,37 @@ const Session1: React.FC = () => {
             We're building an <strong>executive communication reviewer</strong> — a {setup.toolName} that evaluates whether a message to leadership is clear, concise, and appropriate for the audience. Everyone writes emails to leadership. Everyone has opinions about what makes them good or bad. That makes this a good first build.
           </p>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Fill in the worksheet for this use case</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Tell the AI what you're building</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
-            We'll do this together. Think about your own context as you fill it in:
-          </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-disc list-inside">
-            <li><strong>The feedback I keep giving:</strong> e.g., "Get to the point — lead with what you need, not the backstory"</li>
-            <li><strong>I give this feedback on:</strong> Emails and Slack messages to leadership</li>
-            <li><strong>Who I give it to:</strong> Your context — direct reports, peers, yourself</li>
-            <li><strong>They'd reach for this when:</strong> Before sending an important message to someone senior</li>
-            <li><strong>Criteria:</strong> What does a good executive email actually look like? We'll define 3-4 criteria together.</li>
-          </ul>
-
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Align on how the {setup.toolName} works</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Open {platformLabels[platform]} and paste your filled-in worksheet. Then ask:
+            Open {platformLabels[platform]} and tell it what you want to build. Be specific — give it the context from your worksheet. Here's an example:
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "Here's a piece of feedback I give over and over at work, and my criteria for what good looks like. I want to build a {setup.toolName} for this. Before you write anything, tell me exactly how you think it should work — what does the user give it, what does it do, and what does it give back? Walk me through the steps."
+              "I'm building a {setup.toolName} to give people feedback on the emails they send to executives at my company. I'm going to ask for your help writing the prompt, but first I want to align on how it should work.
+            </p>
+            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
+              The feedback I keep giving is that people need to get to the point faster and lead with what they need, not the backstory. I give this feedback on emails to the CEO, and I give it to product managers on my team. They'd reach for this before sending an important message to someone senior.
+            </p>
+            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
+              I want your help setting 3-5 success criteria that we can evaluate their emails against."
             </p>
           </div>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Customize this for your own context — who are you, who are you giving this to, what's the feedback you keep giving? The more specific you are here, the better the {setup.toolName} will be.
+          </p>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
-            Review its understanding. Does the workflow match how you'd want this to work? Correct anything that's off before moving on.
+            Review what it comes back with. Do the criteria match what you actually care about? Are any missing? Tell it what to change before moving on.
           </p>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Write the prompt</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Write the prompt</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Once you're aligned, tell it to write the system prompt based on the steps you just agreed on.
+            Once you're aligned on the criteria, tell it to write the system prompt. Something like:
           </p>
+          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
+            <p className="text-stone-800 text-base font-mono leading-relaxed">
+              "OK, now write a system prompt for this {setup.toolName} based on what we just agreed on."
+            </p>
+          </div>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
             Scan the prompt it generated. Look for:
           </p>
