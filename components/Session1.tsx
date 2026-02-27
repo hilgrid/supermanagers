@@ -191,27 +191,8 @@ const Session1: React.FC = () => {
 
         {/* Part 1 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 1: Breakout — Share & Pressure-Test Your Worksheet</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">15-20 min</p>
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Break into groups of 3-4. Each person shares what they picked.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed mb-3 font-bold">Questions to ask each other:</p>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
-            <li><strong>Is this one thing or multiple things?</strong> If your {setup.toolName} is trying to give feedback on emails AND presentations AND reports, that's three {setup.toolName}s. Pick one for now.</li>
-            <li><strong>Are the criteria specific enough?</strong> Could someone who doesn't know you read your criteria and give the same feedback you would? If a criterion is vague, add an example of what passing looks like. "Clarity" is vague. "A non-expert could read this and understand the recommendation without asking follow-up questions" is specific.</li>
-          </ol>
-          <p className="text-stone-800 text-base leading-relaxed">
-            Come back with a tighter scope. It's fine if it changed from what you submitted.
-          </p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Part 2 */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 2: Demo — The Bad Way vs. The Good Way</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">10-15 min</p>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 1: Demo — The Bad Way vs. The Good Way</h3>
+          <p className="text-stone-500 text-sm font-medium mb-4">10 min</p>
           <p className="text-stone-800 text-base leading-relaxed italic">
             Hilary demos live. First, she goes straight to {platformLabels[platform]} and asks it to build a {setup.toolName} from a vague description — no worksheet, no spec work. You'll see what comes out. Then she does it the right way: feeds in the worksheet, aligns on how the {setup.toolName} should work before writing anything, and builds from that. The difference is the whole point.
           </p>
@@ -219,17 +200,32 @@ const Session1: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Part 3 */}
+        {/* Part 2 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Generate Your System Prompt & Build the {setup.toolName}</h3>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 2: Guided Build — Executive Communication Reviewer</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
+          <p className="text-stone-800 text-base leading-relaxed mb-4">
+            Before you build your own, we're all going to build the same thing together so you can learn the mechanics without also having to figure out what to build.
+          </p>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
-            Now it's your turn. You're doing it the good way.
+            We're building an <strong>executive communication reviewer</strong> — a {setup.toolName} that evaluates whether a message to leadership is clear, concise, and appropriate for the audience. Everyone writes emails to leadership. Everyone has opinions about what makes them good or bad. That makes this a good first build.
           </p>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Align on how the {setup.toolName} works</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Fill in the worksheet for this use case</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Open {platformLabels[platform]} and paste your worksheet. Then ask:
+            We'll do this together. Think about your own context as you fill it in:
+          </p>
+          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-disc list-inside">
+            <li><strong>The feedback I keep giving:</strong> e.g., "Get to the point — lead with what you need, not the backstory"</li>
+            <li><strong>I give this feedback on:</strong> Emails and Slack messages to leadership</li>
+            <li><strong>Who I give it to:</strong> Your context — direct reports, peers, yourself</li>
+            <li><strong>They'd reach for this when:</strong> Before sending an important message to someone senior</li>
+            <li><strong>Criteria:</strong> What does a good executive email actually look like? We'll define 3-4 criteria together.</li>
+          </ul>
+
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Align on how the {setup.toolName} works</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Open {platformLabels[platform]} and paste your filled-in worksheet. Then ask:
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <p className="text-stone-800 text-base font-mono leading-relaxed">
@@ -240,7 +236,7 @@ const Session1: React.FC = () => {
             Review its understanding. Does the workflow match how you'd want this to work? Correct anything that's off before moving on.
           </p>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Write the prompt</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Write the prompt</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
             Once you're aligned, tell it to write the system prompt based on the steps you just agreed on.
           </p>
@@ -252,42 +248,52 @@ const Session1: React.FC = () => {
             <li><strong>Does it know when to stop?</strong> If not, add explicit instructions: "When you have finished, stop. Do not continue unless the user asks."</li>
           </ul>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Set up your {setup.name}</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 4: Set up your {setup.name}</h4>
           <ol className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-decimal list-inside">
             {setup.steps.map((step, i) => (
               <li key={i} dangerouslySetInnerHTML={{ __html: step }} />
             ))}
           </ol>
+
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 5: Test it</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Find a real email you've sent to someone senior — or write a quick one from memory. Paste it into your {setup.toolName} and see what comes back.
+          </p>
+          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+            <li>Does the feedback feel right? Would you have said the same things?</li>
+            <li>Is it too nice? If it says "great job!" on something you'd send back, your criteria need work.</li>
+          </ul>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Part 3 */}
+        <div className="mb-12">
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Share-Out</h3>
+          <p className="text-stone-500 text-sm font-medium mb-4">10 min</p>
+          <p className="text-stone-800 text-base leading-relaxed">
+            Everyone built the same type of {setup.toolName}, but with different criteria and context. We'll hear from a few people: what criteria did you use? What did the feedback look like? Did anything surprise you? The variation is the interesting part — same skeleton, different results.
+          </p>
         </div>
 
         <hr className="border-stone-300 mb-12" />
 
         {/* Part 4 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 4: Test It & Break It</h3>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 4: Build Your Own</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
-          <p className="text-stone-800 text-base leading-relaxed mb-6">
-            Your {setup.toolName} is live. Now find out what's wrong with it.
+          <p className="text-stone-800 text-base leading-relaxed mb-4">
+            Now do the same thing for the feedback from your worksheet — the one you actually care about. You already know the mechanics. Follow the same steps:
           </p>
-
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Generate test data</h4>
+          <ol className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-decimal list-inside">
+            <li>Paste your worksheet and align on how the {setup.toolName} should work</li>
+            <li>Have it write the system prompt</li>
+            <li>Check the prompt — does it use your criteria? Does it know when to stop?</li>
+            <li>Set up the {setup.toolName} and test it with real examples</li>
+          </ol>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Go back to the conversation where you built your prompt and ask:
+            Note what's working and what's not. Write down:
           </p>
-          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
-            <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "Generate two sample inputs for this {setup.toolName} — one that's mediocre (a C+) and one that's strong (an A). Make them realistic."
-            </p>
-          </div>
-
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Run both through your {setup.toolName}</h4>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-disc list-inside">
-            <li>Does the mediocre version get meaningfully different feedback than the strong one? If they get similar feedback, your criteria aren't sharp enough.</li>
-            <li>Does the feedback match what YOU would have said? If the AI is nicer than you'd be, that's a problem — it means your {setup.toolName} will pass work that shouldn't pass.</li>
-          </ul>
-
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Note what's broken</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">Write down:</p>
           <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
             <li>What worked well</li>
             <li>What felt off</li>
@@ -295,6 +301,17 @@ const Session1: React.FC = () => {
           </ul>
           <p className="text-stone-800 text-base leading-relaxed font-bold">
             We're going to fix all of this next session.
+          </p>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Part 5 */}
+        <div className="mb-12">
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 5: Q&A</h3>
+          <p className="text-stone-500 text-sm font-medium mb-4">10 min</p>
+          <p className="text-stone-800 text-base leading-relaxed">
+            What's broken? What are you stuck on? What surprised you? Open floor.
           </p>
         </div>
 
@@ -332,9 +349,9 @@ const Session1: React.FC = () => {
             A paid account gives you access to the {setup.name} builder, which is what we use in this session. If you can't get one, you can still follow along — write your system prompt, save it in a doc, and paste it at the start of any new conversation. It's not as seamless, but it works.
           </p>
 
-          <h4 className="text-base font-bold text-stone-800 mb-2">I'm confused about which chat window to use for what.</h4>
+          <h4 className="text-base font-bold text-stone-800 mb-2">Do I need to know how to code?</h4>
           <p className="text-stone-800 text-base leading-relaxed">
-            You'll have three things open: (1) the conversation where you built and iterated on your prompt, (2) the {setup.toolName} itself, where you test it, and (3) the {setup.toolName} settings, where you paste updated instructions. When something doesn't work in testing, copy the output back into conversation #1, explain what went wrong, and ask it to fix the prompt. Then paste the updated prompt into #3 and test again.
+            No. Everything in this session is done in plain English. You're writing instructions, not code.
           </p>
         </div>
 
