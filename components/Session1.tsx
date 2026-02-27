@@ -10,47 +10,47 @@ const platformLabels: Record<Platform, string> = {
   copilot: 'Copilot',
 };
 
-const platformSetup: Record<Platform, { name: string; steps: string[] }> = {
+const platformSetup: Record<Platform, { name: string; toolName: string; steps: string[] }> = {
   chatgpt: {
     name: 'Custom GPT',
+    toolName: 'Custom GPT',
     steps: [
       'Go to ChatGPT → Explore GPTs → Create',
       'Use the <strong>Configure</strong> tab (not the Create chat tab)',
-      '<strong>Name:</strong> Give it a memorable name — projects with fun names get taken more seriously',
+      '<strong>Name:</strong> Give it a memorable name — a good name makes people want to use it',
       '<strong>Instructions:</strong> Paste your system prompt',
       '<strong>Conversation starters:</strong> Add 1-2 examples of how someone would start using it (e.g., "Paste your draft to get feedback")',
-      'Upload any reference docs to the <strong>Knowledge</strong> section if your tool needs them — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the prompt as explicit criteria.',
     ],
   },
   claude: {
     name: 'Project',
+    toolName: 'Project',
     steps: [
       'Go to Claude → Projects (left sidebar) → Create Project',
-      '<strong>Name:</strong> Give it a memorable name — projects with fun names get taken more seriously',
+      '<strong>Name:</strong> Give it a memorable name — a good name makes people want to use it',
       '<strong>Custom Instructions:</strong> Paste your system prompt into the project instructions field',
       '<strong>Conversation starters:</strong> Add 1-2 examples of how someone would start using it',
-      'Upload any reference docs using the <strong>Add Content</strong> button — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the instructions as explicit criteria.',
       'Start a new chat inside the project to test it.',
     ],
   },
   gemini: {
     name: 'Gem',
+    toolName: 'Gem',
     steps: [
       'Go to Gemini → Gem Manager (left sidebar) → Create Gem',
-      '<strong>Name:</strong> Give it a memorable name — projects with fun names get taken more seriously',
+      '<strong>Name:</strong> Give it a memorable name — a good name makes people want to use it',
       '<strong>Instructions:</strong> Paste your system prompt',
-      'Upload any reference docs using the <strong>Upload</strong> button — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the instructions as explicit criteria.',
       'Click <strong>Save</strong> and then open the Gem to start testing.',
     ],
   },
   copilot: {
     name: 'Copilot GPT',
+    toolName: 'Copilot GPT',
     steps: [
       'Go to Copilot → Create a Copilot GPT (or use Copilot Studio if your org has it)',
-      '<strong>Name:</strong> Give it a memorable name — projects with fun names get taken more seriously',
+      '<strong>Name:</strong> Give it a memorable name — a good name makes people want to use it',
       '<strong>Instructions:</strong> Paste your system prompt',
       '<strong>Conversation starters:</strong> Add 1-2 examples of how someone would start using it',
-      'Upload any reference docs if your tool needs them — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the instructions as explicit criteria.',
       'Save and open it to start testing.',
     ],
   },
@@ -69,10 +69,10 @@ const Session1: React.FC = () => {
 
         <div className="mt-8 mb-8">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
-            Build Your First Custom GPT
+            Build Your First {setup.toolName}
           </h1>
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
-            Think of a piece of feedback you give over and over again. By the end of this session, you'll have a Custom GPT that can give that feedback for you.
+            Think of a piece of feedback you give over and over again. By the end of this session, you'll have a {setup.toolName} that can give that feedback for you.
           </p>
         </div>
 
@@ -130,14 +130,14 @@ const Session1: React.FC = () => {
               <span className="text-stone-500 text-sm">(Direct reports? Cross-functional partners? External stakeholders?)</span>
             </p>
             <p className="text-stone-800 text-base leading-relaxed mb-4">
-              <strong>They&apos;d reach for this Custom GPT when:</strong>
+              <strong>They&apos;d reach for this {setup.toolName} when:</strong>
               <br />
               <span className="text-stone-500 text-sm">(What&apos;s the specific trigger? e.g., &quot;when they&apos;ve finished a first draft&quot; or &quot;before sending an email to their skip level&quot;)</span>
             </p>
             <p className="text-stone-800 text-base leading-relaxed mb-4">
-              <strong>The Custom GPT walks the user through these steps:</strong>
+              <strong>The {setup.toolName} walks the user through these steps:</strong>
               <br />
-              <span className="text-stone-500 text-sm">Example: 1. User pastes their draft email. 2. GPT checks it against the 4 criteria below. 3. GPT gives a pass/fail on each criterion with specific feedback. 4. GPT suggests a revised version.</span>
+              <span className="text-stone-500 text-sm">Example: 1. User pastes their draft email. 2. {setup.toolName} checks it against the 4 criteria below. 3. {setup.toolName} gives a pass/fail on each criterion with specific feedback. 4. {setup.toolName} suggests a revised version.</span>
             </p>
             <p className="text-stone-800 text-base leading-relaxed mb-4">
               <strong>I&apos;ll know it&apos;s working when the output meets this specific criteria:</strong>
@@ -198,7 +198,7 @@ const Session1: React.FC = () => {
           </p>
           <p className="text-stone-800 text-base leading-relaxed mb-3 font-bold">Questions to ask each other:</p>
           <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
-            <li><strong>Is this one thing or multiple things?</strong> If your GPT is trying to give feedback on emails AND presentations AND reports, that's three GPTs. Pick one for now.</li>
+            <li><strong>Is this one thing or multiple things?</strong> If your {setup.toolName} is trying to give feedback on emails AND presentations AND reports, that's three {setup.toolName}s. Pick one for now.</li>
             <li><strong>Are the criteria specific enough?</strong> Could someone who doesn't know you read your criteria and give the same feedback you would? If a criterion is vague, add an example of what passing looks like. "Clarity" is vague. "A non-expert could read this and understand the recommendation without asking follow-up questions" is specific.</li>
           </ol>
           <p className="text-stone-800 text-base leading-relaxed">
@@ -213,7 +213,7 @@ const Session1: React.FC = () => {
           <h3 className="text-xl font-bold text-stone-800 mb-3">Part 2: Demo — The Bad Way vs. The Good Way</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">10-15 min</p>
           <p className="text-stone-800 text-base leading-relaxed italic">
-            Hilary demos live. First, she goes straight to {platformLabels[platform]} and asks it to build a Custom GPT from a vague description — no worksheet, no spec work. You'll see what comes out. Then she does it the right way: feeds in the worksheet, aligns on how the GPT should work before writing anything, and builds from that. The difference is the whole point.
+            Hilary demos live. First, she goes straight to {platformLabels[platform]} and asks it to build a {setup.toolName} from a vague description — no worksheet, no spec work. You'll see what comes out. Then she does it the right way: feeds in the worksheet, aligns on how the {setup.toolName} should work before writing anything, and builds from that. The difference is the whole point.
           </p>
         </div>
 
@@ -221,19 +221,19 @@ const Session1: React.FC = () => {
 
         {/* Part 3 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Generate Your System Prompt & Build the GPT</h3>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Generate Your System Prompt & Build the {setup.toolName}</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
             Now it's your turn. You're doing it the good way.
           </p>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Align on how the GPT works</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Align on how the {setup.toolName} works</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
             Open {platformLabels[platform]} and paste your worksheet. Then ask:
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "Here's a piece of feedback I give over and over at work, and my criteria for what good looks like. I want to build a Custom GPT for this. Before you write anything, tell me exactly how you think it should work — what does the user give it, what does it do, and what does it give back? Walk me through the steps."
+              "Here's a piece of feedback I give over and over at work, and my criteria for what good looks like. I want to build a {setup.toolName} for this. Before you write anything, tell me exactly how you think it should work — what does the user give it, what does it do, and what does it give back? Walk me through the steps."
             </p>
           </div>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
@@ -267,7 +267,7 @@ const Session1: React.FC = () => {
           <h3 className="text-xl font-bold text-stone-800 mb-3">Part 4: Test It & Break It</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
-            Your GPT is live. Now find out what's wrong with it.
+            Your {setup.toolName} is live. Now find out what's wrong with it.
           </p>
 
           <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Generate test data</h4>
@@ -276,14 +276,14 @@ const Session1: React.FC = () => {
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "Generate two sample inputs for this GPT — one that's mediocre (a C+) and one that's strong (an A). Make them realistic."
+              "Generate two sample inputs for this {setup.toolName} — one that's mediocre (a C+) and one that's strong (an A). Make them realistic."
             </p>
           </div>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Run both through your GPT</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Run both through your {setup.toolName}</h4>
           <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-disc list-inside">
             <li>Does the mediocre version get meaningfully different feedback than the strong one? If they get similar feedback, your criteria aren't sharp enough.</li>
-            <li>Does the feedback match what YOU would have said? If the AI is nicer than you'd be, that's a problem — it means your GPT will pass work that shouldn't pass.</li>
+            <li>Does the feedback match what YOU would have said? If the AI is nicer than you'd be, that's a problem — it means your {setup.toolName} will pass work that shouldn't pass.</li>
           </ul>
 
           <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Note what's broken</h4>
@@ -300,11 +300,28 @@ const Session1: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
+        {/* FAQ */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-6">FAQ</h2>
+
+          <h4 className="text-base font-bold text-stone-800 mb-2">Should I upload documents to my {setup.toolName}?</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
+            You can, but uploading a document doesn't mean the AI has read and understood it. Think of uploaded docs as reference material it <em>might</em> look at — not instructions it will follow. If something is important enough that the {setup.toolName} needs to get it right every time, don't bury it in an uploaded file. Put it directly in the system prompt as an explicit instruction or criterion. Save uploads for supplementary context, like style guides or example documents.
+          </p>
+
+          <h4 className="text-base font-bold text-stone-800 mb-2">What if my {setup.toolName} is too nice?</h4>
+          <p className="text-stone-800 text-base leading-relaxed">
+            This is the most common problem. AI defaults to being encouraging, which means it will often pass work that you wouldn't. If your {setup.toolName} isn't catching things you'd catch, your criteria aren't specific enough. Don't say "check for clarity" — say what clarity actually means in this context. We'll work on this more in Session 2.
+          </p>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
         {/* Before Next Session */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">Before Next Session</h2>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            <strong>Post your prompt on the Maven portal.</strong> It can be the system prompt for the GPT you built today, or — if you kept experimenting and built something else — a prompt for a different one. Either is great.
+            <strong>Post your prompt on the Maven portal.</strong> It can be the system prompt for the {setup.toolName} you built today, or — if you kept experimenting and built something else — a prompt for a different one. Either is great.
           </p>
           <p className="text-stone-800 text-base leading-relaxed">
             Come to the next session ready to workshop it. We'll be diagnosing what's working, what's not, and how to make it better — so the more you've used it and noticed what breaks, the more you'll get out of it.
