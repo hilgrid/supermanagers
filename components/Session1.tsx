@@ -284,17 +284,59 @@ const Session1: React.FC = () => {
         <div className="mb-12">
           <h3 className="text-xl font-bold text-stone-800 mb-3">Part 4: Build Your Own</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Now do the same thing for the feedback from your worksheet — the one you actually care about. You already know the mechanics. Follow the same steps:
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
+            Now do the same thing for the feedback from your worksheet — the one you actually care about.
           </p>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-decimal list-inside">
-            <li>Paste your worksheet and align on how the {setup.toolName} should work</li>
-            <li>Have it write the system prompt</li>
-            <li>Check the prompt — does it use your criteria? Does it know when to stop?</li>
-            <li>Set up the {setup.toolName} and test it with real examples</li>
-          </ol>
+
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Tell the AI what you're building</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Note what's working and what's not. Write down:
+            Open a new conversation in {platformLabels[platform]}. Fill in the blanks and paste this:
+          </p>
+          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
+            <p className="text-stone-800 text-base font-mono leading-relaxed">
+              "I'm building a {setup.toolName} to give people feedback on <span className="bg-rose-200 px-1">________</span>. I'm going to ask for your help writing the prompt, but first I want to align on how it should work.
+            </p>
+            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
+              The feedback I keep giving is <span className="bg-rose-200 px-1">________</span>. I give this feedback on <span className="bg-rose-200 px-1">________</span>, and I give it to <span className="bg-rose-200 px-1">________</span>. They'd reach for this when <span className="bg-rose-200 px-1">________</span>.
+            </p>
+            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
+              I want your help setting 3-5 success criteria that we can evaluate their work against."
+            </p>
+          </div>
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
+            Review the criteria it suggests. Do they match what you actually care about? Tell it what to change before moving on.
+          </p>
+
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Write the prompt</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Once you're aligned on the criteria, ask it to write the system prompt:
+          </p>
+          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
+            <p className="text-stone-800 text-base font-mono leading-relaxed">
+              "OK, now write a system prompt for this {setup.toolName} based on what we just agreed on."
+            </p>
+          </div>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Scan the prompt it generated. Look for:
+          </p>
+          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-disc list-inside">
+            <li><strong>Does it actually use your criteria?</strong> If it says "check for clarity and professionalism" instead of your actual criteria, tell it to use the exact criteria you provided.</li>
+            <li><strong>Does it know when to stop?</strong> If not, add: "When you have finished, stop. Do not continue unless the user asks."</li>
+          </ul>
+
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Set up your {setup.name}</h4>
+          <ol className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-decimal list-inside">
+            {setup.steps.map((step, i) => (
+              <li key={i} dangerouslySetInnerHTML={{ __html: step }} />
+            ))}
+          </ol>
+
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 4: Test it</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Find a real example of the kind of work your {setup.toolName} is supposed to evaluate — a real email, a real report, whatever it is. Paste it in and see what comes back.
+          </p>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            Note what's working and what's not:
           </p>
           <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
             <li>What worked well</li>
