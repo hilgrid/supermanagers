@@ -217,13 +217,13 @@ const Session1: React.FC = () => {
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "I'm building a {setup.toolName} to give people feedback on the emails they send to executives at my company. I'm going to ask for your help writing the prompt, but first I want to align on how it should work.
+              "I'm building a {setup.toolName} to give people feedback on <span className="bg-rose-200 px-1">the emails they send to executives at my company</span>. I'm going to ask for your help writing the prompt, but first I want to align on how it should work.
             </p>
             <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              The feedback I keep giving is that people need to get to the point faster and lead with what they need, not the backstory. I give this feedback on emails to the CEO, and I give it to product managers on my team. They'd reach for this before sending an important message to someone senior.
+              The feedback I keep giving is that <span className="bg-rose-200 px-1">people need to get to the point faster and lead with what they need, not the backstory</span>. I give this feedback on <span className="bg-rose-200 px-1">emails to the CEO</span>, and I give it to <span className="bg-rose-200 px-1">product managers on my team</span>. They'd reach for this <span className="bg-rose-200 px-1">before sending an important message to someone senior</span>.
             </p>
             <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              I want your help setting 3-5 success criteria that we can evaluate their emails against."
+              I want your help setting 3-5 success criteria that we can evaluate their <span className="bg-rose-200 px-1">emails</span> against."
             </p>
           </div>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
