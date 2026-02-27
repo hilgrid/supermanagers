@@ -22,30 +22,33 @@ const Session1: React.FC = () => {
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-6">Before This Class</h2>
           <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><strong>Watch the async modules for Week 1</strong> — Foundations, prompting, problem decomposition, delegation.</li>
-            <li><strong>Fill out the worksheet below</strong> for one piece of feedback you keep repeating at work.</li>
+            <li><strong>Watch the async video modules for Week 1</strong> in the Maven portal.</li>
+            <li>
+              <strong>Fill out the Tool Scoping Worksheet</strong> for one piece of feedback you keep repeating at work.
+              <br />
+              <a
+                href="https://docs.google.com/document/d/1PLIJrhMTlSBw8TQ4AWYK5mw8898T9wizKQOB_-kymOY/edit?tab=t.0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold hover:text-stone-600 hover:underline transition-colors"
+              >
+                Get the Tool Scoping Worksheet (Google Drive) &rarr;
+              </a>
+            </li>
             <li><strong>Submit your worksheet on Maven</strong> so we can see what everyone's working on.</li>
           </ol>
         </div>
 
-        {/* The Worksheet */}
+        {/* What to focus on */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">The Worksheet</h3>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">What to focus on</h3>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
             Think about the feedback you find yourself giving over and over. The email you keep rewriting for someone. The presentation you keep sending back with the same notes. The report that never quite lands and you end up fixing at 11 PM.
           </p>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Pick one. Then answer these questions:
+            Pick one, and use that as the basis for your worksheet. If you have more than one idea, pick the one where you feel the most frustrated repeating yourself.
           </p>
-          <div className="bg-white border-2 border-stone-300 rounded p-5 text-stone-800 text-base leading-loose space-y-3">
-            <p><strong>What's the feedback?</strong> Describe it like you're explaining to a colleague. "Every time someone on my team sends a client email, I end up rewriting half of it because they bury the ask and use too much jargon."</p>
-            <p><strong>What does "good" look like?</strong> Write out 3-5 things that make the difference between work that passes your bar and work that doesn't. Be specific — "clear" means different things to different people. What does "clear" mean to you?</p>
-            <p><strong>Can you show an example?</strong> Find one real example of work that met your standard and one that didn't. You'll use these to test your GPT later.</p>
-          </div>
-          <p className="text-stone-800 text-base leading-relaxed mt-4">
-            That's it. Don't overthink it. If you have more than one idea, pick the one where you feel the most frustrated repeating yourself.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed mt-4 italic">
+          <p className="text-stone-800 text-base leading-relaxed italic">
             If you didn't get to this before class, that's okay — you'll have time to work on it in the first breakout.
           </p>
         </div>
