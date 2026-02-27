@@ -247,7 +247,7 @@ const Session1: React.FC = () => {
           </p>
           <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-disc list-inside">
             <li><strong>Does it actually use your criteria?</strong> The prompt should include the specific standards from your worksheet, not generic advice. If it says "check for clarity and professionalism" instead of your actual criteria, tell it to use the exact criteria you provided.</li>
-            <li><strong>Does it know when to stop?</strong> If not, add explicit instructions: "When you have finished, stop. Do not continue unless the user asks."</li>
+            <li><strong>Could someone with limited context read this prompt and follow the instructions?</strong> Show it to a colleague and ask them to follow it. If they'd be confused, the AI will be too.</li>
           </ul>
 
           <h4 className="text-lg font-bold text-stone-800 mb-2">Step 4: Set up your {setup.name}</h4>
@@ -321,7 +321,7 @@ const Session1: React.FC = () => {
           </p>
           <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-disc list-inside">
             <li><strong>Does it actually use your criteria?</strong> If it says "check for clarity and professionalism" instead of your actual criteria, tell it to use the exact criteria you provided.</li>
-            <li><strong>Does it know when to stop?</strong> If not, add: "When you have finished, stop. Do not continue unless the user asks."</li>
+            <li><strong>Could someone with limited context read this prompt and follow the instructions?</strong> Show it to a colleague and ask them to follow it. If they'd be confused, the AI will be too.</li>
           </ul>
 
           <h4 className="text-lg font-bold text-stone-800 mb-2">Step 3: Set up your {setup.name}</h4>
