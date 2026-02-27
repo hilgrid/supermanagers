@@ -62,7 +62,7 @@ const Session1: React.FC = () => {
           <h3 className="text-xl font-bold text-stone-800 mb-3">Part 1: Breakout — Share & Pressure-Test Your Worksheet</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">15-20 min</p>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Break into groups of 3-4. Each person shares what they picked. If you didn't do the pre-work, use this time to talk through your idea — speaking it out loud to another person is often faster than writing it alone.
+            Break into groups of 3-4. Each person shares what they picked.
           </p>
           <p className="text-stone-800 text-base leading-relaxed mb-3 font-bold">Questions to ask each other:</p>
           <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
