@@ -305,13 +305,36 @@ const Session1: React.FC = () => {
           <h2 className="text-2xl font-bold text-stone-800 mb-6">FAQ</h2>
 
           <h4 className="text-base font-bold text-stone-800 mb-2">Should I upload documents to my {setup.toolName}?</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-3">
+            You can, but uploading a document is not the same as the AI understanding it. The bigger problem is that there's no way for you to verify what the AI took away from that document. When your instructions are written out explicitly in the prompt, anyone can read them and follow the same steps. You can check whether the AI is doing what you intended. When the instructions are buried in a 50-page uploaded doc, you have no way to confirm that the AI is interpreting it the same way you would.
+          </p>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
-            You can, but uploading a document doesn't mean the AI has read and understood it. Think of uploaded docs as reference material it <em>might</em> look at — not instructions it will follow. If something is important enough that the {setup.toolName} needs to get it right every time, don't bury it in an uploaded file. Put it directly in the system prompt as an explicit instruction or criterion. Save uploads for supplementary context, like style guides or example documents.
+            Rule of thumb: if something is important enough that the {setup.toolName} needs to get it right every time, put it directly in the system prompt as an explicit instruction. Save uploads for supplementary reference material.
           </p>
 
           <h4 className="text-base font-bold text-stone-800 mb-2">What if my {setup.toolName} is too nice?</h4>
-          <p className="text-stone-800 text-base leading-relaxed">
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
             This is the most common problem. AI defaults to being encouraging, which means it will often pass work that you wouldn't. If your {setup.toolName} isn't catching things you'd catch, your criteria aren't specific enough. Don't say "check for clarity" — say what clarity actually means in this context. We'll work on this more in Session 2.
+          </p>
+
+          <h4 className="text-base font-bold text-stone-800 mb-2">My idea feels too big. How do I know if I'm overscoping?</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
+            Start with the smallest possible scope. Get one thing working well, then expand. If you're trying to build something that handles multiple types of input, covers several different scenarios, or has a lot of conditional logic — narrow it down. Pick the single most common case and build for that. You can always add complexity later, but it's much harder to debug a tool that's trying to do five things at once.
+          </p>
+
+          <h4 className="text-base font-bold text-stone-800 mb-2">My {setup.toolName} keeps going after it's done.</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
+            Add this to the end of your system prompt: "When you have finished, stop. Do not continue unless the user asks." Without this, the AI will keep offering to do more things — that's its default behavior, not a bug in your prompt.
+          </p>
+
+          <h4 className="text-base font-bold text-stone-800 mb-2">Do I need a paid account?</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
+            A paid account gives you access to the {setup.name} builder, which is what we use in this session. If you can't get one, you can still follow along — write your system prompt, save it in a doc, and paste it at the start of any new conversation. It's not as seamless, but it works.
+          </p>
+
+          <h4 className="text-base font-bold text-stone-800 mb-2">I'm confused about which chat window to use for what.</h4>
+          <p className="text-stone-800 text-base leading-relaxed">
+            You'll have three things open: (1) the conversation where you built and iterated on your prompt, (2) the {setup.toolName} itself, where you test it, and (3) the {setup.toolName} settings, where you paste updated instructions. When something doesn't work in testing, copy the output back into conversation #1, explain what went wrong, and ask it to fix the prompt. Then paste the updated prompt into #3 and test again.
           </p>
         </div>
 
