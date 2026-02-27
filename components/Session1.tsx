@@ -99,32 +99,86 @@ const Session1: React.FC = () => {
         {/* Before This Class */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-6">Before This Class</h2>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><strong>Watch the async video modules for Week 1</strong> in the Maven portal.</li>
-            <li>
-              <strong>Fill out the Tool Scoping Worksheet</strong> for one piece of feedback you keep repeating at work.
-              <br />
-              <a
-                href="https://docs.google.com/document/d/1PLIJrhMTlSBw8TQ4AWYK5mw8898T9wizKQOB_-kymOY/edit?tab=t.0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold hover:text-stone-600 hover:underline transition-colors"
-              >
-                Get the Tool Scoping Worksheet (Google Drive) &rarr;
-              </a>
-            </li>
-            <li><strong>Submit your worksheet on Maven</strong> so we can see what everyone's working on.</li>
-          </ol>
-        </div>
 
-        {/* What to focus on */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">What to focus on</h3>
+          <h3 className="text-lg font-bold text-stone-800 mb-2">Step 1: Watch the async video modules for Week 1</h3>
+          <p className="text-stone-800 text-base leading-relaxed mb-8">
+            These are in the Maven portal.
+          </p>
+
+          <h3 className="text-lg font-bold text-stone-800 mb-2">Step 2: Fill out the worksheet</h3>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
             Think about the feedback you find yourself giving over and over. The email you keep rewriting for someone. The presentation you keep sending back with the same notes. The report that never quite lands and you end up fixing at 11 PM.
           </p>
-          <p className="text-stone-800 text-base leading-relaxed">
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
             Pick one, and use that as the basis for your worksheet. If you have more than one idea, pick the one where you feel the most frustrated repeating yourself.
+          </p>
+
+          <div className="bg-white border border-stone-300 rounded-lg p-6 mb-4">
+            <p className="text-stone-800 text-base leading-relaxed mb-4">
+              <strong>The feedback I keep giving:</strong>
+              <br />
+              <span className="text-stone-500 text-sm">(What do you find yourself saying over and over? e.g., &quot;Get to the point faster&quot; or &quot;This doesn&apos;t tell me what you want me to do&quot;)</span>
+            </p>
+            <p className="text-stone-800 text-base leading-relaxed mb-4">
+              <strong>I give this feedback on:</strong>
+              <br />
+              <span className="text-stone-500 text-sm">(What kind of work? e.g., emails, presentations, reports, memos)</span>
+            </p>
+            <p className="text-stone-800 text-base leading-relaxed mb-4">
+              <strong>Who I give it to:</strong>
+              <br />
+              <span className="text-stone-500 text-sm">(Direct reports? Cross-functional partners? External stakeholders?)</span>
+            </p>
+            <p className="text-stone-800 text-base leading-relaxed mb-4">
+              <strong>They&apos;d reach for this Custom GPT when:</strong>
+              <br />
+              <span className="text-stone-500 text-sm">(What&apos;s the specific trigger? e.g., &quot;when they&apos;ve finished a first draft&quot; or &quot;before sending an email to their skip level&quot;)</span>
+            </p>
+            <p className="text-stone-800 text-base leading-relaxed mb-4">
+              <strong>The Custom GPT walks the user through these steps:</strong>
+              <br />
+              <span className="text-stone-500 text-sm">Example: 1. User pastes their draft email. 2. GPT checks it against the 4 criteria below. 3. GPT gives a pass/fail on each criterion with specific feedback. 4. GPT suggests a revised version.</span>
+            </p>
+            <p className="text-stone-800 text-base leading-relaxed mb-4">
+              <strong>I&apos;ll know it&apos;s working when the output meets this specific criteria:</strong>
+            </p>
+            <table className="w-full text-sm text-stone-800 border border-stone-300">
+              <thead>
+                <tr className="bg-stone-100">
+                  <th className="text-left p-3 border-b border-stone-300 font-bold">Criterion</th>
+                  <th className="text-left p-3 border-b border-stone-300 font-bold">What passing looks like</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="p-3 border-b border-stone-200 text-stone-500 italic">Ex: Clarity</td>
+                  <td className="p-3 border-b border-stone-200 text-stone-500 italic">Ex: A non-expert could read this and understand the recommendation without asking follow-up questions.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border-b border-stone-200">&nbsp;</td>
+                  <td className="p-3 border-b border-stone-200">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td className="p-3">&nbsp;</td>
+                  <td className="p-3">&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-stone-800 text-sm mb-8">
+            <a
+              href="https://docs.google.com/document/d/1PLIJrhMTlSBw8TQ4AWYK5mw8898T9wizKQOB_-kymOY/edit?tab=t.0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:text-stone-600 hover:underline transition-colors"
+            >
+              Get this as a Google Doc &rarr;
+            </a>
+          </p>
+
+          <h3 className="text-lg font-bold text-stone-800 mb-2">Step 3: Submit your worksheet on Maven</h3>
+          <p className="text-stone-800 text-base leading-relaxed">
+            So we can see what everyone&apos;s working on.
           </p>
         </div>
 
