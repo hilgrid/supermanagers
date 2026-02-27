@@ -48,9 +48,6 @@ const Session1: React.FC = () => {
           <p className="text-stone-800 text-base leading-relaxed mb-4">
             Pick one, and use that as the basis for your worksheet. If you have more than one idea, pick the one where you feel the most frustrated repeating yourself.
           </p>
-          <p className="text-stone-800 text-base leading-relaxed italic">
-            If you didn't get to this before class, that's okay — you'll have time to work on it in the first breakout.
-          </p>
         </div>
 
         <hr className="border-stone-300 mb-12" />
