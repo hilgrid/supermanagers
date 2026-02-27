@@ -14,7 +14,7 @@ const Session1: React.FC = () => {
             Build Your First Tool
           </h1>
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
-            Pick a real problem from your work, turn it into a Custom GPT, and test it. By the end of this session you'll have a working tool and a clear sense of what needs to be better.
+            Pick a real problem from your work, turn it into a custom AI tool, and test it. By the end of this session you'll have a working tool and a clear sense of what needs to be better.
           </p>
         </div>
 
@@ -39,16 +39,16 @@ const Session1: React.FC = () => {
           </ol>
         </div>
 
-        {/* What makes a good Custom GPT problem? */}
+        {/* What makes a good problem? */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">What makes a good Custom GPT problem?</h3>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">What makes a good problem for a custom tool?</h3>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            A Custom GPT is great for problems where <strong>you keep doing the same thinking work over and over.</strong> It's not great for problems where you want something to happen automatically, or where the scope is "know everything about my company."
+            A custom AI tool is great for problems where <strong>you keep doing the same thinking work over and over.</strong> It's not great for problems where you want something to happen automatically, or where the scope is "know everything about my company."
           </p>
           <p className="text-stone-800 text-base leading-relaxed mb-2">Two types that work well:</p>
           <ul className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-disc list-inside">
-            <li><strong>Evaluator:</strong> You keep giving the same feedback on the same kind of work — emails, presentations, reports, research. The GPT applies your standards so you're not the bottleneck.</li>
-            <li><strong>Coach:</strong> Your team keeps getting stuck at the same point in a process. The GPT walks them through it step by step so they get better, not just get an output.</li>
+            <li><strong>Evaluator:</strong> You keep giving the same feedback on the same kind of work — emails, presentations, reports, research. The tool applies your standards so you're not the bottleneck.</li>
+            <li><strong>Coach:</strong> Your team keeps getting stuck at the same point in a process. The tool walks them through it step by step so they get better, not just get an output.</li>
           </ul>
           <p className="text-stone-800 text-base leading-relaxed">
             If your idea sounds more like "I want this to run in the background and handle things for me" — that's an automation, and we'll get there in Session 4. For now, pick something where a person sits down, gives input, and gets something useful back.
@@ -104,7 +104,7 @@ const Session1: React.FC = () => {
           <h3 className="text-xl font-bold text-stone-800 mb-3">Part 2: Demo — The Bad Way vs. The Good Way</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">10-15 min</p>
           <p className="text-stone-800 text-base leading-relaxed italic">
-            Hilary demos live. First, she goes straight to ChatGPT and asks it to build a Custom GPT from a vague description — no worksheet, no spec work. You'll see what comes out. Then she does it the right way: feeds in the worksheet, aligns on how the tool should work before writing anything, and builds from that. The difference is the whole point.
+            Hilary demos live. First, she goes straight to an AI tool and asks it to build a custom tool from a vague description — no worksheet, no spec work. You'll see what comes out. Then she does it the right way: feeds in the worksheet, aligns on how the tool should work before writing anything, and builds from that. The difference is the whole point.
           </p>
         </div>
 
@@ -112,7 +112,7 @@ const Session1: React.FC = () => {
 
         {/* Part 3 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Generate Your System Prompt & Build the GPT</h3>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Generate Your System Prompt & Build Your Tool</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
             Now it's your turn. You're doing it the good way.
@@ -120,11 +120,11 @@ const Session1: React.FC = () => {
 
           <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Explore other approaches</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Open ChatGPT or Claude and paste your worksheet. Before committing to your idea, ask:
+            Open your AI tool of choice (ChatGPT, Claude, Gemini, or Copilot) and paste your worksheet. Before committing to your idea, ask:
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "Here's the problem I want to solve and my idea for a Custom GPT. Before we build it, do you have any other ideas for how I could solve this problem with a Custom GPT?"
+              "Here's the problem I want to solve and my idea for a custom AI tool. Before we build it, do you have any other ideas for how I could solve this problem?"
             </p>
           </div>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
@@ -132,7 +132,7 @@ const Session1: React.FC = () => {
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "Can you rank these ideas in terms of how effective they'd be and how feasible they are to build as a Custom GPT?"
+              "Can you rank these ideas in terms of how effective they'd be and how feasible they are to build?"
             </p>
           </div>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
@@ -178,14 +178,52 @@ const Session1: React.FC = () => {
             <li><strong>Is it framed for the user, not just for you?</strong> "Evaluate whether this meets my standards" feels like a hoop to jump through. "Help make sure this lands the way your work deserves" feels like it's on their side.</li>
           </ul>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 5: Set it up in ChatGPT</h4>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 5: Set up your tool</h4>
+          <p className="text-stone-800 text-base leading-relaxed mb-6">
+            Follow the instructions for whichever platform you're using. The steps are the same idea — give it a name, paste your system prompt, add conversation starters, and upload any reference docs — but each platform puts these in a different place.
+          </p>
+
+          {/* ChatGPT */}
+          <h5 className="text-base font-bold text-stone-800 mb-2">ChatGPT (Custom GPT)</h5>
+          <ol className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-decimal list-inside">
             <li>Go to ChatGPT &rarr; Explore GPTs &rarr; Create</li>
             <li>Use the <strong>Configure</strong> tab (not the Create chat tab)</li>
             <li><strong>Name:</strong> Give it a memorable name — projects with fun names get taken more seriously</li>
             <li><strong>Instructions:</strong> Paste your system prompt</li>
             <li><strong>Conversation starters:</strong> Add 1-2 examples of how someone would start using it (e.g., "Paste your draft to get feedback")</li>
-            <li>Upload any reference docs to the Knowledge section if your tool needs them — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the prompt as explicit criteria.</li>
+            <li>Upload any reference docs to the <strong>Knowledge</strong> section if your tool needs them — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the prompt as explicit criteria.</li>
+          </ol>
+
+          {/* Claude */}
+          <h5 className="text-base font-bold text-stone-800 mb-2">Claude (Project)</h5>
+          <ol className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-decimal list-inside">
+            <li>Go to Claude &rarr; Projects (left sidebar) &rarr; Create Project</li>
+            <li><strong>Name:</strong> Give it a memorable name — projects with fun names get taken more seriously</li>
+            <li><strong>Custom Instructions:</strong> Paste your system prompt into the project instructions field</li>
+            <li><strong>Conversation starters:</strong> Add 1-2 examples of how someone would start using it</li>
+            <li>Upload any reference docs using the <strong>Add Content</strong> button — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the instructions as explicit criteria.</li>
+            <li>Start a new chat inside the project to test it.</li>
+          </ol>
+
+          {/* Gemini */}
+          <h5 className="text-base font-bold text-stone-800 mb-2">Gemini (Gem)</h5>
+          <ol className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-decimal list-inside">
+            <li>Go to Gemini &rarr; Gem Manager (left sidebar) &rarr; Create Gem</li>
+            <li><strong>Name:</strong> Give it a memorable name — projects with fun names get taken more seriously</li>
+            <li><strong>Instructions:</strong> Paste your system prompt</li>
+            <li>Upload any reference docs using the <strong>Upload</strong> button — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the instructions as explicit criteria.</li>
+            <li>Click <strong>Save</strong> and then open the Gem to start testing.</li>
+          </ol>
+
+          {/* Copilot */}
+          <h5 className="text-base font-bold text-stone-800 mb-2">Microsoft Copilot (Copilot GPT)</h5>
+          <ol className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-decimal list-inside">
+            <li>Go to Copilot &rarr; Create a Copilot GPT (or use Copilot Studio if your org has it)</li>
+            <li><strong>Name:</strong> Give it a memorable name — projects with fun names get taken more seriously</li>
+            <li><strong>Instructions:</strong> Paste your system prompt</li>
+            <li><strong>Conversation starters:</strong> Add 1-2 examples of how someone would start using it</li>
+            <li>Upload any reference docs if your tool needs them — but know that uploading docs ≠ the AI understanding them. If something is important, pull it out of the doc and put it directly in the instructions as explicit criteria.</li>
+            <li>Save and open it to start testing.</li>
           </ol>
         </div>
 
@@ -196,7 +234,7 @@ const Session1: React.FC = () => {
           <h3 className="text-xl font-bold text-stone-800 mb-3">Part 4: Test It & Break It</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
           <p className="text-stone-800 text-base leading-relaxed mb-6">
-            Your GPT is live. Now find out what's wrong with it.
+            Your tool is live. Now find out what's wrong with it.
           </p>
 
           <h4 className="text-lg font-bold text-stone-800 mb-2">Step 1: Generate test data</h4>
@@ -209,7 +247,7 @@ const Session1: React.FC = () => {
             </p>
           </div>
 
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Run both through your GPT</h4>
+          <h4 className="text-lg font-bold text-stone-800 mb-2">Step 2: Run both through your tool</h4>
           <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-6 list-disc list-inside">
             <li>Does the C+ version get meaningfully different feedback than the A version? If they get similar scores or feedback, your criteria aren't sharp enough.</li>
             <li>Does the feedback match what YOU would have said? If the AI is nicer than you'd be, that's a problem — it means your tool will pass work that shouldn't pass.</li>
