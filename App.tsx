@@ -7,6 +7,7 @@ import Session from './components/Session';
 import Session1 from './components/Session1';
 import ManagerCopilot from './components/ManagerCopilot';
 import { SteeringWheelPage } from './components/steeringwheel/SteeringWheelPage';
+import Resources from './components/Resources';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <Route path="/session4" element={<Session />} />
         <Route path="/managercopilot" element={<ManagerCopilot />} />
         <Route path="/steeringwheel" element={<SteeringWheelPage />} />
+        <Route path="/resources" element={<Resources />} />
       </Routes>
       <Analytics />
     </div>
