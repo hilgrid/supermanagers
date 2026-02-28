@@ -11,15 +11,15 @@ const Resources: React.FC = () => {
     },
     {
       title: 'Start small',
-      body: 'Get one thing working well before you expand. As you get more comfortable, you can take on more ambitious builds — but when you\'re learning, narrowing the scope is almost always the right move.',
+      body: 'Get one thing working well before you expand.',
     },
     {
       title: 'Start with what you know best',
-      body: 'Build your first tools around work you have deep experience in — something where you\'ve had a lot of reps and have strong judgment. You need to understand the domain to evaluate whether the AI is doing a good job. That builds your intuition for how the tool behaves, what works, and what doesn\'t. Once you have that intuition, you can start expanding into areas you\'re less comfortable in.',
+      body: 'Build your first tools around work where you have strong judgment. You need to understand the domain to know whether the AI is doing a good job.',
     },
     {
       title: 'Be thoughtful about context',
-      body: 'It\'s tempting to upload a bunch of docs to the knowledge base and call it done. Resist this. The AI references those documents every time, which can lead to unpredictable behavior — and more importantly, you have no way to see what the AI is inferring from them. That makes it very hard to troubleshoot, and even harder to develop an instinct for how to troubleshoot. When you\'re starting out, put your instructions and criteria directly in the prompt. We\'ll cover more advanced strategies for managing context later in the course.',
+      body: 'Don\'t just upload a bunch of docs and hope for the best. When you\'re starting out, put your instructions directly in the prompt where you can read and troubleshoot them.',
     },
   ];
 
