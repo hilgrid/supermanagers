@@ -30,7 +30,7 @@ const About: React.FC = () => {
               { title: 'Your questions on AI at work', pub: "The Economist\u2019s Boss Class", url: 'https://www.economist.com/podcasts/2026/02/26/bonus-your-questions-on-ai-at-work' },
             ].map((item, i) => (
               <li key={i}>
-                • <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">{item.title}</a> <span className="text-stone-700">— {item.pub}</span>
+                • <a href={item.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 decoration-stone-800/40 hover:decoration-stone-800 transition-colors">{item.title}</a> <span className="text-stone-800 italic">— {item.pub}</span>
               </li>
             ))}
           </ul>
