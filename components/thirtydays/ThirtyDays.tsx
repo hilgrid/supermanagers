@@ -262,7 +262,7 @@ const ThirtyDays: React.FC = () => {
         {/* Header */}
         <div className="mt-10 mb-8 text-center">
           <h1 className="text-3xl md:text-[40px] md:leading-[1.15] font-bold text-stone-800 tracking-tight mb-4">
-            How to Keep Up with AI in 2 Minutes a Day
+            Keep Up with AI in 2 Minutes a Day
           </h1>
           <p className="text-stone-500 text-base md:text-lg leading-relaxed">
             A free 30-day program for people who know they should be using AI more but haven&rsquo;t found the time.
