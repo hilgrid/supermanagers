@@ -20,25 +20,27 @@ const About: React.FC = () => {
 
         <div className="mt-8">
           <h2 className="text-2xl md:text-3xl font-bold tracking-widest text-stone-800 uppercase mb-2">Features</h2>
-          <ul className="space-y-1 text-stone-800 text-lg">
-            <li>
-              • <a href="https://www.lennysnewsletter.com/p/how-to-become-a-supermanager-with" target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">How to be a supermanager with AI</a> on Lenny's Newsletter
-            </li>
-            <li>
-              • <a href="https://www.youtube.com/watch?v=xDMkkOC-EhI" target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">Be a better manager with CustomGPTs</a> on How I AI
-            </li>
-            <li>
-              • <a href="https://www.lennysnewsletter.com/p/how-to-build-a-team-that-can-take-a-punch" target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">Build teams that can take a punch</a> on Lenny's Podcast
-            </li>
-            <li>
-              • <a href="https://www.businessinsider.com/how-to-make-ai-daily-habit-work-days-gpt-whoop-2025-6" target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">How a WHOOP product leader made AI a habit for her team</a> on Business Insider
-            </li>
-            <li>
-              • <a href="https://hbr.org/2025/08/research-the-hidden-penalty-of-using-ai-at-work" target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">Research: The Hidden Penalty of Using AI at Work</a> on HBR
-            </li>
-            <li>
-              • <a href="https://www.economist.com/podcasts/2026/02/26/bonus-your-questions-on-ai-at-work" target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">Your questions on AI at work</a> on The Economist's Boss Class
-            </li>
+          <ul className="space-y-3">
+            {[
+              { title: 'How to be a supermanager with AI', pub: "Lenny's Newsletter", url: 'https://www.lennysnewsletter.com/p/how-to-become-a-supermanager-with' },
+              { title: 'Be a better manager with CustomGPTs', pub: 'How I AI', url: 'https://www.youtube.com/watch?v=xDMkkOC-EhI' },
+              { title: 'Build teams that can take a punch', pub: "Lenny's Podcast", url: 'https://www.lennysnewsletter.com/p/how-to-build-a-team-that-can-take-a-punch' },
+              { title: 'How a WHOOP product leader made AI a habit for her team', pub: 'Business Insider', url: 'https://www.businessinsider.com/how-to-make-ai-daily-habit-work-days-gpt-whoop-2025-6' },
+              { title: 'The Hidden Penalty of Using AI at Work', pub: 'Harvard Business Review', url: 'https://hbr.org/2025/08/research-the-hidden-penalty-of-using-ai-at-work' },
+              { title: 'Your questions on AI at work', pub: "The Economist\u2019s Boss Class", url: 'https://www.economist.com/podcasts/2026/02/26/bonus-your-questions-on-ai-at-work' },
+            ].map((item, i) => (
+              <li key={i}>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block pl-4 border-l-2 border-stone-300 hover:border-stone-800 transition-all duration-200 group"
+                >
+                  <span className="text-stone-800 text-lg font-semibold group-hover:underline underline-offset-2 decoration-stone-400">{item.title}</span>
+                  <span className="block text-stone-500 text-sm mt-0.5">{item.pub}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
