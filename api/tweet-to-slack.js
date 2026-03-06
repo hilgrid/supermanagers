@@ -1,3 +1,5 @@
+export const config = { runtime: 'edge' };
+
 export default async function handler(req) {
   if (req.method !== 'POST') {
     return new Response('POST only', { status: 405 });
@@ -9,8 +11,10 @@ export default async function handler(req) {
   }
 
   const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK_URL;
+  if (!SLACK_WEBHOOK) {
+    return new Response('No webhook configured', { status: 500 });
+  }
 
-  // Try to get tweet content via oEmbed
   let slackText = url;
   try {
     const oembedUrl = `https://publish.twitter.com/oembed?url=${encodeURIComponent(url)}`;
@@ -18,16 +22,14 @@ export default async function handler(req) {
 
     if (oembedRes.ok) {
       const data = await oembedRes.json();
-      // Extract text from the HTML blockquote
       const htmlText = data.html || '';
       const match = htmlText.match(/<p[^>]*>([\s\S]*?)<\/p>/);
       let tweetText = match ? match[1] : '';
-      // Clean HTML tags and entities
       tweetText = tweetText
         .replace(/<br\s*\/?>/g, '\n')
         .replace(/<a[^>]*>pic\.twitter\.com[^<]*<\/a>/g, '')
         .replace(/<a[^>]*>([\s\S]*?)<\/a>/g, '$1')
-        .replace(/&mdash;/g, '—')
+        .replace(/&mdash;/g, '\u2014')
         .replace(/&amp;/g, '&')
         .replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
@@ -37,9 +39,11 @@ export default async function handler(req) {
         .trim();
 
       const author = data.author_name || '';
-      slackText = `*${author}:* ${tweetText}\n${url}`;
+      if (author && tweetText) {
+        slackText = `*${author}:* ${tweetText}\n${url}`;
+      }
     }
-  } catch {
+  } catch (e) {
     // Fall back to just the URL
   }
 
