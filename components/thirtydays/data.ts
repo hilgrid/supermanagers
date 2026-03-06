@@ -27,7 +27,7 @@ export const weeks: WeekData[] = [
     theme: 'Communicate',
     tool: 'Claude web',
     description:
-      'Let\u2019s start with the basics of good delegation in Claude on the web.',
+      'Start here. You\u2019ll learn the fundamentals that separate people who get great results from AI from everyone else. All you need is Claude on the web.',
     days: [
       {
         day: 0,
@@ -257,7 +257,7 @@ export const weeks: WeekData[] = [
     theme: 'Build',
     tool: 'Claude Code',
     description:
-      'Now it\u2019s time to jump into Claude Code. This will give Claude the power of using your computer, which means it can do work for you \u2014 once you give it the context it needs.',
+      'Now you\u2019ll set up Claude Code \u2014 a tool that runs on your computer and can read and write files. This is where AI stops being a chat window and starts being a system that remembers what you told it yesterday.',
     days: [
       {
         day: 8,
@@ -486,7 +486,7 @@ export const weeks: WeekData[] = [
     theme: 'Leverage',
     tool: 'Claude Code',
     description:
-      'This week you\u2019ll start getting real leverage out of everything you\u2019ve built. Slash commands, decks, templates, and calendar integration. The system starts doing more because it knows more.',
+      'Your system is set up. Now you\u2019ll start getting real leverage \u2014 slash commands, decks, templates, and calendar integration. The system does more because it knows more.',
     days: [
       {
         day: 15,

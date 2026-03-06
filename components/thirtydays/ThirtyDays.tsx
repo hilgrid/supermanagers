@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { weeks, ContentBlock } from './data';
 
-const STORAGE_KEY = '30days-agent-management-progress';
+const STORAGE_KEY = '30days-ai-habit-progress';
 
 function getProgress(): Record<number, boolean> {
   try {
@@ -261,21 +261,21 @@ const ThirtyDays: React.FC = () => {
 
         {/* Header */}
         <div className="mt-10 mb-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-stone-800 tracking-tight mb-4">
-            Build an AI Habit in 30 Days
+          <h1 className="text-3xl md:text-[40px] md:leading-[1.15] font-bold text-stone-800 tracking-tight mb-4">
+            How to Keep Up with AI in 2 Minutes a Day
           </h1>
-          <p className="text-stone-500 text-lg leading-relaxed max-w-[700px] mx-auto">
-            Learn to delegate your work to AI. Two minutes a day, no coding required.
+          <p className="text-stone-500 text-base md:text-lg leading-relaxed">
+            A free 30-day program for people who know they should be using AI more but haven&rsquo;t found the time.
           </p>
         </div>
 
         {/* How it works */}
         <div className="bg-[#ee8a82]/10 border border-[#ee8a82]/20 rounded-xl px-6 py-5 mb-8">
           <p className="text-stone-700 text-[14px] leading-[1.7] mb-3">
-            Each day is a micro-exercise that takes less than two minutes. Week 1 uses Claude on the web. Week 2 introduces Claude Code and starts building a real system. By Day 30, you&rsquo;ll have an AI system that knows how you work, who you work with, and what good looks like.
+            Each day takes less than two minutes. By Day 30, you&rsquo;ll have a working AI system you actually use. No coding required, no prior experience needed. Just open Claude and follow the exercise.
           </p>
           <p className="text-stone-700 text-[14px] leading-[1.7]">
-            <strong className="text-stone-800">The skills that get good work out of AI are the same skills that get good work out of people.</strong> This program teaches you to communicate clearly, define success, and build systems that learn from every interaction &mdash; applied to AI.
+            Week 1 builds the fundamentals in Claude on the web. Week 2 introduces Claude Code and starts building a real system. By the end, you&rsquo;ll have an AI that knows how you work, who you work with, and what good looks like &mdash; because you taught it.
           </p>
         </div>
 
@@ -433,7 +433,7 @@ const ThirtyDays: React.FC = () => {
         {/* Footer */}
         <div className="text-center pt-12 pb-8 mt-12 border-t border-stone-200">
           <p className="text-stone-400 text-[13px]">
-            Build an AI Habit in 30 Days &mdash;{' '}
+            Keep Up with AI in 2 Minutes a Day &mdash;{' '}
             <a
               href="https://www.writerbuilder.com"
               className="text-stone-500 hover:text-stone-700 underline decoration-stone-400/50 hover:decoration-stone-600 underline-offset-4 transition-all"
