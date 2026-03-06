@@ -1,11 +1,18 @@
 export const config = { runtime: 'edge' };
 
 export default async function handler(req) {
-  if (req.method !== 'POST') {
-    return new Response('POST only', { status: 405 });
+  let url;
+
+  if (req.method === 'GET') {
+    const params = new URL(req.url).searchParams;
+    url = params.get('url');
+  } else if (req.method === 'POST') {
+    const body = await req.json();
+    url = body.url;
+  } else {
+    return new Response('GET or POST only', { status: 405 });
   }
 
-  const { url } = await req.json();
   if (!url) {
     return new Response('Missing url', { status: 400 });
   }
