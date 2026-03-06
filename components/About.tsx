@@ -20,7 +20,7 @@ const About: React.FC = () => {
 
         <div className="mt-8">
           <h2 className="text-2xl md:text-3xl font-bold tracking-widest text-stone-800 uppercase mb-2">Features</h2>
-          <ul className="space-y-3">
+          <ul className="space-y-1 text-stone-800 text-lg">
             {[
               { title: 'How to be a supermanager with AI', pub: "Lenny's Newsletter", url: 'https://www.lennysnewsletter.com/p/how-to-become-a-supermanager-with' },
               { title: 'Be a better manager with CustomGPTs', pub: 'How I AI', url: 'https://www.youtube.com/watch?v=xDMkkOC-EhI' },
@@ -30,15 +30,7 @@ const About: React.FC = () => {
               { title: 'Your questions on AI at work', pub: "The Economist\u2019s Boss Class", url: 'https://www.economist.com/podcasts/2026/02/26/bonus-your-questions-on-ai-at-work' },
             ].map((item, i) => (
               <li key={i}>
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block pl-4 border-l-2 border-stone-300 hover:border-stone-800 transition-all duration-200 group"
-                >
-                  <span className="text-stone-800 text-lg font-semibold group-hover:underline underline-offset-2 decoration-stone-400">{item.title}</span>
-                  <span className="block text-stone-500 text-sm mt-0.5">{item.pub}</span>
-                </a>
+                • <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">{item.title}</a> <span className="text-stone-500">— {item.pub}</span>
               </li>
             ))}
           </ul>
