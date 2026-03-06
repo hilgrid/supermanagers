@@ -36,20 +36,10 @@ const About: React.FC = () => {
             <li>
               • <a href="https://hbr.org/2025/08/research-the-hidden-penalty-of-using-ai-at-work" target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">Research: The Hidden Penalty of Using AI at Work</a> on HBR
             </li>
+            <li>
+              • <a href="https://www.economist.com/podcasts/2026/02/26/bonus-your-questions-on-ai-at-work" target="_blank" rel="noopener noreferrer" className="hover:text-stone-600 hover:underline transition-colors">Your questions on AI at work</a> on The Economist's Boss Class
+            </li>
           </ul>
-        </div>
-
-        <div className="mt-8">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-widest text-stone-800 uppercase mb-2">Heroes</h2>
-          <ul className="space-y-1 text-stone-800 text-lg">
-            <li>• Lisa Simpson</li>
-            <li>• Pink Panther</li>
-          </ul>
-          <img
-            src="/wileecoyote.gif"
-            alt="Wile E. Coyote business card - Genius - Have Brain Will Travel"
-            className="mt-4 max-w-sm rounded shadow-md"
-          />
         </div>
       </div>
     </section>
