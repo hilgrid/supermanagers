@@ -19,7 +19,6 @@ const Hero: React.FC = () => {
         <a href="https://hils.substack.com" target="_blank" rel="noopener noreferrer" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Writerbuilder newsletter</a>
         <a href="https://maven.com/hilary-gridley/ai-powered-people-management" target="_blank" rel="noopener noreferrer" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Supermanagers course</a>
         <a href="/jobsearch" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">Job search tools</a>
-        <Link to="/30days" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">30 days of AI</Link>
         <Link to="/steeringwheel" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">AI steering wheel</Link>
         <Link to="/about" className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">About me</Link>
       </div>
