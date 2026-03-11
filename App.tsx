@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Session from './components/Session';
 import Session1 from './components/Session1';
+import Session2 from './components/Session2';
 import ManagerCopilot from './components/ManagerCopilot';
 import { SteeringWheelPage } from './components/steeringwheel/SteeringWheelPage';
 import Resources from './components/Resources';
@@ -23,6 +24,7 @@ const App: React.FC = () => {
         } />
         <Route path="/about" element={<About />} />
         <Route path="/session1" element={<Session1 />} />
+        <Route path="/session2" element={<Session2 />} />
         <Route path="/session4" element={<Session />} />
         <Route path="/managercopilot" element={<ManagerCopilot />} />
         <Route path="/steeringwheel" element={<SteeringWheelPage />} />
