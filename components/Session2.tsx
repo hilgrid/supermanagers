@@ -143,87 +143,141 @@ const Session2: React.FC = () => {
 
         {/* Part 1 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 1: What Went Wrong?</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">15 min</p>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 1: Demo</h3>
+          <p className="text-stone-500 text-sm font-medium mb-4">10-15 min</p>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            We start by sharing what broke. Not in a "my tool is bad" way - in a diagnostic way. The point is to figure out <em>what kind</em> of problem you have, because the fix is different depending on the type.
+            Hilary demos what it looks like to take a tool from Session 1 and run it through the diagnostic checklist below. She tests her tool, discovers the scope is off, and re-scopes it in real time.
           </p>
-
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Most issues with {setup.toolName}s fall into one of these categories:
-          </p>
-
-          <div className="space-y-4 mb-6">
-            <div className="bg-white border border-stone-300 rounded-lg p-4">
-              <p className="text-stone-800 text-base font-bold mb-1">Wrong problem</p>
-              <p className="text-stone-800 text-sm leading-relaxed">
-                The tool is solving a symptom, not the root cause. You built "gives feedback on presentations" but the real issue is that your team doesn't know how to structure an argument. Or you built the tool around your frustration ("stop escalating to me") instead of the user's problem ("I'm not sure if this is my call to make"). Those lead to very different tools.
-              </p>
-            </div>
-            <div className="bg-white border border-stone-300 rounded-lg p-4">
-              <p className="text-stone-800 text-base font-bold mb-1">Too broad</p>
-              <p className="text-stone-800 text-sm leading-relaxed">
-                The tool is trying to cover too many formats or audiences at once. An email reviewer and a deck reviewer are different tools, even if the underlying feedback is similar. If your tool handles emails, presentations, Slack messages, and docs, it will be mediocre at all of them. Pick the one where you feel the most pain and nail that first.
-              </p>
-            </div>
-            <div className="bg-white border border-stone-300 rounded-lg p-4">
-              <p className="text-stone-800 text-base font-bold mb-1">Criteria problem</p>
-              <p className="text-stone-800 text-sm leading-relaxed">
-                The tool is scoped to the right thing but evaluating it poorly. The criteria are too vague, too generic, or missing something you care about. The AI gives feedback that's technically correct but doesn't sound like you.
-              </p>
-            </div>
-            <div className="bg-white border border-stone-300 rounded-lg p-4">
-              <p className="text-stone-800 text-base font-bold mb-1">Prompt problem</p>
-              <p className="text-stone-800 text-sm leading-relaxed">
-                The scope and criteria are fine, but the prompt itself isn't clear enough. Maybe the AI is too nice, goes on too long, or doesn't follow the steps in the right order. This is often the easiest to fix.
-              </p>
-            </div>
-          </div>
-
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Hilary will call on a few people to share what they noticed. As you listen, try to categorize your own issue: is it a scoping problem, a criteria problem, or a prompt problem? More than one is fine.
+            Watch for the moment where the real problem surfaces. In Session 1, the tool was "give feedback on emails to the CEO." But the actual issue wasn't email quality - it was that the team needed better judgment about <em>when to email the CEO at all</em>. That's an upstream problem that no amount of email polishing would fix.
           </p>
-
-          <div className="bg-stone-100 border-l-4 border-stone-400 p-4">
-            <p className="text-stone-800 text-base leading-relaxed">
-              <strong>Key takeaway:</strong> Diagnosing the type of problem is the first step. If you have a scoping problem, no amount of prompt tweaking will fix it. If you have a criteria problem, rebuilding from scratch won't help either. Start with the right diagnosis.
-            </p>
-          </div>
         </div>
 
         <hr className="border-stone-300 mb-12" />
 
         {/* Part 2 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 2: Demo - Zooming Out</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">10-15 min</p>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 2: Run the Checklist</h3>
+          <p className="text-stone-500 text-sm font-medium mb-4">30 min (20 min think + 10 min share)</p>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Hilary demos what it looks like to re-evaluate a tool from Session 1. She starts by testing it, realizes the scope is off, and walks through re-scoping it in real time.
+            Before you touch the prompt, run your tool through these checks in order. Each one either passes or tells you exactly what to fix. Work through them now - you'll share what you found in a few minutes.
           </p>
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Two things to watch for:
-          </p>
-          <div className="space-y-4 mb-6">
-            <div className="bg-white border border-stone-300 rounded-lg p-4">
-              <p className="text-stone-800 text-base font-bold mb-1">Flip the problem</p>
-              <p className="text-stone-800 text-sm leading-relaxed mb-3">
-                When you first scoped your tool, you probably started from your own frustration: "I keep telling people to get to the point." That's natural. But the tool isn't for you - it's for the person on your team. Ask yourself: what problem does this solve <em>from their perspective</em>? What would make them actually want to open this before sending that email? If the tool feels like a mandate from their manager, they won't use it. If it solves a problem they already feel, they will.
+
+          {/* Check 1: Right problem */}
+          <div className="bg-white border-2 border-stone-300 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-lg font-bold mb-3">Check 1: Is this the right problem?</p>
+
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              Run through these quickly:
+            </p>
+            <ul className="text-stone-800 text-sm leading-relaxed space-y-2 mb-4 list-disc list-inside">
+              <li><strong>Does it solve a problem for you?</strong> If you wouldn't use this or wouldn't care if it disappeared, it's not solving a real problem.</li>
+              <li><strong>Does it solve a problem for the person who needs to use it?</strong> Not your problem - <em>theirs</em>. "My team writes bad emails" is your problem. "I'm never sure if my email is going to land the way I want" is theirs. If the tool feels like a mandate from their manager, they won't use it. If it solves a problem they already feel, they will.</li>
+              <li><strong>When would they use it?</strong> Can you name a specific moment? "Before sending an email to their skip level" is good. "Whenever they need feedback" is too vague.</li>
+            </ul>
+
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              Now the harder question: <strong>is there an upstream problem that would be better to solve?</strong> Sometimes the feedback you keep giving is a symptom, not the root cause.
+            </p>
+            <p className="text-stone-500 text-xs leading-relaxed mb-3">
+              Example: "My team needs to write better emails to the CEO" seems like the problem. But maybe the real issue is that the CEO wants fewer emails, and your team needs better judgment about when to email vs. when to handle it themselves. That's a completely different tool.
+            </p>
+
+            <div className="bg-rose-50 border-l-4 border-rose-300 p-4">
+              <div className="flex justify-end mb-2">
+                <CopyButton getText={() => `I built a ${setup.toolName} to help with [describe your tool]. Before I improve the prompt, I want to make sure I'm solving the right problem.\n\nThe problem I'm trying to solve: [describe it]\nWho uses it: [role]\nWhen they'd use it: [specific moment]\n\nHelp me pressure-test this. Is there an upstream problem I might be missing? Is there a deeper issue that, if I solved it, would make the surface-level problem go away? Ask me questions if you need more context.`} />
+              </div>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed">
+                "I built a {setup.toolName} to help with <span className="bg-rose-200 px-1">[describe your tool]</span>. Before I improve the prompt, I want to make sure I'm solving the right problem.
               </p>
-              <p className="text-stone-500 text-xs leading-relaxed">
-                Example: "My team keeps escalating decisions they should make themselves" is the manager's problem. "I'm facing a decision and I'm not sure if I have the authority to make this call" is the user's problem. The first framing produces a tool that scolds. The second produces a tool people actually reach for.
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                The problem I'm trying to solve: <span className="bg-rose-200 px-1">[describe it]</span><br />
+                Who uses it: <span className="bg-rose-200 px-1">[role]</span><br />
+                When they'd use it: <span className="bg-rose-200 px-1">[specific moment]</span>
               </p>
-            </div>
-            <div className="bg-white border border-stone-300 rounded-lg p-4">
-              <p className="text-stone-800 text-base font-bold mb-1">What are the parts?</p>
-              <p className="text-stone-800 text-sm leading-relaxed">
-                Most tools aren't purely one thing. A good {setup.toolName} might evaluate finished work <em>and</em> teach someone how to do it better next time. It might walk someone through a process step by step <em>and</em> check the output at the end. Don't think of it as "evaluator or coach" - think about what parts your tool needs and how they fit together.
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                Help me pressure-test this. Is there an upstream problem I might be missing? Is there a deeper issue that, if I solved it, would make the surface-level problem go away? Ask me questions if you need more context."
               </p>
             </div>
           </div>
 
-          <div className="bg-stone-100 border-l-4 border-stone-400 p-4">
-            <p className="text-stone-800 text-base leading-relaxed">
-              <strong>Key takeaway:</strong> The best tools solve the user's problem, not the manager's frustration. It's the same problem from two angles, but the framing changes everything about how the tool is designed and whether anyone actually uses it.
+          {/* Check 2: Right scope */}
+          <div className="bg-white border-2 border-stone-300 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-lg font-bold mb-3">Check 2: Is it scoped right?</p>
+
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              Scope problems come in two flavors:
+            </p>
+            <ul className="text-stone-800 text-sm leading-relaxed space-y-2 mb-4 list-disc list-inside">
+              <li><strong>Too many types of things.</strong> Your tool reviews emails AND decks AND reports AND Slack messages. You wouldn't evaluate an email the same way you'd evaluate a deck - the criteria are different, the format is different, the failure modes are different. Pick one and dial it in.</li>
+              <li><strong>Too many steps.</strong> Your tool coaches someone through a problem, then evaluates their output, then generates a revised version, then creates a summary for their manager. That's four tools crammed into one prompt. If the AI suggests splitting your tool, listen to it.</li>
+            </ul>
+
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              Here's the thing: you can absolutely build something that handles multiple formats or multiple steps eventually. But you need to get really clear on your criteria for <em>one</em> thing first. Once that's dialed in, adapting it to a different format or audience is only marginally harder. Starting broad is hard because you're trying to solve for too many possible failure states and too many different criteria at the same time.
+            </p>
+
+            <div className="bg-stone-100 border-l-4 border-stone-400 p-4">
+              <p className="text-stone-800 text-sm leading-relaxed">
+                <strong>If you need to narrow:</strong> Pick the one format, one audience, and one use case where you feel the most pain. Build for that. You can expand later.
+              </p>
+            </div>
+          </div>
+
+          {/* Check 3: Does it work */}
+          <div className="bg-white border-2 border-stone-300 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-lg font-bold mb-3">Check 3: Does the output match what you'd want?</p>
+
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              If you passed checks 1 and 2, the problem and scope are right. Now test the actual output. Run your tool on a real piece of work and ask yourself: is this the feedback I would give?
+            </p>
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              If not, the most common fixes are:
+            </p>
+            <ul className="text-stone-800 text-sm leading-relaxed space-y-2 mb-4 list-disc list-inside">
+              <li><strong>Missing criteria.</strong> The tool isn't checking for something you care about. Add it.</li>
+              <li><strong>Too lenient on a criterion.</strong> The tool says "pass" on something you'd push back on. You need to define what success looks like more specifically for that criterion.</li>
+              <li><strong>Wrong tone or format.</strong> The feedback is right but the delivery is off - too nice, too long, too robotic. This is usually the easiest to fix.</li>
+            </ul>
+
+            <div className="bg-rose-50 border-l-4 border-rose-300 p-4">
+              <div className="flex justify-end mb-2">
+                <CopyButton getText={() => `Here's the system prompt for a ${setup.toolName} I built last week:\n\n[paste your system prompt]\n\nI've been testing it and here's what's not working:\n- [specific issue 1]\n- [specific issue 2]\n\nDon't rewrite the whole thing. Diagnose what's causing each issue and propose targeted changes. For each change, explain what it fixes and why.`} />
+              </div>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed">
+                "Here's the system prompt for a {setup.toolName} I built last week:
+              </p>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                <span className="bg-rose-200 px-1">[paste your system prompt]</span>
+              </p>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                I've been testing it and here's what's not working:
+              </p>
+              <ul className="text-stone-800 text-sm font-mono leading-relaxed mt-1 list-disc list-inside">
+                <li><span className="bg-rose-200 px-1">[specific issue 1]</span></li>
+                <li><span className="bg-rose-200 px-1">[specific issue 2]</span></li>
+              </ul>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                Don't rewrite the whole thing. Diagnose what's causing each issue and propose targeted changes. For each change, explain what it fixes and why."
+              </p>
+            </div>
+
+            <p className="text-stone-800 text-sm leading-relaxed mt-4">
+              If it's being too lenient on a specific criterion, try:
+            </p>
+            <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mt-2">
+              <div className="flex justify-end mb-2">
+                <CopyButton getText={() => `The tool is being too lenient on [criterion]. It's passing work that I would push back on. What would you recommend if you were to raise the bar here? Be specific about what "passing" should actually require.`} />
+              </div>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed">
+                "The tool is being too lenient on <span className="bg-rose-200 px-1">[criterion]</span>. It's passing work that I would push back on. What would you recommend if you were to raise the bar here? Be specific about what 'passing' should actually require."
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-stone-100 border border-stone-300 rounded-lg p-4 mb-4">
+            <p className="text-stone-800 text-sm leading-relaxed">
+              <strong>Share-out:</strong> Hilary will call on a few people. Where did you get stuck in the checklist? Did anyone discover they were solving the wrong problem? Did anyone need to narrow their scope?
             </p>
           </div>
         </div>
@@ -232,70 +286,16 @@ const Session2: React.FC = () => {
 
         {/* Part 3 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Re-Scope Your Tool</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">25 min (15 min think + 10 min share)</p>
-
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Before you touch the prompt, step back and answer two questions. Write your answers down - you'll share them in a few minutes.
-          </p>
-
-          <div className="bg-rose-50 border border-rose-200 rounded-lg p-5 mb-6">
-            <p className="text-stone-800 text-base font-bold mb-3">Question 1: What problem does this solve for the person using it?</p>
-            <p className="text-stone-800 text-sm leading-relaxed mb-4">
-              Not what problem it solves for you. For <em>them</em>. What are they struggling with? What would make them reach for this voluntarily?
-            </p>
-            <p className="text-stone-800 text-sm leading-relaxed mb-4">
-              This is harder than it sounds. "My team writes bad emails" is your problem. "I'm never sure if my email is going to land the way I want it to" is theirs. The tool you'd build for each of those is different.
-            </p>
-            <p className="text-stone-500 text-xs leading-relaxed">
-              If you're stuck, try this: imagine handing the tool to someone on your team and saying "I made this for you." What would make them say "oh, that's actually useful" instead of "oh, so you think my work is bad?"
-            </p>
-          </div>
-
-          <div className="bg-rose-50 border border-rose-200 rounded-lg p-5 mb-6">
-            <p className="text-stone-800 text-base font-bold mb-3">Question 2: What are the parts of this tool?</p>
-            <p className="text-stone-800 text-sm leading-relaxed mb-4">
-              Think about what your tool actually needs to do. It might have one part or several:
-            </p>
-            <ul className="text-stone-800 text-sm leading-relaxed space-y-2 mb-4 list-disc list-inside">
-              <li><strong>Evaluate</strong> - Review finished work against specific criteria. "Is this good enough?" Pass/fail on each criterion, with specific feedback on what to fix.</li>
-              <li><strong>Coach/teach</strong> - Walk someone through a process or teach them a skill. Guide them step by step, explain the reasoning, help them build judgment over time.</li>
-              <li><strong>Generate</strong> - Produce something from inputs. Draft a first version, create a template, convert one format to another.</li>
-              <li><strong>Extract/transform</strong> - Take messy or unstructured input and produce a clean, structured output. Pull the relevant details from meeting notes, convert a brain dump into a formatted brief, distill a long thread into action items.</li>
-            </ul>
-            <p className="text-stone-800 text-sm leading-relaxed">
-              Many good tools combine these. An email reviewer might evaluate the draft, then coach the person on the biggest issue, then show what a revised version would look like. A 1:1 prep tool might generate an agenda from your notes, then walk you through what to prioritize. An extraction tool might pull key info from call notes and then evaluate whether the output is complete. What combination does yours need?
-            </p>
-          </div>
-
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Take 15 minutes to think through these two questions. Write down your answers. If your tool's scope has shifted from what you built in Session 1, that's a sign the process is working - you're getting clearer on the real problem.
-          </p>
-
-          <div className="bg-stone-100 border border-stone-300 rounded-lg p-4 mb-4">
-            <p className="text-stone-800 text-sm leading-relaxed">
-              <strong>Share-out:</strong> Hilary will call on 3-4 people to share. The most useful thing you can share is if your scope shifted from Session 1 - what changed and why?
-            </p>
-          </div>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Part 4 */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 4: Rebuild and Improve</h3>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Rebuild and Improve</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">25-30 min</p>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Now you have a clearer picture of what your tool should do. Time to rebuild the prompt - either from scratch if the scope changed significantly, or by improving the existing one.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed mb-6">
-            Open a {platformLabels[platform]} conversation (not your {setup.toolName} - a regular conversation for prompt-building). Use the prompts below based on what your tool needs.
+            Now you know what to fix. Open a {platformLabels[platform]} conversation and use the prompts below based on what you need.
           </p>
 
-          {/* Scoping / Starting Prompt */}
+          {/* If scope changed */}
           <h4 className="text-lg font-bold text-stone-800 mb-2">If your scope changed: Start fresh</h4>
           <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Tell the AI about your revised scope. Be specific about who this is for, what problem it solves for them, and what the parts of the tool are.
+            Tell the AI about your revised scope. Be specific about who this is for, what problem it solves for them, and what the tool needs to do.
           </p>
           <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
             <div className="flex justify-end mb-2">
@@ -323,39 +323,6 @@ const Session2: React.FC = () => {
             </ul>
             <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
               Based on this, propose 3-5 success criteria for the tool's output. Make them pass/fail, not scored. Then tell me what examples I could share that would help you refine these further."
-            </p>
-          </div>
-
-          {/* Improving existing prompt */}
-          <h4 className="text-lg font-bold text-stone-800 mb-2">If your scope is right but the quality is off: Improve it</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Paste your existing system prompt and tell the AI what's not working.
-          </p>
-          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
-            <div className="flex justify-end mb-2">
-              <CopyButton getText={() => `Here's the system prompt for a ${setup.toolName} I built last week:\n\n[paste your system prompt]\n\nI've been testing it and here's what's not working:\n- [specific issue 1]\n- [specific issue 2]\n\nDon't rewrite the whole thing. Diagnose what's causing each issue and propose targeted changes. For each change, explain what it fixes and why.`} />
-            </div>
-            <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "Here's the system prompt for a {setup.toolName} I built last week:
-            </p>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              <span className="bg-rose-200 px-1">[paste your system prompt]</span>
-            </p>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              I've been testing it and here's what's not working:
-            </p>
-            <ul className="text-stone-800 text-base font-mono leading-relaxed mt-1 list-disc list-inside">
-              <li><span className="bg-rose-200 px-1">[specific issue 1]</span></li>
-              <li><span className="bg-rose-200 px-1">[specific issue 2]</span></li>
-            </ul>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              Don't rewrite the whole thing. Diagnose what's causing each issue and propose targeted changes. For each change, explain what it fixes and why."
-            </p>
-          </div>
-
-          <div className="bg-stone-100 border-l-4 border-stone-400 p-4 mb-6">
-            <p className="text-stone-800 text-base leading-relaxed">
-              <strong>Sometimes the best improvement is removing features, not adding them.</strong> If your tool is trying to evaluate 8 different dimensions, or cover 4 different formats, the most impactful change might be cutting it down to the 2-3 things that matter most. A focused tool that nails two criteria will outperform a sprawling tool that kind-of-checks ten.
             </p>
           </div>
 
@@ -483,9 +450,9 @@ const Session2: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Part 5 */}
+        {/* Part 4 */}
         <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 5: Show and Tell</h3>
+          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 4: Show and Tell</h3>
           <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
             We'll hear from several people. For each one, we want to know:
@@ -512,18 +479,34 @@ const Session2: React.FC = () => {
           <div className="space-y-4">
             <div className="bg-white border border-stone-300 rounded-lg p-4">
               <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Rescope from scratch</p>
-                <CopyButton getText={() => `I'm rebuilding a ${setup.toolName} I started last week. I want to start over with a clearer scope.\n\nThe problem this solves for the person using it: [describe the user's problem, not yours]\n\nWho will use it: [role/team]\n\nThey'd reach for it when: [specific trigger moment]\n\nWhat the tool needs to do:\n- [Does it evaluate something? What criteria?]\n- [Does it coach/teach? What skill or process?]\n- [Does it generate something? From what inputs?]\n\nBased on this, propose 3-5 success criteria for the tool's output. Make them pass/fail, not scored. Then tell me what examples I could share that would help you refine these further.`} />
+                <p className="text-stone-800 text-sm font-bold mb-1">Diagnose the real problem</p>
+                <CopyButton getText={() => `I built a ${setup.toolName} to help with [describe your tool]. Before I improve the prompt, I want to make sure I'm solving the right problem.\n\nThe problem I'm trying to solve: [describe it]\nWho uses it: [role]\nWhen they'd use it: [specific moment]\n\nHelp me pressure-test this. Is there an upstream problem I might be missing? Is there a deeper issue that, if I solved it, would make the surface-level problem go away? Ask me questions if you need more context.`} />
               </div>
-              <p className="text-stone-500 text-xs leading-relaxed">Start over with the "flip the problem" framing and clearer tool parts</p>
+              <p className="text-stone-500 text-xs leading-relaxed">Check 1: make sure you're solving the right problem</p>
             </div>
 
             <div className="bg-white border border-stone-300 rounded-lg p-4">
               <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Improve existing prompt</p>
+                <p className="text-stone-800 text-sm font-bold mb-1">Fix what's not working</p>
                 <CopyButton getText={() => `Here's the system prompt for a ${setup.toolName} I built last week:\n\n[paste your system prompt]\n\nI've been testing it and here's what's not working:\n- [specific issue 1]\n- [specific issue 2]\n\nDon't rewrite the whole thing. Diagnose what's causing each issue and propose targeted changes. For each change, explain what it fixes and why.`} />
               </div>
-              <p className="text-stone-500 text-xs leading-relaxed">Targeted fixes without starting over</p>
+              <p className="text-stone-500 text-xs leading-relaxed">Check 3: targeted fixes for output issues</p>
+            </div>
+
+            <div className="bg-white border border-stone-300 rounded-lg p-4">
+              <div className="flex items-start justify-between">
+                <p className="text-stone-800 text-sm font-bold mb-1">Raise the bar on a criterion</p>
+                <CopyButton getText={() => `The tool is being too lenient on [criterion]. It's passing work that I would push back on. What would you recommend if you were to raise the bar here? Be specific about what "passing" should actually require.`} />
+              </div>
+              <p className="text-stone-500 text-xs leading-relaxed">When the tool is too easy on something specific</p>
+            </div>
+
+            <div className="bg-white border border-stone-300 rounded-lg p-4">
+              <div className="flex items-start justify-between">
+                <p className="text-stone-800 text-sm font-bold mb-1">Rescope from scratch</p>
+                <CopyButton getText={() => `I'm rebuilding a ${setup.toolName} I started last week. I want to start over with a clearer scope.\n\nThe problem this solves for the person using it: [describe the user's problem, not yours]\n\nWho will use it: [role/team]\n\nThey'd reach for it when: [specific trigger moment]\n\nWhat the tool needs to do:\n- [Does it evaluate something? What criteria?]\n- [Does it coach/teach? What skill or process?]\n- [Does it generate something? From what inputs?]\n\nBased on this, propose 3-5 success criteria for the tool's output. Make them pass/fail, not scored. Then tell me what examples I could share that would help you refine these further.`} />
+              </div>
+              <p className="text-stone-500 text-xs leading-relaxed">Start over with clearer scope and user framing</p>
             </div>
 
             <div className="bg-white border border-stone-300 rounded-lg p-4">
