@@ -24,10 +24,10 @@ export interface WeekData {
 export const weeks: WeekData[] = [
   {
     number: 1,
-    theme: 'Communicate',
+    theme: 'Show Up',
     tool: 'Claude web',
     description:
-      'Start here. You\u2019ll learn the fundamentals that separate people who get great results from AI from everyone else. All you need is Claude on the web.',
+      'The hardest part is starting. This week is deliberately low-friction \u2014 all you need is Claude on the web. You\u2019ll practice the fundamentals that make everything else work, and start building the instinct to reach for AI when you have a problem.',
     days: [
       {
         day: 0,
@@ -50,7 +50,7 @@ export const weeks: WeekData[] = [
         content: [
           {
             type: 'text',
-            text: 'Before someone starts working, especially on something they\u2019ve never done before, ask them to show you the steps they\u2019ll take to complete it. If their plan doesn\u2019t make sense, you can fix it in two minutes. If you wait until the work is done, you\u2019ll waste both of your time. The same thing works with AI.',
+            text: 'Most people open an AI chat, type a vague request, and hope for the best. That\u2019s like walking into a gym with no plan. Today\u2019s exercise is simple: before the AI starts working, ask it to show you the steps it\u2019ll take. If the plan doesn\u2019t make sense, you fix it in two minutes instead of throwing away the output.',
           },
           {
             type: 'instruction',
@@ -78,7 +78,7 @@ export const weeks: WeekData[] = [
         content: [
           {
             type: 'text',
-            text: 'Before you can evaluate someone\u2019s work, you need to know what good looks like \u2014 and so do they. Most people skip this step and jump straight to reacting, with their team and with AI. Without a shared picture of what good looks like, feedback becomes a moving target. You keep asking for changes, they keep guessing, and nobody\u2019s sure when it\u2019s done.',
+            text: 'Before you can evaluate any output, you need to know what good looks like. Most people skip this step and jump straight to reacting. Without a clear picture of what \u201cgood\u201d means, feedback becomes a moving target \u2014 you keep asking for changes, the AI keeps guessing, and you\u2019re never sure when it\u2019s done.',
           },
           {
             type: 'instruction',
@@ -106,7 +106,7 @@ export const weeks: WeekData[] = [
         content: [
           {
             type: 'text',
-            text: 'Before the AI starts working, have it tell you what it thinks the job is. Don\u2019t ask \u201cdoes this make sense?\u201d \u2014 have it explain back what it understood so you can see whether you were actually clear.',
+            text: 'Before the AI starts working, have it tell you what it thinks the job is. Don\u2019t ask \u201cdoes this make sense?\u201d \u2014 have it explain back what it understood. This is how you find out whether you were actually clear.',
           },
           {
             type: 'instruction',
@@ -126,7 +126,7 @@ export const weeks: WeekData[] = [
           },
         ],
         keyTakeaway:
-          'People and AI will both tell you they understand. You can\u2019t validate whether they actually do unless you ask them to explain it back. The succeed prompt takes 10 extra seconds \u2014 and it catches misunderstandings before they become bad output.',
+          'You can\u2019t validate whether the AI understood unless you ask it to explain back. The succeed prompt takes 10 extra seconds \u2014 and catches misunderstandings before they become bad output.',
       },
       {
         day: 4,
@@ -162,7 +162,7 @@ export const weeks: WeekData[] = [
         content: [
           {
             type: 'text',
-            text: 'You probably have a clearer picture in your head of what you want than you\u2019re communicating. When you ask someone to write something and it comes back wrong, it might not be their fault. They had a dozen directions they could have gone, and you didn\u2019t tell them which one. Today you\u2019ll see exactly how much a single word changes the output.',
+            text: 'You probably have a clearer picture in your head of what you want than you\u2019re communicating. When the AI gives you something off, it\u2019s usually because it had a dozen directions it could have gone, and you didn\u2019t tell it which one. Today you\u2019ll see exactly how much a single word changes the output.',
           },
           {
             type: 'note',
@@ -186,7 +186,7 @@ export const weeks: WeekData[] = [
           },
         ],
         keyTakeaway:
-          'You have expectations in your head that feel obvious to you. But the person doing the work has a dozen ways they could go, and they\u2019re guessing which one you want. The more precise your language, the less guessing they have to do.',
+          'You have expectations in your head that feel obvious to you. But the AI has a dozen ways it could go, and it\u2019s guessing which one you want. The more precise your language, the less guessing it has to do.',
       },
       {
         day: 6,
@@ -218,7 +218,7 @@ export const weeks: WeekData[] = [
           },
         ],
         keyTakeaway:
-          'When someone delivers the wrong thing, the first question isn\u2019t \u201cwhat did they get wrong?\u201d \u2014 it\u2019s \u201cwhat did I fail to tell them?\u201d',
+          'When AI delivers the wrong thing, the first question isn\u2019t \u201cwhat did it get wrong?\u201d \u2014 it\u2019s \u201cwhat did I fail to tell it?\u201d',
       },
       {
         day: 7,
@@ -254,10 +254,10 @@ export const weeks: WeekData[] = [
   },
   {
     number: 2,
-    theme: 'Build',
+    theme: 'Build the Routine',
     tool: 'Claude Code',
     description:
-      'Now you\u2019ll set up Claude Code \u2014 a tool that runs on your computer and can read and write files. This is where AI stops being a chat window and starts being a system that remembers what you told it yesterday.',
+      'Now you\u2019ll set up Claude Code \u2014 a tool that runs on your computer and can read and write files. This is where AI stops being a chat window and starts being a system that remembers what you told it yesterday. You\u2019re building the routine that makes showing up tomorrow easier than it was today.',
     days: [
       {
         day: 8,
@@ -449,7 +449,7 @@ export const weeks: WeekData[] = [
         content: [
           {
             type: 'text',
-            text: 'If you had to hand off your weekly status update to someone tomorrow, could you explain it clearly enough that they\u2019d do it the way you want? Most people can\u2019t. The process feels automatic, so they\u2019ve never articulated the actual steps. Having the AI interview you forces you to make it explicit \u2014 which is the same skill you need any time you\u2019re delegating or onboarding someone to a process.',
+            text: 'You do your weekly status update on autopilot. But could you explain the process clearly enough that someone else would do it the way you want? Most people can\u2019t. The process feels automatic, so they\u2019ve never articulated the actual steps. Having the AI interview you forces you to make it explicit.',
           },
           {
             type: 'prompt',
@@ -459,7 +459,7 @@ export const weeks: WeekData[] = [
           },
         ],
         keyTakeaway:
-          'You gave it the parts you already know, and it filled in the gaps you hadn\u2019t thought about. That\u2019s what good delegation looks like \u2014 you don\u2019t have to have everything figured out before you hand it off.',
+          'You gave it the parts you already know, and it filled in the gaps you hadn\u2019t thought about. You don\u2019t have to have everything figured out before you hand it off.',
       },
       {
         day: 14,
@@ -483,10 +483,10 @@ export const weeks: WeekData[] = [
   },
   {
     number: 3,
-    theme: 'Leverage',
+    theme: 'Push Your Limits',
     tool: 'Claude Code',
     description:
-      'Your system is set up. Now you\u2019ll start getting real leverage \u2014 slash commands, decks, templates, and calendar integration. The system does more because it knows more.',
+      'Your system is set up. Now you increase the weight. You\u2019ll try harder things \u2014 building decks, connecting integrations, automating real workflows. Some of it won\u2019t work on the first try. That\u2019s the training.',
     days: [
       {
         day: 15,
@@ -520,7 +520,7 @@ export const weeks: WeekData[] = [
         content: [
           {
             type: 'text',
-            text: 'Claude Code doesn\u2019t just write text. It can write code, which means it can produce real work artifacts \u2014 a PowerPoint deck, a formatted report, a spreadsheet. Today you\u2019ll have it build something you\u2019d normally spend 30 minutes putting together manually.',
+            text: 'Claude Code doesn\u2019t just write text. It can write code, which means it can produce real work artifacts \u2014 a PowerPoint deck, a formatted report, a spreadsheet. Today you\u2019ll have it build something you\u2019d normally spend 30 minutes putting together manually. It might not be perfect on the first try. That\u2019s fine \u2014 you\u2019re pushing your limits, not staying in your comfort zone.',
           },
           {
             type: 'prompt',
@@ -530,7 +530,7 @@ export const weeks: WeekData[] = [
           },
         ],
         keyTakeaway:
-          'You wrote a clear brief \u2014 the structure, the style, the audience \u2014 and got a finished deliverable back. That same brief would work if you handed it to a designer, a consultant, or an intern. The skill isn\u2019t knowing how to use Claude Code. It\u2019s knowing how to describe what you want clearly enough that anyone (or anything) can build it.',
+          'You wrote a clear brief and got a finished deliverable back. If the result wasn\u2019t perfect, that\u2019s expected \u2014 the first version rarely is. The skill you\u2019re building is describing what you want clearly enough that each iteration gets closer.',
       },
       {
         day: 17,
@@ -676,10 +676,10 @@ export const weeks: WeekData[] = [
   },
   {
     number: 4,
-    theme: 'Compound',
+    theme: 'See What Changed',
     tool: 'Claude Code',
     description:
-      'Your system is built and connected. Now it starts compounding. Every profile you updated, every standard you encoded, every correction you made \u2014 that\u2019s all context now. This week the system gets smarter because you\u2019ve been using it, and you get smarter because the system surfaces things you wouldn\u2019t have seen on your own. That loop is the whole point.',
+      'Everything you\u2019ve built starts compounding. Every correction you made, every standard you set, every piece of context you added \u2014 that\u2019s all working for you now. This week you\u2019ll look back and notice you\u2019re not approaching problems the same way you were 21 days ago.',
     days: [
       {
         day: 22,
@@ -751,7 +751,7 @@ export const weeks: WeekData[] = [
         content: [
           {
             type: 'text',
-            text: 'A lot of people try an AI workflow once, get a mediocre result, and say \u201cthis doesn\u2019t work.\u201d The first version is never great. The difference is what you do next. Today you\u2019ll run your status update workflow, make edits, and then teach the system from those edits so it\u2019s better next time.',
+            text: 'A lot of people try an AI workflow once, get a mediocre result, and quit. That\u2019s like doing one set at the gym and saying exercise doesn\u2019t work. The first version is never great. The difference is what you do next. Today you\u2019ll run your status update workflow, make edits, and then teach the system from those edits so it\u2019s better next time.',
           },
           {
             type: 'text',
@@ -815,7 +815,7 @@ export const weeks: WeekData[] = [
           },
         ],
         keyTakeaway:
-          'This is structured decision-making: generate options, define your criteria, rate against them, rank. It works for choosing where to apply AI. It also works for hiring decisions, vendor evaluations, and project prioritization.',
+          'This is where you start seeing differently. A month ago, you wouldn\u2019t have known what to ask for. Now you\u2019re generating ideas for workflows you didn\u2019t know were possible. That\u2019s the shift.',
       },
       {
         day: 28,
@@ -841,7 +841,7 @@ export const weeks: WeekData[] = [
           },
         ],
         keyTakeaway:
-          'The gap between a good idea and a working system is almost always context. Figuring out what context is needed, in what format, is a skill \u2014 whether you\u2019re onboarding a new hire, briefing a consultant, or setting up an AI workflow.',
+          'The gap between a good idea and a working system is almost always context. Figuring out what\u2019s missing and filling it in is a skill you\u2019ve been building all month.',
       },
       {
         day: 29,
@@ -849,7 +849,7 @@ export const weeks: WeekData[] = [
         content: [
           {
             type: 'text',
-            text: 'Your workflow is set up. Now make it great. The best way to teach anyone \u2014 a person or an AI \u2014 what quality looks like isn\u2019t to describe it in the abstract. It\u2019s to show them examples and have them figure out what makes those examples good. Then they can apply those lessons every time, not just when you\u2019re watching.',
+            text: 'Your workflow is set up. Now make it great. The best way to teach an AI what quality looks like isn\u2019t to describe it in the abstract. It\u2019s to show it examples and have it figure out what makes those examples good. Then it can apply those lessons every time.',
           },
           {
             type: 'prompt',
@@ -863,29 +863,39 @@ export const weeks: WeekData[] = [
           },
         ],
         keyTakeaway:
-          'Give it examples of good work. Ask it to extract what makes that work good. Then have it apply those principles every time. This is how you teach standards \u2014 to people and to AI.',
+          'Give it examples of good work. Ask it to extract what makes that work good. Then have it apply those principles every time. This is how you teach standards.',
       },
       {
         day: 30,
-        title: 'Share It With Your Team',
+        title: 'Look Back',
         content: [
           {
             type: 'text',
-            text: 'You\u2019ve built something that works for you. Now package it up so someone else can use it. This is the real test of whether you\u2019ve built a system or just a personal hack. If it only works because you know where everything is and what to say, it\u2019s not ready. If someone else can pick it up and get value from it on day one, you\u2019ve built something worth sharing.',
+            text: 'Before you keep going, take a minute to see how far you\u2019ve come. On Day 1, you typed a vague prompt into a chat window. Now you have a system that knows how you work, who you work with, and what your standards are \u2014 because you built it, one day at a time.',
           },
           {
             type: 'prompt',
             label: 'Try this prompt',
             variant: 'neutral',
-            text: 'I want to package up [the workflow/tool you built on Days 27\u201329] so someone on my team can use it. Create a short guide that explains: what it does, what they need to set up, and how to run it. Write it for someone who\u2019s never used Claude Code. Include the exact steps \u2014 don\u2019t assume they know what I know. Save it as docs/[name]-guide.md.',
+            text: 'Look at everything in my system \u2014 CLAUDE.md, team profiles, workflows, daily notes. Then answer: what do you know about me and how I work that you didn\u2019t know 30 days ago? What can you do for me now that you couldn\u2019t do on Day 1?',
           },
           {
             type: 'text',
-            text: 'Then try it yourself: follow the guide as if you\u2019ve never seen this system before. Anywhere you get stuck, the instructions aren\u2019t clear enough.',
+            text: 'Now think about your own work. What problems are you approaching differently than you were a month ago? What solutions are you considering that you wouldn\u2019t have thought of before? That shift \u2014 not the tool, not the prompts, but how you think about what\u2019s possible \u2014 is what you built.',
+          },
+          {
+            type: 'text',
+            text: 'If you want to share what you\u2019ve built with someone on your team, try this:',
+          },
+          {
+            type: 'prompt',
+            label: 'Optional prompt',
+            variant: 'neutral',
+            text: 'I want to package up [the workflow/tool you built on Days 27\u201329] so someone on my team can use it. Create a short guide that explains: what it does, what they need to set up, and how to run it. Write it for someone who\u2019s never used Claude Code. Save it as docs/[name]-guide.md.',
           },
         ],
         keyTakeaway:
-          'You started this curriculum typing vague prompts into a chat window. You\u2019re ending it with a system that knows how you work, who you work with, what your workflows are, and what good looks like \u2014 because you built it, corrected it, and taught it. Now you\u2019re sharing it. The same skill that makes you good at delegation \u2014 breaking work down clearly enough that someone else can do it \u2014 is what makes the difference between a tool that helps your team and a tool that collects dust.',
+          'You didn\u2019t just learn a tool. You changed how you work. The system you built is proof \u2014 but the real change is in how you see problems now.',
       },
       {
         day: 31,
