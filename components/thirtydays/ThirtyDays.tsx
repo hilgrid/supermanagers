@@ -265,7 +265,7 @@ const ThirtyDays: React.FC = () => {
             Your Couch to 5K for AI
           </h1>
           <p className="text-stone-500 text-base md:text-lg leading-relaxed">
-            A free 30-day program that builds the habit, not just the knowledge. Two minutes a day.
+            A free 30-day program designed to make AI stick. Two minutes a day.
           </p>
         </div>
 
