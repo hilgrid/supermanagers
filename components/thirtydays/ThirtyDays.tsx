@@ -17,10 +17,10 @@ function saveProgress(p: Record<number, boolean>) {
 }
 
 const weekThemes: Record<number, string> = {
-  1: 'Communicate',
-  2: 'Build',
-  3: 'Leverage',
-  4: 'Compound',
+  1: 'Show Up',
+  2: 'Build the Routine',
+  3: 'Push Your Limits',
+  4: 'See What Changed',
 };
 
 const allDays = weeks.flatMap((w) =>
@@ -262,20 +262,20 @@ const ThirtyDays: React.FC = () => {
         {/* Header */}
         <div className="mt-10 mb-8 text-center">
           <h1 className="text-3xl md:text-[40px] md:leading-[1.15] font-bold text-stone-800 tracking-tight mb-4">
-            Keep Up with AI in 2 Minutes a Day
+            Your Couch to 5K for AI
           </h1>
           <p className="text-stone-500 text-base md:text-lg leading-relaxed">
-            A free 30-day program for people who know they should be using AI more but haven&rsquo;t found the time.
+            A free 30-day program that builds the habit, not just the knowledge. Two minutes a day.
           </p>
         </div>
 
         {/* How it works */}
         <div className="bg-[#ee8a82]/10 border border-[#ee8a82]/20 rounded-xl px-6 py-5 mb-8">
           <p className="text-stone-700 text-[14px] leading-[1.7] mb-3">
-            Each day takes less than two minutes. By Day 30, you&rsquo;ll have a working AI system you actually use. No coding required, no prior experience needed. Just open Claude and follow the exercise.
+            Day 1 is just a browser. You open Claude, follow a two-minute exercise, and close it. That&rsquo;s the whole thing. Each day builds on the last: new tools, harder problems, real workflows.
           </p>
           <p className="text-stone-700 text-[14px] leading-[1.7]">
-            Week 1 builds the fundamentals in Claude on the web. Week 2 introduces Claude Code and starts building a real system. By the end, you&rsquo;ll have an AI that knows how you work, who you work with, and what good looks like &mdash; because you taught it.
+            By Day 30, you&rsquo;re not just using AI occasionally. You&rsquo;re someone who builds with it. No coding required. No prior experience. Just show up.
           </p>
         </div>
 
@@ -433,7 +433,7 @@ const ThirtyDays: React.FC = () => {
         {/* Footer */}
         <div className="text-center pt-12 pb-8 mt-12 border-t border-stone-200">
           <p className="text-stone-400 text-[13px]">
-            Keep Up with AI in 2 Minutes a Day &mdash;{' '}
+            Your Couch to 5K for AI &mdash;{' '}
             <a
               href="https://www.writerbuilder.com"
               className="text-stone-500 hover:text-stone-700 underline decoration-stone-400/50 hover:decoration-stone-600 underline-offset-4 transition-all"
