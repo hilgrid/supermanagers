@@ -327,11 +327,20 @@ const Session2: React.FC = () => {
             <p className="text-stone-800 text-sm leading-relaxed mb-3">
               Run through these quickly:
             </p>
-            <ul className="text-stone-800 text-sm leading-relaxed space-y-2 mb-4 list-disc list-inside">
-              <li><strong>Does it solve a problem for you?</strong> If you wouldn't use this or wouldn't care if it disappeared, it's not solving a real problem.</li>
-              <li><strong>Does it solve a problem for the person who needs to use it?</strong> Not your problem - <em>theirs</em>. "My team writes bad emails" is your problem. "I'm never sure if my email is going to land the way I want" is theirs. If the tool feels like a mandate from their manager, they won't use it. If it solves a problem they already feel, they will.</li>
-              <li><strong>When would they use it?</strong> Can you name a specific moment? "Before sending an email to their skip level" is good. "Whenever they need feedback" is too vague.</li>
-            </ul>
+            <div className="space-y-3 mb-4">
+              <div className="flex gap-2 text-stone-800 text-sm leading-relaxed">
+                <span className="text-stone-400 mt-0.5 flex-shrink-0">1.</span>
+                <p><strong>Does it solve a problem for you?</strong> If you wouldn't use this or wouldn't care if it disappeared, it's not solving a real problem.</p>
+              </div>
+              <div className="flex gap-2 text-stone-800 text-sm leading-relaxed">
+                <span className="text-stone-400 mt-0.5 flex-shrink-0">2.</span>
+                <p><strong>Does it solve a problem for the person who needs to use it?</strong> Not your problem - <em>theirs</em>. "My team writes bad emails" is your problem. "I'm never sure if my email is going to land the way I want" is theirs. If the tool feels like a mandate from their manager, they won't use it. If it solves a problem they already feel, they will.</p>
+              </div>
+              <div className="flex gap-2 text-stone-800 text-sm leading-relaxed">
+                <span className="text-stone-400 mt-0.5 flex-shrink-0">3.</span>
+                <p><strong>When would they use it?</strong> Can you name a specific moment? "Before sending an email to their skip level" is good. "Whenever they need feedback" is too vague.</p>
+              </div>
+            </div>
 
             <p className="text-stone-800 text-sm leading-relaxed mb-3">
               Now the harder question: <strong>is there an upstream problem that would be better to solve?</strong> Sometimes the feedback you keep giving is a symptom, not the root cause.
