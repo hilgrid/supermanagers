@@ -57,8 +57,77 @@ function CopyButton({ getText }: { getText: () => string }) {
   );
 }
 
+const homeworkSlides = [
+  {
+    title: "Whose problem is this?",
+    body: "You're building this tool because of your frustration. But the person using it has a different experience of the same problem.",
+    before: "\"My team shows up to check-ins unprepared. The tool will require them to write a SMART problem statement before booking time with me.\"",
+    after: "The team's problem isn't \"I need to write a SMART problem statement.\" It's \"I have a messy situation and I can't figure out how to ask for help.\" A tool that adds a framework on top of a task they already find stressful won't get used. One that helps them untangle the mess will.",
+    howItLooks: "A tool that helps you get more out of your 1:1 time by coming in with a scoped ask. Step 1: word-vomit the challenge you're having. Step 2: the tool pulls out three potential problems it's hearing and walks you through what a couple of solutions could be. Step 3: it frames that up into a blurb you can drop into your 1:1 doc before your next meeting.",
+    student: "Rachel",
+  },
+  {
+    title: "Make sure you're building one tool, not three",
+    body: "Sometimes what sounds like one problem is actually several different problems bundled together. Each one leads to a different tool.",
+    before: "\"My tool helps my team evaluate whether something should be automated.\"",
+    after: "But what does that mean? Is the tool helping people spot things that could be automated? Helping them figure out how to automate? Evaluating which automation ideas are worth pursuing? Or helping them build a case for automation? Those are all different tools. Each one has different inputs, different steps, and a different user experience.",
+    howItLooks: "Pick the one that matches your actual pain. If people aren't seeing automation opportunities, build a coaching tool that walks them through their workflows. If they have too many ideas and can't prioritize, build an evaluator that pressure-tests proposals against your criteria. Get one working first - you can always build the next one later.",
+    student: "Michael",
+  },
+  {
+    title: "The 10x rule: coach or automate?",
+    body: "For each thing your tool does: would getting 10x better at it make someone meaningfully better at their job? If yes, coach them. If no, just have the AI do it.",
+    before: "\"My board report reviewer evaluates 9 dimensions at once: grammar, acronyms, formatting, business impact, clarity of outcome, data accuracy...\"",
+    after: "Some of those dimensions are mechanical (grammar, acronyms, formatting) and some are strategic (business impact, clarity of outcome). Getting better at grammar won't change anyone's career - it needs to get done, but it's not where the growth is. Learning to frame your work in terms of business impact to a board? That skill compounds.",
+    howItLooks: "One tool, two steps. Step 1 (coaching): \"What outcome are you reporting on? What does the board need to decide based on this?\" Walk the person through the strategic thinking - ask questions, give examples of strong impact statements, help them get better at it. Step 2 (automation): once the thinking is solid, the AI just cleans up grammar, enforces the style guide, and fixes acronyms. No coaching needed for that part.",
+    student: "Christopher",
+  },
+  {
+    title: "Pass/fail, not scores",
+    body: "If your tool evaluates work, make each criterion pass/fail. Not scored, not weighted. AI gives inconsistent scores on subjective criteria - run the same input three times, get three different numbers. You don't care if something is a 7 or an 8. You care if it meets the bar.",
+    before: "\"Criteria: relevance to strategy (25%), data quality (20%), actionability (20%), audience clarity (20%), visual presentation (15%). Weighted score out of 100.\"",
+    after: "Turn each of those into a pass/fail question with a clear bar. Then decide: does every criterion need to pass? Is there one overall question that matters most? Either is fine - just be explicit about what \"good enough\" means. A report that nails the strategy but has a typo is probably fine. A report with perfect formatting that misses the point is not.",
+    howItLooks: "The tool checks each criterion and says pass or fail. If something fails, it tells you specifically why: \"The data is solid but there's no clear recommendation. The reader will finish this and think 'interesting' instead of 'here's what we should do.'\" No ambiguous scores to interpret - just a clear answer on what needs work.",
+    student: "Hollis",
+  },
+  {
+    title: "The tool should make their life easier, not harder",
+    body: "If your tool adds work on top of a task someone already has to do, they won't use it. The net result of using the tool should be less effort, not more.",
+    before: "\"Step 1: Describe the core problem you need help with. Step 2: Write out what you've tried so far. Step 3: Identify what kind of support you need.\"",
+    after: "That's a form, not a tool. If people wanted to fill out forms they'd use a Google Doc. Lean on what AI does well: give people something to react to instead of a blank page. And if you're asking them to put more work into one part (like thinking through the strategy), save them time on another part (like generating the slides or cleaning up the writing). Net, it should be less work - but the work they do is in the places where you want them to grow.",
+    howItLooks: "The user types a rough brain dump: \"I'm stuck on the migration project.\" The tool responds: \"It sounds like this could be a few things - (1) you're blocked by a dependency, (2) the scope has grown and you need to renegotiate, or (3) you're not sure which path to take. Which is closest?\" It coaches them through the hard part, then generates a clean summary they can drop into their 1:1 doc. More thinking, less formatting.",
+    student: "Rachel",
+  },
+];
+
+const deploySlides = [
+  {
+    title: "Frame it as an investment in them",
+    body: "Not being good at AI is going to be a liability in the future. It's one of the most valuable skills people can build right now. You're not offloading work to a machine - you're investing in your team learning skills that will make them more valuable.",
+    example: "\"I'm doing this because I'm investing in you. I think AI fluency is going to be one of the most important skills in the next few years, and I want to make sure you're building it now.\"",
+  },
+  {
+    title: "Frame it as their problem, not yours",
+    body: "Don't say \"your emails aren't good enough.\" Frame it around the frustration they already feel. The tool should solve a problem they recognize, not one you're pointing out.",
+    example: "\"I know it's frustrating when you feel like you're getting blocked by leadership intervening in your plan. I think one thing that can help is sending really clear updates so they don't feel the need to step in. I don't want you spending all your time on that, so I made a tool to help.\"",
+  },
+  {
+    title: "Normalize it by showing how you use it",
+    body: "Show them your own tools in a 1:1. Be transparent about where AI helps you and where you still do the work yourself. Make it clear: anything you send, even if AI helped draft it, you've read, edited, and signed off on. That's the bar you expect from them too.",
+    example: "\"Let me show you how I use mine. Anything I send you, even if I used AI to draft it, I've had eyes on it. I'm accountable for it. Same goes for you - use the tools, but put your name on the output.\"",
+  },
+  {
+    title: "Don't let things go unsaid",
+    body: "People will worry about what this means. Are you trying to replace them? Automate them away? Don't pretend those concerns don't exist. Be candid. The goal is that when you do spend time together, it's on the stuff that's more valuable - not rote feedback they could get from a tool.",
+    example: "\"I can't promise that using these tools guarantees job security forever. But my hope is that when we do spend time together, it's on the stuff that matters more for your growth. You can get the routine feedback from the tool whenever you want. If you have a real problem, come talk to me. I have time.\"",
+  },
+];
+
 const Session2: React.FC = () => {
   const [platform, setPlatform] = useState<Platform>('chatgpt');
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentDeploySlide, setCurrentDeploySlide] = useState(0);
+  const [selectedTool, setSelectedTool] = useState<string | null>(null);
   const setup = platformSetup[platform];
 
   return (
@@ -103,26 +172,140 @@ const Session2: React.FC = () => {
         <hr className="border-stone-300 mb-12" />
 
         {/* Before This Class */}
+        <details className="mb-12 group" open>
+          <summary className="text-2xl font-bold text-stone-800 mb-6 cursor-pointer hover:text-stone-600 transition-colors">
+            Before This Class
+          </summary>
+          <ol className="text-stone-800 text-base leading-relaxed space-y-2 list-decimal list-inside">
+            <li>Use your tool 2-3 times on real work</li>
+            <li>Think about what's working and what's not</li>
+            <li>Watch the async video modules for Weeks 2 and 3</li>
+            <li>Post your prompt on the Maven portal</li>
+          </ol>
+        </details>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* What Everyone's Building */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Before This Class</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">What Everyone's Building</h2>
+          {(() => {
+            const tools = [
+              { name: "Written communication reviewer", student: "Taylor", desc: "Evaluates product strategies, decks, and docs for clarity, conciseness, and strategic thinking before leadership review" },
+              { name: "Board report coach", student: "Christopher", desc: "Reviews monthly board reports for clarity, conciseness, and board-appropriate framing before submission" },
+              { name: "Assessment metadata validator", student: "Amanda", desc: "Checks content metadata tags for accuracy and completeness before migrating to the active database" },
+              { name: "Research presentation evaluator", student: "Hollis", desc: "Reviews research presentations for clear takeaways, audience framing, and whether the deck answers 'so what?'" },
+              { name: "Scalability assessor", student: "Hayden", desc: "Stress-tests proposed solutions for whether they'll hold up as the team and member volume grow" },
+              { name: "Call notes extractor", student: "MacKenzie", desc: "Pulls social-relevant content from author kickoff call notes and builds a working content calendar" },
+              { name: "Automation decision tool", student: "Michael", desc: "Walks team members through evaluating whether a manual process is worth automating and how to scope it" },
+              { name: "Internal comms reviewer", student: "Lucy", desc: "Checks emails, Slack messages, and docs for clear purpose, strategic grounding, and actionable next steps" },
+              { name: "Customer email reviewer", student: "Mark", desc: "Reviews sales emails for completeness, tone, and whether the customer's real question is being addressed" },
+              { name: "BPO update brief generator", student: "Jen", desc: "Converts BPO team updates into operator-ready briefs with action registers and execution plans" },
+              { name: "Decision escalation guide", student: "Felipe", desc: "Coaches PMs through deciding whether a decision is theirs to make or needs to be escalated" },
+              { name: "Change management messaging", student: "Karen", desc: "Helps teams craft buy-in messaging that leads with the 'why' and addresses audience objections" },
+              { name: "Deck and presentation reviewer", student: "Lisa", desc: "Reviews decks and presentations for right level of detail, storytelling with data, and clarity of the ask" },
+              { name: "Direct feedback coach", student: "Alejandra", desc: "Coaches team members through giving direct feedback using Radical Candor instead of escalating complaints" },
+              { name: "Design review coach", student: "Andrew", desc: "Evaluates designs for user logic, unnecessary UI elements, articulation of user and business needs, and competitor awareness" },
+              { name: "MVP scope coach", student: "Emilie", desc: "Helps engineers find a smaller version of a spec they could ship more quickly, resisting the urge to keep adding scope" },
+            ];
+            const selected = tools.find(t => t.name === selectedTool);
+            return (
+              <>
+                <div className="flex flex-wrap gap-2">
+                  {tools.map((tool) => (
+                    <button
+                      key={tool.name}
+                      onClick={() => setSelectedTool(selectedTool === tool.name ? null : tool.name)}
+                      className={`px-3 py-1.5 border rounded-full text-sm cursor-pointer transition-colors ${
+                        selectedTool === tool.name
+                          ? 'bg-stone-800 border-stone-800 text-white'
+                          : 'bg-white border-stone-300 text-stone-700 hover:bg-stone-50'
+                      }`}
+                    >
+                      {tool.name}
+                    </button>
+                  ))}
+                </div>
+                {selected && (
+                  <div className="mt-3 p-4 bg-white border border-stone-200 rounded-lg text-sm">
+                    <p className="text-stone-500 text-xs mb-1">{selected.student}</p>
+                    <p className="text-stone-700">{selected.desc}</p>
+                  </div>
+                )}
+              </>
+            );
+          })()}
+        </div>
 
-          <h3 className="text-lg font-bold text-stone-800 mb-2">1. Use your tool 2-3 times</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Open the {setup.toolName} you built in Session 1 and actually use it on real work. Pay attention to what's off. Does the feedback sound like you? Does it catch the things you'd catch? Does it miss anything obvious?
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed mb-8">
-            Come ready to describe one specific thing that isn't working right. Not "it's not great" but something concrete: "it's too easy on people," "it keeps focusing on tone when the real problem is structure," "it doesn't know when to push back."
-          </p>
+        <hr className="border-stone-300 mb-12" />
 
-          <h3 className="text-lg font-bold text-stone-800 mb-2">2. Watch the async video modules for Week 2</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            These are in the Maven portal. Pay special attention to the modules on codifying your standards (2.1) and coaching tools (2.2) - they'll be directly relevant to what we do in class.
-          </p>
+        {/* Homework Observations Carousel */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-2">Patterns from Your Homework</h2>
+          <p className="text-stone-500 text-sm mb-6">Things I noticed across everyone's tool designs</p>
 
-          <h3 className="text-lg font-bold text-stone-800 mb-2">3. Post your prompt on the Maven portal</h3>
-          <p className="text-stone-800 text-base leading-relaxed">
-            If you haven't already, share the system prompt from your Session 1 build. This helps the group learn from each other's approaches.
-          </p>
+          <div className="relative">
+            <div className="bg-white border-2 border-stone-300 rounded-lg p-6 min-h-[320px] flex flex-col">
+              <p className="text-lg font-bold text-stone-800 mb-2">
+                {homeworkSlides[currentSlide].title}
+              </p>
+              <p className="text-stone-800 text-base leading-relaxed mb-4">
+                {homeworkSlides[currentSlide].body}
+              </p>
+              <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-3">
+                <p className="text-stone-500 text-xs font-medium uppercase tracking-wide mb-1">{homeworkSlides[currentSlide].student}'s worksheet</p>
+                <p className="text-stone-700 text-sm leading-relaxed italic">
+                  {homeworkSlides[currentSlide].before}
+                </p>
+              </div>
+              <div className="bg-stone-50 border-l-4 border-stone-800 p-4 mb-3">
+                <p className="text-stone-500 text-xs font-medium uppercase tracking-wide mb-1">The reframe</p>
+                <p className="text-stone-700 text-sm leading-relaxed">
+                  {homeworkSlides[currentSlide].after}
+                </p>
+              </div>
+              <div className="bg-emerald-50 border-l-4 border-emerald-400 p-4 mt-auto">
+                <p className="text-stone-500 text-xs font-medium uppercase tracking-wide mb-1">What this could look like</p>
+                <p className="text-stone-700 text-sm leading-relaxed">
+                  {homeworkSlides[currentSlide].howItLooks}
+                </p>
+              </div>
+            </div>
+
+            {/* Navigation arrows */}
+            <button
+              onClick={() => setCurrentSlide((prev) => (prev === 0 ? homeworkSlides.length - 1 : prev - 1))}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-8 h-8 bg-white border-2 border-stone-300 rounded-full flex items-center justify-center text-stone-500 hover:text-stone-800 hover:border-stone-400 transition-colors"
+              aria-label="Previous slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setCurrentSlide((prev) => (prev === homeworkSlides.length - 1 ? 0 : prev + 1))}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-8 h-8 bg-white border-2 border-stone-300 rounded-full flex items-center justify-center text-stone-500 hover:text-stone-800 hover:border-stone-400 transition-colors"
+              aria-label="Next slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-4">
+            {homeworkSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  currentSlide === index ? 'bg-stone-800' : 'bg-stone-300 hover:bg-stone-400'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         <hr className="border-stone-300 mb-12" />
@@ -141,26 +324,11 @@ const Session2: React.FC = () => {
           </div>
         </div>
 
-        {/* Part 1 */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 1: Demo</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">10-15 min</p>
+        {/* Part 1: Check Your Scope */}
+        <details className="mb-12" open>
+          <summary className="text-xl font-bold text-stone-800 mb-3 cursor-pointer hover:text-stone-600 transition-colors">Part 1: Check Your Scope <span className="text-stone-400 text-sm font-normal ml-2">10 min + discussion</span></summary>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Hilary demos what it looks like to take a tool from Session 1 and run it through the diagnostic checklist below. She tests her tool, discovers the scope is off, and re-scopes it in real time.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Watch for the moment where the real problem surfaces. In Session 1, the tool was "give feedback on emails to the CEO." But the actual issue wasn't email quality - it was that the team needed better judgment about <em>when to email the CEO at all</em>. That's an upstream problem that no amount of email polishing would fix.
-          </p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Part 2 */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 2: Run the Checklist</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">30 min (20 min think + 10 min share)</p>
-          <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Before you touch the prompt, run your tool through these checks in order. Each one either passes or tells you exactly what to fix. Work through them now - you'll share what you found in a few minutes.
+            Based on the patterns above and your experience testing your tool, think about whether your scope needs to change. Run through these two checks:
           </p>
 
           {/* Check 1: Right problem */}
@@ -179,26 +347,9 @@ const Session2: React.FC = () => {
             <p className="text-stone-800 text-sm leading-relaxed mb-3">
               Now the harder question: <strong>is there an upstream problem that would be better to solve?</strong> Sometimes the feedback you keep giving is a symptom, not the root cause.
             </p>
-            <p className="text-stone-500 text-xs leading-relaxed mb-3">
+            <p className="text-stone-500 text-xs leading-relaxed">
               Example: "My team needs to write better emails to the CEO" seems like the problem. But maybe the real issue is that the CEO wants fewer emails, and your team needs better judgment about when to email vs. when to handle it themselves. That's a completely different tool.
             </p>
-
-            <div className="bg-rose-50 border-l-4 border-rose-300 p-4">
-              <div className="flex justify-end mb-2">
-                <CopyButton getText={() => `I built a ${setup.toolName} to help with [describe your tool]. Before I improve the prompt, I want to make sure I'm solving the right problem.\n\nThe problem I'm trying to solve: [describe it]\nWho uses it: [role]\nWhen they'd use it: [specific moment]\n\nHelp me pressure-test this. Is there an upstream problem I might be missing? Is there a deeper issue that, if I solved it, would make the surface-level problem go away? Ask me questions if you need more context.`} />
-              </div>
-              <p className="text-stone-800 text-sm font-mono leading-relaxed">
-                "I built a {setup.toolName} to help with <span className="bg-rose-200 px-1">[describe your tool]</span>. Before I improve the prompt, I want to make sure I'm solving the right problem.
-              </p>
-              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
-                The problem I'm trying to solve: <span className="bg-rose-200 px-1">[describe it]</span><br />
-                Who uses it: <span className="bg-rose-200 px-1">[role]</span><br />
-                When they'd use it: <span className="bg-rose-200 px-1">[specific moment]</span>
-              </p>
-              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
-                Help me pressure-test this. Is there an upstream problem I might be missing? Is there a deeper issue that, if I solved it, would make the surface-level problem go away? Ask me questions if you need more context."
-              </p>
-            </div>
           </div>
 
           {/* Check 2: Right scope */}
@@ -210,11 +361,11 @@ const Session2: React.FC = () => {
             </p>
             <ul className="text-stone-800 text-sm leading-relaxed space-y-2 mb-4 list-disc list-inside">
               <li><strong>Too many types of things.</strong> Your tool reviews emails AND decks AND reports AND Slack messages. You wouldn't evaluate an email the same way you'd evaluate a deck - the criteria are different, the format is different, the failure modes are different. Pick one and dial it in.</li>
-              <li><strong>Too many steps.</strong> Your tool coaches someone through a problem, then evaluates their output, then generates a revised version, then creates a summary for their manager. That's four tools crammed into one prompt. If the AI suggests splitting your tool, listen to it.</li>
+              <li><strong>Multiple things happening at once.</strong> Your tool might coach someone through a problem, evaluate their output, and generate a revised version. That's fine - but each of those needs to be a clear, sequential step in the prompt, not one big instruction. If your tool does three things, make sure the prompt says: Step 1 do this, Step 2 do this, Step 3 do this. When all the steps are blurred together, the AI tries to do everything at once and does all of it poorly.</li>
             </ul>
 
             <p className="text-stone-800 text-sm leading-relaxed mb-3">
-              Here's the thing: you can absolutely build something that handles multiple formats or multiple steps eventually. But you need to get really clear on your criteria for <em>one</em> thing first. Once that's dialed in, adapting it to a different format or audience is only marginally harder. Starting broad is hard because you're trying to solve for too many possible failure states and too many different criteria at the same time.
+              You can absolutely build something that handles multiple formats or multiple steps. But you need to get really clear on your criteria for <em>one</em> thing first. Once that's dialed in, adapting it to a different format or audience is only marginally harder. Starting broad is hard because you're trying to solve for too many possible failure states and too many different criteria at the same time.
             </p>
 
             <div className="bg-stone-100 border-l-4 border-stone-400 p-4">
@@ -224,194 +375,209 @@ const Session2: React.FC = () => {
             </div>
           </div>
 
-          {/* Check 3: Does it work */}
-          <div className="bg-white border-2 border-stone-300 rounded-lg p-5 mb-4">
-            <p className="text-stone-800 text-lg font-bold mb-3">Check 3: Does the output match what you'd want?</p>
-
-            <p className="text-stone-800 text-sm leading-relaxed mb-3">
-              If you passed checks 1 and 2, the problem and scope are right. Now test the actual output. Run your tool on a real piece of work and ask yourself: is this the feedback I would give?
-            </p>
-            <p className="text-stone-800 text-sm leading-relaxed mb-3">
-              If not, the most common fixes are:
-            </p>
-            <ul className="text-stone-800 text-sm leading-relaxed space-y-2 mb-4 list-disc list-inside">
-              <li><strong>Missing criteria.</strong> The tool isn't checking for something you care about. Add it.</li>
-              <li><strong>Too lenient on a criterion.</strong> The tool says "pass" on something you'd push back on. You need to define what success looks like more specifically for that criterion.</li>
-              <li><strong>Wrong tone or format.</strong> The feedback is right but the delivery is off - too nice, too long, too robotic. This is usually the easiest to fix.</li>
-            </ul>
-
-            <div className="bg-rose-50 border-l-4 border-rose-300 p-4">
-              <div className="flex justify-end mb-2">
-                <CopyButton getText={() => `Here's the system prompt for a ${setup.toolName} I built last week:\n\n[paste your system prompt]\n\nI've been testing it and here's what's not working:\n- [specific issue 1]\n- [specific issue 2]\n\nDon't rewrite the whole thing. Diagnose what's causing each issue and propose targeted changes. For each change, explain what it fixes and why.`} />
-              </div>
-              <p className="text-stone-800 text-sm font-mono leading-relaxed">
-                "Here's the system prompt for a {setup.toolName} I built last week:
-              </p>
-              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
-                <span className="bg-rose-200 px-1">[paste your system prompt]</span>
-              </p>
-              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
-                I've been testing it and here's what's not working:
-              </p>
-              <ul className="text-stone-800 text-sm font-mono leading-relaxed mt-1 list-disc list-inside">
-                <li><span className="bg-rose-200 px-1">[specific issue 1]</span></li>
-                <li><span className="bg-rose-200 px-1">[specific issue 2]</span></li>
-              </ul>
-              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
-                Don't rewrite the whole thing. Diagnose what's causing each issue and propose targeted changes. For each change, explain what it fixes and why."
-              </p>
-            </div>
-
-            <p className="text-stone-800 text-sm leading-relaxed mt-4">
-              If it's being too lenient on a specific criterion, try:
-            </p>
-            <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mt-2">
-              <div className="flex justify-end mb-2">
-                <CopyButton getText={() => `The tool is being too lenient on [criterion]. It's passing work that I would push back on. What would you recommend if you were to raise the bar here? Be specific about what "passing" should actually require.`} />
-              </div>
-              <p className="text-stone-800 text-sm font-mono leading-relaxed">
-                "The tool is being too lenient on <span className="bg-rose-200 px-1">[criterion]</span>. It's passing work that I would push back on. What would you recommend if you were to raise the bar here? Be specific about what 'passing' should actually require."
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-stone-100 border border-stone-300 rounded-lg p-4 mb-4">
+          <div className="bg-stone-100 border border-stone-300 rounded-lg p-4">
             <p className="text-stone-800 text-sm leading-relaxed">
-              <strong>Share-out:</strong> Hilary will call on a few people. Where did you get stuck in the checklist? Did anyone discover they were solving the wrong problem? Did anyone need to narrow their scope?
+              <strong>Share-out:</strong> A few people share. Did anyone discover they were solving the wrong problem? Did anyone need to narrow their scope? Any questions?
             </p>
           </div>
-        </div>
+        </details>
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Part 3 */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 3: Rebuild and Improve</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">25-30 min</p>
+        {/* Part 2: Demo */}
+        <details className="mb-12" open>
+          <summary className="text-xl font-bold text-stone-800 mb-3 cursor-pointer hover:text-stone-600 transition-colors">Part 2: Demo <span className="text-stone-400 text-sm font-normal ml-2">20-25 min</span></summary>
+
+          {/* Demo 1 */}
+          <div className="bg-white border-2 border-stone-300 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-lg font-bold mb-1">Demo 1: The feedback loop</p>
+            <p className="text-stone-500 text-sm mb-4">Where this can go when you invest in tuning a tool over time</p>
+            <ol className="text-stone-800 text-sm leading-relaxed space-y-2 list-decimal list-inside mb-4">
+              <li>Hilary pastes a student's homework into Claude Code and runs <code className="bg-stone-100 px-1.5 py-0.5 rounded text-sm">/toolscopefeedback</code></li>
+              <li>The AI drafts personalized feedback in seconds</li>
+              <li>She edits the draft - adjusting tone, adding nuance, cutting what's off</li>
+              <li>She sends the final version to the student</li>
+              <li>She sends the final version back to Claude Code so it can learn from the delta between its draft and her edit</li>
+            </ol>
+            <div className="bg-stone-100 border-l-4 border-stone-400 p-4 mb-4">
+              <p className="text-stone-800 text-sm leading-relaxed">
+                <strong>How this was built:</strong> Hilary fed Claude all her course materials, then had it draft feedback for the first five students. For each one, she edited the draft and sent the corrected version back. After each round, Claude updated its approach based on what she changed. By student six, the drafts were close enough to just edit. Then she said: "Turn what you've learned into a reusable skill" - and that became the prompt below.
+              </p>
+            </div>
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              <strong>The point:</strong> She still reads and edits every piece of feedback before it goes out. The goal isn't full automation - it's getting the AI close enough that the job is editing, not writing from scratch.
+            </p>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                View the full skill prompt
+              </summary>
+              <div className="px-4 py-4 relative">
+                <div className="flex justify-end mb-2">
+                  <CopyButton getText={() => `# Tool Scoping Feedback Skill\n\nDraft feedback on a student's Tool Scoping Worksheet.\n\n## Context\n\nStudents completed a Tool Scoping Worksheet where they described a Custom GPT they want to build to give their team feedback. The worksheet asks:\n- The feedback they keep giving over and over\n- What kind of work they give it on\n- Who they give it to\n- When the person would reach for this Custom GPT\n- The steps the GPT would walk through\n- What "good" looks like (evaluation criteria)\n\nThe goal of the tool is to give feedback the way the manager would, so the manager isn't the bottleneck.\n\n## How to Draft Feedback\n\n### Step 1: Understand what they're building\nTranslate the tool into plain language. What does it actually do, who uses it, and why?\nIdentify what type of tool this is - or more often, what combination:\n- Evaluator: Takes finished work and checks it against criteria. Pass/fail.\n- Coach: Walks someone through the thinking process. Asks questions, helps them improve.\n- Automation: Just does the work. No evaluation, no coaching.\n\n### Step 2: Challenge the problem framing\nDon't take the stated problem at face value. The student describes their pain, but that's the symptom. What's the underlying cause? When the problem could be read multiple ways, name the 2-3 most likely interpretations.\n\n### Step 3: Separate whose problem this is\nFlip from the manager's frustration to the user's experience. What's their emotional state? If the task feels like a chore, a tool that adds more work won't get used.\n\n### Step 4: Apply the 10x rule\nWould getting 10x better at this make someone meaningfully better at their job? If yes, coach them. If no, just do it for them.\n\n### Step 5: Check the scope\nToo many formats? Too many dimensions? Too many audiences? Pick one, get it working, then expand.\n\n### Step 6: Check whether the criteria match the real bar\nFormal criteria often don't match what people actually evaluate in their head.\n\n### Step 7: Fix the evaluation approach\nUse pass/fail instead of numeric scores.\n\n### Step 8: Design for the user's experience\nDon't give people a blank page. Sequence steps rather than evaluating everything at once.\n\n### Step 9: Think about what the AI needs to succeed\nReference data goes in the prompt or knowledge base. If the domain is well-known, the AI already has strong intuitions.\n\n### Step 10: Tone and framing\nLead with what's strong. Frame suggestions as evolution, not correction. Be direct but not harsh. Be generous about what AI can do.`} />
+                </div>
+                <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{`Step 1: Understand what they're building
+Translate the tool into plain language. What does it actually do, who uses it, and why? Identify what type of tool this is - or more often, what combination:
+- Evaluator: Takes finished work and checks it against criteria. Pass/fail.
+- Coach: Walks someone through the thinking process. Asks questions, helps them improve.
+- Automation: Just does the work. No evaluation, no coaching.
+
+Step 2: Challenge the problem framing
+Don't take the stated problem at face value. The student describes their pain ("I keep giving this feedback"), but that's the symptom. What's the underlying cause? When the problem could be read multiple ways, name the 2-3 most likely interpretations.
+
+Step 3: Separate whose problem this is
+Flip from the manager's frustration to the user's experience. What's their emotional state when they reach for this tool? If the task feels like a chore, a tool that adds more work won't get used.
+
+Step 4: Apply the 10x rule
+Would getting 10x better at this make someone meaningfully better at their job? If yes, coach them. If no, just do it for them. The best tools do both: save time on the tedious stuff AND build skill on the important stuff.
+
+Step 5: Check the scope
+Too many formats? Too many dimensions? Too many audiences? Pick one, get it working, then expand.
+
+Step 6: Check whether the criteria match the real bar
+Formal criteria often don't match what people actually evaluate in their head. The instinctive answer is usually more useful.
+
+Step 7: Fix the evaluation approach
+Numeric scores create false precision. Use pass/fail instead.
+
+Step 8: Design for the user's experience
+Don't give people a blank page - give them something to react to. Sequence steps rather than evaluating everything at once. Lead with corrections, not evaluation.
+
+Step 9: Think about what the AI needs to succeed
+Reference data goes in the prompt or knowledge base. If the domain is well-known, the AI already has strong intuitions. If someone can't articulate criteria, feed it 3-6 examples and let it identify patterns.
+
+Step 10: Tone and framing
+Lead with what's strong. Frame suggestions as evolution, not correction. Be direct but not harsh. Be generous about what AI can do.`}</pre>
+              </div>
+            </details>
+          </div>
+
+          {/* Demo 2 */}
+          <div className="bg-white border-2 border-stone-300 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-lg font-bold mb-1">Demo 2: Doing this in a Custom GPT</p>
+            <p className="text-stone-500 text-sm mb-4">The same skill, applied to what you're building today</p>
+            <p className="text-stone-800 text-sm leading-relaxed mb-4">
+              Hilary wants to improve the prompt for her Executive Editor GPT. She opens three windows:
+            </p>
+
+            <div className="space-y-2 mb-5">
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-blue-50 border border-blue-200">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-600 text-white text-xs font-bold flex-shrink-0">A</span>
+                <div>
+                  <p className="text-stone-800 text-sm font-bold">GPT Editor</p>
+                  <p className="text-stone-600 text-xs">The configuration screen where you paste the system prompt</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-amber-50 border border-amber-200">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-600 text-white text-xs font-bold flex-shrink-0">B</span>
+                <div>
+                  <p className="text-stone-800 text-sm font-bold">Your Custom GPT</p>
+                  <p className="text-stone-600 text-xs">A conversation with the actual GPT you're testing - feed it real work and see what comes back</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-emerald-50 border border-emerald-200">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-bold flex-shrink-0">C</span>
+                <div>
+                  <p className="text-stone-800 text-sm font-bold">Regular ChatGPT conversation</p>
+                  <p className="text-stone-600 text-xs">A normal chat (not the GPT) where you work on improving the prompt</p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              The loop:
+            </p>
+            <ol className="text-stone-800 text-sm leading-relaxed space-y-3 list-decimal list-inside">
+              <li>Go to <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">A</span> <span className="text-blue-700 font-semibold">GPT Editor</span> and copy the system prompt from your GPT</li>
+              <li>Paste it into <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">C</span> <span className="text-emerald-700 font-semibold">Regular ChatGPT</span> and say: "This is the system prompt for a Custom GPT I'm working on. It's not quite doing what I want. I'm going to test it and give you feedback, and I want you to rewrite the prompt to address my feedback."</li>
+              <li>Go to <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">B</span> <span className="text-amber-700 font-semibold">Your Custom GPT</span> and feed it a real piece of work - paste in an actual email, report, or whatever your GPT is designed to handle</li>
+              <li>Read the output. What did it get right? What's off? Be specific - "it's too lenient on the opening" or "it missed that the tone is wrong for this audience"</li>
+              <li>Go back to <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">C</span> <span className="text-emerald-700 font-semibold">Regular ChatGPT</span> and tell it what was off. Two ways to do this: voice-type your feedback ("it was too nice about the opening, I would have pushed back harder"), or rewrite the output the way you'd want it, paste both the GPT's version and yours, and say "here's what it gave me and here's what I would have said - update the prompt to close that gap"</li>
+              <li><span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">C</span> <span className="text-emerald-700 font-semibold">Regular ChatGPT</span> gives you a revised prompt. Copy it.</li>
+              <li>Paste the revised prompt into <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">A</span> <span className="text-blue-700 font-semibold">GPT Editor</span> (replacing the old one)</li>
+              <li>Test again in <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">B</span> <span className="text-amber-700 font-semibold">Your Custom GPT</span> with the same input or a new one. Keep going until happy.</li>
+            </ol>
+          </div>
+        </details>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Part 3: Test and Improve */}
+        <details className="mb-12" open>
+          <summary className="text-xl font-bold text-stone-800 mb-3 cursor-pointer hover:text-stone-600 transition-colors">Part 3: Test and Improve Your Tool <span className="text-stone-400 text-sm font-normal ml-2">30 min</span></summary>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            Now you know what to fix. Open a {platformLabels[platform]} conversation and use the prompts below based on what you need.
+            Now it's your turn. Open three windows just like the demo and run 2-3 rounds of the loop on your own tool. Aim to get through at least two full cycles of test → feedback → updated prompt.
           </p>
 
           {/* If scope changed */}
-          <h4 className="text-lg font-bold text-stone-800 mb-2">If your scope changed: Start fresh</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Tell the AI about your revised scope. Be specific about who this is for, what problem it solves for them, and what the tool needs to do.
-          </p>
-          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-6">
-            <div className="flex justify-end mb-2">
-              <CopyButton getText={() => `I'm rebuilding a ${setup.toolName} I started last week. I want to start over with a clearer scope.\n\nThe problem this solves for the person using it: [describe the user's problem, not yours]\n\nWho will use it: [role/team]\n\nThey'd reach for it when: [specific trigger moment]\n\nWhat the tool needs to do:\n- [Does it evaluate something? What criteria?]\n- [Does it coach/teach? What skill or process?]\n- [Does it generate something? From what inputs?]\n\nBased on this, propose 3-5 success criteria for the tool's output. Make them pass/fail, not scored. Then tell me what examples I could share that would help you refine these further.`} />
+          <div className="bg-white border-2 border-stone-300 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-lg font-bold mb-3">If your scope changed: Start fresh</p>
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              If Part 1 made you rethink your tool, start by telling <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">C</span> about your revised scope. Use this prompt to get a new system prompt, then paste it into your {setup.toolName} editor <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">A</span> and start testing.
+            </p>
+            <div className="bg-rose-50 border-l-4 border-rose-300 p-4">
+              <div className="flex justify-end mb-2">
+                <CopyButton getText={() => `I'm rebuilding a ${setup.toolName} I started last week. I want to start over with a clearer scope.\n\nThe problem this solves for the person using it: [describe the user's problem, not yours]\n\nWho will use it: [role/team]\n\nThey'd reach for it when: [specific trigger moment]\n\nWhat the tool needs to do:\n- [Does it evaluate something? What criteria?]\n- [Does it coach/teach? What skill or process?]\n- [Does it generate something? From what inputs?]\n\nWrite me a system prompt for this. Make any success criteria pass/fail, not scored.`} />
+              </div>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed">
+                "I'm rebuilding a {setup.toolName} I started last week. I want to start over with a clearer scope.
+              </p>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                The problem this solves for the person using it: <span className="bg-rose-200 px-1">[describe the user's problem, not yours]</span>
+              </p>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                Who will use it: <span className="bg-rose-200 px-1">[role/team]</span>
+              </p>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                They'd reach for it when: <span className="bg-rose-200 px-1">[specific trigger moment]</span>
+              </p>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                What the tool needs to do:
+              </p>
+              <ul className="text-stone-800 text-sm font-mono leading-relaxed mt-1 list-disc list-inside">
+                <li><span className="bg-rose-200 px-1">[Does it evaluate something? What criteria?]</span></li>
+                <li><span className="bg-rose-200 px-1">[Does it coach/teach? What skill or process?]</span></li>
+                <li><span className="bg-rose-200 px-1">[Does it generate something? From what inputs?]</span></li>
+              </ul>
+              <p className="text-stone-800 text-sm font-mono leading-relaxed mt-2">
+                Write me a system prompt for this. Make any success criteria pass/fail, not scored."
+              </p>
             </div>
-            <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "I'm rebuilding a {setup.toolName} I started last week. I want to start over with a clearer scope.
-            </p>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              The problem this solves for the person using it: <span className="bg-rose-200 px-1">[describe the user's problem, not yours]</span>
-            </p>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              Who will use it: <span className="bg-rose-200 px-1">[role/team]</span>
-            </p>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              They'd reach for it when: <span className="bg-rose-200 px-1">[specific trigger moment]</span>
-            </p>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              What the tool needs to do:
-            </p>
-            <ul className="text-stone-800 text-base font-mono leading-relaxed mt-1 list-disc list-inside">
-              <li><span className="bg-rose-200 px-1">[Does it evaluate something? What criteria?]</span></li>
-              <li><span className="bg-rose-200 px-1">[Does it coach/teach? What skill or process?]</span></li>
-              <li><span className="bg-rose-200 px-1">[Does it generate something? From what inputs?]</span></li>
-            </ul>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              Based on this, propose 3-5 success criteria for the tool's output. Make them pass/fail, not scored. Then tell me what examples I could share that would help you refine these further."
-            </p>
           </div>
 
-          {/* Building the evaluator part */}
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Building the evaluator part</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            If your tool evaluates finished work, the quality of your criteria is everything. Here's how to sharpen them:
-          </p>
-          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-4">
-            <div className="flex justify-end mb-2">
-              <CopyButton getText={() => `Let's pressure-test the success criteria. For each criterion, I want you to:\n1. Give me a specific example of work that would PASS\n2. Give me a specific example of work that would FAIL\n3. Identify any gray areas where it's ambiguous whether something passes\n\nThen tell me: are these criteria specific enough that two different people would agree on pass/fail for the same piece of work?`} />
+          {/* The testing loop */}
+          <div className="bg-white border-2 border-stone-300 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-lg font-bold mb-3">The testing loop</p>
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              Whether you're starting fresh or improving your existing prompt, the process is the same. Open three windows:
+            </p>
+
+            <div className="space-y-2 mb-4">
+              <div className="flex items-start gap-3 p-2 rounded-lg bg-blue-50 border border-blue-200">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white text-[10px] font-bold flex-shrink-0">A</span>
+                <p className="text-stone-800 text-sm"><strong>{setup.toolName} Editor</strong> - where you paste the system prompt</p>
+              </div>
+              <div className="flex items-start gap-3 p-2 rounded-lg bg-amber-50 border border-amber-200">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white text-[10px] font-bold flex-shrink-0">B</span>
+                <p className="text-stone-800 text-sm"><strong>Your {setup.toolName}</strong> - where you test it with real work</p>
+              </div>
+              <div className="flex items-start gap-3 p-2 rounded-lg bg-emerald-50 border border-emerald-200">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex-shrink-0">C</span>
+                <p className="text-stone-800 text-sm"><strong>Regular {platformLabels[platform]} conversation</strong> - where you work on improving the prompt</p>
+              </div>
             </div>
-            <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "Let's pressure-test the success criteria. For each criterion, I want you to:
-            </p>
-            <ol className="text-stone-800 text-base font-mono leading-relaxed mt-2 list-decimal list-inside">
-              <li>Give me a specific example of work that would PASS</li>
-              <li>Give me a specific example of work that would FAIL</li>
-              <li>Identify any gray areas where it's ambiguous whether something passes</li>
-            </ol>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              Then tell me: are these criteria specific enough that two different people would agree on pass/fail for the same piece of work?"
-            </p>
-          </div>
-          <p className="text-stone-800 text-sm leading-relaxed mb-6">
-            This prompt forces you to confront the edges of your criteria. If you can't clearly say whether something passes or fails, the AI can't either.
-          </p>
 
-          {/* Building the coaching part */}
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Building the coaching part</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            If your tool teaches or guides, the key is getting the steps right. Think about how you'd walk someone through this if they were sitting next to you.
-          </p>
-          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-4">
-            <div className="flex justify-end mb-2">
-              <CopyButton getText={() => `I want this tool to walk the user through a process, not just evaluate the output. Here's how I'd coach someone through this in person:\n\n[describe the steps you'd walk them through]\n\nDesign the interaction so the AI:\n- Takes it one step at a time (doesn't dump everything at once)\n- Asks the user to share their thinking before giving guidance\n- Explains the reasoning behind each step (so they learn, not just follow)\n- Checks in: "Does this make sense? Anything you'd push back on?"\n\nWrite this as part of the system prompt. The coaching should feel like a conversation, not a lecture.`} />
-            </div>
-            <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "I want this tool to walk the user through a process, not just evaluate the output. Here's how I'd coach someone through this in person:
+            <p className="text-stone-800 text-sm leading-relaxed mb-3">
+              Then run this loop 2-3 times:
             </p>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              <span className="bg-rose-200 px-1">[describe the steps you'd walk them through]</span>
-            </p>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              Design the interaction so the AI:
-            </p>
-            <ul className="text-stone-800 text-base font-mono leading-relaxed mt-1 list-disc list-inside">
-              <li>Takes it one step at a time (doesn't dump everything at once)</li>
-              <li>Asks the user to share their thinking before giving guidance</li>
-              <li>Explains the reasoning behind each step (so they learn, not just follow)</li>
-              <li>Checks in: "Does this make sense? Anything you'd push back on?"</li>
-            </ul>
-            <p className="text-stone-800 text-base font-mono leading-relaxed mt-3">
-              Write this as part of the system prompt. The coaching should feel like a conversation, not a lecture."
-            </p>
-          </div>
-          <p className="text-stone-800 text-sm leading-relaxed mb-6">
-            The test of a good coaching tool: if someone used it for six months and then lost access, would they still be better at the task than when they started?
-          </p>
-
-          {/* Generate the prompt */}
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Generate the updated system prompt</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Once you've aligned on the scope, criteria, and any coaching elements, ask the AI to write the system prompt:
-          </p>
-          <div className="bg-rose-50 border-l-4 border-rose-300 p-4 mb-4">
-            <div className="flex justify-end mb-2">
-              <CopyButton getText={() => `OK, now write the complete system prompt for this ${setup.toolName} based on everything we've discussed. Include all the criteria, the process steps, and any coaching elements we agreed on.`} />
-            </div>
-            <p className="text-stone-800 text-base font-mono leading-relaxed">
-              "OK, now write the complete system prompt for this {setup.toolName} based on everything we've discussed. Include all the criteria, the process steps, and any coaching elements we agreed on."
-            </p>
-          </div>
-
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Read it carefully. The golden rule still applies: could a person with limited context read this prompt, follow the instructions, and get a good output?
-          </p>
-
-          {/* Test it */}
-          <h4 className="text-lg font-bold text-stone-800 mb-2">Test it</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Same loop as Session 1: paste the new prompt into your {setup.toolName}'s instructions, test it on real work, and refine.
-          </p>
-          <div className="bg-stone-100 border border-stone-300 rounded-lg p-4 mb-4">
-            <ol className="text-stone-800 text-sm leading-relaxed space-y-1 list-decimal list-inside">
-              <li><strong>Paste</strong> the new system prompt into your {setup.toolName}'s instructions</li>
-              <li><strong>Test</strong> it with real work (or the same test input you used before, so you can compare)</li>
-              <li><strong>Calibrate:</strong> Is the feedback the same as what you'd give? If not, go back to your prompt-building conversation and tell it what's off</li>
-              <li><strong>Iterate</strong> until it feels right</li>
+            <ol className="text-stone-800 text-sm leading-relaxed space-y-3 list-decimal list-inside">
+              <li>Go to <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">A</span> <span className="text-blue-700 font-semibold">{setup.toolName} Editor</span> and copy the system prompt</li>
+              <li>Paste it into <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">C</span> <span className="text-emerald-700 font-semibold">Regular {platformLabels[platform]}</span> and say: "This is the system prompt for a {setup.toolName} I'm working on. It's not quite doing what I want. I'm going to test it and give you feedback, and I want you to rewrite the prompt to address my feedback."</li>
+              <li>Feed a real piece of work into <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">B</span> <span className="text-amber-700 font-semibold">Your {setup.toolName}</span></li>
+              <li>Read the output. What's right? What's off?</li>
+              <li>Go to <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">C</span> <span className="text-emerald-700 font-semibold">Regular {platformLabels[platform]}</span> and tell it what to fix. Voice-type your feedback, or rewrite the output yourself and paste both versions so it can see the gap.</li>
+              <li>Copy the revised prompt from <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">C</span> <span className="text-emerald-700 font-semibold">Regular {platformLabels[platform]}</span> into <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">A</span> <span className="text-blue-700 font-semibold">{setup.toolName} Editor</span></li>
+              <li>Test again in <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-600 text-white text-[10px] font-bold align-text-bottom mx-0.5">B</span> <span className="text-amber-700 font-semibold">Your {setup.toolName}</span>. Repeat.</li>
             </ol>
           </div>
 
@@ -444,34 +610,81 @@ const Session2: React.FC = () => {
                   Add to the end of the prompt: "When you have finished, stop. Do not continue unless the user asks."
                 </p>
               </div>
+              <div>
+                <p className="text-stone-800 text-sm font-bold mb-1">Your criteria use scores instead of pass/fail</p>
+                <p className="text-stone-600 text-sm leading-relaxed">
+                  AI gives inconsistent scores on subjective criteria - run the same input three times, get three different numbers. Convert to pass/fail. You don't care if something is a 7 or an 8. You care if it meets the bar.
+                </p>
+              </div>
             </div>
           </details>
-        </div>
+        </details>
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Part 4 */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-stone-800 mb-3">Part 4: Show and Tell</h3>
-          <p className="text-stone-500 text-sm font-medium mb-4">20-25 min</p>
+        {/* Part 4: Deploy It */}
+        <details className="mb-12" open>
+          <summary className="text-xl font-bold text-stone-800 mb-3 cursor-pointer hover:text-stone-600 transition-colors">Part 4: Deploy It <span className="text-stone-400 text-sm font-normal ml-2">15-20 min</span></summary>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            We'll hear from several people. For each one, we want to know:
+            Your tool doesn't matter until someone uses it. Start with one beta tester - ideally someone you can watch use it (a 1:1 is a great opportunity). Here's how to frame it.
           </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-            <li><strong>What does your tool do?</strong> One sentence.</li>
-            <li><strong>What changed from Session 1?</strong> Did the scope shift? Did the criteria get sharper? Did you add coaching?</li>
-            <li><strong>Show us.</strong> Run a real example through it and let us see the output.</li>
-          </ul>
-          <p className="text-stone-800 text-base leading-relaxed">
-            This is the most valuable part of the session. You'll see how other people approached the same challenges and pick up ideas you can apply to your own tool.
-          </p>
-        </div>
+
+          {/* Deploy slides */}
+          <div className="relative">
+            <div className="bg-white border-2 border-stone-300 rounded-lg p-6 min-h-[240px] flex flex-col">
+              <p className="text-lg font-bold text-stone-800 mb-2">
+                {deploySlides[currentDeploySlide].title}
+              </p>
+              <p className="text-stone-800 text-base leading-relaxed mb-4">
+                {deploySlides[currentDeploySlide].body}
+              </p>
+              <div className="bg-stone-50 border-l-4 border-stone-300 p-4 mt-auto">
+                <p className="text-stone-500 text-xs font-medium uppercase tracking-wide mb-1">Example</p>
+                <p className="text-stone-700 text-sm leading-relaxed italic">
+                  {deploySlides[currentDeploySlide].example}
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setCurrentDeploySlide((prev) => (prev === 0 ? deploySlides.length - 1 : prev - 1))}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-8 h-8 bg-white border-2 border-stone-300 rounded-full flex items-center justify-center text-stone-500 hover:text-stone-800 hover:border-stone-400 transition-colors"
+              aria-label="Previous slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setCurrentDeploySlide((prev) => (prev === deploySlides.length - 1 ? 0 : prev + 1))}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-8 h-8 bg-white border-2 border-stone-300 rounded-full flex items-center justify-center text-stone-500 hover:text-stone-800 hover:border-stone-400 transition-colors"
+              aria-label="Next slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="flex justify-center gap-2 mt-4">
+            {deploySlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentDeploySlide(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  currentDeploySlide === index ? 'bg-stone-800' : 'bg-stone-300 hover:bg-stone-400'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </details>
 
         <hr className="border-stone-300 mb-12" />
 
         {/* Quick Reference */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Quick Reference: Key Prompts</h2>
+        <details className="mb-12">
+          <summary className="text-2xl font-bold text-stone-800 mb-6 cursor-pointer hover:text-stone-600 transition-colors">Quick Reference: Key Prompts</summary>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
             All the key prompts from this session in one place, ready to copy.
           </p>
@@ -479,99 +692,52 @@ const Session2: React.FC = () => {
           <div className="space-y-4">
             <div className="bg-white border border-stone-300 rounded-lg p-4">
               <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Diagnose the real problem</p>
-                <CopyButton getText={() => `I built a ${setup.toolName} to help with [describe your tool]. Before I improve the prompt, I want to make sure I'm solving the right problem.\n\nThe problem I'm trying to solve: [describe it]\nWho uses it: [role]\nWhen they'd use it: [specific moment]\n\nHelp me pressure-test this. Is there an upstream problem I might be missing? Is there a deeper issue that, if I solved it, would make the surface-level problem go away? Ask me questions if you need more context.`} />
+                <p className="text-stone-800 text-sm font-bold mb-1">Rescope your tool</p>
+                <CopyButton getText={() => `I'm rebuilding a ${setup.toolName} I started last week. I want to start over with a clearer scope.\n\nThe problem this solves for the person using it: [describe the user's problem, not yours]\n\nWho will use it: [role/team]\n\nThey'd reach for it when: [specific trigger moment]\n\nWhat the tool needs to do:\n- [Does it evaluate something? What criteria?]\n- [Does it coach/teach? What skill or process?]\n- [Does it generate something? From what inputs?]\n\nWrite me a system prompt for this. Make any success criteria pass/fail, not scored.`} />
               </div>
-              <p className="text-stone-500 text-xs leading-relaxed">Check 1: make sure you're solving the right problem</p>
+              <p className="text-stone-500 text-xs leading-relaxed">If Part 1 changed your scope, start fresh with this</p>
             </div>
 
             <div className="bg-white border border-stone-300 rounded-lg p-4">
               <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Fix what's not working</p>
-                <CopyButton getText={() => `Here's the system prompt for a ${setup.toolName} I built last week:\n\n[paste your system prompt]\n\nI've been testing it and here's what's not working:\n- [specific issue 1]\n- [specific issue 2]\n\nDon't rewrite the whole thing. Diagnose what's causing each issue and propose targeted changes. For each change, explain what it fixes and why.`} />
+                <p className="text-stone-800 text-sm font-bold mb-1">Set up your prompt-building conversation</p>
+                <CopyButton getText={() => `This is the system prompt for a ${setup.toolName} I'm working on. It's not quite doing what I want. I'm going to test it and give you feedback, and I want you to rewrite the prompt to address my feedback.\n\n[paste your system prompt]`} />
               </div>
-              <p className="text-stone-500 text-xs leading-relaxed">Check 3: targeted fixes for output issues</p>
+              <p className="text-stone-500 text-xs leading-relaxed">Paste this into Window C to get started</p>
             </div>
 
             <div className="bg-white border border-stone-300 rounded-lg p-4">
               <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Raise the bar on a criterion</p>
-                <CopyButton getText={() => `The tool is being too lenient on [criterion]. It's passing work that I would push back on. What would you recommend if you were to raise the bar here? Be specific about what "passing" should actually require.`} />
+                <p className="text-stone-800 text-sm font-bold mb-1">Give feedback on the output (option 1: describe it)</p>
+                <CopyButton getText={() => `Here's the output my ${setup.toolName} gave:\n\n[paste the output]\n\nHere's what's off:\n- [specific issue 1]\n- [specific issue 2]\n\nUpdate the prompt to address these issues.`} />
               </div>
-              <p className="text-stone-500 text-xs leading-relaxed">When the tool is too easy on something specific</p>
+              <p className="text-stone-500 text-xs leading-relaxed">Tell Window C what's wrong and let it fix the prompt</p>
             </div>
 
             <div className="bg-white border border-stone-300 rounded-lg p-4">
               <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Rescope from scratch</p>
-                <CopyButton getText={() => `I'm rebuilding a ${setup.toolName} I started last week. I want to start over with a clearer scope.\n\nThe problem this solves for the person using it: [describe the user's problem, not yours]\n\nWho will use it: [role/team]\n\nThey'd reach for it when: [specific trigger moment]\n\nWhat the tool needs to do:\n- [Does it evaluate something? What criteria?]\n- [Does it coach/teach? What skill or process?]\n- [Does it generate something? From what inputs?]\n\nBased on this, propose 3-5 success criteria for the tool's output. Make them pass/fail, not scored. Then tell me what examples I could share that would help you refine these further.`} />
+                <p className="text-stone-800 text-sm font-bold mb-1">Give feedback on the output (option 2: show the diff)</p>
+                <CopyButton getText={() => `Here's what my ${setup.toolName} gave me:\n\n[paste the GPT's output]\n\nHere's what I would have said instead:\n\n[paste your rewritten version]\n\nUpdate the prompt to close the gap between these two.`} />
               </div>
-              <p className="text-stone-500 text-xs leading-relaxed">Start over with clearer scope and user framing</p>
+              <p className="text-stone-500 text-xs leading-relaxed">Rewrite the output yourself and let Window C learn from the difference</p>
             </div>
 
             <div className="bg-white border border-stone-300 rounded-lg p-4">
               <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Pressure-test criteria</p>
-                <CopyButton getText={() => `Let's pressure-test the success criteria. For each criterion, I want you to:\n1. Give me a specific example of work that would PASS\n2. Give me a specific example of work that would FAIL\n3. Identify any gray areas where it's ambiguous whether something passes\n\nThen tell me: are these criteria specific enough that two different people would agree on pass/fail for the same piece of work?`} />
-              </div>
-              <p className="text-stone-500 text-xs leading-relaxed">Force the AI to show you the edges of your criteria</p>
-            </div>
-
-            <div className="bg-white border border-stone-300 rounded-lg p-4">
-              <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Add coaching</p>
-                <CopyButton getText={() => `I want this tool to walk the user through a process, not just evaluate the output. Here's how I'd coach someone through this in person:\n\n[describe the steps you'd walk them through]\n\nDesign the interaction so the AI:\n- Takes it one step at a time (doesn't dump everything at once)\n- Asks the user to share their thinking before giving guidance\n- Explains the reasoning behind each step (so they learn, not just follow)\n- Checks in: "Does this make sense? Anything you'd push back on?"\n\nWrite this as part of the system prompt. The coaching should feel like a conversation, not a lecture.`} />
-              </div>
-              <p className="text-stone-500 text-xs leading-relaxed">Design a step-by-step coaching interaction</p>
-            </div>
-
-            <div className="bg-white border border-stone-300 rounded-lg p-4">
-              <div className="flex items-start justify-between">
-                <p className="text-stone-800 text-sm font-bold mb-1">Generate system prompt</p>
+                <p className="text-stone-800 text-sm font-bold mb-1">Generate a fresh system prompt</p>
                 <CopyButton getText={() => `OK, now write the complete system prompt for this ${setup.toolName} based on everything we've discussed. Include all the criteria, the process steps, and any coaching elements we agreed on.`} />
               </div>
-              <p className="text-stone-500 text-xs leading-relaxed">Once you're aligned, get the final prompt</p>
+              <p className="text-stone-500 text-xs leading-relaxed">When you've iterated enough and want a clean version</p>
             </div>
           </div>
-        </div>
+        </details>
 
-        <hr className="border-stone-300 mb-12" />
-
-        {/* FAQ */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">FAQ</h2>
-
-          <h4 className="text-base font-bold text-stone-800 mb-2">My tool from Session 1 works fine. Do I need to change it?</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-6">
-            If it genuinely works - meaning you've tested it on real work and the feedback matches what you'd give - then don't fix what isn't broken. Use the time to add a coaching element, pressure-test the criteria, or start a second tool. The skills in this session (diagnosing problems, flipping the perspective, thinking about tool parts) are useful regardless.
-          </p>
-
-          <h4 className="text-base font-bold text-stone-800 mb-2">Should I start over or try to fix my existing prompt?</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-6">
-            If the scope is wrong (you're solving the wrong problem), start over. If the scope is right but the execution is off (criteria too vague, tone wrong, missing steps), fix it. The "improve existing" prompt above is designed for the second case - it tells the AI to make targeted changes instead of rewriting everything.
-          </p>
-
-          <h4 className="text-base font-bold text-stone-800 mb-2">How do I know if I have a coaching tool or an evaluator tool?</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-6">
-            You probably have both. Most good tools do. The question isn't "which type is it?" but "what parts does it need?" An email reviewer might evaluate against criteria and then teach the person how to fix the biggest issue. A meeting prep tool might walk you through an agenda-building process and then evaluate whether the agenda is solid. Think in terms of parts, not categories.
-          </p>
-
-          <h4 className="text-base font-bold text-stone-800 mb-2">The tool gives different feedback every time I run it on the same input.</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-6">
-            That's normal - AI is non-deterministic. This is why we use pass/fail instead of scores. The pass/fail judgment should be consistent even if the exact wording changes. If it's passing something one time and failing it the next, the criteria aren't specific enough. Use the "pressure-test criteria" prompt to tighten them up.
-          </p>
-
-          <h4 className="text-base font-bold text-stone-800 mb-2">Can I share my {setup.toolName} with my team now?</h4>
-          <p className="text-stone-800 text-base leading-relaxed mb-6">
-            Share it with one person first - your beta tester. Watch them use it if you can (in a 1:1 is a great opportunity). Look for: are they confused by it? Is the feedback helpful? Do they actually use it again? Once one person validates it, expand from there. We'll talk more about rolling tools out to teams in Week 3.
-          </p>
-        </div>
 
         <hr className="border-stone-300 mb-12" />
 
         {/* Before Next Session */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Before Next Session</h2>
+        <details className="mb-16" open>
+          <summary className="text-2xl font-bold text-stone-800 mb-4 cursor-pointer hover:text-stone-600 transition-colors">Before Next Session</summary>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
             <strong>Keep using your tool.</strong> The more you use it on real work, the more you'll discover what to improve. Each round of testing makes it sharper.
           </p>
@@ -584,6 +750,40 @@ const Session2: React.FC = () => {
           <p className="text-stone-800 text-base leading-relaxed">
             <strong>Post your updated prompt on the Maven portal</strong> so the group can see how it evolved.
           </p>
+        </details>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Feedback CTA */}
+        <div className="mb-16 bg-white border-2 border-stone-300 rounded-lg p-8">
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="flex-shrink-0">
+              <div className="w-48 h-64 rounded-lg rotate-[-2deg] overflow-hidden">
+                <img
+                  src="/liberty-hilary.jpg"
+                  alt="Little Hilary dressed as the Statue of Liberty"
+                  className="w-full h-full object-cover object-[50%_20%]"
+                />
+              </div>
+            </div>
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold text-stone-800 mb-2">This is Give-Me-Your-Feedback Hilary.</h2>
+              <p className="text-stone-600 text-base leading-relaxed mb-3">
+                She's lifting her lamp beside the golden door of continuous improvement, and also she wants to know how this week went.
+              </p>
+              <p className="text-stone-600 text-base leading-relaxed mb-4">
+                Your feedback shapes next week's session + any bonus material I add. It takes 2 minutes.
+              </p>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSc0R_h_MGtBnRPuWAfjGeP_gqp4fwgS-nkymbpABvqbcg9xVw/viewform?usp=sharing&ouid=100440248598657496855"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-3 bg-stone-800 text-white font-semibold rounded-lg hover:bg-stone-700 transition-colors"
+              >
+                Give your tired, your poor feedback
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

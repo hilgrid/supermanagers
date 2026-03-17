@@ -3,6 +3,24 @@ import { Link } from 'react-router-dom';
 
 const Resources: React.FC = () => {
   const [filter, setFilter] = useState('');
+  const [requestStatus, setRequestStatus] = useState<'idle' | 'form' | 'sending' | 'sent'>('idle');
+  const [requestName, setRequestName] = useState('');
+  const [requestContext, setRequestContext] = useState('');
+  const [requestQuestion, setRequestQuestion] = useState('');
+
+  const handleSubmitRequest = async () => {
+    setRequestStatus('sending');
+    try {
+      await fetch('/api/resource-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ term: filter, name: requestName, context: requestContext, question: requestQuestion }),
+      });
+      setRequestStatus('sent');
+    } catch {
+      setRequestStatus('form');
+    }
+  };
 
   const cheatSheet = [
     {
@@ -26,51 +44,58 @@ const Resources: React.FC = () => {
   const tools = [
     {
       name: 'ChatGPT',
-      what: 'OpenAI\'s AI chat interface. The most popular consumer AI tool.',
-      why: 'Custom GPTs let you save a system prompt as a reusable tool with its own link.',
+      what: 'OpenAI\'s AI chat interface. The most popular consumer AI tool. Custom GPTs let you save a system prompt as a reusable tool with its own link.',
       need: 'Yes — if you\'re building Custom GPTs, you need a Plus ($20/mo) or Team plan.',
     },
     {
       name: 'Claude',
-      what: 'Anthropic\'s AI assistant. Known for strong writing and long-context understanding.',
-      why: 'Projects let you save instructions and reference documents in a reusable workspace. Tends to be less sycophantic than ChatGPT.',
-      need: 'Worth trying alongside ChatGPT. Pro plan is $20/mo. Some people prefer Claude\'s tone and writing quality.',
+      what: 'Anthropic\'s AI assistant. Known for strong writing and long-context understanding. Projects let you save instructions and reference documents in a reusable workspace.',
+      need: 'Worth trying alongside ChatGPT. Pro plan is $20/mo.',
     },
     {
       name: 'Gemini',
-      what: 'Google\'s AI assistant. Integrated with Google Workspace.',
-      why: 'Gems are the equivalent of Custom GPTs. Deep integration with Google Docs, Sheets, etc.',
+      what: 'Google\'s AI assistant. Integrated with Google Workspace — can read your Gmail, Calendar, and Drive. Gems are the equivalent of Custom GPTs.',
       need: 'If your company is on Google Workspace, this may be the path of least resistance.',
     },
     {
       name: 'Microsoft Copilot',
-      what: 'Microsoft\'s AI assistant. Integrated with Office 365.',
-      why: 'Copilot GPTs work like Custom GPTs. Built into the tools your company may already use.',
+      what: 'Microsoft\'s AI assistant. Integrated with Office 365, Outlook, and Teams. Copilot GPTs work like Custom GPTs.',
       need: 'If your org is on Microsoft 365, you may already have access.',
     },
     {
+      name: 'Google AI Studio',
+      what: 'Google\'s developer-facing AI tool. More powerful and flexible than Gemini — longer context windows, ability to upload large files, and access to the latest models. Can also be used to build and test apps.',
+      need: 'Free to use. Worth knowing about if you want more control than Gemini gives you, or if you\'re building something more complex.',
+    },
+    {
+      name: 'Granola',
+      what: 'An AI note-taker that sits on top of your meetings. It listens to the audio and combines what it hears with any notes you type to produce structured meeting notes.',
+      need: 'Not required for the course, but very useful if you take a lot of meetings. Works on Mac and Windows.',
+    },
+    {
       name: 'Wispr Flow',
-      what: 'A voice dictation tool that works anywhere on your computer — any text field, any app.',
-      why: 'You talk, it types. Much faster than typing for first drafts, emails, prompt writing. It cleans up filler words and false starts automatically.',
+      what: 'A voice dictation tool that works anywhere on your computer — any text field, any app. You talk, it types. Cleans up filler words and false starts automatically.',
       need: 'Not required, but once you try it you won\'t go back. Great for people who think better out loud. Mac only for now.',
     },
     {
       name: 'Claude Code',
-      what: 'A command-line tool from Anthropic that lets you use Claude to build software by describing what you want in plain English.',
-      why: 'This is what "vibe coding" looks like in practice — you describe what you want, and it writes and runs the code. No IDE or coding knowledge required.',
-      need: 'Only if you\'re interested in building apps or automations beyond what a Custom GPT can do. Covered in Week 3+.',
+      what: 'A terminal-based AI tool from Anthropic. It can write code, but its real power is that it can access your local files and control your computer. That means it can read, write, and organize documents, manage your calendar, process emails, and automate workflows — not just build software.',
+      need: 'Covered in Weeks 3-4. Steeper learning curve than chat-based tools, but the most flexible option for building systems around your actual work.',
     },
     {
       name: 'Cursor',
-      what: 'An AI-powered code editor. Like VS Code but with AI built in.',
-      why: 'Another vibe coding tool. More visual than Claude Code — you can see the files and code as it writes them.',
-      need: 'Same as Claude Code — only if you want to build beyond chat. Some people prefer this to Claude Code because it\'s more visual.',
+      what: 'An AI-powered editor. Like Claude Code, it can write code and work with files on your computer, but with a more visual interface — you can see files and changes as they happen. Useful for both building software and managing knowledge work.',
+      need: 'Same use cases as Claude Code. Some people prefer the visual interface.',
     },
     {
-      name: 'Lovable / Replit',
-      what: 'Browser-based tools that let you build apps by chatting with AI. No install required.',
-      why: 'The lowest-friction way to go from idea to working app. Everything runs in your browser.',
-      need: 'Good option if you don\'t want to install anything. More limited than Claude Code or Cursor for complex projects.',
+      name: 'Lovable',
+      what: 'A browser-based tool that lets you build apps by chatting with AI. No install required — everything runs in your browser. Describe what you want and it builds a working app.',
+      need: 'The lowest-friction way to go from idea to working app. Good for prototyping and building team tools quickly.',
+    },
+    {
+      name: 'Replit',
+      what: 'A browser-based development environment with AI built in. Similar to Lovable but with more control over the code and deployment. Also supports backend logic and databases.',
+      need: 'Good option if you want more control than Lovable offers, or if your app needs to store data or connect to other services.',
     },
   ];
 
@@ -123,6 +148,10 @@ const Resources: React.FC = () => {
       term: 'Temperature',
       definition: 'A setting that controls how "creative" vs. "predictable" the AI\'s responses are. Higher temperature = more varied and surprising. Lower temperature = more consistent and focused. Most chat tools set this for you.',
     },
+    {
+      term: 'MCP (Model Context Protocol)',
+      definition: 'A standard that lets AI tools connect to external services — your calendar, email, databases, APIs, etc. Instead of copying and pasting information into a chat, MCP lets the AI pull it in directly. Think of it as giving the AI permission to look things up on its own.',
+    },
   ];
 
   const lowerFilter = filter.toLowerCase();
@@ -159,12 +188,12 @@ const Resources: React.FC = () => {
       style={{ backgroundColor: '#faf8f5' }}
     >
       <div className="max-w-2xl mx-auto px-4 py-12">
-        <Link
-          to="/"
+        <button
+          onClick={() => window.history.back()}
           className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors"
         >
           &larr; Back
-        </Link>
+        </button>
 
         <div className="mt-8 mb-8">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
@@ -181,31 +210,10 @@ const Resources: React.FC = () => {
             type="text"
             placeholder="Search for a tool or term..."
             value={filter}
-            onChange={(e) => setFilter(e.target.value)}
+            onChange={(e) => { setFilter(e.target.value); setRequestStatus('idle'); setRequestName(''); setRequestContext(''); setRequestQuestion(''); }}
             className="w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-stone-800 text-base placeholder:text-stone-400 focus:outline-none focus:border-stone-500 focus:ring-1 focus:ring-stone-500"
           />
         </div>
-
-        {/* Cheat Sheet */}
-        {showCheatSheet && filteredCheatSheet.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-stone-800 mb-6">
-              Cheat Sheet
-            </h2>
-            <div className="space-y-4">
-              {filteredCheatSheet.map((item, i) => (
-                <div key={i} className="bg-white border border-stone-300 rounded-lg p-4">
-                  <p className="text-stone-800 text-base font-bold mb-1">
-                    {item.title}
-                  </p>
-                  <p className="text-stone-700 text-base leading-relaxed">
-                    {item.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Tools */}
         {filteredTools.length > 0 && (
@@ -219,9 +227,6 @@ const Resources: React.FC = () => {
                   </h3>
                   <p className="text-stone-800 text-base leading-relaxed mb-1">
                     <strong>What it is:</strong> {tool.what}
-                  </p>
-                  <p className="text-stone-800 text-base leading-relaxed mb-1">
-                    <strong>Why people like it:</strong> {tool.why}
                   </p>
                   <p className="text-stone-800 text-base leading-relaxed">
                     <strong>Do you need it?</strong> {tool.need}
@@ -252,14 +257,87 @@ const Resources: React.FC = () => {
           </div>
         )}
 
+        {/* Cheat Sheet */}
+        {showCheatSheet && filteredCheatSheet.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-stone-800 mb-6">
+              Cheat Sheet
+            </h2>
+            <div className="space-y-4">
+              {filteredCheatSheet.map((item, i) => (
+                <div key={i} className="bg-white border border-stone-300 rounded-lg p-4">
+                  <p className="text-stone-800 text-base font-bold mb-1">
+                    {item.title}
+                  </p>
+                  <p className="text-stone-700 text-base leading-relaxed">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* No results */}
         {filter &&
           filteredCheatSheet.length === 0 &&
           filteredTools.length === 0 &&
           filteredGlossary.length === 0 && (
-            <p className="text-stone-500 text-base">
-              No results for "{filter}." Try a different search term.
-            </p>
+            <div className="py-8">
+              <p className="text-stone-500 text-base mb-4">
+                No results for "{filter}."
+              </p>
+              {requestStatus === 'sent' ? (
+                <p className="text-stone-600 text-base font-medium">Sent! Hilary will take a look.</p>
+              ) : requestStatus === 'form' || requestStatus === 'sending' ? (
+                <div className="max-w-md mx-auto text-left space-y-3">
+                  <div>
+                    <label className="block text-stone-700 text-sm font-medium mb-1">Your name</label>
+                    <input
+                      type="text"
+                      value={requestName}
+                      onChange={(e) => setRequestName(e.target.value)}
+                      placeholder="Optional"
+                      className="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-500 focus:ring-1 focus:ring-stone-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-stone-700 text-sm font-medium mb-1">Where did this come up?</label>
+                    <input
+                      type="text"
+                      value={requestContext}
+                      onChange={(e) => setRequestContext(e.target.value)}
+                      placeholder="Optional - e.g. &quot;a colleague mentioned it&quot;"
+                      className="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-500 focus:ring-1 focus:ring-stone-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-stone-700 text-sm font-medium mb-1">Got a specific question?</label>
+                    <input
+                      type="text"
+                      value={requestQuestion}
+                      onChange={(e) => setRequestQuestion(e.target.value)}
+                      placeholder="Optional"
+                      className="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm placeholder:text-stone-400 focus:outline-none focus:border-stone-500 focus:ring-1 focus:ring-stone-500"
+                    />
+                  </div>
+                  <button
+                    onClick={handleSubmitRequest}
+                    disabled={requestStatus === 'sending'}
+                    className="w-full px-4 py-2 text-sm font-medium text-white bg-stone-800 rounded-lg hover:bg-stone-700 transition-colors disabled:opacity-50"
+                  >
+                    {requestStatus === 'sending' ? 'Sending...' : 'Send request'}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setRequestStatus('form')}
+                  className="px-4 py-2 text-sm font-medium text-stone-800 bg-white border border-stone-300 rounded-lg hover:bg-stone-50 transition-colors"
+                >
+                  Ask Hilary to add this
+                </button>
+              )}
+            </div>
           )}
       </div>
     </section>
