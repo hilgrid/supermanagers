@@ -888,6 +888,22 @@ const Session3: React.FC = () => {
               </div>
             </details>
 
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              When you paste the prompt and attach the evaluator file, Lovable will ask you to "Enable Cloud" - this is what lets it connect to AI models and a backend. Click <strong>Allow</strong>. It's free to start.
+            </p>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Here's what that looks like
+              </summary>
+              <div className="p-4">
+                <ClickableImage src="/lovable-enable-cloud.png" alt="Lovable Enable Cloud prompt" className="rounded-lg border border-stone-200 w-full" />
+                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                  You'll see the prompt you pasted, the .md file you attached, and then this "Enable Cloud" dialog. Just click Allow and let it set everything up.
+                </p>
+              </div>
+            </details>
+
             <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
               <p className="text-stone-700 text-sm leading-relaxed">
                 <strong>You don't need to do this today.</strong> Your deployed page is already useful without it. But this is the jump - from a tool that works to a tool people actually use consistently, because there's no friction.
