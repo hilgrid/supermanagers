@@ -303,8 +303,8 @@ const Session3: React.FC = () => {
             <li><a href="#step3" className="hover:text-stone-800 hover:underline">Write the Spec</a></li>
             <li><a href="#step4" className="hover:text-stone-800 hover:underline">Build It</a></li>
             <li><a href="#step5" className="hover:text-stone-800 hover:underline">Refine Layout and Functionality</a></li>
-            <li><a href="#step6" className="hover:text-stone-800 hover:underline">Connect Google</a></li>
-            <li><a href="#step7" className="hover:text-stone-800 hover:underline">Polish the Whole Thing</a></li>
+            <li><a href="#step6" className="hover:text-stone-800 hover:underline">Set the Visual Style</a></li>
+            <li><a href="#step7" className="hover:text-stone-800 hover:underline">Connect Google</a></li>
             <li><a href="#step8" className="hover:text-stone-800 hover:underline">Deploy</a></li>
           </ol>
           <div className="border-t border-stone-200 pt-4">
@@ -641,58 +641,9 @@ const Session3: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Step 6: Connect Google */}
+        {/* Step 6: Set the Visual Style */}
         <div id="step6" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 6: Connect Google</h2>
-
-          <p className="text-stone-700 text-sm leading-relaxed mb-6">
-            Now that the page works, connect it to Google so the tracker actually saves data.
-          </p>
-
-          <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <div className="space-y-6">
-              {/* Google Sheet setup */}
-              <div>
-                <p className="text-stone-800 text-sm font-bold mb-2">1. Create a Google Sheet</p>
-                <ul className="text-stone-700 text-sm leading-relaxed space-y-1.5 list-disc list-inside">
-                  <li>New sheet, add these column headers in Row 1: <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">Name | Date | Feedback | Original Deck | Revised Deck | Notes</code></li>
-                  <li>Make the sheet accessible via link (Share &gt; Anyone with the link &gt; Editor)</li>
-                  <li>Copy the sheet URL</li>
-                </ul>
-              </div>
-
-              {/* Connect form */}
-              <div>
-                <p className="text-stone-800 text-sm font-bold mb-2">2. Connect the form to the sheet</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
-                  Tell Lovable: "When someone submits the Track Your Progress form, save all the form data to this Google Sheet: [paste your sheet URL]"
-                </p>
-              </div>
-
-              {/* Drive picker */}
-              <div>
-                <p className="text-stone-800 text-sm font-bold mb-2">3. Connect the Google Drive file picker</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
-                  Tell Lovable: "The 'Add your original deck' and 'Add your revised deck' fields should use a Google Drive file picker so people can select files from their Drive instead of uploading from their computer."
-                </p>
-              </div>
-
-              {/* Test */}
-              <div>
-                <p className="text-stone-800 text-sm font-bold mb-2">4. Test it</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
-                  Submit a dummy entry and check that it shows up in your Google Sheet. If the connection isn't working, tell Lovable: "The form isn't saving to the Google Sheet. Can you walk me through how to connect them?"
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Step 7: Polish the Whole Thing */}
-        <div id="step7" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 7: Polish the Whole Thing</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 6: Set the Visual Style</h2>
 
           <p className="text-stone-700 text-sm leading-relaxed mb-6">
             Step back and look at the full page. Everything works - now make it feel like a real tool, not a prototype.
@@ -780,6 +731,48 @@ const Session3: React.FC = () => {
                 <strong>Layout:</strong> "The page feels too long. Can you make the reference section collapsed by default so people see the feedback section right away?"
               </li>
             </ul>
+          </div>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Step 7: Connect Google */}
+        <div id="step7" className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 7: Connect Google</h2>
+
+          <p className="text-stone-700 text-sm leading-relaxed mb-6">
+            Now connect it to Google so the tracker actually saves data.
+          </p>
+
+          <div className="bg-white border border-stone-200 rounded-lg p-5">
+            <div className="space-y-6">
+              <div>
+                <p className="text-stone-800 text-sm font-bold mb-2">1. Create a Google Sheet</p>
+                <ul className="text-stone-700 text-sm leading-relaxed space-y-1.5 list-disc list-inside">
+                  <li>New sheet, add these column headers in Row 1: <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">Name | Date | Feedback | Original Deck | Revised Deck | Notes</code></li>
+                  <li>Make the sheet accessible via link (Share &gt; Anyone with the link &gt; Editor)</li>
+                  <li>Copy the sheet URL</li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-stone-800 text-sm font-bold mb-2">2. Connect the form to the sheet</p>
+                <p className="text-stone-700 text-sm leading-relaxed">
+                  Tell Lovable: "When someone submits the Track Your Progress form, save all the form data to this Google Sheet: [paste your sheet URL]"
+                </p>
+              </div>
+              <div>
+                <p className="text-stone-800 text-sm font-bold mb-2">3. Connect the Google Drive file picker</p>
+                <p className="text-stone-700 text-sm leading-relaxed">
+                  Tell Lovable: "The 'Add your original deck' and 'Add your revised deck' fields should use a Google Drive file picker so people can select files from their Drive instead of uploading from their computer."
+                </p>
+              </div>
+              <div>
+                <p className="text-stone-800 text-sm font-bold mb-2">4. Test it</p>
+                <p className="text-stone-700 text-sm leading-relaxed">
+                  Submit a dummy entry and check that it shows up in your Google Sheet. If the connection isn't working, tell Lovable: "The form isn't saving to the Google Sheet. Can you walk me through how to connect them?"
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
