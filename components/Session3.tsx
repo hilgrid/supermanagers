@@ -370,7 +370,6 @@ const Session3: React.FC = () => {
         <div className="mb-8 bg-white border border-stone-200 rounded-lg p-5">
           <p className="text-sm font-bold text-stone-800 mb-3">Today's agenda</p>
           <ol className="text-sm text-stone-600 space-y-1.5 list-decimal list-inside mb-4">
-            <li><a href="#step1" className="hover:text-stone-800 hover:underline">See the Finished Version</a> <span className="text-stone-400">- Hilary demos</span></li>
             <li><a href="#step2" className="hover:text-stone-800 hover:underline">Try the Unspecified Version</a></li>
             <li><a href="#step3" className="hover:text-stone-800 hover:underline">Write the Spec</a></li>
             <li><a href="#step4" className="hover:text-stone-800 hover:underline">Build It</a></li>
@@ -417,39 +416,9 @@ const Session3: React.FC = () => {
           </div>
         </div>
 
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Before You Start */}
-        <div id="before-you-start" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Before You Start</h2>
-
-          <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <p className="text-stone-800 text-sm font-bold mb-3">You'll need:</p>
-            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
-              <li>A free Lovable account (sign up at <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">lovable.dev</a>)</li>
-              <li>Access to the Slide Evaluator Custom GPT (<a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">use it here</a>)</li>
-            </ul>
-          </div>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Step 1: See the Finished Version */}
-        <div id="step1" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 1: See the Finished Version</h2>
-
-          <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              Hilary demos a fully working version of what you're building today. This is the end state - watch what it does:
-            </p>
-            <ol className="text-stone-700 text-sm leading-relaxed space-y-3 list-decimal list-inside">
-              <li><strong>Reference section</strong> - Good vs. bad slide examples, side by side, with breakdowns and a checklist</li>
-              <li><strong>Feedback section</strong> - Upload a slide, get pass/fail feedback against the criteria right on the page (this version uses an API connection - yours will link to a Custom GPT instead, which we'll talk about)</li>
-              <li><strong>Progress tracker</strong> - Every evaluation gets logged to a Google Sheet. As a manager, you can see who's using the tool, what feedback they're getting, and whether slides are improving over time</li>
-            </ol>
             <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mt-4">
               <p className="text-stone-700 text-sm leading-relaxed">
-                This is where you're headed. By the end of today, you'll have a working version built and deployed as a live URL.
+                <strong>To follow along, you'll need:</strong> A free <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Lovable</a> account and access to the <a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Slide Evaluator Custom GPT</a>.
               </p>
             </div>
           </div>
