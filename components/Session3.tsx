@@ -336,7 +336,7 @@ const Session3: React.FC = () => {
           </ol>
           <div className="border-t border-stone-200 pt-4">
             <p className="text-sm text-stone-500 leading-relaxed">
-              <span className="font-bold text-stone-700">Going further:</span> <a href="#going-further" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Remove the copy-paste</a> (API connection instructions) &middot; <a href="#homework" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Homework</a>
+              <span className="font-bold text-stone-700">Going further:</span> <a href="#going-further" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Make it a self-contained tool</a> (API connection instructions) &middot; <a href="#homework" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Homework</a>
             </p>
           </div>
         </div>
@@ -858,14 +858,14 @@ const Session3: React.FC = () => {
 
         {/* Going Further */}
         <div id="going-further" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Going Further: Remove the Copy-Paste</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Going Further: Make It a Self-Contained Tool</h2>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              The version you just built works. But you probably noticed the friction in Section 2 - you have to leave your page, go to the Custom GPT, get feedback, come back, and paste it in. Your team will do this once. Maybe twice. Then they'll stop.
+              The version you just built works. But you probably noticed the friction - you have to leave your page, go to the Custom GPT, get feedback, come back, and paste it in. Your team will do this once. Maybe twice. Then they'll stop.
             </p>
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              The fix: connect an AI API directly to your page so the feedback happens inline. No copy-paste, no switching tabs. Upload a slide, get feedback right on the page, and it all gets logged automatically.
+              The fix: connect an AI API directly to your page so the feedback happens inline. Upload a deck, get feedback right on the page, and it all gets logged automatically. No external tools, no copy-paste, no switching tabs. One page does everything.
             </p>
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
               This requires a paid API key (Claude or OpenAI - a few dollars for light usage). Lovable walks you through the setup. Here's what to tell it:
@@ -910,7 +910,26 @@ const Session3: React.FC = () => {
               </div>
             </details>
 
-            <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
+            <div className="mt-6 pt-6 border-t border-stone-200">
+              <p className="text-stone-800 text-sm font-bold mb-3">Expect to troubleshoot</p>
+              <p className="text-stone-700 text-sm leading-relaxed mb-4">
+                This is more technical than the rest of the session, and things will break. The same approach works here as it did in Step 7: just describe what's happening and ask for help. You don't need to understand the error message - just paste it in.
+              </p>
+
+              <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+                <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                  Example: debugging an API error
+                </summary>
+                <div className="p-4">
+                  <ClickableImage src="/troubleshoot-api.png" alt="Troubleshooting an API error in Lovable" className="rounded-lg border border-stone-200 w-full" />
+                  <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                    "I'm getting a 'Maximum call stack size exceeded' error" - that's all you need to say. Lovable identified the problem, fixed it, and told you to try again. You never had to read or understand the code.
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mt-4">
               <p className="text-stone-700 text-sm leading-relaxed">
                 <strong>You don't need to do this today.</strong> Your deployed page is already useful without it. But this is the jump - from a tool that works to a tool people actually use consistently, because there's no friction.
               </p>
