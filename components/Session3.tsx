@@ -726,6 +726,22 @@ const Session3: React.FC = () => {
             </details>
           </div>
 
+          <div className="bg-white border border-stone-200 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-sm font-bold mb-3">Keep iterating</p>
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">
+              You'll probably go back and forth a few times. That's normal - this is the same iterative process as refining a Custom GPT prompt. Here's an example of a follow-up after the brand was applied but the slide examples still didn't look right:
+            </p>
+            <div className="relative bg-stone-50 rounded-lg border border-stone-200 p-4 mb-4">
+              <div className="flex justify-end mb-2">
+                <CopyButton getText={() => `This still looks bad. These should both look like real slides, not weird mockups with placeholder. Also the colors don't fit the overall brand aesthetic. Make this look professional and actually useful for people trying to improve their slides.`} />
+              </div>
+              <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{`This still looks bad. These should both look like real slides, not weird mockups with placeholder. Also the colors don't fit the overall brand aesthetic. Make this look professional and actually useful for people trying to improve their slides.`}</pre>
+            </div>
+            <p className="text-stone-700 text-sm leading-relaxed">
+              Don't be afraid to be blunt. "This still looks bad" is more useful than "could you maybe adjust the examples slightly?" You're not hurting its feelings. Be specific about what's wrong and direct about what you want.
+            </p>
+          </div>
+
           <div className="bg-white border border-stone-200 rounded-lg p-5">
             <p className="text-stone-800 text-sm font-bold mb-3">Other polish</p>
             <ul className="text-stone-700 text-sm leading-relaxed space-y-4">
