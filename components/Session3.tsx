@@ -894,9 +894,9 @@ const Session3: React.FC = () => {
             </details>
 
             <div className="mt-6 pt-6 border-t border-stone-200">
-              <p className="text-stone-800 text-sm font-bold mb-3">When things don't work (they won't on the first try)</p>
+              <p className="text-stone-800 text-sm font-bold mb-3">What to do if you run into errors</p>
               <p className="text-stone-700 text-sm leading-relaxed mb-3">
-                You will hit errors during this step. That's normal. The trick is: just tell Lovable what you're seeing and ask for help. Screenshot the error, paste it in, and say what happened. You don't need to understand the error - just show it.
+                If something doesn't work, just tell Lovable what you're seeing and ask for help. Screenshot the error, paste it in, and say what happened. You don't need to understand the error - just show it.
               </p>
               <p className="text-stone-700 text-sm leading-relaxed mb-4">
                 Here's what real troubleshooting looks like:
