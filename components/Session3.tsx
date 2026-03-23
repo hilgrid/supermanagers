@@ -358,6 +358,18 @@ const Session3: React.FC = () => {
               <li><strong><a href="https://deck-doctor-lite.lovable.app" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Doctor Lite</a></strong> - The version everyone builds during the session. Links to a Custom GPT for feedback, with a manual progress tracker.</li>
               <li><strong><a href="https://deck-chef.lovable.app/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Chef</a></strong> - The upgraded version with AI built in. Feedback happens right on the page and gets logged to the <a href="https://docs.google.com/spreadsheets/d/1NBwcOnmNkt2o5QBRPABIu6jWELZRCgYzfMA7Q_dD0l8/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Google Sheet</a> automatically. Try uploading a deck and check the sheet to see it appear.</li>
             </ul>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden mt-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Here's what Deck Chef looks like after a deck has been submitted
+              </summary>
+              <div className="p-4">
+                <ClickableImage src="/deck-chef-submitted.png" alt="Deck Chef with submitted deck feedback" className="rounded-lg border border-stone-200 w-full" />
+                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                  The tool evaluated the deck against all five criteria, showed pass/fail for each one with specific feedback, and logged everything to the <a href="https://docs.google.com/spreadsheets/d/1NBwcOnmNkt2o5QBRPABIu6jWELZRCgYzfMA7Q_dD0l8/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Google Sheet</a>. Try it yourself at <a href="https://deck-chef.lovable.app/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">deck-chef.lovable.app</a>.
+                </p>
+              </div>
+            </details>
           </div>
         </div>
 
