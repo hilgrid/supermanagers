@@ -415,37 +415,13 @@ const Session3: React.FC = () => {
               <li>Let it generate. Look at what you got.</li>
             </ol>
 
-            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
-              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
-                Here's what that looks like in Lovable
-              </summary>
-              <div className="p-4">
-                <ClickableImage src="/lovable-unspecified-prompt.png" alt="Typing a vague prompt in Lovable" className="rounded-lg border border-stone-200 w-full" />
-                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
-                  Just a one-liner. No criteria, no structure, no specifics about your team's problems. Let's see what comes back.
-                </p>
-              </div>
-            </details>
-
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              It probably made a generic tips page - "use less text," "pick a good font," "tell a story with data." Looks fine. Totally useless. Nothing specific to your team's actual problems. No way to get feedback. No way to track progress.
+              Here's what that produces: <strong><a href="https://unspecified-deck-chef.lovable.app/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Unspecified Deck Chef</a></strong> - click through and look at it.
             </p>
 
-            <details className="border border-stone-300 rounded-lg overflow-hidden">
-              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
-                Here's what the unspecified version looked like (click to expand)
-              </summary>
-              <div className="px-4 py-4">
-                <img
-                  src="/unspecified-version.png"
-                  alt="Screenshot of the unspecified version - a generic slide tips page"
-                  className="w-full rounded-lg border border-stone-200 mb-3"
-                />
-                <p className="text-stone-600 text-sm leading-relaxed">
-                  Looks polished. "Nine Rules to Live By," typography advice, color palette tips. But would your team learn anything from this they couldn't Google in 30 seconds? There's nothing here about your standards, your criteria, or your team's specific problems. And there's no way to get feedback or track progress. It's a poster, not a tool.
-                </p>
-              </div>
-            </details>
+            <p className="text-stone-700 text-sm leading-relaxed">
+              It probably made a generic tips page - "use less text," "pick a good font," "tell a story with data." Looks polished. Totally useless. Nothing specific to your team's actual problems. No way to get feedback. No way to track progress. It's a poster, not a tool.
+            </p>
 
             <p className="text-stone-700 text-sm leading-relaxed mt-4">
               This is the same lesson from Sessions 1 and 2: the quality of the output is determined by the quality of the input. A vague prompt gives you something that looks like a tool but doesn't work like one.
