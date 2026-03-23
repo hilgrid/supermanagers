@@ -280,8 +280,9 @@ feedback the evaluator returned. The user shouldn't have to do
 anything extra - submitting the deck triggers both the feedback
 and the logging.
 
-Delete Section 3 (Track Your Progress) since tracking is now
-handled automatically when someone submits a deck.`;
+Replace Section 3 (Track Your Progress) - tracking is now
+handled automatically when someone submits a deck, so the
+manual form is no longer needed.`;
 
 const Session3: React.FC = () => {
   return (
@@ -333,10 +334,12 @@ const Session3: React.FC = () => {
             <li><a href="#step6" className="hover:text-stone-800 hover:underline">Set the Visual Style</a></li>
             <li><a href="#step7" className="hover:text-stone-800 hover:underline">Set Up the Backend Tracking</a></li>
             <li><a href="#step8" className="hover:text-stone-800 hover:underline">Deploy</a></li>
+            <li><a href="#going-further" className="hover:text-stone-800 hover:underline">Bring the AI Into the Tool</a></li>
+            <li><a href="#step10" className="hover:text-stone-800 hover:underline">Redeploy</a></li>
           </ol>
           <div className="border-t border-stone-200 pt-4">
             <p className="text-sm text-stone-500 leading-relaxed">
-              <span className="font-bold text-stone-700">Going further:</span> <a href="#going-further" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Bring the AI Into the Tool</a> (API connection instructions) &middot; <a href="#next-steps" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Next Steps</a>
+              <a href="#next-steps" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Next Steps</a> &middot; <a href="#building-your-own" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Building Your Own Version</a>
             </p>
           </div>
         </div>
@@ -364,28 +367,13 @@ const Session3: React.FC = () => {
         <div id="before-you-start" className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">Before You Start</h2>
 
-          <div className="bg-white border border-stone-200 rounded-lg p-5 mb-6">
+          <div className="bg-white border border-stone-200 rounded-lg p-5">
             <p className="text-stone-800 text-sm font-bold mb-3">You'll need:</p>
             <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
               <li>A free Lovable account (sign up at <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">lovable.dev</a>)</li>
+              <li>Access to the Slide Evaluator Custom GPT (<a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">use it here</a>)</li>
             </ul>
           </div>
-
-          {/* Evaluator Prompt */}
-          <details className="border border-stone-300 rounded-lg overflow-hidden">
-            <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
-              Deck Evaluator - Full Prompt (click to expand)
-            </summary>
-            <div className="px-4 py-4 relative">
-              <div className="flex justify-between items-start mb-2">
-                <p className="text-stone-500 text-xs leading-relaxed">
-                  Here's the prompt behind the Slide Evaluator Custom GPT. You can <a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">use the GPT directly</a>, or copy the prompt below to build your own version.
-                </p>
-                <CopyButton getText={() => evaluatorPrompt} />
-              </div>
-              <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono bg-stone-50 p-4 rounded-lg border border-stone-200">{evaluatorPrompt}</pre>
-            </div>
-          </details>
         </div>
 
         <hr className="border-stone-300 mb-12" />
@@ -405,7 +393,7 @@ const Session3: React.FC = () => {
             </ol>
             <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mt-4">
               <p className="text-stone-700 text-sm leading-relaxed">
-                This is where you're headed. By the end of today, you'll have all three pieces built and deployed as a live URL.
+                This is where you're headed. By the end of today, you'll have a working version built and deployed as a live URL.
               </p>
             </div>
           </div>
@@ -480,9 +468,9 @@ const Session3: React.FC = () => {
 
           {/* For today's session */}
           <div className="bg-white border border-stone-200 rounded-lg p-5 mb-6">
-            <h3 className="text-lg font-bold text-stone-800 mb-3">For today's session: Use the example spec below</h3>
+            <h3 className="text-lg font-bold text-stone-800 mb-3">The spec</h3>
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              During the session, we'll use a pre-written spec so everyone's building the same thing and we can move fast. Customize the details for your team, but the structure is ready to go.
+              During the session, we'll all use the same spec so everyone's building the same thing and we can move fast. Follow along with the same spec.
             </p>
 
             <details className="border border-stone-300 rounded-lg overflow-hidden">
@@ -511,24 +499,6 @@ const Session3: React.FC = () => {
             </div>
           </div>
 
-          {/* For future projects */}
-          <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <h3 className="text-lg font-bold text-stone-800 mb-3">For future projects: Write the spec from scratch</h3>
-            <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              When you want to build something for your own team after this course, you won't have an example spec to start from. Here's how to write one:
-            </p>
-            <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              Open a ChatGPT/Gemini/Claude conversation and tell it what you're trying to build. You don't need to have the spec figured out - that's what the conversation is for.
-            </p>
-            <p className="text-stone-700 text-sm leading-relaxed mb-3">Two ways to approach it:</p>
-            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside mb-4">
-              <li><strong>Tell it what you want</strong> and let it draft a spec for you to react to: "I want to build a page that helps my team make better slides. It should show them what good looks like, give them a way to get feedback, and let me track whether they're improving. Write me a detailed spec I can paste into a code generation tool."</li>
-              <li><strong>Have it interview you:</strong> "I want to build a tool for my team. Ask me questions about what it should do, who it's for, and how it should work, then write me a spec."</li>
-            </ul>
-            <p className="text-stone-600 text-sm leading-relaxed">
-              Go back and forth until the spec captures what you're looking for. This is the same skill from Sessions 1 and 2 - the conversation IS the work. Once your spec feels right, come back to this guide and pick up at Step 4.
-            </p>
-          </div>
         </div>
 
         <hr className="border-stone-300 mb-12" />
@@ -617,7 +587,7 @@ const Session3: React.FC = () => {
           <div className="bg-white border border-stone-200 rounded-lg p-5 mb-4">
             <h3 className="text-lg font-bold text-stone-800 mb-3">The examples</h3>
             <p className="text-stone-700 text-sm leading-relaxed mb-3">
-              Look at the good vs. bad slide examples. Common problems:
+              Look at the good vs. bad slide examples. Here's what to look for and how to fix common issues:
             </p>
 
             <div className="space-y-4">
@@ -651,7 +621,7 @@ const Session3: React.FC = () => {
           <div className="bg-white border border-stone-200 rounded-lg p-5 mb-4">
             <h3 className="text-lg font-bold text-stone-800 mb-3">Section 2: Feedback</h3>
             <p className="text-stone-700 text-sm leading-relaxed mb-3">
-              Check that the button works and the copy makes sense for your team.
+              Check that the button works and the copy is clear.
             </p>
             <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
               <li>"Change the button text to 'Get Feedback on Your Deck'"</li>
@@ -663,6 +633,9 @@ const Session3: React.FC = () => {
           {/* Section 3: Progress Tracker */}
           <div className="bg-white border border-stone-200 rounded-lg p-5">
             <h3 className="text-lg font-bold text-stone-800 mb-3">Section 3: Progress Tracker</h3>
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">
+              Check that the form fields work correctly and the layout makes sense.
+            </p>
             <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
               <li>"Add a date field that auto-fills with today's date"</li>
               <li>"After someone submits, show their submission history below the form so they can see their own progress"</li>
@@ -775,6 +748,9 @@ const Session3: React.FC = () => {
           <p className="text-stone-700 text-sm leading-relaxed mb-6">
             Your page looks good and works - but the progress tracker form doesn't actually save anywhere yet. This step connects it to a Google Sheet so submissions get logged and you can track your team's progress over time.
           </p>
+          <p className="text-stone-700 text-sm leading-relaxed mb-6">
+            This gets tracking working for now. In Step 9, we'll upgrade this so the feedback and logging happen automatically.
+          </p>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
@@ -859,6 +835,10 @@ const Session3: React.FC = () => {
         {/* Step 8: Deploy */}
         <div id="step8" className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 8: Deploy</h2>
+
+          <p className="text-stone-700 text-sm leading-relaxed mb-4">
+            This is your first deploy - you'll redeploy in Step 10 after making more changes.
+          </p>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
             <ol className="text-stone-700 text-sm leading-relaxed space-y-2 list-decimal list-inside">
@@ -973,7 +953,7 @@ const Session3: React.FC = () => {
         <hr className="border-stone-300 mb-12" />
 
         {/* Next Steps */}
-        <div id="next-steps" className="mb-16">
+        <div id="next-steps" className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">Next Steps</h2>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
@@ -983,6 +963,44 @@ const Session3: React.FC = () => {
               <li><strong>Send it to one person.</strong> Ask them: "Would you use this? What's confusing?" Their feedback is worth more than another hour of solo tweaking.</li>
               <li><strong>Try building one for your team.</strong> Think about the Custom GPTs you've been making. Is there one that would work better as an interactive page - something with a checklist, examples, a guided workflow? Try building it in Lovable using the same process from today. You already know how.</li>
             </ul>
+          </div>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Building Your Own Version */}
+        <div id="building-your-own" className="mb-16">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Building Your Own Version</h2>
+
+          <div className="bg-white border border-stone-200 rounded-lg p-5">
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              Today you followed a pre-written spec. When you want to build something for your own team, here's how to start from scratch.
+            </p>
+
+            <p className="text-stone-800 text-sm font-bold mb-3">Write the spec with AI.</p>
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">
+              Open a ChatGPT, Gemini, or Claude conversation and tell it what you're trying to build. Two approaches work well:
+            </p>
+            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside mb-4">
+              <li><strong>Tell it what you want</strong> and let it draft a spec: "I want to build a page that helps my team write better research briefs. It should show them what good looks like and give them a way to get feedback. Write me a detailed spec I can paste into a code generation tool."</li>
+              <li><strong>Have it interview you:</strong> "I want to build a tool for my team. Ask me questions about what it should do, who it's for, and how it should work, then write me a spec."</li>
+            </ul>
+            <p className="text-stone-700 text-sm leading-relaxed mb-6">
+              Go back and forth until the spec captures what you're looking for. The conversation IS the work - same skill as Sessions 1 and 2.
+            </p>
+
+            <p className="text-stone-800 text-sm font-bold mb-3">A few tips for building on your own:</p>
+            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside mb-4">
+              <li>Start with the wireframe approach: get the functionality right first, layer in visual design later. Debugging both at once is a mess.</li>
+              <li>Use the same refine-then-polish flow from today: build it, fix what's wrong, then make it look good.</li>
+              <li>When you need to connect to other tools (Sheets, Notion, email), ask the AI to walk you through the integration step by step. You don't need to know how it works - just follow along.</li>
+            </ul>
+
+            <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
+              <p className="text-stone-700 text-sm leading-relaxed">
+                Everything you practiced today transfers: writing a clear spec, iterating on what the AI builds, troubleshooting when things break, and using screenshots to set visual identity. The tool you build will be different, but the process is the same.
+              </p>
+            </div>
           </div>
         </div>
 
