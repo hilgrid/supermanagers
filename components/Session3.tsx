@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
