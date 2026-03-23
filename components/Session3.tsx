@@ -693,9 +693,32 @@ const Session3: React.FC = () => {
               </div>
             </details>
 
-            <p className="text-stone-700 text-sm leading-relaxed">
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
               Lovable will pick up on the colors, typography, spacing, and overall feel from your screenshots and apply them to your page. It won't be pixel-perfect, but it'll get you 80% of the way there - and you can fine-tune from there.
             </p>
+
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">
+              The first pass might be too subtle. If the result looks like it applied the colors but still feels plain, push it:
+            </p>
+
+            <div className="relative bg-stone-50 rounded-lg border border-stone-200 p-4 mb-4">
+              <div className="flex justify-end mb-2">
+                <CopyButton getText={() => `This looks too plain still. I want the website to be visually stunning and look like an expensive professional web designer made it.`} />
+              </div>
+              <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{`This looks too plain still. I want the website to be visually stunning and look like an expensive professional web designer made it.`}</pre>
+            </div>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Here's what the branded version looked like after that follow-up
+              </summary>
+              <div className="p-4">
+                <img src="/lovable-branded-result.png" alt="Branded result after visual identity prompt" className="rounded-lg border border-stone-200 w-full" />
+                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                  The Dropbox blue is in the headline, the typography is cleaner, and it feels like a real internal tool - not a prototype. One prompt for the brand reference, one follow-up to push the quality. Two messages total.
+                </p>
+              </div>
+            </details>
           </div>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
