@@ -370,6 +370,8 @@ const Session3: React.FC = () => {
         <div className="mb-8 bg-white border border-stone-200 rounded-lg p-5">
           <p className="text-sm font-bold text-stone-800 mb-3">Today's agenda</p>
           <ol className="text-sm text-stone-600 space-y-1.5 list-decimal list-inside mb-4">
+            <li><a href="#step0" className="hover:text-stone-800 hover:underline">Create Your Lovable Account</a></li>
+            <li><a href="#step1" className="hover:text-stone-800 hover:underline">See the End Result</a></li>
             <li><a href="#step2" className="hover:text-stone-800 hover:underline">Try the Unspecified Version</a></li>
             <li><a href="#step3" className="hover:text-stone-800 hover:underline">Write the Spec</a></li>
             <li><a href="#step4" className="hover:text-stone-800 hover:underline">Build It</a></li>
@@ -389,9 +391,21 @@ const Session3: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* See the Finished Versions */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">What We're Building</h2>
+        {/* Step 0: Create Your Lovable Account */}
+        <div id="step0" className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 0: Create Your Lovable Account</h2>
+          <div className="bg-white border border-stone-200 rounded-lg p-5">
+            <p className="text-stone-700 text-sm leading-relaxed">
+              Sign up for a free account at <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">lovable.dev</a>. You'll also need access to the <a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Slide Evaluator Custom GPT</a>.
+            </p>
+          </div>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Step 1: See What You're Building */}
+        <div id="step1" className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 1: See the End Result</h2>
           <div className="bg-white border border-stone-200 rounded-lg p-5">
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
               A tool where your team can upload a presentation deck, get it evaluated against specific criteria you've defined, and receive pass/fail feedback with concrete suggestions for what to fix. Every submission and its feedback get automatically logged to a <a href="https://docs.google.com/spreadsheets/d/1NBwcOnmNkt2o5QBRPABIu6jWELZRCgYzfMA7Q_dD0l8/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Google Sheet</a> - so as a manager, you have a running record of every deck your team has run through the tool and what they were told to improve.
@@ -414,11 +428,6 @@ const Session3: React.FC = () => {
               </div>
             </details>
 
-            <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mt-4">
-              <p className="text-stone-700 text-sm leading-relaxed">
-                <strong>To follow along, you'll need:</strong> A free <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Lovable</a> account and access to the <a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Slide Evaluator Custom GPT</a>.
-              </p>
-            </div>
           </div>
         </div>
 
