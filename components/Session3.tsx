@@ -284,7 +284,51 @@ Replace Section 3 (Track Your Progress) - tracking is now
 handled automatically when someone submits a deck, so the
 manual form is no longer needed.`;
 
+const takeaways = [
+  {
+    title: "A good spec is the whole game",
+    bullets: [
+      "The unspecified version looked polished but was useless. The specified version had everything you asked for.",
+      "This is the same lesson from Custom GPTs: the quality of the output is determined by the quality of the input.",
+      "Whether you're building a page, a GPT, or an automation - the skill is describing what you want clearly enough that AI can build it.",
+    ],
+  },
+  {
+    title: "Separate function from form",
+    bullets: [
+      "We built the wireframe first, got everything working, then added the visual identity as a separate step.",
+      "If you try to do both at once, you end up debugging functionality and design simultaneously. Is the form broken, or is the CSS hiding the button?",
+      "Get it working, then make it look good. One thing at a time.",
+    ],
+  },
+  {
+    title: "You don't need to be technical - you need to be specific",
+    bullets: [
+      "Every instruction you gave Lovable was in plain English. The same delegation skill you use with people, applied to code.",
+      "When things broke, you described what happened and asked for help. You never had to read or understand the code.",
+      "Being specific about what's wrong ('this still looks bad, the examples aren't real slides') gets better results than being polite ('could you maybe adjust this slightly?').",
+    ],
+  },
+  {
+    title: "Start with the workaround, then upgrade",
+    bullets: [
+      "The copy-paste version (link to Custom GPT, paste feedback manually) is a perfectly good v1.",
+      "It proves whether people actually use the tool before you invest in making it seamless.",
+      "Once you know it works, you can bring the AI in directly, connect the logging, and remove the friction. But only after you've validated the idea.",
+    ],
+  },
+  {
+    title: "Code takes action - that's the jump",
+    bullets: [
+      "Custom GPTs give you text back. A page built with code can save data, log results, connect to other tools.",
+      "As a manager, that means you can build workflows that run without you: feedback gets logged, progress gets tracked, patterns become visible.",
+      "This is the bridge from 'AI talks to me' to 'AI does work for my team.'",
+    ],
+  },
+];
+
 const Session3: React.FC = () => {
+  const [currentTakeaway, setCurrentTakeaway] = useState(0);
   return (
     <section className="relative min-h-screen w-full overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
       <div className="max-w-2xl mx-auto px-4 py-12">
@@ -950,6 +994,46 @@ const Session3: React.FC = () => {
             <p className="text-stone-700 text-sm leading-relaxed">
               Every time you make changes you want people to see, you need to redeploy. It takes a few seconds.
             </p>
+          </div>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Session Takeaways */}
+        <div id="takeaways" className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Session Takeaways</h2>
+
+          <div className="relative">
+            <div className="bg-white border-2 border-stone-300 rounded-lg p-6 min-h-[200px] flex flex-col">
+              <p className="text-lg font-bold text-stone-800 mb-3">
+                {takeaways[currentTakeaway].title}
+              </p>
+              <ul className="space-y-2 text-stone-700 text-base leading-relaxed">
+                {takeaways[currentTakeaway].bullets.map((bullet, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="text-stone-400 mt-1 flex-shrink-0">-</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <button
+                onClick={() => setCurrentTakeaway(Math.max(0, currentTakeaway - 1))}
+                disabled={currentTakeaway === 0}
+                className="p-2 rounded-full hover:bg-stone-100 transition-colors text-stone-400 hover:text-stone-600 disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+              </button>
+              <span className="text-stone-400 text-sm">{currentTakeaway + 1} / {takeaways.length}</span>
+              <button
+                onClick={() => setCurrentTakeaway(Math.min(takeaways.length - 1, currentTakeaway + 1))}
+                disabled={currentTakeaway === takeaways.length - 1}
+                className="p-2 rounded-full hover:bg-stone-100 transition-colors text-stone-400 hover:text-stone-600 disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+              </button>
+            </div>
           </div>
         </div>
 
