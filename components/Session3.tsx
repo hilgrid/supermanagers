@@ -774,7 +774,41 @@ const Session3: React.FC = () => {
               </div>
             </details>
 
-            <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
+            <div className="mt-6 pt-6 border-t border-stone-200">
+              <p className="text-stone-800 text-sm font-bold mb-3">When things don't work (they won't on the first try)</p>
+              <p className="text-stone-700 text-sm leading-relaxed mb-3">
+                You will hit errors during this step. That's normal. The trick is: just tell Lovable what you're seeing and ask for help. Screenshot the error, paste it in, and say what happened. You don't need to understand the error - just show it.
+              </p>
+              <p className="text-stone-700 text-sm leading-relaxed mb-4">
+                Here's what real troubleshooting looks like:
+              </p>
+
+              <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+                <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                  Troubleshooting examples (click to expand)
+                </summary>
+                <div className="p-4 space-y-4">
+                  <div>
+                    <p className="text-stone-600 text-xs mb-2">Screenshotting a permissions warning and asking what to do:</p>
+                    <ClickableImage src="/troubleshoot-1.png" alt="Troubleshooting - screenshot of permissions warning" className="rounded-lg border border-stone-200 w-full" />
+                  </div>
+                  <div>
+                    <p className="text-stone-600 text-xs mb-2">Telling Lovable what happened and asking if you missed a step:</p>
+                    <ClickableImage src="/troubleshoot-2.png" alt="Troubleshooting - nothing landed in spreadsheet" className="rounded-lg border border-stone-200 w-full" />
+                  </div>
+                  <div>
+                    <p className="text-stone-600 text-xs mb-2">Asking for clarification when the instructions aren't clear:</p>
+                    <ClickableImage src="/troubleshoot-3.png" alt="Troubleshooting - asking where to click" className="rounded-lg border border-stone-200 w-full" />
+                  </div>
+                </div>
+              </details>
+
+              <p className="text-stone-700 text-sm leading-relaxed">
+                You're having a conversation, not writing code. "Where exactly are you asking me to click?" is a perfectly good prompt.
+              </p>
+            </div>
+
+            <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mt-4">
               <p className="text-stone-700 text-sm leading-relaxed">
                 <strong>Test it.</strong> Once it's connected, submit a dummy entry and check that it shows up where it should.
               </p>
