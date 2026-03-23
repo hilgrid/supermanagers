@@ -761,9 +761,14 @@ const Session3: React.FC = () => {
         <div id="step7" className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 7: Save It to a Spreadsheet</h2>
 
-          <p className="text-stone-700 text-sm leading-relaxed mb-6">
+          <p className="text-stone-700 text-sm leading-relaxed mb-4">
             Your page looks good and works - but the progress tracker form doesn't actually save anywhere yet. This step connects it to a Google Sheet so submissions get logged and you can track your team's progress over time.
           </p>
+          <div className="bg-stone-50 border-l-4 border-amber-400 p-4 mb-4">
+            <p className="text-stone-700 text-sm leading-relaxed">
+              <strong>Tip:</strong> Use your personal Gmail for this step. Work accounts often have admin restrictions that block Apps Script permissions. Get it working with your personal account first, then try connecting your work account later.
+            </p>
+          </div>
           <p className="text-stone-700 text-sm leading-relaxed mb-6">
             This gets tracking working for now. In Step 9, we'll upgrade this so the feedback and logging happen automatically.
           </p>
