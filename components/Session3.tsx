@@ -422,12 +422,17 @@ const Session3: React.FC = () => {
               During the session, we'll use a pre-written spec so everyone's building the same thing and we can move fast. Customize the details for your team, but the structure is ready to go.
             </p>
 
-            <div className="relative bg-stone-50 border border-stone-200 rounded-lg p-4">
-              <div className="flex justify-end mb-2">
-                <CopyButton getText={() => exampleSpec} />
+            <details className="border border-stone-300 rounded-lg overflow-hidden">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                View the full spec (click to expand)
+              </summary>
+              <div className="relative bg-stone-50 p-4">
+                <div className="flex justify-end mb-2">
+                  <CopyButton getText={() => exampleSpec} />
+                </div>
+                <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{exampleSpec}</pre>
               </div>
-              <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{exampleSpec}</pre>
-            </div>
+            </details>
 
             <div className="mt-4 space-y-3">
               <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
