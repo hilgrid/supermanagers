@@ -830,7 +830,22 @@ const Session3: React.FC = () => {
                   </li>
                   <li>
                     <strong>Add the Apps Script</strong>
-                    <p className="mt-2 ml-5 text-stone-600">In the sheet, go to Extensions &rarr; Apps Script. Delete any existing code and paste the script Lovable gives you. It will look something like a <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">doPost</code> function that appends rows to your sheet.</p>
+                    <p className="mt-2 ml-5 text-stone-600 mb-2">In the sheet, go to Extensions &rarr; Apps Script. Delete any existing code and paste the script Lovable gives you. It should look something like this:</p>
+                    <pre className="mt-2 ml-5 text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono bg-stone-50 p-3 rounded-lg border border-stone-200">{`function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    new Date(),
+    data.name,
+    data.feedback,
+    data.originalDeckUrl,
+    data.revisedDeckUrl,
+    data.notes
+  ]);
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: "success" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}`}</pre>
                   </li>
                   <li>
                     <strong>Deploy it</strong>
