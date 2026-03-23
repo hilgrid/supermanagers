@@ -295,10 +295,28 @@ const Session3: React.FC = () => {
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
             Build and Deploy a Team Resource Page
           </h1>
-          <p className="text-stone-700 text-lg mt-4 leading-relaxed">
-            Today you're building a live website your team can use to get better at making slides. It has three parts: examples of what good looks like, a way to get feedback, and a tracker so you can see improvement over time.
-          </p>
-          <p className="text-stone-500 text-sm mt-3">
+
+          <div className="mt-6 space-y-4">
+            <p className="text-stone-700 text-sm leading-relaxed">
+              In Sessions 1 and 2, you built Custom GPTs - tools where someone types something in and the AI talks back. That's powerful, but it's still a conversation. Today we're going beyond that.
+            </p>
+            <p className="text-stone-700 text-sm leading-relaxed">
+              A coding agent like <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Lovable</a> writes code for you. You describe what you want in plain English - the same skill you've been practicing - and it builds real apps, pages, and tools. What does that unlock?
+            </p>
+            <ul className="text-stone-700 text-sm leading-relaxed space-y-3 list-disc list-inside">
+              <li><strong>Experiences, not just conversations.</strong> A page that walks someone through a checklist, shows them examples, and guides them step by step - instead of a blank chat window where they have to know what to type.</li>
+              <li><strong>Tools that take action.</strong> Instead of AI just giving feedback in a conversation that disappears, it can save data to a Google Sheet, log who submitted what, and build a record you can actually use as a manager.</li>
+              <li><strong>Workflows that plug into how your team works.</strong> Connect your tool to the apps your team already uses - Sheets, Notion, email - so the output goes somewhere useful, not just a chat window.</li>
+            </ul>
+            <p className="text-stone-700 text-sm leading-relaxed">
+              There's a big spectrum of how technical you can make these. You can build something very usable even without connecting a bunch of apps - maybe there's a copy-paste step, and that's a perfectly good v1 to see if people actually use it. Then if they do, you invest in getting the connections in place. If you need permissions, get them. If you need technical help, get it. Start simple, prove it works, then make it smoother.
+            </p>
+            <p className="text-stone-700 text-sm leading-relaxed font-medium">
+              Today we're all building the same thing together so you can see the full process end to end. After the session, you can use what you learn here to build whatever your team needs.
+            </p>
+          </div>
+
+          <p className="text-stone-500 text-sm mt-4">
             <strong>Tool:</strong> <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Lovable</a> (free tier works for everything in this guide) &middot; <strong>Time:</strong> ~2 hours. You'll leave today with a live URL.
           </p>
         </div>
@@ -331,17 +349,8 @@ const Session3: React.FC = () => {
 
           <div className="bg-white border border-stone-200 rounded-lg p-5 mb-6">
             <p className="text-stone-800 text-sm font-bold mb-3">You'll need:</p>
-            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside mb-4">
+            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
               <li>A free Lovable account (sign up at <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">lovable.dev</a>)</li>
-              <li>Access to the Slide Evaluator Custom GPT (<a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">use it here</a>)</li>
-              <li>A Google Sheet for logging (we'll set this up during the build)</li>
-            </ul>
-
-            <p className="text-stone-800 text-sm font-bold mb-3">Fill this in - you'll reference it when writing your spec:</p>
-            <ul className="text-stone-600 text-sm leading-relaxed space-y-1.5 list-disc list-inside">
-              <li><strong>What problem does this solve?</strong> <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">[e.g. "My team's slides are data dumps - leadership has to figure out what the point is"]</code></li>
-              <li><strong>Who uses it?</strong> <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">[e.g. "Anyone on my insights team who presents to leadership"]</code></li>
-              <li><strong>When do they use it?</strong> <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">[e.g. "Before any presentation to leadership or cross-functional stakeholders"]</code></li>
             </ul>
           </div>
 
