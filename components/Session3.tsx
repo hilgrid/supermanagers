@@ -488,12 +488,9 @@ const Session3: React.FC = () => {
               </div>
               <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
                 <p className="text-stone-700 text-sm leading-relaxed">
-                  <strong>Customize this for your team.</strong> The slide criteria above are examples. If your team's problem is sales emails, research briefs, or project updates, swap in your own criteria from Sessions 1 and 2.
+                  <strong>After the session,</strong> you can use this same process to build a page for whatever your team actually needs - sales emails, research briefs, project updates. Just swap in your own criteria and examples. For today, follow along with the slide example so we can focus on learning the tool.
                 </p>
               </div>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                The spec already includes the shared evaluator GPT link. If you built your own evaluator in Sessions 1-2 and want to use that instead, swap the URL in Section 2 before pasting.
-              </p>
             </div>
           </div>
 
