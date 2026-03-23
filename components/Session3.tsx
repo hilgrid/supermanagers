@@ -413,8 +413,6 @@ const Session3: React.FC = () => {
                 </p>
               </div>
             </details>
-          </div>
-        </div>
 
             <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mt-4">
               <p className="text-stone-700 text-sm leading-relaxed">
