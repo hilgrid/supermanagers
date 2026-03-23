@@ -304,7 +304,7 @@ const Session3: React.FC = () => {
             <li><a href="#step4" className="hover:text-stone-800 hover:underline">Build It</a></li>
             <li><a href="#step5" className="hover:text-stone-800 hover:underline">Refine Layout and Functionality</a></li>
             <li><a href="#step6" className="hover:text-stone-800 hover:underline">Set the Visual Style</a></li>
-            <li><a href="#step7" className="hover:text-stone-800 hover:underline">Connect Google</a></li>
+            <li><a href="#step7" className="hover:text-stone-800 hover:underline">Set Up the Backend Tracking</a></li>
             <li><a href="#step8" className="hover:text-stone-800 hover:underline">Deploy</a></li>
           </ol>
           <div className="border-t border-stone-200 pt-4">
@@ -736,42 +736,34 @@ const Session3: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Step 7: Connect Google */}
+        {/* Step 7: Set Up the Backend Tracking */}
         <div id="step7" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 7: Connect Google</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 7: Set Up the Backend Tracking</h2>
 
           <p className="text-stone-700 text-sm leading-relaxed mb-6">
-            Now connect it to Google so the tracker actually saves data.
+            Your page looks good and works - but the progress tracker form doesn't actually save anywhere yet. This step connects it to a Google Sheet so submissions get logged and you can track your team's progress over time.
           </p>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <div className="space-y-6">
-              <div>
-                <p className="text-stone-800 text-sm font-bold mb-2">1. Create a Google Sheet</p>
-                <ul className="text-stone-700 text-sm leading-relaxed space-y-1.5 list-disc list-inside">
-                  <li>New sheet, add these column headers in Row 1: <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">Name | Date | Feedback | Original Deck | Revised Deck | Notes</code></li>
-                  <li>Make the sheet accessible via link (Share &gt; Anyone with the link &gt; Editor)</li>
-                  <li>Copy the sheet URL</li>
-                </ul>
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              Instead of trying to figure out the technical setup yourself, ask Lovable to walk you through it:
+            </p>
+
+            <div className="relative bg-stone-50 rounded-lg border border-stone-200 p-4 mb-4">
+              <div className="flex justify-end mb-2">
+                <CopyButton getText={() => `When someone hits "submit" at the bottom, I want the info they filled out to get tracked in a Google Sheet. Can you walk me through how to set that up?`} />
               </div>
-              <div>
-                <p className="text-stone-800 text-sm font-bold mb-2">2. Connect the form to the sheet</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
-                  Tell Lovable: "When someone submits the Track Your Progress form, save all the form data to this Google Sheet: [paste your sheet URL]"
-                </p>
-              </div>
-              <div>
-                <p className="text-stone-800 text-sm font-bold mb-2">3. Connect the Google Drive file picker</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
-                  Tell Lovable: "The 'Add your original deck' and 'Add your revised deck' fields should use a Google Drive file picker so people can select files from their Drive instead of uploading from their computer."
-                </p>
-              </div>
-              <div>
-                <p className="text-stone-800 text-sm font-bold mb-2">4. Test it</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
-                  Submit a dummy entry and check that it shows up in your Google Sheet. If the connection isn't working, tell Lovable: "The form isn't saving to the Google Sheet. Can you walk me through how to connect them?"
-                </p>
-              </div>
+              <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{`When someone hits "submit" at the bottom, I want the info they filled out to get tracked in a Google Sheet. Can you walk me through how to set that up?`}</pre>
+            </div>
+
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              Lovable will give you step-by-step instructions - creating the sheet, connecting it, setting up permissions. Follow its steps. If something doesn't work, just tell it what happened and it'll troubleshoot with you.
+            </p>
+
+            <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
+              <p className="text-stone-700 text-sm leading-relaxed">
+                <strong>Test it.</strong> Once it's connected, submit a dummy entry and check that it shows up in your Google Sheet.
+              </p>
             </div>
           </div>
         </div>
