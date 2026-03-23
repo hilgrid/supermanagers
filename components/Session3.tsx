@@ -939,6 +939,22 @@ const Session3: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
+        {/* Step 10: Redeploy */}
+        <div id="step10" className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 10: Redeploy</h2>
+
+          <div className="bg-white border border-stone-200 rounded-lg p-5">
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">
+              You've made changes since you last published. Your live URL is still showing the old version. Hit <strong>Publish</strong> again in Lovable to push your updates live.
+            </p>
+            <p className="text-stone-700 text-sm leading-relaxed">
+              Every time you make changes you want people to see, you need to redeploy. It takes a few seconds.
+            </p>
+          </div>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
         {/* Homework */}
         <div id="homework" className="mb-16">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">Homework</h2>
