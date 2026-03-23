@@ -866,20 +866,6 @@ const Session3: React.FC = () => {
 
             <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
               <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
-                If your team doesn't use Google Sheets
-              </summary>
-              <div className="p-4 space-y-3">
-                <p className="text-stone-700 text-sm leading-relaxed">Just swap the prompt. The same approach works with other tools:</p>
-                <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
-                  <li><strong>Notion:</strong> "When someone hits submit, I want the info logged as a new row in a Notion database. Can you walk me through how to set that up?"</li>
-                  <li><strong>Airtable:</strong> "When someone hits submit, I want the info tracked in an Airtable base. Can you walk me through how to set that up?"</li>
-                  <li><strong>Email:</strong> "When someone hits submit, I want an email sent to me with their name, feedback, and links to their slides. Can you walk me through how to set that up?"</li>
-                </ul>
-              </div>
-            </details>
-
-            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
-              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
                 You may need to authorize access - here's what that looks like
               </summary>
               <div className="p-4 space-y-4">
@@ -942,7 +928,21 @@ const Session3: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-stone-50 border-l-4 border-amber-400 p-4 mt-4 mb-4">
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                If your team doesn't use Google Sheets
+              </summary>
+              <div className="p-4 space-y-3">
+                <p className="text-stone-700 text-sm leading-relaxed">Just swap the prompt. The same approach works with other tools:</p>
+                <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
+                  <li><strong>Notion:</strong> "When someone hits submit, I want the info logged as a new row in a Notion database. Can you walk me through how to set that up?"</li>
+                  <li><strong>Airtable:</strong> "When someone hits submit, I want the info tracked in an Airtable base. Can you walk me through how to set that up?"</li>
+                  <li><strong>Email:</strong> "When someone hits submit, I want an email sent to me with their name, feedback, and links to their slides. Can you walk me through how to set that up?"</li>
+                </ul>
+              </div>
+            </details>
+
+            <div className="bg-stone-50 border-l-4 border-amber-400 p-4 mb-4">
               <p className="text-stone-700 text-sm leading-relaxed">
                 <strong>Tip:</strong> If you don't like wrangling with the integrations directly, <a href="https://zapier.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Zapier</a> makes this easier. You can set up a Zap that watches for form submissions and sends the data to Google Sheets, Notion, Airtable, or wherever you want - no troubleshooting permissions or scripts.
               </p>
