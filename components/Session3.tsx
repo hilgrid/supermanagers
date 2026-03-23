@@ -760,9 +760,23 @@ const Session3: React.FC = () => {
               Lovable will give you step-by-step instructions - creating the sheet, connecting it, setting up permissions. Follow its steps. If something doesn't work, just tell it what happened and it'll troubleshoot with you.
             </p>
 
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                If your team doesn't use Google Sheets
+              </summary>
+              <div className="p-4 space-y-3">
+                <p className="text-stone-700 text-sm leading-relaxed">Just swap the prompt. The same approach works with other tools:</p>
+                <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
+                  <li><strong>Notion:</strong> "When someone hits submit, I want the info logged as a new row in a Notion database. Can you walk me through how to set that up?"</li>
+                  <li><strong>Airtable:</strong> "When someone hits submit, I want the info tracked in an Airtable base. Can you walk me through how to set that up?"</li>
+                  <li><strong>Email:</strong> "When someone hits submit, I want an email sent to me with their name, feedback, and links to their slides. Can you walk me through how to set that up?"</li>
+                </ul>
+              </div>
+            </details>
+
             <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
               <p className="text-stone-700 text-sm leading-relaxed">
-                <strong>Test it.</strong> Once it's connected, submit a dummy entry and check that it shows up in your Google Sheet.
+                <strong>Test it.</strong> Once it's connected, submit a dummy entry and check that it shows up where it should.
               </p>
             </div>
           </div>
