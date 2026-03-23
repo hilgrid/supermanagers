@@ -363,6 +363,19 @@ const Session3: React.FC = () => {
               <li>Type something vague: "Build me a page that teaches my team how to make better slides"</li>
               <li>Let it generate. Look at what you got.</li>
             </ol>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Here's what that looks like in Lovable
+              </summary>
+              <div className="p-4">
+                <img src="/lovable-unspecified-prompt.png" alt="Typing a vague prompt in Lovable" className="rounded-lg border border-stone-200 w-full" />
+                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                  Just a one-liner. No criteria, no structure, no specifics about your team's problems. Let's see what comes back.
+                </p>
+              </div>
+            </details>
+
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
               It probably made a generic tips page - "use less text," "pick a good font," "tell a story with data." Looks fine. Totally useless. Nothing specific to your team's actual problems. No way to get feedback. No way to track progress.
             </p>
@@ -466,11 +479,23 @@ const Session3: React.FC = () => {
               <li>Let it generate</li>
               <li>Look at what you got - all three sections should be there</li>
             </ol>
-            <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
+            <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mb-4">
               <p className="text-stone-700 text-sm leading-relaxed">
                 Compare it to the unspecified version from Step 2. Same tool, same effort, wildly different output - because the spec was clear.
               </p>
             </div>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Here's what the specified version looked like
+              </summary>
+              <div className="p-4">
+                <img src="/specified-version.png" alt="Specified version - all three sections built from spec" className="rounded-lg border border-stone-200 w-full" />
+                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                  All three sections are there: the checklist with all five criteria, collapsible examples, the feedback button linking to the evaluator, and the progress tracker form with Google Drive links. It's not pretty yet - that's on purpose. Everything works, and now we can refine it piece by piece.
+                </p>
+              </div>
+            </details>
           </div>
         </div>
 
