@@ -479,6 +479,19 @@ const Session3: React.FC = () => {
               <li>Let it generate</li>
               <li>Look at what you got - all three sections should be there</li>
             </ol>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Here's what pasting the spec into Lovable looks like
+              </summary>
+              <div className="p-4">
+                <img src="/lovable-spec-paste.png" alt="Pasting the full spec into Lovable" className="rounded-lg border border-stone-200 w-full" />
+                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                  The full spec goes right into the Lovable prompt. All three sections, the wireframe instruction, everything in one paste.
+                </p>
+              </div>
+            </details>
+
             <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mb-4">
               <p className="text-stone-700 text-sm leading-relaxed">
                 Compare it to the unspecified version from Step 2. Same tool, same effort, wildly different output - because the spec was clear.
