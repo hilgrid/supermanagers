@@ -1,5 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => { document.removeEventListener('keydown', handleKey); document.body.style.overflow = ''; };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 cursor-pointer" onClick={onClose}>
+      <button onClick={onClose} className="absolute top-4 right-4 text-white hover:text-stone-300 transition-colors z-10" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <ClickableImage src={src} alt={alt} className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl" onClick={e => e.stopPropagation()} />
+    </div>
+  );
+}
+
+function ClickableImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <ClickableImage src={src} alt={alt} className={`${className || ''} cursor-pointer hover:opacity-90 transition-opacity`} onClick={() => setOpen(true)} />
+      {open && <Lightbox src={src} alt={alt} onClose={() => setOpen(false)} />}
+    </>
+  );
+}
 
 function CopyButton({ getText }: { getText: () => string }) {
   const [copied, setCopied] = useState(false);
@@ -369,7 +397,7 @@ const Session3: React.FC = () => {
                 Here's what that looks like in Lovable
               </summary>
               <div className="p-4">
-                <img src="/lovable-unspecified-prompt.png" alt="Typing a vague prompt in Lovable" className="rounded-lg border border-stone-200 w-full" />
+                <ClickableImage src="/lovable-unspecified-prompt.png" alt="Typing a vague prompt in Lovable" className="rounded-lg border border-stone-200 w-full" />
                 <p className="text-stone-500 text-sm mt-3 leading-relaxed">
                   Just a one-liner. No criteria, no structure, no specifics about your team's problems. Let's see what comes back.
                 </p>
@@ -490,7 +518,7 @@ const Session3: React.FC = () => {
                 Here's what pasting the spec into Lovable looks like
               </summary>
               <div className="p-4">
-                <img src="/lovable-spec-paste.png" alt="Pasting the full spec into Lovable" className="rounded-lg border border-stone-200 w-full" />
+                <ClickableImage src="/lovable-spec-paste.png" alt="Pasting the full spec into Lovable" className="rounded-lg border border-stone-200 w-full" />
                 <p className="text-stone-500 text-sm mt-3 leading-relaxed">
                   The full spec goes right into the Lovable prompt. All three sections, the wireframe instruction, everything in one paste.
                 </p>
@@ -508,7 +536,7 @@ const Session3: React.FC = () => {
                 Here's what the specified version looked like
               </summary>
               <div className="p-4">
-                <img src="/specified-version.png" alt="Specified version - all three sections built from spec" className="rounded-lg border border-stone-200 w-full" />
+                <ClickableImage src="/specified-version.png" alt="Specified version - all three sections built from spec" className="rounded-lg border border-stone-200 w-full" />
                 <p className="text-stone-500 text-sm mt-3 leading-relaxed">
                   All three sections are there: the checklist with all five criteria, collapsible examples, the feedback button linking to the evaluator, and the progress tracker form with Google Drive links. It's not pretty yet - that's on purpose. Everything works, and now we can refine it piece by piece.
                 </p>
@@ -691,7 +719,7 @@ const Session3: React.FC = () => {
                 Here's what that looks like in Lovable
               </summary>
               <div className="p-4">
-                <img src="/lovable-brand-paste.png" alt="Pasting brand reference screenshots into Lovable" className="rounded-lg border border-stone-200 w-full" />
+                <ClickableImage src="/lovable-brand-paste.png" alt="Pasting brand reference screenshots into Lovable" className="rounded-lg border border-stone-200 w-full" />
                 <p className="text-stone-500 text-sm mt-3 leading-relaxed">
                   The Dropbox homepage screenshots are attached as images in the chat, and the prompt tells Lovable to intuit the brand guidelines from them. You can see the two reference screenshots as thumbnails above the prompt.
                 </p>
@@ -718,7 +746,7 @@ const Session3: React.FC = () => {
                 Here's what the branded version looked like after that follow-up
               </summary>
               <div className="p-4">
-                <img src="/lovable-branded-result.png" alt="Branded result after visual identity prompt" className="rounded-lg border border-stone-200 w-full" />
+                <ClickableImage src="/lovable-branded-result.png" alt="Branded result after visual identity prompt" className="rounded-lg border border-stone-200 w-full" />
                 <p className="text-stone-500 text-sm mt-3 leading-relaxed">
                   The Dropbox blue is in the headline, the typography is cleaner, and it feels like a real internal tool - not a prototype. One prompt for the brand reference, one follow-up to push the quality. Two messages total.
                 </p>
