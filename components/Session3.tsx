@@ -376,7 +376,7 @@ const Session3: React.FC = () => {
             <li><a href="#step4" className="hover:text-stone-800 hover:underline">Build It</a></li>
             <li><a href="#step5" className="hover:text-stone-800 hover:underline">Refine Layout and Functionality</a></li>
             <li><a href="#step6" className="hover:text-stone-800 hover:underline">Set the Visual Style</a></li>
-            <li><a href="#step7" className="hover:text-stone-800 hover:underline">Set Up the Backend Tracking</a></li>
+            <li><a href="#step7" className="hover:text-stone-800 hover:underline">Save It to a Spreadsheet</a></li>
             <li><a href="#step8" className="hover:text-stone-800 hover:underline">Deploy</a></li>
             <li><a href="#going-further" className="hover:text-stone-800 hover:underline">Bring the AI Into the Tool</a></li>
             <li><a href="#step10" className="hover:text-stone-800 hover:underline">Redeploy</a></li>
@@ -788,9 +788,9 @@ const Session3: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Step 7: Set Up the Backend Tracking */}
+        {/* Step 7: Save It to a Spreadsheet */}
         <div id="step7" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 7: Set Up the Backend Tracking</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 7: Save It to a Spreadsheet</h2>
 
           <p className="text-stone-700 text-sm leading-relaxed mb-6">
             Your page looks good and works - but the progress tracker form doesn't actually save anywhere yet. This step connects it to a Google Sheet so submissions get logged and you can track your team's progress over time.
@@ -812,8 +812,42 @@ const Session3: React.FC = () => {
             </div>
 
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              Lovable will give you step-by-step instructions - creating the sheet, connecting it, setting up permissions. Follow its steps. If something doesn't work, just tell it what happened and it'll troubleshoot with you.
+              Lovable will give you step-by-step instructions. Follow its steps. If something doesn't work, just tell it what happened and it'll troubleshoot with you.
             </p>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                The directions should look something like this
+              </summary>
+              <div className="p-4">
+                <ol className="text-stone-700 text-sm leading-relaxed space-y-4 list-decimal list-inside">
+                  <li>
+                    <strong>Create your Google Sheet</strong>
+                    <ul className="mt-2 ml-5 space-y-1 list-disc list-inside text-stone-600">
+                      <li>Create a new Google Sheet</li>
+                      <li>Add these column headers in Row 1: <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">Timestamp | Name | Feedback | Original Deck | Revised Deck | Notes</code></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Add the Apps Script</strong>
+                    <p className="mt-2 ml-5 text-stone-600">In the sheet, go to Extensions &rarr; Apps Script. Delete any existing code and paste the script Lovable gives you. It will look something like a <code className="bg-stone-100 px-1.5 py-0.5 rounded text-xs">doPost</code> function that appends rows to your sheet.</p>
+                  </li>
+                  <li>
+                    <strong>Deploy it</strong>
+                    <ul className="mt-2 ml-5 space-y-1 list-disc list-inside text-stone-600">
+                      <li>Click Deploy &rarr; New deployment</li>
+                      <li>Type: Web app</li>
+                      <li>Execute as: Me</li>
+                      <li>Who has access: Anyone</li>
+                      <li>Click Deploy and copy the URL it gives you</li>
+                    </ul>
+                  </li>
+                </ol>
+                <p className="text-stone-600 text-sm leading-relaxed mt-4">
+                  Once you have that URL, paste it back into Lovable. It will add a settings field on the page where you enter it, and the form will send submissions directly to your sheet.
+                </p>
+              </div>
+            </details>
 
             <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
               <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
@@ -826,6 +860,36 @@ const Session3: React.FC = () => {
                   <li><strong>Airtable:</strong> "When someone hits submit, I want the info tracked in an Airtable base. Can you walk me through how to set that up?"</li>
                   <li><strong>Email:</strong> "When someone hits submit, I want an email sent to me with their name, feedback, and links to their slides. Can you walk me through how to set that up?"</li>
                 </ul>
+              </div>
+            </details>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                You may need to authorize access - here's what that looks like
+              </summary>
+              <div className="p-4 space-y-4">
+                <p className="text-stone-700 text-sm leading-relaxed">
+                  When you deploy the Apps Script, Google will ask you to authorize it. This looks scary but it's normal - you're just giving your own script permission to write to your own sheet.
+                </p>
+                <div>
+                  <p className="text-stone-600 text-xs font-bold mb-2">1. Click "Authorize access":</p>
+                  <ClickableImage src="/auth-1-authorize.png" alt="Apps Script authorize access dialog" className="rounded-lg border border-stone-200 w-full" />
+                </div>
+                <div>
+                  <p className="text-stone-600 text-xs font-bold mb-2">2. You'll see a warning that Google hasn't verified the app. Click "Advanced":</p>
+                  <ClickableImage src="/auth-2-unverified.png" alt="Google hasn't verified this app warning" className="rounded-lg border border-stone-200 w-full" />
+                </div>
+                <div>
+                  <p className="text-stone-600 text-xs font-bold mb-2">3. Click "Go to [project name] (unsafe)" - it's your own script, so this is fine:</p>
+                  <ClickableImage src="/auth-3-advanced.png" alt="Advanced options showing Go to project link" className="rounded-lg border border-stone-200 w-full" />
+                </div>
+                <div>
+                  <p className="text-stone-600 text-xs font-bold mb-2">4. Click "Continue" to grant permissions:</p>
+                  <ClickableImage src="/auth-4-trust.png" alt="Make sure you trust the project dialog" className="rounded-lg border border-stone-200 w-full" />
+                </div>
+                <p className="text-stone-500 text-sm leading-relaxed">
+                  You only need to do this once. After that, the script runs automatically whenever someone submits the form.
+                </p>
               </div>
             </details>
 
