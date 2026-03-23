@@ -338,7 +338,7 @@ const Session3: React.FC = () => {
 
         <div className="mt-8 mb-8">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
-            Build and Deploy a Team Resource Page
+            From Chatting to Building
           </h1>
 
           <div className="mt-6 space-y-4">
