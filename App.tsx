@@ -11,6 +11,7 @@ import ManagerCopilot from './components/ManagerCopilot';
 import { SteeringWheelPage } from './components/steeringwheel/SteeringWheelPage';
 import Resources from './components/Resources';
 import ThirtyDays from './components/thirtydays/ThirtyDays';
+// import MozillaSession1 from './components/MozillaSession1';
 
 const App: React.FC = () => {
   return (
@@ -32,6 +33,7 @@ const App: React.FC = () => {
         <Route path="/steeringwheel" element={<SteeringWheelPage />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/30days" element={<ThirtyDays />} />
+        {/* <Route path="/mozilla" element={<MozillaSession1 />} /> */}
       </Routes>
       <Analytics />
     </div>

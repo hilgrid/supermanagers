@@ -665,19 +665,47 @@ const Session3: React.FC = () => {
             Step back and look at the full page. Everything works - now make it feel like a real tool, not a prototype.
           </p>
 
+          <div className="bg-white border border-stone-200 rounded-lg p-5 mb-4">
+            <p className="text-stone-800 text-sm font-bold mb-3">Add your company's visual identity</p>
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">
+              You probably want this to look like it belongs at your company. If you have formal brand guidelines, upload those. But if you don't, here's the trick: just take a couple screenshots of your company's website and use those as the reference.
+            </p>
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              Go to your company's homepage (or any page that represents the brand well), take 1-2 screenshots, and paste them into Lovable along with this prompt:
+            </p>
+
+            <div className="relative bg-stone-50 rounded-lg border border-stone-200 p-4 mb-4">
+              <div className="flex justify-end mb-2">
+                <CopyButton getText={() => `Now that the overall wireframe looks good, I want to add visual styling. Use the attached reference (the [YOUR COMPANY] homepage) as your guide to understand the visual brand identity I want this website to have. Intuit the web brand guidelines [YOUR COMPANY] uses based on these screenshots, and then apply them to this website. Be thoughtful and discerning in your approach in order to create a website that aligns with [YOUR COMPANY]'s brand. This webpage will be used by [YOUR COMPANY] employees.`} />
+              </div>
+              <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{`Now that the overall wireframe looks good, I want to add visual styling. Use the attached reference (the [YOUR COMPANY] homepage) as your guide to understand the visual brand identity I want this website to have. Intuit the web brand guidelines [YOUR COMPANY] uses based on these screenshots, and then apply them to this website. Be thoughtful and discerning in your approach in order to create a website that aligns with [YOUR COMPANY]'s brand. This webpage will be used by [YOUR COMPANY] employees.`}</pre>
+            </div>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Here's what that looks like in Lovable
+              </summary>
+              <div className="p-4">
+                <img src="/lovable-brand-paste.png" alt="Pasting brand reference screenshots into Lovable" className="rounded-lg border border-stone-200 w-full" />
+                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                  The Dropbox homepage screenshots are attached as images in the chat, and the prompt tells Lovable to intuit the brand guidelines from them. You can see the two reference screenshots as thumbnails above the prompt.
+                </p>
+              </div>
+            </details>
+
+            <p className="text-stone-700 text-sm leading-relaxed">
+              Lovable will pick up on the colors, typography, spacing, and overall feel from your screenshots and apply them to your page. It won't be pixel-perfect, but it'll get you 80% of the way there - and you can fine-tune from there.
+            </p>
+          </div>
+
           <div className="bg-white border border-stone-200 rounded-lg p-5">
+            <p className="text-stone-800 text-sm font-bold mb-3">Other polish</p>
             <ul className="text-stone-700 text-sm leading-relaxed space-y-4">
-              <li>
-                <strong>Brand it:</strong> Grab a screenshot from a page or tool your team already uses and paste it in: "Match this aesthetic. Do not change any copy or functionality, just the visual design."
-              </li>
               <li>
                 <strong>Tone:</strong> "Make the language less formal - this should sound like advice from a colleague, not a textbook"
               </li>
               <li>
                 <strong>Layout:</strong> "The page feels too long. Can you make the reference section collapsed by default so people see the feedback section right away?"
-              </li>
-              <li>
-                <strong>Upload brand guidelines:</strong> If you have them, upload a PDF or screenshot: "Here are our brand guidelines. Update the colors, fonts, and overall feel to match."
               </li>
             </ul>
           </div>
