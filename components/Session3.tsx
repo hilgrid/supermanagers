@@ -808,7 +808,13 @@ const Session3: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-stone-50 border-l-4 border-stone-400 p-4 mt-4">
+            <div className="bg-stone-50 border-l-4 border-amber-400 p-4 mt-4 mb-4">
+              <p className="text-stone-700 text-sm leading-relaxed">
+                <strong>Tip:</strong> If you don't like wrangling with the integrations directly, <a href="https://zapier.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Zapier</a> makes this easier. You can set up a Zap that watches for form submissions and sends the data to Google Sheets, Notion, Airtable, or wherever you want - no troubleshooting permissions or scripts.
+              </p>
+            </div>
+
+            <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
               <p className="text-stone-700 text-sm leading-relaxed">
                 <strong>Test it.</strong> Once it's connected, submit a dummy entry and check that it shows up where it should.
               </p>
