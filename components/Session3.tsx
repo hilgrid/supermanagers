@@ -605,31 +605,30 @@ const Session3: React.FC = () => {
             </div>
           </div>
 
-          {/* Section 2: Feedback */}
-          <div className="bg-white border border-stone-200 rounded-lg p-5 mb-4">
-            <h3 className="text-lg font-bold text-stone-800 mb-3">Section 2: Feedback</h3>
-            <p className="text-stone-700 text-sm leading-relaxed mb-3">
-              Check that the button works and the copy is clear.
-            </p>
-            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
-              <li>"Change the button text to 'Get Feedback on Your Deck'"</li>
-              <li>Make sure the language says "deck" or "presentation" everywhere, not "slide" - this tool evaluates entire presentations</li>
-              <li>If the framing sounds too much like a test: "Make this sound less like a test and more like a tool - something they'd want to use, not something they're being made to use"</li>
-            </ul>
-          </div>
-
-          {/* Section 3: Progress Tracker */}
-          <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <h3 className="text-lg font-bold text-stone-800 mb-3">Section 3: Progress Tracker</h3>
-            <p className="text-stone-700 text-sm leading-relaxed mb-3">
-              Check that the form fields work correctly and the layout makes sense.
-            </p>
-            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
-              <li>"Add a date field that auto-fills with today's date"</li>
-              <li>"After someone submits, show their submission history below the form so they can see their own progress"</li>
-              <li>"Make the feedback text area bigger - people will be pasting a lot of text"</li>
-            </ul>
-          </div>
+          {/* Additional feedback examples */}
+          <details className="border border-stone-300 rounded-lg overflow-hidden">
+            <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+              Additional examples of feedback you could give
+            </summary>
+            <div className="p-4 space-y-4">
+              <div>
+                <p className="text-stone-800 text-sm font-bold mb-2">On the feedback section:</p>
+                <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
+                  <li>"Change the button text to 'Get Feedback on Your Deck'"</li>
+                  <li>Make sure the language says "deck" or "presentation" everywhere, not "slide"</li>
+                  <li>"Make this sound less like a test and more like a tool - something they'd want to use, not something they're being made to use"</li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-stone-800 text-sm font-bold mb-2">On the progress tracker:</p>
+                <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
+                  <li>"Add a date field that auto-fills with today's date"</li>
+                  <li>"After someone submits, show their submission history below the form so they can see their own progress"</li>
+                  <li>"Make the feedback text area bigger - people will be pasting a lot of text"</li>
+                </ul>
+              </div>
+            </div>
+          </details>
         </div>
 
         <hr className="border-stone-300 mb-12" />
