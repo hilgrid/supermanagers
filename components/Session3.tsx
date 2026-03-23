@@ -336,7 +336,7 @@ const Session3: React.FC = () => {
           </ol>
           <div className="border-t border-stone-200 pt-4">
             <p className="text-sm text-stone-500 leading-relaxed">
-              <span className="font-bold text-stone-700">Going further:</span> <a href="#going-further" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Bring the AI Into the Tool</a> (API connection instructions) &middot; <a href="#homework" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Homework</a>
+              <span className="font-bold text-stone-700">Going further:</span> <a href="#going-further" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Bring the AI Into the Tool</a> (API connection instructions) &middot; <a href="#next-steps" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Next Steps</a>
             </p>
           </div>
         </div>
@@ -969,17 +969,17 @@ const Session3: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Homework */}
-        <div id="homework" className="mb-16">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Homework</h2>
+        {/* Next Steps */}
+        <div id="next-steps" className="mb-16">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Next Steps</h2>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <ol className="text-stone-700 text-sm leading-relaxed space-y-3 list-decimal list-inside">
-              <li><strong>Finish your page.</strong> Make it good enough that you'd actually send it to your team. Improve the examples, tighten the checklist, make it look professional.</li>
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">None of this is required - just ideas if you want to keep going.</p>
+            <ul className="text-stone-700 text-sm leading-relaxed space-y-3 list-disc list-inside">
+              <li><strong>Finish what you started.</strong> If you didn't get through all the steps during the session, pick up where you left off. The guide above has everything you need.</li>
               <li><strong>Send it to one person.</strong> Ask them: "Would you use this? What's confusing?" Their feedback is worth more than another hour of solo tweaking.</li>
-              <li><strong>If you're feeling ambitious:</strong> Connect the API to remove the copy-paste step. Lovable will walk you through it.</li>
-              <li><strong>Post in Maven:</strong> Your URL, a screenshot, and one sentence about who it's for and when they'd use it.</li>
-            </ol>
+              <li><strong>Try building one for your team.</strong> Think about the Custom GPTs you've been making. Is there one that would work better as an interactive page - something with a checklist, examples, a guided workflow? Try building it in Lovable using the same process from today. You already know how.</li>
+            </ul>
           </div>
         </div>
 
