@@ -991,6 +991,40 @@ const Session3: React.FC = () => {
           </div>
         </div>
 
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Feedback CTA */}
+        <div className="mb-16 bg-white border-2 border-stone-300 rounded-lg p-8">
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="flex-shrink-0">
+              <div className="w-48 h-64 rounded-lg rotate-[-2deg] overflow-hidden">
+                <img
+                  src="/liberty-hilary.jpg"
+                  alt="Little Hilary dressed as the Statue of Liberty"
+                  className="w-full h-full object-cover object-[50%_20%]"
+                />
+              </div>
+            </div>
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold text-stone-800 mb-2">This is Give-Me-Your-Feedback Hilary.</h2>
+              <p className="text-stone-600 text-base leading-relaxed mb-3">
+                She's lifting her lamp beside the golden door of continuous improvement, and also she wants to know how this week went.
+              </p>
+              <p className="text-stone-600 text-base leading-relaxed mb-4">
+                Your feedback shapes next week's session + any bonus material I add. It takes 2 minutes.
+              </p>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfoRRqB5jn_8Jqo4o_UVhFgQojNjV0hK3U1ybMjn-qfTjEodA/viewform?usp=publish-editor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-3 bg-stone-800 text-white font-semibold rounded-lg hover:bg-stone-700 transition-colors"
+              >
+                Give your tired, your poor feedback
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
