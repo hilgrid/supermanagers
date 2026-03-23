@@ -343,6 +343,20 @@ const Session3: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
+        {/* See the Finished Versions */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">See the Finished Versions</h2>
+          <div className="bg-white border border-stone-200 rounded-lg p-5">
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">Here are the two versions of the tool we're building today:</p>
+            <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
+              <li><strong><a href="https://deck-doctor-lite.lovable.app" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Doctor Lite</a></strong> - The version everyone builds during the session. Links to the Custom GPT for feedback.</li>
+              <li><strong><a href="https://deck-chef.lovable.app/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Chef</a></strong> - The upgraded version with AI built in. Feedback happens right on the page.</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
         {/* Before You Start */}
         <div id="before-you-start" className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">Before You Start</h2>
