@@ -599,12 +599,12 @@ const Session3: React.FC = () => {
           </div>
 
           <p className="text-stone-700 text-sm leading-relaxed mb-6">
-            This is the same skill as iterating on a Custom GPT - tell it exactly what's wrong and what you want instead. Here are the kinds of things you'll catch on a first pass:
+            This is the same skill as iterating on a Custom GPT - tell it exactly what's wrong and what you want instead. Here's the feedback I gave it:
           </p>
 
           {/* The checklist */}
           <div className="bg-white border border-stone-200 rounded-lg p-5 mb-4">
-            <h3 className="text-lg font-bold text-stone-800 mb-3">The checklist</h3>
+            <h3 className="text-lg font-bold text-stone-800 mb-3">On the checklist</h3>
             <p className="text-stone-700 text-sm leading-relaxed mb-3">
               The AI might build something fancier than what you need. For example, it might give you a pass/fail toggle with a check and an X for each criterion. That's overthinking it. Nobody is going to actively select "fail" on their own checklist. Tell it:
             </p>
@@ -617,7 +617,7 @@ const Session3: React.FC = () => {
 
           {/* The examples */}
           <div className="bg-white border border-stone-200 rounded-lg p-5 mb-4">
-            <h3 className="text-lg font-bold text-stone-800 mb-3">The examples</h3>
+            <h3 className="text-lg font-bold text-stone-800 mb-3">On the examples</h3>
             <p className="text-stone-700 text-sm leading-relaxed mb-3">
               Look at the good vs. bad slide examples. Here's what to look for and how to fix common issues:
             </p>
