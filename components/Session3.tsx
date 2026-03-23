@@ -261,18 +261,27 @@ We'll add branding and visual design as a separate step once
 the functionality is working.`;
 
 const goingFurtherPrompt = `Replace the "Get Feedback" section. Instead of linking to an
-external GPT, add an upload area where users can upload a slide
-image directly.
+external GPT, add an upload area where users can upload their
+deck as a PDF. Add a "Your name" field above the upload area
+so submissions are attributed.
 
-When they upload, send the image to the Claude API with these
-evaluation criteria:
-[PASTE YOUR CRITERIA FROM THE REFERENCE SECTION]
+When they upload, send the PDF to the Claude API with the
+evaluation prompt I've attached. The prompt evaluates decks
+against five criteria: Purpose and Structure, The "So What",
+Evidence, Signal to Noise, and No Obvious Errors.
 
 Display the feedback inline on the page - pass or fail on each
-criterion, with specific notes on what to fix.
+criterion, with specific notes on what to fix. Match the visual
+style of the rest of the page.
 
-Then automatically log everything to the Google Sheet - don't
-make the user paste anything.`;
+Then automatically log everything to the Google Sheet: who
+submitted (their name from the form), the date, and the full
+feedback the evaluator returned. The user shouldn't have to do
+anything extra - submitting the deck triggers both the feedback
+and the logging.
+
+Delete Section 3 (Track Your Progress) since tracking is now
+handled automatically when someone submits a deck.`;
 
 const Session3: React.FC = () => {
   return (
@@ -862,6 +871,22 @@ const Session3: React.FC = () => {
               </div>
               <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{goingFurtherPrompt}</pre>
             </div>
+
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              Along with this prompt, attach the evaluator system prompt as a file so Lovable knows exactly what criteria to use:
+            </p>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Deck Evaluator - System Prompt (click to expand and copy)
+              </summary>
+              <div className="px-4 py-4 relative">
+                <div className="flex justify-end mb-2">
+                  <CopyButton getText={() => evaluatorPrompt} />
+                </div>
+                <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono bg-stone-50 p-4 rounded-lg border border-stone-200">{evaluatorPrompt}</pre>
+              </div>
+            </details>
 
             <div className="bg-stone-50 border-l-4 border-stone-400 p-4">
               <p className="text-stone-700 text-sm leading-relaxed">
