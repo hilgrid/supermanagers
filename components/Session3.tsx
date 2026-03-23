@@ -1005,9 +1005,27 @@ const Session3: React.FC = () => {
               Along with this prompt, attach the evaluator system prompt as a file so Lovable knows exactly what criteria to use:
             </p>
 
+            <div className="mb-4">
+              <button
+                onClick={() => {
+                  const blob = new Blob([evaluatorPrompt], { type: 'text/markdown' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = 'deck-evaluator-prompt.md';
+                  a.click();
+                  URL.revokeObjectURL(url);
+                }}
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-800 text-white text-sm font-medium rounded-lg hover:bg-stone-700 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download deck-evaluator-prompt.md
+              </button>
+            </div>
+
             <details className="border border-stone-300 rounded-lg overflow-hidden mb-4">
               <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
-                Deck Evaluator - System Prompt (click to expand and copy)
+                Preview the prompt
               </summary>
               <div className="px-4 py-4 relative">
                 <div className="flex justify-end mb-2">
