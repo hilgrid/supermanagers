@@ -345,12 +345,15 @@ const Session3: React.FC = () => {
 
         {/* See the Finished Versions */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">See the Finished Versions</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">What We're Building</h2>
           <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <p className="text-stone-700 text-sm leading-relaxed mb-3">Here are the two versions of the tool we're building today:</p>
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              A tool where your team can upload a presentation deck, get it evaluated against specific criteria you've defined, and receive pass/fail feedback with concrete suggestions for what to fix. Every submission and its feedback get automatically logged to a <a href="https://docs.google.com/spreadsheets/d/1NBwcOnmNkt2o5QBRPABIu6jWELZRCgYzfMA7Q_dD0l8/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Google Sheet</a> - so as a manager, you have a running record of every deck your team has run through the tool and what they were told to improve.
+            </p>
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">Here are the two versions we'll build today:</p>
             <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
-              <li><strong><a href="https://deck-doctor-lite.lovable.app" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Doctor Lite</a></strong> - The version everyone builds during the session. Links to the Custom GPT for feedback.</li>
-              <li><strong><a href="https://deck-chef.lovable.app/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Chef</a></strong> - The upgraded version with AI built in. Feedback happens right on the page.</li>
+              <li><strong><a href="https://deck-doctor-lite.lovable.app" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Doctor Lite</a></strong> - The version everyone builds during the session. Links to a Custom GPT for feedback, with a manual progress tracker.</li>
+              <li><strong><a href="https://deck-chef.lovable.app/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Chef</a></strong> - The upgraded version with AI built in. Feedback happens right on the page and gets logged to the <a href="https://docs.google.com/spreadsheets/d/1NBwcOnmNkt2o5QBRPABIu6jWELZRCgYzfMA7Q_dD0l8/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Google Sheet</a> automatically. Try uploading a deck and check the sheet to see it appear.</li>
             </ul>
           </div>
         </div>
