@@ -708,9 +708,25 @@ const Session3: React.FC = () => {
               </div>
               <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono">{`This still looks bad. These should both look like real slides, not weird mockups with placeholder. Also the colors don't fit the overall brand aesthetic. Make this look professional and actually useful for people trying to improve their slides.`}</pre>
             </div>
-            <p className="text-stone-700 text-sm leading-relaxed">
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
               Don't be afraid to be blunt. "This still looks bad" is more useful than "could you maybe adjust the examples slightly?" You're not hurting its feelings. Be specific about what's wrong and direct about what you want.
             </p>
+
+            <details className="border border-stone-300 rounded-lg overflow-hidden">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                Before and after: what the slide examples looked like
+              </summary>
+              <div className="p-4 space-y-4">
+                <div>
+                  <p className="text-stone-600 text-xs font-bold mb-2">BEFORE - generic mockups that don't look like real slides:</p>
+                  <ClickableImage src="/slides-before.png" alt="Slide examples before iteration - generic mockups" className="rounded-lg border border-stone-200 w-full" />
+                </div>
+                <div>
+                  <p className="text-stone-600 text-xs font-bold mb-2">AFTER - actual slides with real data and clear takeaways:</p>
+                  <ClickableImage src="/slides-after.png" alt="Slide examples after iteration - real slides with data" className="rounded-lg border border-stone-200 w-full" />
+                </div>
+              </div>
+            </details>
           </div>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
