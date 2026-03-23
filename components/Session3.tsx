@@ -336,7 +336,7 @@ const Session3: React.FC = () => {
           </ol>
           <div className="border-t border-stone-200 pt-4">
             <p className="text-sm text-stone-500 leading-relaxed">
-              <span className="font-bold text-stone-700">Going further:</span> <a href="#going-further" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Make it a self-contained tool</a> (API connection instructions) &middot; <a href="#homework" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Homework</a>
+              <span className="font-bold text-stone-700">Going further:</span> <a href="#going-further" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Bring the AI Into the Tool</a> (API connection instructions) &middot; <a href="#homework" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Homework</a>
             </p>
           </div>
         </div>
@@ -858,17 +858,17 @@ const Session3: React.FC = () => {
 
         {/* Going Further */}
         <div id="going-further" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Going Further: Make It a Self-Contained Tool</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 9: Bring the AI Into the Tool</h2>
 
           <div className="bg-white border border-stone-200 rounded-lg p-5">
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
               The version you just built works. But you probably noticed the friction - you have to leave your page, go to the Custom GPT, get feedback, come back, and paste it in. Your team will do this once. Maybe twice. Then they'll stop.
             </p>
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              The fix: connect an AI API directly to your page so the feedback happens inline. Upload a deck, get feedback right on the page, and it all gets logged automatically. No external tools, no copy-paste, no switching tabs. One page does everything.
+              The fix: bring the AI directly into your page so the feedback happens inline. Upload a deck, get feedback right on the page, and it all gets logged automatically. No external tools, no copy-paste, no switching tabs.
             </p>
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              This requires a paid API key (Claude or OpenAI - a few dollars for light usage). Lovable walks you through the setup. Here's what to tell it:
+              When you paste this prompt, Lovable will ask you to "Enable Cloud" - just click Allow. Lovable handles the AI connection for you, so you don't need to set up your own API key. Here's what to tell it:
             </p>
 
             <div className="relative bg-stone-50 border border-stone-200 rounded-lg p-4 mb-4">
