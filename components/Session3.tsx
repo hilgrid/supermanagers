@@ -362,6 +362,11 @@ const Session3: React.FC = () => {
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
               Sign up for a free account at <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">lovable.dev</a>.
             </p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+              <p className="text-stone-800 text-sm leading-relaxed">
+                <strong>100 free credits:</strong> Use code <code className="bg-blue-100 px-2 py-0.5 rounded text-blue-800 font-bold">K7P9V2MX</code> at checkout when signing up for the Lovable Pro 1 plan. First month free. Code expires April 24, 2026.
+              </p>
+            </div>
             <p className="text-stone-700 text-sm leading-relaxed mb-4">
               Review the <a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Slide Evaluator Custom GPT</a> and the prompt behind it (below) to familiarize yourself with the base of what we'll be building today.
             </p>
