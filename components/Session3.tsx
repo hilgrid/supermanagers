@@ -370,7 +370,7 @@ const Session3: React.FC = () => {
               </div>
             </div>
             <p className="text-stone-700 text-sm leading-relaxed">
-              There's a big spectrum of how technical you can make these. You can build something very usable even without connecting a bunch of apps - maybe there's a copy-paste step, and that's a perfectly good v1 to see if people actually use it. Then if they do, you invest in getting the connections in place. If you need permissions, get them. If you need technical help, get it. Start simple, prove it works, then make it smoother.
+              These tools exist on a spectrum of technical complexity. A version with a manual copy-paste step is a perfectly good v1 - it lets you validate whether people actually use the tool before investing in seamless integrations. Start simple, prove the concept works, then layer in the connections.
             </p>
             <p className="text-stone-700 text-sm leading-relaxed font-medium">
               Today we're all building the same thing together so you can see the full process end to end. After the session, you can use what you learn here to build whatever your team needs.
