@@ -333,7 +333,7 @@ const Session3: React.FC = () => {
   const unlocks = [
     { title: "Experiences, not just conversations", body: "A page that walks someone through a checklist, shows them examples, and guides them step by step - instead of a blank chat window where they have to know what to type." },
     { title: "Tools that take action", body: "Instead of AI just giving feedback in a conversation that disappears, it can save results to a spreadsheet, email you when someone submits something, send a Slack or Teams notification, add a row to a database, or kick off a workflow. The output goes somewhere and does something - it doesn't just vanish when the chat closes." },
-    { title: "Workflows that plug into how your team works", body: "Connect your tool to the apps your team already uses - Sheets, Notion, email - so the output goes somewhere useful, not just a chat window." },
+    { title: "Workflows that plug into how your team works", body: "Pull data in from the tools your team already uses - Sheets, Notion, Salesforce, your CRM - and send results back out to them. Your tool becomes part of how work actually gets done, not a separate thing people have to remember to open." },
   ];
   return (
     <section className="relative min-h-screen w-full overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
