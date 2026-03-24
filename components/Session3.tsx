@@ -437,9 +437,15 @@ const Session3: React.FC = () => {
         <div id="step1" className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 1: See the End Result</h2>
           <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <p className="text-stone-700 text-sm leading-relaxed mb-4">
-              A tool where your team can upload a presentation deck, get it evaluated against specific criteria you've defined, and receive pass/fail feedback with concrete suggestions for what to fix. Every submission and its feedback get automatically logged to a <a href="https://docs.google.com/spreadsheets/d/1NBwcOnmNkt2o5QBRPABIu6jWELZRCgYzfMA7Q_dD0l8/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Google Sheet</a> - so as a manager, you have a running record of every deck your team has run through the tool and what they were told to improve.
+            <p className="text-stone-700 text-sm leading-relaxed mb-3">
+              A tool where your team can:
             </p>
+            <ol className="text-stone-700 text-sm leading-relaxed space-y-2 list-decimal list-inside mb-4">
+              <li>See a checklist of the criteria their presentations will be evaluated against</li>
+              <li>Study examples of good vs. bad slides</li>
+              <li>Upload their deck and receive pass/fail feedback with specific suggestions</li>
+              <li>Have that feedback automatically saved to a <a href="https://docs.google.com/spreadsheets/d/1NBwcOnmNkt2o5QBRPABIu6jWELZRCgYzfMA7Q_dD0l8/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Google Sheet</a> so you, as a manager, have a running record of every deck your team has run through the tool and what they were told to improve</li>
+            </ol>
             <p className="text-stone-700 text-sm leading-relaxed mb-3">Here are the two versions we'll build today:</p>
             <ul className="text-stone-700 text-sm leading-relaxed space-y-2 list-disc list-inside">
               <li><strong><a href="https://deck-doctor-lite.lovable.app" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Deck Doctor Lite</a></strong> - The version everyone builds during the session. Links to a Custom GPT for feedback, with a manual progress tracker.</li>
