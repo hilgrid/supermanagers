@@ -409,11 +409,25 @@ const Session3: React.FC = () => {
 
         {/* Step 0: Create Your Lovable Account */}
         <div id="step0" className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 0: Create Your Lovable Account</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Step 0: Get Set Up</h2>
           <div className="bg-white border border-stone-200 rounded-lg p-5">
-            <p className="text-stone-700 text-sm leading-relaxed">
-              Sign up for a free account at <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">lovable.dev</a>. You'll also need access to the <a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Slide Evaluator Custom GPT</a>.
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              Sign up for a free account at <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">lovable.dev</a>.
             </p>
+            <p className="text-stone-700 text-sm leading-relaxed mb-4">
+              Review the <a href="https://chatgpt.com/g/g-69c1437bc1c481919110c5ef3e8930a7-supermanager-first-pass-deck-reviewer" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Slide Evaluator Custom GPT</a> and the prompt behind it (below) to familiarize yourself with the base of what we'll be building today.
+            </p>
+            <details className="border border-stone-300 rounded-lg overflow-hidden">
+              <summary className="px-4 py-3 bg-stone-50 text-stone-700 text-sm font-medium cursor-pointer hover:bg-stone-100 transition-colors">
+                The evaluator prompt
+              </summary>
+              <div className="px-4 py-4 relative">
+                <div className="flex justify-end mb-2">
+                  <CopyButton getText={() => evaluatorPrompt} />
+                </div>
+                <pre className="text-stone-700 text-xs leading-relaxed whitespace-pre-wrap font-mono bg-stone-50 p-4 rounded-lg border border-stone-200">{evaluatorPrompt}</pre>
+              </div>
+            </details>
           </div>
         </div>
 
