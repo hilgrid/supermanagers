@@ -1155,6 +1155,88 @@ const Session3: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
+        {/* Get Feedback on Your Idea */}
+        <div id="idea-worksheet" className="mb-12">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Get Feedback on Your Idea</h2>
+          <p className="text-stone-700 text-sm leading-relaxed mb-6">
+            Fill out this worksheet, then copy your answers and paste them into the Maven portal to get feedback from Hilary on your idea.
+          </p>
+
+          {(() => {
+            const questions = [
+              { id: 'q1', label: '1. Who is this tool for, and what problem does it solve for them?' },
+              { id: 'q2', label: '2. What steps do you want the user to take?' },
+              { id: 'q3', label: '3. How are they interacting with the computer at each step? (e.g., are they viewing a website? Uploading a file? Filling out a form?)' },
+              { id: 'q4', label: '4. What actions is the AI taking at each step?' },
+            ];
+            const storageKey = 'session3-idea-worksheet';
+
+            const WorksheetForm = () => {
+              const [answers, setAnswers] = useState<Record<string, string>>(() => {
+                try {
+                  const saved = localStorage.getItem(storageKey);
+                  return saved ? JSON.parse(saved) : {};
+                } catch { return {}; }
+              });
+              const [copied, setCopied] = useState(false);
+
+              const updateAnswer = (id: string, value: string) => {
+                const updated = { ...answers, [id]: value };
+                setAnswers(updated);
+                localStorage.setItem(storageKey, JSON.stringify(updated));
+              };
+
+              const handleCopy = () => {
+                const text = questions.map(q => `${q.label}\n${answers[q.id] || '(not answered)'}`).join('\n\n');
+                navigator.clipboard.writeText(text).then(() => {
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                });
+              };
+
+              return (
+                <div className="bg-white border border-stone-200 rounded-lg p-5">
+                  <div className="space-y-5">
+                    {questions.map(q => (
+                      <div key={q.id}>
+                        <label className="block text-stone-800 text-sm font-bold mb-2">{q.label}</label>
+                        <textarea
+                          value={answers[q.id] || ''}
+                          onChange={e => updateAnswer(q.id, e.target.value)}
+                          className="w-full border border-stone-300 rounded-lg p-3 text-sm text-stone-800 leading-relaxed min-h-[100px] focus:outline-none focus:ring-2 focus:ring-stone-400 focus:border-transparent resize-y"
+                          placeholder="Type your answer here..."
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6">
+                    <button
+                      onClick={handleCopy}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-800 text-white text-sm font-medium rounded-lg hover:bg-stone-700 transition-colors"
+                    >
+                      {copied ? (
+                        <>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                          Copied! Paste into Maven portal
+                        </>
+                      ) : (
+                        <>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+                          Copy all answers
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              );
+            };
+
+            return <WorksheetForm />;
+          })()}
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
         {/* Feedback CTA */}
         <div className="mb-16 bg-white border-2 border-stone-300 rounded-lg p-8">
           <div className="flex flex-col md:flex-row gap-8 items-center">
