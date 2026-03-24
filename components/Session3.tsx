@@ -329,6 +329,12 @@ const takeaways = [
 
 const Session3: React.FC = () => {
   const [currentTakeaway, setCurrentTakeaway] = useState(0);
+  const [currentUnlock, setCurrentUnlock] = useState(0);
+  const unlocks = [
+    { title: "Experiences, not just conversations", body: "A page that walks someone through a checklist, shows them examples, and guides them step by step - instead of a blank chat window where they have to know what to type." },
+    { title: "Tools that take action", body: "Instead of AI just giving feedback in a conversation that disappears, it can save data to a Google Sheet, log who submitted what, and build a record you can actually use as a manager." },
+    { title: "Workflows that plug into how your team works", body: "Connect your tool to the apps your team already uses - Sheets, Notion, email - so the output goes somewhere useful, not just a chat window." },
+  ];
   return (
     <section className="relative min-h-screen w-full overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
       <div className="max-w-2xl mx-auto px-4 py-12">
@@ -348,11 +354,21 @@ const Session3: React.FC = () => {
             <p className="text-stone-700 text-sm leading-relaxed">
               A coding agent like <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Lovable</a> writes code for you. You describe what you want in plain English - the same skill you've been practicing - and it builds real apps, pages, and tools. What does that unlock?
             </p>
-            <ul className="text-stone-700 text-sm leading-relaxed space-y-3 list-disc list-inside">
-              <li><strong>Experiences, not just conversations.</strong> A page that walks someone through a checklist, shows them examples, and guides them step by step - instead of a blank chat window where they have to know what to type.</li>
-              <li><strong>Tools that take action.</strong> Instead of AI just giving feedback in a conversation that disappears, it can save data to a Google Sheet, log who submitted what, and build a record you can actually use as a manager.</li>
-              <li><strong>Workflows that plug into how your team works.</strong> Connect your tool to the apps your team already uses - Sheets, Notion, email - so the output goes somewhere useful, not just a chat window.</li>
-            </ul>
+            <div className="relative">
+              <div className="bg-white border-2 border-stone-300 rounded-lg p-6 min-h-[120px] flex flex-col justify-center">
+                <p className="text-lg font-bold text-stone-800 mb-2">{unlocks[currentUnlock].title}</p>
+                <p className="text-stone-700 text-sm leading-relaxed">{unlocks[currentUnlock].body}</p>
+              </div>
+              <div className="flex items-center justify-center gap-4 mt-3">
+                <button onClick={() => setCurrentUnlock(Math.max(0, currentUnlock - 1))} disabled={currentUnlock === 0} className="p-2 rounded-full hover:bg-stone-100 transition-colors text-stone-400 hover:text-stone-600 disabled:opacity-30 disabled:cursor-not-allowed">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+                </button>
+                <span className="text-stone-400 text-sm">{currentUnlock + 1} / {unlocks.length}</span>
+                <button onClick={() => setCurrentUnlock(Math.min(unlocks.length - 1, currentUnlock + 1))} disabled={currentUnlock === unlocks.length - 1} className="p-2 rounded-full hover:bg-stone-100 transition-colors text-stone-400 hover:text-stone-600 disabled:opacity-30 disabled:cursor-not-allowed">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+                </button>
+              </div>
+            </div>
             <p className="text-stone-700 text-sm leading-relaxed">
               There's a big spectrum of how technical you can make these. You can build something very usable even without connecting a bunch of apps - maybe there's a copy-paste step, and that's a perfectly good v1 to see if people actually use it. Then if they do, you invest in getting the connections in place. If you need permissions, get them. If you need technical help, get it. Start simple, prove it works, then make it smoother.
             </p>
