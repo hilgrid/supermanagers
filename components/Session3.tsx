@@ -300,7 +300,16 @@ const Session3: React.FC = () => {
               In Sessions 1 and 2, you built Custom GPTs - tools where someone types something in and the AI talks back. That's powerful, but it's still a conversation. Today we're going beyond that.
             </p>
             <p className="text-stone-700 text-sm leading-relaxed">
-              A coding agent like <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Lovable</a> writes code for you. You describe what you want in plain English - the same skill you've been practicing - and it builds real apps, pages, and tools. What does that unlock?
+              A coding agent like <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Lovable</a> writes code for you. You describe what you want in plain English - the same skill you've been practicing - and it builds real apps, pages, and tools.
+            </p>
+            <p className="text-stone-700 text-sm leading-relaxed">
+              But the hard part isn't building it. It's figuring out what to build. Even if you've built code before, it's not obvious how to create tools that actually help your team - as opposed to yet another thing that doesn't quite fit into their workflow. The same principles from Sessions 1 and 2 apply here: start with the problems your team faces that stand in the way of their best work. How do you make their life easier while also elevating what they produce?
+            </p>
+            <p className="text-stone-700 text-sm leading-relaxed">
+              Today's example does both: it shows your team what good looks like, evaluates their work against clear criteria, and plugs into an existing workflow so you can track progress over time. That's the pattern - not just building a tool, but building one that fits.
+            </p>
+            <p className="text-stone-700 text-sm leading-relaxed font-medium">
+              What does building with code unlock that a Custom GPT can't?
             </p>
             <div className="relative">
               <div className="bg-white border-2 border-stone-300 rounded-lg p-6 min-h-[120px] flex flex-col justify-center">
