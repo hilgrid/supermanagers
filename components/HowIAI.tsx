@@ -536,7 +536,7 @@ const HowIAI: React.FC = () => {
             How I AI
           </h1>
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
-            Step-by-step guides for the workflows demoed on the podcast. Pick the one you want to set up and follow along.
+            How to set up everything I demoed on the show.
           </p>
           <p className="text-stone-500 text-base mt-3">
             <a
@@ -551,7 +551,10 @@ const HowIAI: React.FC = () => {
         </div>
 
         {/* Newsletter signup */}
-        <div className="mt-8 mb-4">
+        <div className="mt-10 mb-10">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">
+            Sign up for Hilary's newsletter
+          </h2>
           <iframe
             src="https://hils.substack.com/embed"
             width="100%"
@@ -561,6 +564,10 @@ const HowIAI: React.FC = () => {
             scrolling="no"
           />
         </div>
+
+        <h2 className="text-2xl font-bold text-stone-800 mb-6">
+          Setup guides
+        </h2>
 
         {/* Guide order indicator */}
         <div className="mb-10 mt-8 flex items-center gap-2 text-sm text-stone-400">
