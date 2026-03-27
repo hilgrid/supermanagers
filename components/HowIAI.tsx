@@ -563,7 +563,7 @@ const HowIAI: React.FC = () => {
           &larr; Home
         </a>
 
-        <div className="mt-8 mb-4">
+        <div className="mt-8 mb-6">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
             How to set up everything Hilary demoed on How I AI
           </h1>
@@ -572,9 +572,43 @@ const HowIAI: React.FC = () => {
           </p>
         </div>
 
+        {/* Table of contents */}
+        <div className="mb-8">
+          <h2 className="text-lg font-bold text-stone-800 mb-3">Setup guides</h2>
+          <div className="space-y-1.5">
+            {guides.map((guide, index) => (
+              <button
+                key={guide.id}
+                onClick={() => {
+                  setOpenGuide(guide.id);
+                  window.history.replaceState(null, '', `#${guide.id}`);
+                  setTimeout(() => {
+                    document.getElementById(guide.id)?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
+                className="block w-full text-left text-base text-stone-600 hover:text-stone-900 transition-colors"
+              >
+                <span className="text-stone-400 mr-2">{index + 1}.</span>
+                {guide.title}
+                <span className="text-stone-400 ml-1.5 text-sm">- {guide.subtitle}</span>
+              </button>
+            ))}
+          </div>
+          <p className="text-stone-400 text-sm mt-3">
+            <a
+              href="https://www.figma.com/design/h0IohJOcQFYMPEvgYBnIJV/how-i-ai?node-id=0-1&t=VrRcivvoQAo83wwQ-0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-stone-600 transition-colors"
+            >
+              Figma with screenshots of everything demoed on the show
+            </a>
+          </p>
+        </div>
+
         {/* Newsletter signup */}
-        <div className="mt-10 mb-10">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">
+        <div className="mb-10">
+          <h2 className="text-lg font-bold text-stone-800 mb-3">
             Sign up for Hilary's newsletter
           </h2>
           <iframe
@@ -628,37 +662,6 @@ const HowIAI: React.FC = () => {
               </a>
             ))}
           </div>
-        </div>
-
-        <h2 className="text-2xl font-bold text-stone-800 mb-2">
-          Setup guides
-        </h2>
-        <p className="text-stone-500 text-base mb-6">
-          <a
-            href="https://www.figma.com/design/h0IohJOcQFYMPEvgYBnIJV/how-i-ai?node-id=0-1&t=VrRcivvoQAo83wwQ-0"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-stone-700 transition-colors"
-          >
-            Figma with screenshots of everything demoed on the show
-          </a>
-        </p>
-
-        {/* Guide order indicator */}
-        <div className="mb-10 mt-8 flex items-center gap-2 text-sm text-stone-400">
-          <span>Start here</span>
-          <span>→</span>
-          {guides.map((g, i) => (
-            <React.Fragment key={g.id}>
-              <button
-                onClick={() => toggleGuide(g.id)}
-                className={`hover:text-stone-600 transition-colors ${openGuide === g.id ? 'text-stone-800 font-medium' : ''}`}
-              >
-                {i + 1}
-              </button>
-              {i < guides.length - 1 && <span>→</span>}
-            </React.Fragment>
-          ))}
         </div>
 
         {/* Guides */}
