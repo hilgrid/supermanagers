@@ -533,10 +533,10 @@ const HowIAI: React.FC = () => {
 
         <div className="mt-8 mb-4">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
-            How I AI
+            How to set up everything Hilary demoed on How I AI
           </h1>
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
-            How to set up everything I demoed on the show.
+            Pick the one you want to set up and follow along.
           </p>
           <p className="text-stone-500 text-base mt-3">
             <a
