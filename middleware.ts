@@ -27,6 +27,10 @@ const pageMeta: Record<string, { title: string; description: string }> = {
     title: '30 Days of AI | WriterBuilder',
     description: '30 days of practical AI challenges for managers.',
   },
+  '/howiai': {
+    title: 'How I AI | Hilary Gridley',
+    description: 'Step-by-step setup guides for using Claude Code to plan your day, capture reminders, and build workflows that get smarter over time.',
+  },
 };
 
 const BOT_USER_AGENTS = [
