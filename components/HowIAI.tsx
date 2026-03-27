@@ -555,6 +555,21 @@ const HowIAI: React.FC = () => {
       className="relative min-h-screen w-full overflow-hidden"
       style={{ backgroundColor: '#faf8f5' }}
     >
+      {/* Event banner */}
+      <div className="w-full bg-stone-800 text-white">
+        <div className="max-w-2xl mx-auto px-4 py-2.5 flex items-center justify-center gap-2 text-sm">
+          <span>Grrls in the Loop - a 2-day AI workshop in Brooklyn, April 22-23.</span>
+          <a
+            href="https://www.grrlsintheloop.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline font-medium hover:text-stone-300 transition-colors"
+          >
+            Get tickets
+          </a>
+        </div>
+      </div>
+
       <div className="max-w-2xl mx-auto px-4 py-12">
         <a
           href="/"
