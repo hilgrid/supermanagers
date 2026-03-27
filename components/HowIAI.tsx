@@ -550,6 +550,18 @@ const HowIAI: React.FC = () => {
           </p>
         </div>
 
+        {/* Newsletter signup */}
+        <div className="mt-8 mb-4">
+          <iframe
+            src="https://hils.substack.com/embed"
+            width="100%"
+            height="320"
+            style={{ border: '1px solid #EEE', background: 'white', borderRadius: '8px' }}
+            frameBorder="0"
+            scrolling="no"
+          />
+        </div>
+
         {/* Guide order indicator */}
         <div className="mb-10 mt-8 flex items-center gap-2 text-sm text-stone-400">
           <span>Start here</span>
