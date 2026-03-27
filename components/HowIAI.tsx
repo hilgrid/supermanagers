@@ -31,7 +31,7 @@ function CodeBlock({ children }: { children: string }) {
 const guides: Guide[] = [
   {
     id: 'context-directory',
-    title: 'Context Directory',
+    title: 'Context Directory and Daily Notes',
     subtitle: 'Give Claude a memory so it gets better over time',
     sections: [
       {
@@ -378,6 +378,112 @@ What would make tomorrow better?`}</CodeBlock>
             <li><strong>Use dictation.</strong> Talking through your day out loud is faster and more natural than typing it. Just hold the mic button and ramble.</li>
             <li><strong>Don't overplan.</strong> If Claude suggests 3 priorities and you want to add a 4th, it might push back. That's by design. You can override it, but it's usually right.</li>
             <li><strong>It gets better.</strong> The first few times, Claude won't know your patterns. It'll schedule things at the wrong time or underestimate how long meetings drain you. Correct it and tell it to remember. After a couple weeks, the plans get surprisingly good.</li>
+          </ul>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'recording-mode',
+    title: 'Recording Mode',
+    subtitle: 'Anonymize everything when you need to demo or screen-record',
+    sections: [
+      {
+        heading: 'What this is',
+        content: (
+          <p>If you want to record yourself using Claude - for a demo, a podcast, a screen share - you probably don't want real names, real emails, and real calendar events showing up on screen. Recording mode tells Claude to anonymize everything automatically, then restore it all when you're done.</p>
+        ),
+      },
+      {
+        heading: 'How it works',
+        content: (
+          <>
+            <p className="mb-4">This is built as a "skill" in Claude Code - a reusable command you can trigger anytime. You set it up once, and from then on you just type a slash command to turn it on or off.</p>
+            <p className="mb-2">When recording mode is on, Claude will:</p>
+            <ul className="list-disc list-inside space-y-1 mb-4">
+              <li>Replace every real name with a fake one (family, colleagues, students - everyone)</li>
+              <li>Anonymize companies, email subjects, dollar amounts, and dates</li>
+              <li>Keep the structure and workflow identical - nothing changes about how you work, just the data flowing through it</li>
+              <li>Use fake names for calendar events</li>
+              <li>Stay consistent - same real person always maps to the same fake name</li>
+            </ul>
+            <p>When you turn it off, Claude reverses everything - restores real names in files, cleans up fake calendar events, and shows you a summary of what it changed back.</p>
+          </>
+        ),
+      },
+      {
+        heading: 'How to set it up',
+        content: (
+          <>
+            <p className="mb-4">Tell Claude:</p>
+            <Prompt>I want to create a recording mode skill. When I type /recording-on, you should anonymize all identifying information in everything you output or write to files - names, companies, email subjects, dollar amounts. Keep the workflows identical, just swap the data. Stay consistent with the same fake names. When I type /recording-off, restore everything to real data and show me what you changed back.</Prompt>
+            <p>Claude will create the skill files and set up the slash commands. After that, your flow is:</p>
+            <ol className="list-decimal list-inside space-y-2 mt-4">
+              <li>About to record? Type <code className="bg-stone-100 px-1.5 py-0.5 rounded text-sm">/recording-on</code></li>
+              <li>Do your demo - everything looks real but isn't</li>
+              <li>Done recording? Type <code className="bg-stone-100 px-1.5 py-0.5 rounded text-sm">/recording-off</code></li>
+              <li>Claude restores all your real data</li>
+            </ol>
+          </>
+        ),
+      },
+      {
+        heading: 'Tips',
+        content: (
+          <ul className="list-disc list-inside space-y-2">
+            <li><strong>Check before you publish.</strong> After recording, scrub through the video for any real info that slipped through. Claude is thorough but not perfect.</li>
+            <li><strong>It works with everything.</strong> Email triage, calendar, daily notes, reminders - recording mode covers all of it.</li>
+            <li><strong>The restore is automatic.</strong> You don't need to manually fix anything. Claude tracks what it changed and puts it all back.</li>
+          </ul>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'return-tracker',
+    title: 'Return Tracker',
+    subtitle: 'Never miss a return window again',
+    sections: [
+      {
+        heading: 'What this is',
+        content: (
+          <p>You buy something online, you're not sure about it, and then 45 days later you realize you missed the return window. This skill scans your email for order confirmations, figures out the return deadline for each one based on the retailer's policy, and flags anything that's about to expire. It can also add return trips to your calendar and batch multiple returns into one errand.</p>
+        ),
+      },
+      {
+        heading: 'How it works',
+        content: (
+          <>
+            <p className="mb-2">When you run the return tracker, Claude:</p>
+            <ol className="list-decimal list-inside space-y-2 mb-4">
+              <li><strong>Scans your Gmail</strong> for order confirmation emails from the past week (or whatever window you set)</li>
+              <li><strong>Identifies what you bought</strong> and from where</li>
+              <li><strong>Looks up the return policy</strong> - it knows the policies for common retailers (Amazon is 30 days, Nordstrom is 40, Target is 90, etc.) and defaults to 30 days for anything it doesn't recognize</li>
+              <li><strong>Calculates the deadline</strong> for each order</li>
+              <li><strong>Flags anything urgent</strong> - returns due in the next 7 days get called out</li>
+            </ol>
+            <p>If you have urgent returns, it'll offer to add a "returns trip" to your calendar or a reminder to your list. If you have multiple returns due around the same time, it'll suggest batching them into one trip.</p>
+          </>
+        ),
+      },
+      {
+        heading: 'How to set it up',
+        content: (
+          <>
+            <p className="mb-4">Tell Claude:</p>
+            <Prompt>I want to build a return tracker. I want you to scan my Gmail for order confirmation emails, figure out the return deadline for each order based on the retailer's return policy, and save the results to a file. Flag anything due in the next 7 days as urgent. Offer to add return trips to my calendar or reminders list when something is about to expire.</Prompt>
+            <p className="mb-4">Claude will need access to your Gmail to make this work. If you've already connected your email for another workflow (like email triage), it'll reuse those credentials. If not, it'll walk you through the OAuth setup - similar to connecting your calendar.</p>
+            <p>Once it's set up, you can run it on demand anytime, or tell Claude to check automatically when you plan your day.</p>
+          </>
+        ),
+      },
+      {
+        heading: 'Tips',
+        content: (
+          <ul className="list-disc list-inside space-y-2">
+            <li><strong>Run it weekly.</strong> A quick weekly check catches everything before it expires. You can add it to your weekly review or just run it whenever you think of it.</li>
+            <li><strong>It learns your retailers.</strong> The more you use it, the more return policies it knows. If it gets one wrong, just correct it.</li>
+            <li><strong>Batch your returns.</strong> If Claude says you have 3 returns due this week, ask it to find the most efficient route or suggest a single trip that covers all the drop-off locations.</li>
           </ul>
         ),
       },
