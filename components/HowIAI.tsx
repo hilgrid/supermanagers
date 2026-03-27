@@ -570,16 +570,6 @@ const HowIAI: React.FC = () => {
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
             Pick the one you want to set up and follow along.
           </p>
-          <p className="text-stone-500 text-base mt-3">
-            <a
-              href="https://www.figma.com/design/h0IohJOcQFYMPEvgYBnIJV/how-i-ai?node-id=0-1&t=VrRcivvoQAo83wwQ-0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-stone-700 transition-colors"
-            >
-              Screenshots of everything demoed on the show
-            </a>
-          </p>
         </div>
 
         {/* Newsletter signup */}
@@ -597,9 +587,19 @@ const HowIAI: React.FC = () => {
           />
         </div>
 
-        <h2 className="text-2xl font-bold text-stone-800 mb-6">
+        <h2 className="text-2xl font-bold text-stone-800 mb-2">
           Setup guides
         </h2>
+        <p className="text-stone-500 text-base mb-6">
+          <a
+            href="https://www.figma.com/design/h0IohJOcQFYMPEvgYBnIJV/how-i-ai?node-id=0-1&t=VrRcivvoQAo83wwQ-0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-stone-700 transition-colors"
+          >
+            Figma with screenshots of everything demoed on the show
+          </a>
+        </p>
 
         {/* Guide order indicator */}
         <div className="mb-10 mt-8 flex items-center gap-2 text-sm text-stone-400">
