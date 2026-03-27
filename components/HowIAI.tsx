@@ -484,6 +484,7 @@ What would make tomorrow better?`}</CodeBlock>
             <li><strong>Run it weekly.</strong> A quick weekly check catches everything before it expires. You can add it to your weekly review or just run it whenever you think of it.</li>
             <li><strong>It learns your retailers.</strong> The more you use it, the more return policies it knows. If it gets one wrong, just correct it.</li>
             <li><strong>Batch your returns.</strong> If Claude says you have 3 returns due this week, ask it to find the most efficient route or suggest a single trip that covers all the drop-off locations.</li>
+            <li><strong>Make it automatic.</strong> If you already have a "plan my day" workflow, you can tell Claude to run the return tracker as part of that process so you never have to remember to check. It'll add a little time to your morning planning, but you'll never miss a return window.</li>
           </ul>
         ),
       },
