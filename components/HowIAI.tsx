@@ -585,6 +585,49 @@ const HowIAI: React.FC = () => {
             frameBorder="0"
             scrolling="no"
           />
+          <p className="text-sm text-stone-400 mt-4 mb-3">Popular posts</p>
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              {
+                title: 'hate self-promotion? develop a talk.',
+                subtitle: 'what to do when the attention economy eats the job market',
+                image: 'https://substack-post-media.s3.amazonaws.com/public/images/baff3783-6d6a-44dd-8de0-e1c700a2209e_1408x768.jpeg',
+                url: 'https://hils.substack.com/p/hate-self-promotion-develop-a-talk',
+              },
+              {
+                title: 'how to be an idea factory',
+                subtitle: 'what if AI could help you do less?',
+                image: 'https://substack-post-media.s3.amazonaws.com/public/images/b6e89a5a-d24d-472b-ad2b-1b259ef27d58_1408x768.jpeg',
+                url: 'https://hils.substack.com/p/how-to-be-an-idea-factory',
+              },
+              {
+                title: 'writing is building now',
+                subtitle: 'words can just do things',
+                image: 'https://substack-post-media.s3.amazonaws.com/public/images/b3faa4f8-3a48-4207-99ed-36d724d9e97f_1216x880.jpeg',
+                url: 'https://hils.substack.com/p/writing-is-building-now',
+              },
+            ].map((post) => (
+              <a
+                key={post.url}
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block"
+              >
+                <div className="aspect-[16/10] rounded-lg overflow-hidden mb-2">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                </div>
+                <p className="text-sm font-bold text-stone-800 leading-snug group-hover:text-stone-600 transition-colors">
+                  {post.title}
+                </p>
+                <p className="text-xs text-stone-400 mt-0.5">{post.subtitle}</p>
+              </a>
+            ))}
+          </div>
         </div>
 
         <h2 className="text-2xl font-bold text-stone-800 mb-2">
