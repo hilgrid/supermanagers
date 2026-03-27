@@ -30,6 +30,38 @@ function CodeBlock({ children }: { children: string }) {
 
 const guides: Guide[] = [
   {
+    id: 'install-claude-code',
+    title: 'Install Claude Code',
+    subtitle: 'Get Claude Code running on your computer',
+    sections: [
+      {
+        heading: 'What this is',
+        content: (
+          <p>Claude Code is a terminal-based AI tool that can read and write files on your computer, manage your calendar, process emails, and automate workflows. Everything in these guides runs through Claude Code. Here's how to install it on a Mac.</p>
+        ),
+      },
+      {
+        heading: 'Steps',
+        content: (
+          <>
+            <ol className="list-decimal list-inside space-y-3">
+              <li>Click the <strong>magnifying glass</strong> in the top right of your screen (Spotlight search)</li>
+              <li>Type <strong>Terminal</strong></li>
+              <li>Open it</li>
+              <li>Copy this script:</li>
+            </ol>
+            <CodeBlock>curl -fsSL https://claude.ai/install.sh | bash</CodeBlock>
+            <ol className="list-decimal list-inside space-y-3" start={5}>
+              <li>Paste it into the terminal and hit <strong>Enter</strong></li>
+            </ol>
+            <p className="mt-4">That's it. Follow the prompts and you'll be up and running.</p>
+            <p className="mt-4">If you've never used the terminal before, don't worry - Claude's <a href="https://code.claude.com/docs/en/terminal-guide" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-900 transition-colors">guide for new terminal users</a> is very good.</p>
+          </>
+        ),
+      },
+    ],
+  },
+  {
     id: 'context-directory',
     title: 'Context Directory and Daily Notes',
     subtitle: 'Give Claude a memory so it gets better over time',
