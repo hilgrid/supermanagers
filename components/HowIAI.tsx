@@ -555,7 +555,7 @@ const HowIAI: React.FC = () => {
           <iframe
             src="https://hils.substack.com/embed"
             width="100%"
-            height="320"
+            height="150"
             style={{ border: '1px solid #EEE', background: 'white', borderRadius: '8px' }}
             frameBorder="0"
             scrolling="no"
