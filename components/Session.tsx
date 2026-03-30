@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-type FilePlatform = 'claude-code' | 'cursor' | 'claude-desktop' | 'cowork';
+type FilePlatform = 'claude-code' | 'cursor' | 'cowork';
 type WebPlatform = 'chatgpt' | 'claude-web' | 'gemini' | 'copilot';
 
 const filePlatformLabels: Record<FilePlatform, string> = {
   'claude-code': 'Claude Code',
   cursor: 'Cursor',
-  'claude-desktop': 'Claude Desktop',
   cowork: 'Claude Cowork',
 };
 
@@ -81,12 +80,6 @@ const fileSetupSteps: Record<FilePlatform, React.ReactNode[]> = {
     <>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</>,
     <>When you're done, it will create all your files automatically.</>,
   ],
-  'claude-desktop': [
-    <>Open Claude Desktop and start a new conversation.</>,
-    <>Tell it: <InlinePrompt text="Navigate to my Manager OS folder and read the Setup Interview file. Walk me through it." /></>,
-    <>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</>,
-    <>When you're done, it will create all your files automatically - About docs, team folders, project summaries, everything.</>,
-  ],
   cowork: [
     <>Upload your Manager OS folder to Cowork.</>,
     <>Type: <InlinePrompt text="Read the Setup Interview file and walk me through it" /></>,
@@ -102,11 +95,6 @@ const file30DaysSteps: Record<FilePlatform, React.ReactNode[]> = {
   ],
   cursor: [
     <>In the same chat, type: <InlinePrompt text="Read the 30 Days of AI file. Create a customized version for my team based on everything you know about us - our roles, our projects, and the kinds of work we do. Replace the generic examples with ones that are specific to my team." /></>,
-    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
-    <>When you're happy with it, ask it to save the customized version in your Manager OS folder.</>,
-  ],
-  'claude-desktop': [
-    <>In the same conversation, say: <InlinePrompt text="Read the 30 Days of AI file in my Manager OS folder. Create a customized version for my team based on everything you know about us - our roles, our projects, and the kinds of work we do. Replace the generic examples with ones that are specific to my team." /></>,
     <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
     <>When you're happy with it, ask it to save the customized version in your Manager OS folder.</>,
   ],
@@ -153,11 +141,6 @@ const fileWeeklySteps: Record<FilePlatform, React.ReactNode[]> = {
     <>It has access to all your files, same as Claude Code.</>,
     <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
   ],
-  'claude-desktop': [
-    <>In the same conversation, say: <InlinePrompt text="Read the weekly update writer skill and run it using my Manager OS context" /></>,
-    <>It has access to your local files, same as Claude Code and Cursor.</>,
-    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
-  ],
   cowork: [
     <>Type: <InlinePrompt text="Read the weekly update writer skill and run it using my Manager OS context" /></>,
     <>Cowork runs in the background - it will come back to you with a draft.</>,
@@ -196,21 +179,6 @@ const fileMakeBetter: Record<FilePlatform, React.ReactNode> = {
       </p>
     </>
   ),
-  'claude-desktop': (
-    <>
-      <p className="text-stone-800 text-base leading-relaxed mb-3">
-        The first output will probably be too generic. Now make the context richer:
-      </p>
-      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-        <li>If you keep a running notes doc, tell it: <InlinePrompt text="Also pull from my running notes at [path]" /></li>
-        <li>Your 1:1 notes from this week</li>
-        <li>Any project docs or status updates you keep</li>
-      </ul>
-      <p className="text-stone-800 text-base leading-relaxed mb-2">
-        Edit <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span> to reference these sources permanently.
-      </p>
-    </>
-  ),
   cowork: (
     <>
       <p className="text-stone-800 text-base leading-relaxed mb-3">
@@ -230,28 +198,31 @@ const webSetupSteps: Record<WebPlatform, React.ReactNode[]> = {
     <>Attach the file <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> from your Manager OS folder (click the paperclip icon or drag it in).</>,
     <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
     <>Answer the questions one section at a time.</>,
-    <>It will generate the content for each file. Copy-paste each one into the right file in your Manager OS folder (Me/About.md, My Manager/About.md, etc.).</>,
+    <>When the interview is done, say: <InlinePrompt text="Now generate all the files as markdown (.md) files I can download. Create one file for each: Me/About.md, My Manager/About.md, one per team member, one per project, and Company Context/About.md. Zip them up so I can download them all at once." /></>,
+    <>Download the zip, unzip it, and move the files into the matching folders in your Manager OS folder.</>,
   ],
   'claude-web': [
     <>Open a new chat in Claude.</>,
     <>Attach the file <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> from your Manager OS folder (click the paperclip icon or drag it in).</>,
     <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
     <>Answer the questions one section at a time.</>,
-    <>It will generate the content for each file. Copy-paste each one into the right file in your Manager OS folder.</>,
+    <>When the interview is done, say: <InlinePrompt text="Now create an artifact for each file: Me/About.md, My Manager/About.md, one per team member, one per project, and Company Context/About.md." /> Download each artifact and move it into the matching folder in your Manager OS.</>,
   ],
   gemini: [
     <>Copy the Manager OS folder into your Google Drive. You can keep the .md files as-is or convert them to Google Docs - either works.</>,
     <>Open Gemini (gemini.google.com).</>,
     <>Attach the <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> file from your Drive, or copy-paste the prompt.</>,
     <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
-    <>Answer the questions. Gemini can create files directly in your Drive if you ask it to, or you can copy-paste the outputs into the right files.</>,
+    <>Answer the questions one section at a time.</>,
+    <>When the interview is done, say: <InlinePrompt text="Now create each file directly in my Google Drive, in the matching folders inside my Manager OS folder: Me/About.md, My Manager/About.md, one per team member, one per project, and Company Context/About.md." /></>,
   ],
   copilot: [
     <>Copy the Manager OS folder into OneDrive or SharePoint. You can keep the .md files as-is - Copilot can read them.</>,
     <>Open Microsoft Copilot.</>,
     <>Attach the <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> file (click the paperclip icon or drag it in). You can also copy-paste the prompt if attaching doesn't work.</>,
     <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
-    <>Answer the questions. Copy-paste the generated content into the right files in your Manager OS folder.</>,
+    <>Answer the questions one section at a time.</>,
+    <>When the interview is done, say: <InlinePrompt text="Now generate all the files as markdown. Create one file for each: Me/About.md, My Manager/About.md, one per team member, one per project, and Company Context/About.md." /> Copy each one into the matching file in your Manager OS folder on OneDrive.</>,
   ],
 };
 
