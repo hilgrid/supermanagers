@@ -3,6 +3,25 @@ import { Link } from 'react-router-dom';
 import { weeks, ContentBlock } from './data';
 
 const STORAGE_KEY = '30days-ai-habit-progress';
+const RACE_KEY = '30days-ai-race';
+
+interface RaceCommitment {
+  venue: string;
+  date: string;
+}
+
+function getRace(): RaceCommitment | null {
+  try {
+    const stored = localStorage.getItem(RACE_KEY);
+    return stored ? JSON.parse(stored) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveRace(race: RaceCommitment) {
+  localStorage.setItem(RACE_KEY, JSON.stringify(race));
+}
 
 function getProgress(): Record<number, boolean> {
   try {
@@ -191,6 +210,9 @@ const ThirtyDays: React.FC = () => {
   const [expandedDay, setExpandedDay] = useState<number | null>(null);
   const [progress, setProgress] = useState<Record<number, boolean>>(getProgress);
   const contentRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const [race, setRace] = useState<RaceCommitment | null>(getRace);
+  const [raceVenue, setRaceVenue] = useState('');
+  const [raceDate, setRaceDate] = useState('');
 
   useEffect(() => {
     saveProgress(progress);
@@ -278,6 +300,75 @@ const ThirtyDays: React.FC = () => {
             By Day 30, you&rsquo;re not just using AI occasionally. You&rsquo;re someone who builds with it. No coding required. No prior experience. Just show up.
           </p>
         </div>
+
+        {/* Sign up for the race */}
+        {!race ? (
+          <div className="bg-white/60 border border-stone-300 rounded-xl px-6 py-6 mb-8">
+            <h2 className="text-stone-800 text-[16px] font-bold mb-2">
+              Before you start training, sign up for the race.
+            </h2>
+            <p className="text-stone-600 text-[14px] leading-[1.7] mb-5">
+              It's way easier to stay accountable to a training plan if there's a forcing function. Commit to giving a demo of something you built with AI at a high-stakes venue: an all-hands, a leadership meeting, a team offsite. Put it on the calendar and tell people about it.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mb-4">
+              <input
+                type="text"
+                placeholder="Where will you demo? (e.g. team all-hands)"
+                value={raceVenue}
+                onChange={(e) => setRaceVenue(e.target.value)}
+                className="flex-1 px-4 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-[14px] placeholder:text-stone-400 focus:outline-none focus:border-[#7a9e8e] focus:ring-1 focus:ring-[#7a9e8e]/30 transition-all"
+              />
+              <input
+                type="date"
+                value={raceDate}
+                onChange={(e) => setRaceDate(e.target.value)}
+                className="sm:w-[180px] px-4 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-[14px] focus:outline-none focus:border-[#7a9e8e] focus:ring-1 focus:ring-[#7a9e8e]/30 transition-all"
+              />
+            </div>
+            <button
+              onClick={() => {
+                if (raceVenue.trim() && raceDate) {
+                  const commitment = { venue: raceVenue.trim(), date: raceDate };
+                  saveRace(commitment);
+                  setRace(commitment);
+                }
+              }}
+              disabled={!raceVenue.trim() || !raceDate}
+              className="w-full sm:w-auto px-6 py-2.5 rounded-lg text-[14px] font-medium transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+              style={{
+                backgroundColor: raceVenue.trim() && raceDate ? '#7a9e8e' : undefined,
+                color: raceVenue.trim() && raceDate ? 'white' : undefined,
+              }}
+            >
+              I'm committed
+            </button>
+          </div>
+        ) : (
+          <div className="bg-[#7a9e8e]/10 border border-[#7a9e8e]/20 rounded-xl px-5 py-3.5 mb-8 flex items-center justify-between gap-4">
+            <p className="text-stone-700 text-[14px]">
+              <span className="font-medium">Your race:</span> Demo at{' '}
+              <span className="font-medium">{race.venue}</span> on{' '}
+              <span className="font-medium">
+                {new Date(race.date + 'T12:00:00').toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              </span>
+            </p>
+            <button
+              onClick={() => {
+                localStorage.removeItem(RACE_KEY);
+                setRace(null);
+                setRaceVenue('');
+                setRaceDate('');
+              }}
+              className="text-stone-400 hover:text-stone-600 text-[12px] flex-shrink-0 transition-colors"
+            >
+              Edit
+            </button>
+          </div>
+        )}
 
         {/* Progress bar */}
         <div className="mb-8">
