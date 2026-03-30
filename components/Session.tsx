@@ -1,24 +1,322 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const tools = [
-  { id: 'claude-code', label: 'Claude Code' },
-  { id: 'cursor', label: 'Cursor' },
-  { id: 'chatgpt', label: 'ChatGPT (web)' },
-  { id: 'claude-web', label: 'Claude (web)' },
-  { id: 'gemini', label: 'Gemini (web)' },
-  { id: 'copilot', label: 'Microsoft 365 Copilot' },
-  { id: 'cowork', label: 'Claude Cowork' },
-];
+type FilePlatform = 'claude-code' | 'cursor' | 'claude-desktop' | 'cowork';
+type WebPlatform = 'chatgpt' | 'claude-web' | 'gemini' | 'copilot';
 
-const scrollTo = (id: string) => {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+const filePlatformLabels: Record<FilePlatform, string> = {
+  'claude-code': 'Claude Code',
+  cursor: 'Cursor',
+  'claude-desktop': 'Claude Desktop',
+  cowork: 'Claude Cowork',
+};
+
+const webPlatformLabels: Record<WebPlatform, string> = {
+  chatgpt: 'ChatGPT',
+  'claude-web': 'Claude (web)',
+  gemini: 'Gemini',
+  copilot: 'Microsoft 365 Copilot',
+};
+
+function CopyButton({ getText }: { getText: () => string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(getText());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      const textarea = document.createElement('textarea');
+      textarea.value = getText();
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="p-1.5 rounded transition-colors text-stone-400 hover:text-stone-600"
+      title={copied ? 'Copied!' : 'Copy to clipboard'}
+    >
+      {copied ? (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
+function InlinePrompt({ text }: { text: string }) {
+  return (
+    <span className="inline-flex items-center gap-1">
+      <span className="font-mono bg-rose-100 px-1 text-sm">{text}</span>
+      <CopyButton getText={() => text} />
+    </span>
+  );
+}
+
+const fileSetupSteps: Record<FilePlatform, React.ReactNode[]> = {
+  'claude-code': [
+    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
+    <>Open your terminal and start Claude Code by typing: <InlinePrompt text="claude" /></>,
+    <>Tell it: <InlinePrompt text="Navigate to my Manager OS folder and read the Setup Interview file. Walk me through it." /></>,
+    <>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</>,
+    <>When you're done, it will create all your files automatically - About docs, team folders, project summaries, everything.</>,
+  ],
+  cursor: [
+    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
+    <>Open Cursor. Go to File &rarr; Open Folder and select your Manager OS folder.</>,
+    <>Open the chat panel (Cmd+L on Mac, Ctrl+L on Windows).</>,
+    <>Type: <InlinePrompt text="Read the Setup Interview file and walk me through it" /></>,
+    <>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</>,
+    <>When you're done, it will create all your files automatically.</>,
+  ],
+  'claude-desktop': [
+    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
+    <>Open Claude Desktop and start a new conversation.</>,
+    <>Tell it: <InlinePrompt text="Navigate to my Manager OS folder and read the Setup Interview file. Walk me through it." /></>,
+    <>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</>,
+    <>When you're done, it will create all your files automatically - About docs, team folders, project summaries, everything.</>,
+  ],
+  cowork: [
+    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder.</a></>,
+    <>Upload it to Cowork.</>,
+    <>Type: <InlinePrompt text="Read the Setup Interview file and walk me through it" /></>,
+    <>Answer the questions. It will generate the content for your files.</>,
+  ],
+};
+
+const fileWeeklySteps: Record<FilePlatform, React.ReactNode[]> = {
+  'claude-code': [
+    <>In the same conversation, say: <InlinePrompt text="Read my weekly update writer skill and run it" /></>,
+    <>It pulls from your manager's preferences, your projects, your team - everything the interview just generated.</>,
+    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
+  ],
+  cursor: [
+    <>In the same chat, type: <InlinePrompt text="Read the weekly update writer skill and run it using the context in my Manager OS folder" /></>,
+    <>It has access to all your files, same as Claude Code.</>,
+    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
+  ],
+  'claude-desktop': [
+    <>In the same conversation, say: <InlinePrompt text="Read the weekly update writer skill and run it using my Manager OS context" /></>,
+    <>It has access to your local files, same as Claude Code and Cursor.</>,
+    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
+  ],
+  cowork: [
+    <>Type: <InlinePrompt text="Read the weekly update writer skill and run it using my Manager OS context" /></>,
+    <>Cowork runs in the background - it will come back to you with a draft.</>,
+    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
+  ],
+};
+
+const fileMakeBetter: Record<FilePlatform, React.ReactNode> = {
+  'claude-code': (
+    <>
+      <p className="text-stone-800 text-base leading-relaxed mb-3">
+        The first output will probably be too generic. That's the point - it shows you what's missing. Now make the context richer:
+      </p>
+      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+        <li>If you keep a running notes doc, tell it: <InlinePrompt text="Also pull from my running notes at [path]" /></li>
+        <li>If you had 1:1s this week, tell it where those notes live</li>
+        <li>If a big decision happened over email or Slack, tell it to check there</li>
+      </ul>
+      <p className="text-stone-800 text-base leading-relaxed mb-2">
+        Then open <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span> and edit the "Where to pull context from" section so it knows where to look every time.
+      </p>
+    </>
+  ),
+  cursor: (
+    <>
+      <p className="text-stone-800 text-base leading-relaxed mb-3">
+        The first output will probably be too generic. Now make the context richer:
+      </p>
+      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+        <li>If you keep a running notes doc, tell it: <InlinePrompt text="Also pull from my running notes at [path]" /></li>
+        <li>Your 1:1 notes from this week</li>
+        <li>Any project docs or status updates you keep</li>
+      </ul>
+      <p className="text-stone-800 text-base leading-relaxed mb-2">
+        Edit <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span> to reference these sources permanently.
+      </p>
+    </>
+  ),
+  'claude-desktop': (
+    <>
+      <p className="text-stone-800 text-base leading-relaxed mb-3">
+        The first output will probably be too generic. Now make the context richer:
+      </p>
+      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+        <li>If you keep a running notes doc, tell it: <InlinePrompt text="Also pull from my running notes at [path]" /></li>
+        <li>Your 1:1 notes from this week</li>
+        <li>Any project docs or status updates you keep</li>
+      </ul>
+      <p className="text-stone-800 text-base leading-relaxed mb-2">
+        Edit <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span> to reference these sources permanently.
+      </p>
+    </>
+  ),
+  cowork: (
+    <>
+      <p className="text-stone-800 text-base leading-relaxed mb-3">
+        Review the draft. What's missing?
+      </p>
+      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+        <li>Edit the skill file to point to more specific context - your running notes, 1:1 notes, project docs.</li>
+        <li>Upload any additional context you have from this week.</li>
+      </ul>
+    </>
+  ),
+};
+
+const webSetupSteps: Record<WebPlatform, React.ReactNode[]> = {
+  chatgpt: [
+    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
+    <>Open a new chat in ChatGPT.</>,
+    <>Attach the file <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> from your Manager OS folder (click the paperclip icon or drag it in).</>,
+    <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
+    <>Answer the questions one section at a time.</>,
+    <>It will generate the content for each file. Copy-paste each one into the right file in your Manager OS folder (Me/About.md, My Manager/About.md, etc.).</>,
+  ],
+  'claude-web': [
+    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
+    <>Open a new chat in Claude.</>,
+    <>Attach the file <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> from your Manager OS folder (click the paperclip icon or drag it in).</>,
+    <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
+    <>Answer the questions one section at a time.</>,
+    <>It will generate the content for each file. Copy-paste each one into the right file in your Manager OS folder.</>,
+  ],
+  gemini: [
+    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Copy the Manager OS folder into your Google Drive.</a> You can keep the .md files as-is or convert them to Google Docs - either works.</>,
+    <>Open Gemini (gemini.google.com).</>,
+    <>Attach the <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> file from your Drive, or copy-paste the prompt.</>,
+    <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
+    <>Answer the questions. Gemini can create files directly in your Drive if you ask it to, or you can copy-paste the outputs into the right files.</>,
+  ],
+  copilot: [
+    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder.</a></>,
+    <>Copy it into OneDrive or SharePoint. You can keep the .md files as-is - Copilot can read them.</>,
+    <>Open Microsoft Copilot.</>,
+    <>Attach the <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> file (click the paperclip icon or drag it in). You can also copy-paste the prompt if attaching doesn't work.</>,
+    <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
+    <>Answer the questions. Copy-paste the generated content into the right files in your Manager OS folder.</>,
+  ],
+};
+
+const webWeeklySteps: Record<WebPlatform, React.ReactNode[]> = {
+  chatgpt: [
+    <>Start a new chat. Attach the weekly update writer skill file: <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span></>,
+    <>Also attach the context files the interview generated - your manager's About file, your project summaries.</>,
+    <>Type: <InlinePrompt text="Use the attached instructions to write my weekly update from this context" /></>,
+    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
+  ],
+  'claude-web': [
+    <>Start a new chat (or use your Project). Attach the weekly update writer skill file: <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span></>,
+    <>Also attach your context files - manager's About doc, project summaries, anything relevant.</>,
+    <>Type: <InlinePrompt text="Use the attached instructions to write my weekly update from this context" /></>,
+    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
+  ],
+  gemini: [
+    <>In a new chat, reference the skill file by name or attach it.</>,
+    <>Type: <InlinePrompt text="Pull from my Manager OS folder in Google Drive to write my weekly update using the weekly update writer skill" /></>,
+    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
+  ],
+  copilot: [
+    <>Start a new chat. Attach the weekly update writer skill file: <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span></>,
+    <>Also attach your context files - manager's About file, project summaries.</>,
+    <>Type: <InlinePrompt text="Use the attached instructions to write my weekly update from this context" /></>,
+    <>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</>,
+  ],
+};
+
+const webMakeBetter: Record<WebPlatform, React.ReactNode> = {
+  chatgpt: (
+    <>
+      <p className="text-stone-800 text-base leading-relaxed mb-3">
+        The first output will probably be too generic. Think about what other context you have lying around:
+      </p>
+      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+        <li>A running notes doc from this week? Attach it.</li>
+        <li>1:1 notes? Attach those too.</li>
+        <li>Screenshot your calendar - it's a rough record of what you actually spent time on.</li>
+        <li>A Slack or email thread with a key decision? Screenshot it and attach it.</li>
+      </ul>
+      <p className="text-stone-800 text-base leading-relaxed mb-2">
+        Edit the skill file to mention these sources in the "Where to pull context from" section, then run it again with the extra context attached.
+      </p>
+    </>
+  ),
+  'claude-web': (
+    <>
+      <p className="text-stone-800 text-base leading-relaxed mb-3">
+        The first output will probably be too generic. Add more context:
+      </p>
+      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+        <li>Running notes doc from this week? Attach it.</li>
+        <li>1:1 notes? Attach those.</li>
+        <li>Screenshot your calendar for a record of your week.</li>
+        <li>Screenshot a Slack or email thread with a key decision.</li>
+      </ul>
+      <p className="text-stone-800 text-base leading-relaxed mb-2">
+        Edit the skill file, re-upload it (or update it in your Project), and run again.
+      </p>
+    </>
+  ),
+  gemini: (
+    <>
+      <p className="text-stone-800 text-base leading-relaxed mb-3">
+        Gemini can read your Gmail, your Google Calendar, and your Google Docs. That's a lot of context most other tools can't reach.
+      </p>
+      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+        <li><strong>Gmail:</strong> <InlinePrompt text="Also check my email from this week for anything relevant to my update" /></li>
+        <li><strong>Google Calendar:</strong> <InlinePrompt text="Look at my calendar this week to see what I spent time on" /></li>
+        <li><strong>Google Docs:</strong> Point it at your running notes if you keep one in Drive.</li>
+      </ul>
+      <p className="text-stone-800 text-base leading-relaxed mb-2">
+        Edit the skill file in Drive to reference these sources permanently so it checks them every time.
+      </p>
+    </>
+  ),
+  copilot: (
+    <>
+      <p className="text-stone-800 text-base leading-relaxed mb-3">
+        Copilot can read your Outlook, Teams, and calendar. That's context most other tools can't reach.
+      </p>
+      <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+        <li><strong>Outlook:</strong> <InlinePrompt text="Also check my email from this week for key decisions or updates" /></li>
+        <li><strong>Teams:</strong> <InlinePrompt text="Look at my Teams conversations for anything relevant" /></li>
+        <li><strong>Calendar:</strong> <InlinePrompt text="Check my calendar to see what I spent time on this week" /></li>
+      </ul>
+      <p className="text-stone-800 text-base leading-relaxed mb-2">
+        Edit the skill file to reference these sources permanently so it checks them every time.
+      </p>
+    </>
+  ),
+};
+
+const webTips: Partial<Record<WebPlatform, React.ReactNode>> = {
+  'claude-web': (
+    <p className="text-stone-800 text-base leading-relaxed mb-6 italic">
+      Tip: Create a Claude Project for your Manager OS. Upload your context files there so they persist across conversations - you won't have to re-upload every time you want to use a skill.
+    </p>
+  ),
 };
 
 const Session: React.FC = () => {
+  const [filePlatform, setFilePlatform] = useState<FilePlatform | null>('claude-code');
+  const [webPlatform, setWebPlatform] = useState<WebPlatform | null>(null);
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
       <div className="max-w-2xl mx-auto px-4 py-12">
@@ -53,23 +351,52 @@ const Session: React.FC = () => {
               Session 4 slides &rarr;
             </a>
           </p>
+          <p className="text-stone-500 text-sm mt-3">
+            <Link to="/resources" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Confused about a term? Check the glossary.</Link>
+          </p>
         </div>
 
-        {/* Tool selector */}
+        {/* Tool selectors - both at the top */}
         <div className="mb-12">
-          <p className="text-stone-800 font-bold text-base mb-3 uppercase tracking-widest">
-            What tool are you using?
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {tools.map((tool) => (
-              <button
-                key={tool.id}
-                onClick={() => scrollTo(tool.id)}
-                className="px-4 py-2 text-sm font-medium text-stone-800 bg-white border-2 border-stone-800 hover:bg-stone-800 hover:text-white transition-colors cursor-pointer"
-              >
-                {tool.label}
-              </button>
-            ))}
+          <p className="text-stone-800 text-base font-bold mb-1">What tool are you using?</p>
+          <p className="text-stone-500 text-sm mb-3">Pick one. The instructions below will update to match.</p>
+
+          <div className="mb-4">
+            <p className="text-stone-500 text-xs font-medium uppercase tracking-wide mb-2">File-based tools <span className="normal-case tracking-normal font-normal">- read and write files directly</span></p>
+            <div className="flex flex-wrap gap-2">
+              {(Object.keys(filePlatformLabels) as FilePlatform[]).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => { setFilePlatform(key); setWebPlatform(null); }}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    filePlatform === key && webPlatform === null
+                      ? 'bg-stone-800 text-white'
+                      : 'bg-white border-2 border-stone-300 text-stone-600 hover:border-stone-400'
+                  }`}
+                >
+                  {filePlatformLabels[key]}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-stone-500 text-xs font-medium uppercase tracking-wide mb-2">Web tools <span className="normal-case tracking-normal font-normal">- attach files, copy-paste outputs back</span></p>
+            <div className="flex flex-wrap gap-2">
+              {(Object.keys(webPlatformLabels) as WebPlatform[]).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => { setWebPlatform(key); setFilePlatform(null); }}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    webPlatform === key && filePlatform === null
+                      ? 'bg-stone-800 text-white'
+                      : 'bg-white border-2 border-stone-300 text-stone-600 hover:border-stone-400'
+                  }`}
+                >
+                  {webPlatformLabels[key]}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -77,282 +404,66 @@ const Session: React.FC = () => {
         <div className="mb-12">
           <h2 className="text-xl font-bold text-stone-800 mb-3">What's in the folder</h2>
           <div className="bg-white border-2 border-stone-300 rounded p-5 text-stone-800 text-base leading-loose">
-            <p><strong>Me/</strong> — Your profile as a manager: your role, priorities, management style, strengths, and growth areas. This is how the AI understands who you are.</p>
-            <p><strong>Team/</strong> — A folder for each direct report. Each one has an About file (their role, strengths, what they're working on) and a place for 1:1 notes.</p>
-            <p><strong>My Manager/</strong> — Who your manager is, what they care about, how they like to receive updates, and their communication style.</p>
-            <p><strong>Projects/</strong> — Your active projects with status, who's involved, and key risks.</p>
-            <p><strong>Company Context/</strong> — Strategy docs, org goals, anything that helps the AI understand the bigger picture at your company.</p>
-            <p><strong>Daily Notes/</strong> — A place for running notes as your day goes on. The more you capture here, the better your weekly updates and meeting prep get over time.</p>
-            <p><strong>Skills/</strong> — Reusable prompts saved as files. These work like custom GPT instructions, but they live in a folder instead of inside one specific tool. Split into two buckets: <em>For Me</em> (weekly updates, meeting prep, 1:1 prep) and <em>For My Team</em> (feedback and coaching skills you run against your team's work).</p>
-            <p><strong>Setup Interview.md</strong> — A prompt that interviews you and generates all of the above. This is where you start.</p>
+            <p><strong>Me/</strong> - Your profile as a manager: your role, priorities, management style, strengths, and growth areas. This is how the AI understands who you are.</p>
+            <p><strong>Team/</strong> - A folder for each direct report. Each one has an About file (their role, strengths, what they're working on) and a place for 1:1 notes.</p>
+            <p><strong>My Manager/</strong> - Who your manager is, what they care about, how they like to receive updates, and their communication style.</p>
+            <p><strong>Projects/</strong> - Your active projects with status, who's involved, and key risks.</p>
+            <p><strong>Company Context/</strong> - Strategy docs, org goals, anything that helps the AI understand the bigger picture at your company.</p>
+            <p><strong>Daily Notes/</strong> - A place for running notes as your day goes on. The more you capture here, the better your weekly updates and meeting prep get over time.</p>
+            <p><strong>Skills/</strong> - Reusable prompts saved as files. These work like custom GPT instructions, but they live in a folder instead of inside one specific tool. Split into two buckets: <em>For Me</em> (weekly updates, meeting prep, 1:1 prep) and <em>For My Team</em> (feedback and coaching skills you run against your team's work).</p>
+            <p><strong>Setup Interview.md</strong> - A prompt that interviews you and generates all of the above. This is where you start.</p>
           </div>
         </div>
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Claude Code */}
-        <div id="claude-code" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Claude Code</h2>
+        {/* Instructions - renders for whichever tool is selected */}
+        {filePlatform && (
+          <div className="mb-16">
+            <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
+              {fileSetupSteps[filePlatform].map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
 
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</li>
-            <li>Open your terminal and start Claude Code by typing: <span className="font-mono bg-rose-100 px-1 text-sm">claude</span></li>
-            <li>Tell it: <span className="font-mono bg-rose-100 px-1 text-sm">"Navigate to my Manager OS folder and read the Setup Interview file. Walk me through it."</span></li>
-            <li>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</li>
-            <li>When you're done, it will create all your files automatically — About docs, team folders, project summaries, everything.</li>
-          </ol>
+            <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
+              {fileWeeklySteps[filePlatform].map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
 
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li>In the same conversation, say: <span className="font-mono bg-rose-100 px-1 text-sm">"Read my weekly update writer skill and run it"</span></li>
-            <li>It pulls from your manager's preferences, your projects, your team — everything the interview just generated.</li>
-            <li>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</li>
-          </ol>
+            <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better</h3>
+            {fileMakeBetter[filePlatform]}
+            <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
+          </div>
+        )}
 
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            The first output will probably be too generic. That's the point — it shows you what's missing. Now make the context richer:
-          </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-            <li>If you keep a running notes doc, tell it: <span className="font-mono bg-rose-100 px-1 text-sm">"Also pull from my running notes at [path]"</span></li>
-            <li>If you had 1:1s this week, tell it where those notes live</li>
-            <li>If a big decision happened over email or Slack, tell it to check there</li>
-          </ul>
-          <p className="text-stone-800 text-base leading-relaxed mb-2">
-            Then open <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span> and edit the "Where to pull context from" section so it knows where to look every time.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
-        </div>
+        {webPlatform && (
+          <div className="mb-16">
+            <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
+              {webSetupSteps[webPlatform].map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
+            {webTips[webPlatform]}
 
-        <hr className="border-stone-300 mb-12" />
+            <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
+              {webWeeklySteps[webPlatform].map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
 
-        {/* Cursor */}
-        <div id="cursor" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Cursor</h2>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</li>
-            <li>Open Cursor. Go to File &rarr; Open Folder and select your Manager OS folder.</li>
-            <li>Open the chat panel (Cmd+L on Mac, Ctrl+L on Windows).</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Read the Setup Interview file and walk me through it"</span></li>
-            <li>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</li>
-            <li>When you're done, it will create all your files automatically.</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li>In the same chat, type: <span className="font-mono bg-rose-100 px-1 text-sm">"Read the weekly update writer skill and run it using the context in my Manager OS folder"</span></li>
-            <li>It has access to all your files, same as Claude Code.</li>
-            <li>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            The first output will probably be too generic. Now make the context richer:
-          </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-            <li>If you keep a running notes doc, tell it: <span className="font-mono bg-rose-100 px-1 text-sm">"Also pull from my running notes at [path]"</span></li>
-            <li>Your 1:1 notes from this week</li>
-            <li>Any project docs or status updates you keep</li>
-          </ul>
-          <p className="text-stone-800 text-base leading-relaxed mb-2">
-            Edit <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span> to reference these sources permanently.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again.</p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* ChatGPT */}
-        <div id="chatgpt" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">ChatGPT (web)</h2>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</li>
-            <li>Open a new chat in ChatGPT.</li>
-            <li>Attach the file <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> from your Manager OS folder (click the paperclip icon or drag it in).</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Read the attached file and walk me through the setup interview"</span></li>
-            <li>Answer the questions one section at a time.</li>
-            <li>It will generate the content for each file. Copy-paste each one into the right file in your Manager OS folder (Me/About.md, My Manager/About.md, etc.).</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li>Start a new chat. Attach the weekly update writer skill file: <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span></li>
-            <li>Also attach the context files the interview generated — your manager's About file, your project summaries.</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Use the attached instructions to write my weekly update from this context"</span></li>
-            <li>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            The first output will probably be too generic. Think about what other context you have lying around:
-          </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-            <li>A running notes doc from this week? Attach it.</li>
-            <li>1:1 notes? Attach those too.</li>
-            <li>Screenshot your calendar — it's a rough record of what you actually spent time on.</li>
-            <li>A Slack or email thread with a key decision? Screenshot it and attach it.</li>
-          </ul>
-          <p className="text-stone-800 text-base leading-relaxed mb-2">
-            Edit the skill file to mention these sources in the "Where to pull context from" section, then run it again with the extra context attached.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Claude web */}
-        <div id="claude-web" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Claude (web)</h2>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</li>
-            <li>Open a new chat in Claude.</li>
-            <li>Attach the file <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> from your Manager OS folder (click the paperclip icon or drag it in).</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Read the attached file and walk me through the setup interview"</span></li>
-            <li>Answer the questions one section at a time.</li>
-            <li>It will generate the content for each file. Copy-paste each one into the right file in your Manager OS folder.</li>
-          </ol>
-          <p className="text-stone-800 text-base leading-relaxed mb-6 italic">
-            Tip: Create a Claude Project for your Manager OS. Upload your context files there so they persist across conversations — you won't have to re-upload every time you want to use a skill.
-          </p>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li>Start a new chat (or use your Project). Attach the weekly update writer skill file: <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span></li>
-            <li>Also attach your context files — manager's About doc, project summaries, anything relevant.</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Use the attached instructions to write my weekly update from this context"</span></li>
-            <li>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            The first output will probably be too generic. Add more context:
-          </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-            <li>Running notes doc from this week? Attach it.</li>
-            <li>1:1 notes? Attach those.</li>
-            <li>Screenshot your calendar for a record of your week.</li>
-            <li>Screenshot a Slack or email thread with a key decision.</li>
-          </ul>
-          <p className="text-stone-800 text-base leading-relaxed mb-2">
-            Edit the skill file, re-upload it (or update it in your Project), and run again.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Gemini */}
-        <div id="gemini" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Gemini (web / Google Drive)</h2>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Copy the Manager OS folder into your Google Drive.</a> You can keep the .md files as-is or convert them to Google Docs — either works.</li>
-            <li>Open Gemini (gemini.google.com).</li>
-            <li>Attach the <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> file from your Drive, or copy-paste the prompt.</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Read the attached file and walk me through the setup interview"</span></li>
-            <li>Answer the questions. Gemini can create files directly in your Drive if you ask it to, or you can copy-paste the outputs into the right files.</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li>In a new chat, reference the skill file by name or attach it.</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Pull from my Manager OS folder in Google Drive to write my weekly update using the weekly update writer skill"</span></li>
-            <li>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better — this is where Gemini has a real advantage</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Gemini can read your Gmail, your Google Calendar, and your Google Docs. That's a lot of context most other tools can't reach.
-          </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-            <li><strong>Gmail:</strong> <span className="font-mono bg-rose-100 px-1 text-sm">"Also check my email from this week for anything relevant to my update"</span></li>
-            <li><strong>Google Calendar:</strong> <span className="font-mono bg-rose-100 px-1 text-sm">"Look at my calendar this week to see what I spent time on"</span></li>
-            <li><strong>Google Docs:</strong> Point it at your running notes if you keep one in Drive.</li>
-          </ul>
-          <p className="text-stone-800 text-base leading-relaxed mb-2">
-            Edit the skill file in Drive to reference these sources permanently so it checks them every time.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Copilot */}
-        <div id="copilot" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Microsoft 365 Copilot</h2>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder.</a></li>
-            <li>Copy it into OneDrive or SharePoint. You can keep the .md files as-is — Copilot can read them.</li>
-            <li>Open Microsoft Copilot.</li>
-            <li>Attach the <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> file (click the paperclip icon or drag it in). You can also copy-paste the prompt if attaching doesn't work.</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Read the attached file and walk me through the setup interview"</span></li>
-            <li>Answer the questions. Copy-paste the generated content into the right files in your Manager OS folder.</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li>Start a new chat. Attach the weekly update writer skill file: <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For Me/Weekly update writer.md</span></li>
-            <li>Also attach your context files — manager's About file, project summaries.</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Use the attached instructions to write my weekly update from this context"</span></li>
-            <li>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better — Copilot has access to your Microsoft ecosystem</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Copilot can read your Outlook, Teams, and calendar. That's context most other tools can't reach.
-          </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-            <li><strong>Outlook:</strong> <span className="font-mono bg-rose-100 px-1 text-sm">"Also check my email from this week for key decisions or updates"</span></li>
-            <li><strong>Teams:</strong> <span className="font-mono bg-rose-100 px-1 text-sm">"Look at my Teams conversations for anything relevant"</span></li>
-            <li><strong>Calendar:</strong> <span className="font-mono bg-rose-100 px-1 text-sm">"Check my calendar to see what I spent time on this week"</span></li>
-          </ul>
-          <p className="text-stone-800 text-base leading-relaxed mb-2">
-            Edit the skill file to reference these sources permanently so it checks them every time.
-          </p>
-          <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Cowork */}
-        <div id="cowork" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Claude Cowork</h2>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder.</a></li>
-            <li>Upload it to Cowork.</li>
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Read the Setup Interview file and walk me through it"</span></li>
-            <li>Answer the questions. It will generate the content for your files.</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
-            <li>Type: <span className="font-mono bg-rose-100 px-1 text-sm">"Read the weekly update writer skill and run it using my Manager OS context"</span></li>
-            <li>Cowork runs in the background — it will come back to you with a draft.</li>
-            <li>Look at the output. Could your manager read this in 60 seconds? Would you actually send it?</li>
-          </ol>
-
-          <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better</h3>
-          <p className="text-stone-800 text-base leading-relaxed mb-3">
-            Review the draft. What's missing?
-          </p>
-          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
-            <li>Edit the skill file to point to more specific context — your running notes, 1:1 notes, project docs.</li>
-            <li>Upload any additional context you have from this week.</li>
-          </ul>
-          <p className="text-stone-800 text-base leading-relaxed font-bold">Tell it to run again. See the difference.</p>
-        </div>
+            <h3 className="text-lg font-bold text-stone-800 mb-2">
+              Make it better{(webPlatform === 'gemini' || webPlatform === 'copilot') && <> - this is where {webPlatformLabels[webPlatform]} has a real advantage</>}
+            </h3>
+            {webMakeBetter[webPlatform]}
+            <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
+          </div>
+        )}
 
         <hr className="border-stone-300 mb-12" />
 
@@ -363,7 +474,7 @@ const Session: React.FC = () => {
             The gap between your first output and your second output is the whole lesson. The system got better because <strong>you told it where to find real context about your work.</strong>
           </p>
           <p className="text-stone-800 text-lg leading-relaxed">
-            That's how the Manager OS grows — not by architecting the perfect folder structure upfront, but by running into a gap, filling it, and running again. One use case at a time.
+            That's how the Manager OS grows - not by architecting the perfect folder structure upfront, but by running into a gap, filling it, and running again. One use case at a time.
           </p>
         </div>
 
@@ -424,7 +535,7 @@ const Session: React.FC = () => {
             <li>Post-course video: how I use my whole system day-to-day</li>
             <li>Guide: ideas for things to vibe code</li>
             <li>Guide: ideas for automations and how to set them up</li>
-            <li><Link to="/managercopilot" className="font-bold underline hover:text-stone-600">Supermanager Copilot</Link> — bring it any management problem. It helps you figure out what to build and walks you out with a prompt, a spec, or a plan.</li>
+            <li><Link to="/managercopilot" className="font-bold underline hover:text-stone-600">Supermanager Copilot</Link> - bring it any management problem. It helps you figure out what to build and walks you out with a prompt, a spec, or a plan.</li>
           </ul>
         </div>
       </div>
