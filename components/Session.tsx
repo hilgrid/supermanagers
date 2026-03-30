@@ -477,7 +477,7 @@ const Session: React.FC = () => {
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 4: Create a 30 Days of AI plan for your team</h2>
             <p className="text-stone-500 text-sm mb-3">Once you have good context about your team in place, it's easy to take resources other people have made and adapt them for your team. Here's an example.</p>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
-              Your Manager OS folder includes a 30 Days of AI template (in the Projects folder) - a daily exercise program to build AI fluency. Now that the AI knows about your team, have it create a customized version with exercises specific to your people and their work.
+              Your Manager OS folder includes a <a href="https://docs.google.com/spreadsheets/d/1zJ4rbi9YcQuGqGxc6-AQD0-44oT9l4Eyono0AdpgJbA/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">30 Days of AI</a> template (in the Projects folder) - a daily exercise program to build AI fluency. Now that the AI knows about your team, have it create a customized version with exercises specific to your people and their work.
             </p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {file30DaysSteps[filePlatform].map((step, i) => (
