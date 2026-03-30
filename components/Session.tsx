@@ -499,22 +499,22 @@ const Session: React.FC = () => {
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Improve the system, not just the output</h2>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
-              Imagine your manager replied to your weekly update with this feedback:
+              Imagine your manager replied to your weekly update with a few follow-up questions:
             </p>
             <div className="bg-stone-100 border-l-4 border-stone-400 p-4 mb-4">
               <p className="text-stone-700 text-base leading-relaxed italic">
-                "This is helpful, but I don't need the play-by-play of everything that happened. I want to know: what decisions are coming up that I should be aware of, what's at risk, and where you need my help. Lead with that."
+                "Thanks for this. Can you be more specific about what you need from me on the blocked item? Who exactly do you need me to reach out to, and what do you need me to say? And for the thing that's at risk - is that a resource issue or a scope issue? I want to help but I need to know what 'help' looks like."
               </p>
             </div>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
-              There are two things you can do with this feedback. Try both:
+              There are two things you can do with this. Try both:
             </p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
-              <li>Fix this update: <InlinePrompt text="My manager gave me this feedback on my weekly update: [paste the feedback above]. Rewrite the update based on this." /></li>
-              <li>Fix the system: <InlinePrompt text="Based on that feedback, how should I update the weekly update writer skill so that all future updates incorporate this? Show me what to change." /></li>
+              <li>Fix this update: <InlinePrompt text="My manager replied to my weekly update with these questions: [paste the feedback above]. Rewrite the update to address them." /></li>
+              <li>Fix the system: <InlinePrompt text="Look at my manager's follow-up questions. What's the note behind the note here - what themes can you pull out about what my manager actually wants from these updates? Then show me how to update the weekly update writer skill so future updates address these patterns automatically." /></li>
             </ol>
             <p className="text-stone-800 text-base leading-relaxed mb-8">
-              The first one fixes the output. The second one fixes the machine. That's the difference between using AI and building with it - every piece of feedback makes the whole system better, not just the thing in front of you.
+              The first one fixes the output. The second one fixes the machine. Your manager isn't just asking about this one update - they're telling you what they always want. Baking that into the skill means every future update gets better, not just this one.
             </p>
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Add a skill from your course tool</h2>
@@ -569,22 +569,22 @@ const Session: React.FC = () => {
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Improve the system, not just the output</h2>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
-              Imagine your manager replied to your weekly update with this feedback:
+              Imagine your manager replied to your weekly update with a few follow-up questions:
             </p>
             <div className="bg-stone-100 border-l-4 border-stone-400 p-4 mb-4">
               <p className="text-stone-700 text-base leading-relaxed italic">
-                "This is helpful, but I don't need the play-by-play of everything that happened. I want to know: what decisions are coming up that I should be aware of, what's at risk, and where you need my help. Lead with that."
+                "Thanks for this. Can you be more specific about what you need from me on the blocked item? Who exactly do you need me to reach out to, and what do you need me to say? And for the thing that's at risk - is that a resource issue or a scope issue? I want to help but I need to know what 'help' looks like."
               </p>
             </div>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
-              There are two things you can do with this feedback. Try both:
+              There are two things you can do with this. Try both:
             </p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
-              <li>Fix this update: <InlinePrompt text="My manager gave me this feedback on my weekly update: [paste the feedback above]. Rewrite the update based on this." /></li>
-              <li>Fix the system: <InlinePrompt text="Based on that feedback, how should I update the weekly update writer skill so that all future updates incorporate this? Show me what to change." /></li>
+              <li>Fix this update: <InlinePrompt text="My manager replied to my weekly update with these questions: [paste the feedback above]. Rewrite the update to address them." /></li>
+              <li>Fix the system: <InlinePrompt text="Look at my manager's follow-up questions. What's the note behind the note here - what themes can you pull out about what my manager actually wants from these updates? Then show me how to update the weekly update writer skill so future updates address these patterns automatically." /></li>
             </ol>
             <p className="text-stone-800 text-base leading-relaxed mb-8">
-              The first one fixes the output. The second one fixes the machine. That's the difference between using AI and building with it - every piece of feedback makes the whole system better, not just the thing in front of you.
+              The first one fixes the output. The second one fixes the machine. Your manager isn't just asking about this one update - they're telling you what they always want. Baking that into the skill means every future update gets better, not just this one.
             </p>
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Add a skill from your course tool</h2>
