@@ -474,8 +474,7 @@ const Session: React.FC = () => {
             </p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
               <li>Open your Custom GPT, Gem, or Project from earlier in the course. Copy the system prompt / instructions.</li>
-              <li>Create a new file in your Manager OS under <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For My Team/</span> with a descriptive name (e.g., <span className="font-mono bg-rose-100 px-1 text-sm">Deck reviewer.md</span> or <span className="font-mono bg-rose-100 px-1 text-sm">Email clarity coach.md</span>).</li>
-              <li>Paste the prompt into the file and save it.</li>
+              <li>Tell your AI tool: <InlinePrompt text="Save this as a new skill file in my Manager OS under Skills/For My Team/. Name it something descriptive like Deck reviewer or Email clarity coach." /> It will create the file for you.</li>
             </ol>
             <p className="text-stone-800 text-base leading-relaxed">
               Now anyone on your team can run that skill from the same folder - no separate GPT link needed. And because the Manager OS has context about your team, the skill gets better automatically.
@@ -522,8 +521,8 @@ const Session: React.FC = () => {
             </p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
               <li>Open your Custom GPT, Gem, or Project from earlier in the course. Copy the system prompt / instructions.</li>
-              <li>Create a new file in your Manager OS under <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For My Team/</span> with a descriptive name (e.g., <span className="font-mono bg-rose-100 px-1 text-sm">Deck reviewer.md</span> or <span className="font-mono bg-rose-100 px-1 text-sm">Email clarity coach.md</span>).</li>
-              <li>Paste the prompt into the file and save it.</li>
+              <li>Create a new doc in the <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For My Team/</span> folder in your Manager OS. Name it something descriptive (e.g., "Deck reviewer" or "Email clarity coach"). A Google Doc, Word doc, or plain text file all work - the format doesn't matter, the AI just needs to be able to read it.</li>
+              <li>Paste the prompt into the doc and save it.</li>
             </ol>
             <p className="text-stone-800 text-base leading-relaxed">
               Now anyone on your team can run that skill from the same folder - no separate GPT link needed. And because the Manager OS has context about your team, the skill gets better automatically.
