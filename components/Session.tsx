@@ -746,6 +746,19 @@ const Session: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
+        {/* Parting words */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">You're designing the future of work</h2>
+          <p className="text-stone-800 text-base leading-relaxed mb-4">
+            There's no clear answer yet about what happens to entry-level roles, or whether there's still value in human skill and craft. If you're working on the bleeding edge of this - and you are - you are designing what the future of work looks like. First at your company, then everywhere else.
+          </p>
+          <p className="text-stone-800 text-base leading-relaxed">
+            If we care about people, we have an obligation to find ways to use these tools that don't sideline them. I would not count on other companies to save us there.
+          </p>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
         {/* Rating CTA */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">If this course has been valuable to you...</h2>
@@ -776,9 +789,6 @@ const Session: React.FC = () => {
           <ul className="text-stone-800 text-base leading-relaxed space-y-2 list-disc list-inside">
             <li>Lifetime access to all course materials and videos</li>
             <li>Access to the alumni Slack community, where I share new resources as I make and update them</li>
-            <li>Post-course video: how I use my whole system day-to-day</li>
-            <li>Guide: ideas for things to vibe code</li>
-            <li>Guide: ideas for automations and how to set them up</li>
             <li><Link to="/managercopilot" className="font-bold underline hover:text-stone-600">Supermanager Copilot</Link> - bring it any management problem. It helps you figure out what to build and walks you out with a prompt, a spec, or a plan.</li>
           </ul>
         </div>
