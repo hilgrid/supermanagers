@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const tools = [
-  { id: 'chatgpt', label: 'ChatGPT (web)' },
-  { id: 'claude-web', label: 'Claude (web)' },
-  { id: 'gemini', label: 'Gemini (web)' },
-  { id: 'copilot', label: 'Microsoft Copilot' },
-];
+type Platform = 'chatgpt' | 'claude-web' | 'gemini' | 'copilot';
 
-const scrollTo = (id: string) => {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+const platformLabels: Record<Platform, string> = {
+  chatgpt: 'ChatGPT',
+  'claude-web': 'Claude (web)',
+  gemini: 'Gemini',
+  copilot: 'Microsoft Copilot',
 };
 
 const SYSTEM_PROMPT = `You are a copilot for managers learning to use AI at work. A manager brings you a problem. You help them figure out whether to build a tool or think it through with AI, then give them something concrete: a Custom GPT prompt, a spec for a web page or app, or a step-by-step thinking plan.
@@ -77,14 +72,60 @@ Remind them: the first version should be rough. Build it, run it, see what's mis
 
 const DRIVE_LINK = 'https://drive.google.com/drive/folders/171VGgAhTqlnmp4QWuK2838FdU6W9yHZF';
 
+const platformSetup: Record<Platform, { steps: React.ReactNode[]; note: string }> = {
+  chatgpt: {
+    steps: [
+      <>Go to <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">chatgpt.com</a> and click <strong>Explore GPTs</strong> &rarr; <strong>Create</strong>.</>,
+      <>In the <strong>Name</strong> field, type something like "Supermanager Copilot." Upload the icon image from the Google Drive folder as your GPT's profile picture.</>,
+      <>In the <strong>Instructions</strong> field, paste the system prompt from above.</>,
+      <><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files under <strong>Knowledge</strong>.</>,
+      <>Click <strong>Save</strong> (keep it set to "Only me" unless you want to share it).</>,
+      <>Open your new GPT and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></>,
+    ],
+    note: 'Creating Custom GPTs requires a Plus plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files, but you\'ll need to redo this each time.',
+  },
+  'claude-web': {
+    steps: [
+      <>Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">claude.ai</a> and click <strong>Projects</strong> in the left sidebar, then <strong>Create Project</strong>.</>,
+      <>Name it something like "Supermanager Copilot."</>,
+      <>In the <strong>Project Instructions</strong> field, paste the system prompt from above.</>,
+      <><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files to <strong>Project Knowledge</strong>.</>,
+      <>Start a new chat in the project and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></>,
+    ],
+    note: 'Projects require a Pro plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files to the conversation, but you\'ll need to redo this each time.',
+  },
+  gemini: {
+    steps: [
+      <>Go to <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">gemini.google.com</a> and click <strong>Gem manager</strong> in the left sidebar, then <strong>New Gem</strong>.</>,
+      <>Name it something like "Supermanager Copilot."</>,
+      <>In the <strong>Instructions</strong> field, paste the system prompt from above.</>,
+      <><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files under the instructions.</>,
+      <>Click <strong>Save</strong>, then open the Gem and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></>,
+    ],
+    note: 'Gems require a Gemini Advanced plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files, but you\'ll need to redo this each time.',
+  },
+  copilot: {
+    steps: [
+      <>Open <a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">copilot.microsoft.com</a>.</>,
+      <>Start a new conversation. Paste the system prompt from above as your first message, prefixed with: <span className="font-mono bg-rose-100 px-1 text-sm">"Use these instructions for our conversation:"</span></>,
+      <><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and attach all 4 files to the conversation (click the paperclip icon).</>,
+      <>Then say: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></>,
+    ],
+    note: 'Works on the free plan. You\'ll need to re-paste the instructions and re-attach the files each time you start a new conversation. For persistent setup, use Copilot Studio if your organization has access.',
+  },
+};
+
 const ManagerCopilot: React.FC = () => {
   const [copied, setCopied] = useState(false);
+  const [platform, setPlatform] = useState<Platform>('chatgpt');
 
   const handleCopy = () => {
     navigator.clipboard.writeText(SYSTEM_PROMPT);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  const setup = platformSetup[platform];
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
@@ -163,79 +204,33 @@ const ManagerCopilot: React.FC = () => {
         <hr className="border-stone-300 mb-12" />
 
         {/* Tool selector */}
-        <div className="mb-12">
-          <p className="text-stone-800 font-bold text-base mb-3 uppercase tracking-widest">
-            Set it up in your tool
-          </p>
+        <div className="mb-8">
+          <p className="text-stone-800 font-bold text-base mb-3">Set it up in your tool</p>
           <div className="flex flex-wrap gap-2">
-            {tools.map((tool) => (
+            {(Object.keys(platformLabels) as Platform[]).map((key) => (
               <button
-                key={tool.id}
-                onClick={() => scrollTo(tool.id)}
-                className="px-4 py-2 text-sm font-medium text-stone-800 bg-white border-2 border-stone-800 hover:bg-stone-800 hover:text-white transition-colors cursor-pointer"
+                key={key}
+                onClick={() => setPlatform(key)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  platform === key
+                    ? 'bg-stone-800 text-white'
+                    : 'bg-white border-2 border-stone-300 text-stone-600 hover:border-stone-400'
+                }`}
               >
-                {tool.label}
+                {platformLabels[key]}
               </button>
             ))}
           </div>
         </div>
 
-        {/* ChatGPT */}
-        <div id="chatgpt" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">ChatGPT (web)</h2>
+        {/* Dynamic setup instructions */}
+        <div className="mb-16">
           <ol className="text-stone-800 text-base leading-relaxed space-y-3 list-decimal list-inside">
-            <li>Go to <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">chatgpt.com</a> and click <strong>Explore GPTs</strong> &rarr; <strong>Create</strong>.</li>
-            <li>In the <strong>Name</strong> field, type something like "Supermanager Copilot." Upload the icon image from the Google Drive folder as your GPT's profile picture.</li>
-            <li>In the <strong>Instructions</strong> field, paste the system prompt from above.</li>
-            <li><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files under <strong>Knowledge</strong>.</li>
-            <li>Click <strong>Save</strong> (keep it set to "Only me" unless you want to share it).</li>
-            <li>Open your new GPT and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></li>
+            {setup.steps.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
           </ol>
-          <p className="text-stone-600 text-sm mt-3 italic">Note: Creating Custom GPTs requires a Plus plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files, but you'll need to redo this each time.</p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Claude */}
-        <div id="claude-web" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Claude (web)</h2>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 list-decimal list-inside">
-            <li>Go to <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">claude.ai</a> and click <strong>Projects</strong> in the left sidebar, then <strong>Create Project</strong>.</li>
-            <li>Name it something like "Supermanager Copilot."</li>
-            <li>In the <strong>Project Instructions</strong> field, paste the system prompt from above.</li>
-            <li><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files to <strong>Project Knowledge</strong>.</li>
-            <li>Start a new chat in the project and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></li>
-          </ol>
-          <p className="text-stone-600 text-sm mt-3 italic">Note: Projects require a Pro plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files to the conversation, but you'll need to redo this each time.</p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Gemini */}
-        <div id="gemini" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Gemini (web)</h2>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 list-decimal list-inside">
-            <li>Go to <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">gemini.google.com</a> and click <strong>Gem manager</strong> in the left sidebar, then <strong>New Gem</strong>.</li>
-            <li>Name it something like "Supermanager Copilot."</li>
-            <li>In the <strong>Instructions</strong> field, paste the system prompt from above.</li>
-            <li><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and upload all 4 files under the instructions.</li>
-            <li>Click <strong>Save</strong>, then open the Gem and try it: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></li>
-          </ol>
-          <p className="text-stone-600 text-sm mt-3 italic">Note: Gems require a Gemini Advanced plan ($20/month). On the free plan, you can paste the system prompt as your first message and attach the knowledge base files, but you'll need to redo this each time.</p>
-        </div>
-
-        <hr className="border-stone-300 mb-12" />
-
-        {/* Microsoft Copilot */}
-        <div id="copilot" className="mb-16 scroll-mt-8">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Microsoft Copilot</h2>
-          <ol className="text-stone-800 text-base leading-relaxed space-y-3 list-decimal list-inside">
-            <li>Open <a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">copilot.microsoft.com</a>.</li>
-            <li>Start a new conversation. Paste the system prompt from above as your first message, prefixed with: <span className="font-mono bg-rose-100 px-1 text-sm">"Use these instructions for our conversation:"</span></li>
-            <li><a href={DRIVE_LINK} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the knowledge base files</a> and attach all 4 files to the conversation (click the paperclip icon).</li>
-            <li>Then say: <span className="font-mono bg-rose-100 px-1 text-sm">"I have a problem I want to talk through."</span></li>
-          </ol>
-          <p className="text-stone-600 text-sm mt-3 italic">Note: Works on the free plan. You'll need to re-paste the instructions and re-attach the files each time you start a new conversation. For persistent setup, use Copilot Studio if your organization has access.</p>
+          <p className="text-stone-600 text-sm mt-3 italic">Note: {setup.note}</p>
         </div>
 
       </div>
