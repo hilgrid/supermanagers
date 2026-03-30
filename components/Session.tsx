@@ -362,16 +362,6 @@ const Session: React.FC = () => {
           <p className="text-stone-700 text-lg mt-3 leading-relaxed">
             By the end of this session, you'll have a Manager OS set up in your AI tool of choice, a customized 30 Days of AI plan for your team, a weekly update you could actually send your manager, and the tool you built earlier in this course saved as a portable skill.
           </p>
-          <p className="text-stone-700 text-lg mt-3 leading-relaxed">
-            <a
-              href="https://docs.google.com/presentation/d/1W59nmK-Fz39K6_j6rqgNH657R4ElJ9R4E6XONPDJnW0/edit?slide=id.p#slide=id.p"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold hover:text-stone-600 hover:underline transition-colors"
-            >
-              Session 4 slides &rarr;
-            </a>
-          </p>
           <p className="text-stone-500 text-sm mt-3">
             <Link to="/resources" className="underline underline-offset-2 hover:text-stone-600 transition-colors">Confused about a term? Check the glossary.</Link>
           </p>
@@ -655,6 +645,19 @@ const Session: React.FC = () => {
           <h2 className="text-2xl font-bold text-stone-800 mb-6">Resources</h2>
 
           <div className="space-y-4">
+            <p className="text-stone-800 text-base leading-relaxed">
+              <a
+                href="https://docs.google.com/presentation/d/1W59nmK-Fz39K6_j6rqgNH657R4ElJ9R4E6XONPDJnW0/edit?slide=id.p#slide=id.p"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline hover:text-stone-600"
+              >
+                Demo: How I use my system day-to-day &rarr;
+              </a>
+              <br />
+              <span className="text-stone-600">A walkthrough of how I actually use my Manager OS throughout a typical day.</span>
+            </p>
+
             <p className="text-stone-800 text-base leading-relaxed">
               <a
                 href="https://hils.substack.com/p/dont-start-by-sidelining-your-own"
