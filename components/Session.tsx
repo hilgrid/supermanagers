@@ -781,7 +781,7 @@ const Session: React.FC = () => {
               Maven ratings are how other managers decide whether to take this course. I built this because I think every manager should know how to do this stuff, and ratings are the single biggest thing that helps new people find it.
             </p>
             <p className="text-stone-800 text-base leading-relaxed mb-4">
-              If this has changed how you think about AI and your role as a leader, a 5-star review goes a long way. It takes 60 seconds.
+              If this has changed how you think about AI and your role as a leader, a 5-star review goes a long way. ⭐⭐⭐⭐⭐ It takes 60 seconds.
             </p>
             <a
               href="https://maven.com/hilary-gridley/ai-powered-people-management/5/home#a7482b"
