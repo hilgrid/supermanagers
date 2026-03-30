@@ -325,9 +325,25 @@ const webTips: Partial<Record<WebPlatform, React.ReactNode>> = {
   ),
 };
 
+const takeaways = [
+  {
+    title: "Context makes things better, but it has to be the right context",
+    body: "You wouldn't add a file about your manager's communication preferences to a skill that preps you for a 1:1 with your direct report. But you absolutely need it for writing your weekly update. As you use each skill, you'll start to notice what context it's missing - and that tells you exactly what to add. The system gets smarter because you're specific about what each use case actually needs.",
+  },
+  {
+    title: "You don't have to architect the system upfront",
+    body: "You built this iteratively today: set up the interview, ran a skill, noticed what was missing, added context, ran it again. That's how the Manager OS grows in real life too. You try to send your weekly update, realize you need context about your manager's preferences, and add that. Then you think, \"Wait, now that I have this, I could also use it to prep for my skip-level.\" So you build another skill. One use case leads to the next.",
+  },
+  {
+    title: "You start thinking in systems",
+    body: "The shift isn't just \"I used AI to do a thing.\" It's \"instead of just doing this thing once, how do I do it in a way where it gets easier every time?\" That's working on the machine, not just running it. You notice a pattern - something you do repeatedly - and instead of prompting from scratch each time, you turn it into a skill. You add the right context files. You tighten the instructions after seeing what works. Over time, you're not just getting tasks done - you're building a system that makes every future task faster and better.",
+  },
+];
+
 const Session: React.FC = () => {
   const [filePlatform, setFilePlatform] = useState<FilePlatform | null>('claude-code');
   const [webPlatform, setWebPlatform] = useState<WebPlatform | null>(null);
+  const [currentTakeaway, setCurrentTakeaway] = useState(0);
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
@@ -532,30 +548,22 @@ const Session: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Things to notice */}
+        {/* What you're actually building */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Things to notice</h2>
-
-          <div className="space-y-6">
-            <div>
-              <p className="text-stone-800 text-base leading-relaxed font-bold mb-2">Context makes things better, but it has to be the right context.</p>
-              <p className="text-stone-800 text-base leading-relaxed">
-                You wouldn't add a file about your manager's communication preferences to a skill that preps you for a 1:1 with your direct report. But you absolutely need it for writing your weekly update. As you use each skill, you'll start to notice what context it's missing - and that tells you exactly what to add. The system gets smarter because you're specific about what each use case actually needs.
-              </p>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">What you're actually building</h2>
+          <div className="relative">
+            <div className="bg-white border-2 border-stone-300 rounded-lg p-6 min-h-[180px] flex flex-col justify-center">
+              <p className="text-lg font-bold text-stone-800 mb-2">{takeaways[currentTakeaway].title}</p>
+              <p className="text-stone-700 text-base leading-relaxed">{takeaways[currentTakeaway].body}</p>
             </div>
-
-            <div>
-              <p className="text-stone-800 text-base leading-relaxed font-bold mb-2">You don't have to architect the system upfront.</p>
-              <p className="text-stone-800 text-base leading-relaxed">
-                You built this iteratively today: set up the interview, ran a skill, noticed what was missing, added context, ran it again. That's how the Manager OS grows in real life too. You try to send your weekly update, realize you need context about your manager's preferences, and add that. Then you think, "Wait, now that I have this, I could also use it to prep for my skip-level." So you build another skill. One use case leads to the next.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-stone-800 text-base leading-relaxed font-bold mb-2">You start thinking in systems.</p>
-              <p className="text-stone-800 text-base leading-relaxed">
-                The shift isn't just "I used AI to do a thing." It's "instead of just doing this thing once, how do I do it in a way where it gets easier every time?" That's working on the machine, not just running it. You notice a pattern - something you do repeatedly - and instead of prompting from scratch each time, you turn it into a skill. You add the right context files. You tighten the instructions after seeing what works. Over time, you're not just getting tasks done - you're building a system that makes every future task faster and better.
-              </p>
+            <div className="flex items-center justify-center gap-4 mt-3">
+              <button onClick={() => setCurrentTakeaway(Math.max(0, currentTakeaway - 1))} disabled={currentTakeaway === 0} className="p-2 rounded-full hover:bg-stone-100 transition-colors text-stone-400 hover:text-stone-600 disabled:opacity-30 disabled:cursor-not-allowed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+              </button>
+              <span className="text-stone-400 text-sm">{currentTakeaway + 1} / {takeaways.length}</span>
+              <button onClick={() => setCurrentTakeaway(Math.min(takeaways.length - 1, currentTakeaway + 1))} disabled={currentTakeaway === takeaways.length - 1} className="p-2 rounded-full hover:bg-stone-100 transition-colors text-stone-400 hover:text-stone-600 disabled:opacity-30 disabled:cursor-not-allowed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+              </button>
             </div>
           </div>
         </div>
