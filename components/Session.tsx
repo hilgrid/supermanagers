@@ -370,7 +370,10 @@ const Session: React.FC = () => {
             Set Up Your Manager OS
           </h1>
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
-            Download the Manager OS folder, pick your tool, and follow the guide. By the end you'll have a working system and a weekly update you could actually send your manager.
+            In the first three sessions, you built tools that help your team do better work. Now you're building the system that helps <em>you</em> do better work as a manager - and gives your team a structured way to build AI fluency on their own.
+          </p>
+          <p className="text-stone-700 text-lg mt-3 leading-relaxed">
+            By the end of this session, you'll have a Manager OS set up in your AI tool of choice, a customized 30 Days of AI plan for your team, a weekly update you could actually send your manager, and the tool you built earlier in this course saved as a portable skill.
           </p>
           <p className="text-stone-700 text-lg mt-3 leading-relaxed">
             <a
