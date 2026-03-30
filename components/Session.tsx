@@ -69,14 +69,12 @@ function InlinePrompt({ text }: { text: string }) {
 
 const fileSetupSteps: Record<FilePlatform, React.ReactNode[]> = {
   'claude-code': [
-    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
     <>Open your terminal and start Claude Code by typing: <InlinePrompt text="claude" /></>,
     <>Tell it: <InlinePrompt text="Navigate to my Manager OS folder and read the Setup Interview file. Walk me through it." /></>,
     <>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</>,
     <>When you're done, it will create all your files automatically - About docs, team folders, project summaries, everything.</>,
   ],
   cursor: [
-    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
     <>Open Cursor. Go to File &rarr; Open Folder and select your Manager OS folder.</>,
     <>Open the chat panel (Cmd+L on Mac, Ctrl+L on Windows).</>,
     <>Type: <InlinePrompt text="Read the Setup Interview file and walk me through it" /></>,
@@ -84,15 +82,13 @@ const fileSetupSteps: Record<FilePlatform, React.ReactNode[]> = {
     <>When you're done, it will create all your files automatically.</>,
   ],
   'claude-desktop': [
-    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
     <>Open Claude Desktop and start a new conversation.</>,
     <>Tell it: <InlinePrompt text="Navigate to my Manager OS folder and read the Setup Interview file. Walk me through it." /></>,
     <>Answer the questions one section at a time. It will ask about you, your team, your manager, your projects, and your company.</>,
     <>When you're done, it will create all your files automatically - About docs, team folders, project summaries, everything.</>,
   ],
   cowork: [
-    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder.</a></>,
-    <>Upload it to Cowork.</>,
+    <>Upload your Manager OS folder to Cowork.</>,
     <>Type: <InlinePrompt text="Read the Setup Interview file and walk me through it" /></>,
     <>Answer the questions. It will generate the content for your files.</>,
   ],
@@ -230,7 +226,6 @@ const fileMakeBetter: Record<FilePlatform, React.ReactNode> = {
 
 const webSetupSteps: Record<WebPlatform, React.ReactNode[]> = {
   chatgpt: [
-    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
     <>Open a new chat in ChatGPT.</>,
     <>Attach the file <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> from your Manager OS folder (click the paperclip icon or drag it in).</>,
     <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
@@ -238,7 +233,6 @@ const webSetupSteps: Record<WebPlatform, React.ReactNode[]> = {
     <>It will generate the content for each file. Copy-paste each one into the right file in your Manager OS folder (Me/About.md, My Manager/About.md, etc.).</>,
   ],
   'claude-web': [
-    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder</a> and save it somewhere on your computer (Desktop is fine).</>,
     <>Open a new chat in Claude.</>,
     <>Attach the file <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> from your Manager OS folder (click the paperclip icon or drag it in).</>,
     <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
@@ -246,15 +240,14 @@ const webSetupSteps: Record<WebPlatform, React.ReactNode[]> = {
     <>It will generate the content for each file. Copy-paste each one into the right file in your Manager OS folder.</>,
   ],
   gemini: [
-    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Copy the Manager OS folder into your Google Drive.</a> You can keep the .md files as-is or convert them to Google Docs - either works.</>,
+    <>Copy the Manager OS folder into your Google Drive. You can keep the .md files as-is or convert them to Google Docs - either works.</>,
     <>Open Gemini (gemini.google.com).</>,
     <>Attach the <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> file from your Drive, or copy-paste the prompt.</>,
     <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
     <>Answer the questions. Gemini can create files directly in your Drive if you ask it to, or you can copy-paste the outputs into the right files.</>,
   ],
   copilot: [
-    <><a href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_" target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-stone-600">Download the Manager OS folder.</a></>,
-    <>Copy it into OneDrive or SharePoint. You can keep the .md files as-is - Copilot can read them.</>,
+    <>Copy the Manager OS folder into OneDrive or SharePoint. You can keep the .md files as-is - Copilot can read them.</>,
     <>Open Microsoft Copilot.</>,
     <>Attach the <span className="font-mono bg-rose-100 px-1 text-sm">Setup Interview.md</span> file (click the paperclip icon or drag it in). You can also copy-paste the prompt if attaching doesn't work.</>,
     <>Type: <InlinePrompt text="Read the attached file and walk me through the setup interview" /></>,
@@ -381,16 +374,6 @@ const Session: React.FC = () => {
           </p>
           <p className="text-stone-700 text-lg mt-3 leading-relaxed">
             <a
-              href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold hover:text-stone-600 hover:underline transition-colors"
-            >
-              Get the Manager OS folder (Google Drive) &rarr;
-            </a>
-          </p>
-          <p className="text-stone-700 text-lg mt-3 leading-relaxed">
-            <a
               href="https://docs.google.com/presentation/d/1W59nmK-Fz39K6_j6rqgNH657R4ElJ9R4E6XONPDJnW0/edit?slide=id.p#slide=id.p"
               target="_blank"
               rel="noopener noreferrer"
@@ -404,10 +387,10 @@ const Session: React.FC = () => {
           </p>
         </div>
 
-        {/* Tool selectors - both at the top */}
+        {/* Step 1: Pick your tool */}
         <div className="mb-12">
-          <p className="text-stone-800 text-base font-bold mb-1">What tool are you using?</p>
-          <p className="text-stone-500 text-sm mb-3">Pick one. The instructions below will update to match.</p>
+          <h2 className="text-xl font-bold text-stone-800 mb-1">Step 1: Pick your tool</h2>
+          <p className="text-stone-500 text-sm mb-3">The instructions below will update to match.</p>
 
           <div className="mb-4">
             <p className="text-stone-500 text-xs font-medium uppercase tracking-wide mb-2">File-based tools <span className="normal-case tracking-normal font-normal">- read and write files directly</span></p>
@@ -448,19 +431,34 @@ const Session: React.FC = () => {
           </div>
         </div>
 
-        {/* Folder structure */}
+        {/* Step 2: Get the folder */}
         <div className="mb-12">
-          <h2 className="text-xl font-bold text-stone-800 mb-3">What's in the folder</h2>
-          <div className="bg-white border-2 border-stone-300 rounded p-5 text-stone-800 text-base leading-loose">
-            <p><strong>Me/</strong> - Your profile as a manager: your role, priorities, management style, strengths, and growth areas. This is how the AI understands who you are.</p>
-            <p><strong>Team/</strong> - A folder for each direct report. Each one has an About file (their role, strengths, what they're working on) and a place for 1:1 notes.</p>
-            <p><strong>My Manager/</strong> - Who your manager is, what they care about, how they like to receive updates, and their communication style.</p>
-            <p><strong>Projects/</strong> - Your active projects with status, who's involved, and key risks.</p>
-            <p><strong>Company Context/</strong> - Strategy docs, org goals, anything that helps the AI understand the bigger picture at your company.</p>
-            <p><strong>Daily Notes/</strong> - A place for running notes as your day goes on. The more you capture here, the better your weekly updates and meeting prep get over time.</p>
-            <p><strong>Skills/</strong> - Reusable prompts saved as files. These work like custom GPT instructions, but they live in a folder instead of inside one specific tool. Split into two buckets: <em>For Me</em> (weekly updates, meeting prep, 1:1 prep) and <em>For My Team</em> (feedback and coaching skills you run against your team's work).</p>
-            <p><strong>Setup Interview.md</strong> - A prompt that interviews you and generates all of the above. This is where you start.</p>
-          </div>
+          <h2 className="text-xl font-bold text-stone-800 mb-3">Step 2: Get the Manager OS folder</h2>
+          <p className="text-stone-700 text-lg mb-4">
+            <a
+              href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:text-stone-600 hover:underline transition-colors"
+            >
+              Get the Manager OS folder (Google Drive) &rarr;
+            </a>
+          </p>
+          <details className="group">
+            <summary className="text-stone-600 text-sm font-medium cursor-pointer hover:text-stone-800 transition-colors">
+              What's in the folder
+            </summary>
+            <div className="mt-3 bg-white border-2 border-stone-300 rounded p-5 text-stone-800 text-base leading-loose">
+              <p><strong>Me/</strong> - Your profile as a manager: your role, priorities, management style, strengths, and growth areas. This is how the AI understands who you are.</p>
+              <p><strong>Team/</strong> - A folder for each direct report. Each one has an About file (their role, strengths, what they're working on) and a place for 1:1 notes.</p>
+              <p><strong>My Manager/</strong> - Who your manager is, what they care about, how they like to receive updates, and their communication style.</p>
+              <p><strong>Projects/</strong> - Your active projects with status, who's involved, and key risks.</p>
+              <p><strong>Company Context/</strong> - Strategy docs, org goals, anything that helps the AI understand the bigger picture at your company.</p>
+              <p><strong>Daily Notes/</strong> - A place for running notes as your day goes on. The more you capture here, the better your weekly updates and meeting prep get over time.</p>
+              <p><strong>Skills/</strong> - Reusable prompts saved as files. These work like custom GPT instructions, but they live in a folder instead of inside one specific tool. Split into two buckets: <em>For Me</em> (weekly updates, meeting prep, 1:1 prep) and <em>For My Team</em> (feedback and coaching skills you run against your team's work).</p>
+              <p><strong>Setup Interview.md</strong> - A prompt that interviews you and generates all of the above. This is where you start.</p>
+            </div>
+          </details>
         </div>
 
         <hr className="border-stone-300 mb-12" />
@@ -468,14 +466,14 @@ const Session: React.FC = () => {
         {/* Instructions - renders for whichever tool is selected */}
         {filePlatform && (
           <div className="mb-16">
-            <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 3: Set up your system</h2>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {fileSetupSteps[filePlatform].map((step, i) => (
                 <li key={i}>{step}</li>
               ))}
             </ol>
 
-            <h3 className="text-lg font-bold text-stone-800 mb-2">Create a 30 Days of AI plan for your team</h3>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 4: Create a 30 Days of AI plan for your team</h2>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
               Your Manager OS folder includes a 30 Days of AI template (in the Projects folder) - a daily exercise program to build AI fluency. Now that the AI knows about your team, have it create a customized version with exercises specific to your people and their work.
             </p>
@@ -485,22 +483,35 @@ const Session: React.FC = () => {
               ))}
             </ol>
 
-            <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 5: Run the weekly update writer</h2>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {fileWeeklySteps[filePlatform].map((step, i) => (
                 <li key={i}>{step}</li>
               ))}
             </ol>
 
-            <h3 className="text-lg font-bold text-stone-800 mb-2">Make it better</h3>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 6: Make it better</h2>
             {fileMakeBetter[filePlatform]}
-            <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
+            <p className="text-stone-800 text-base leading-relaxed font-bold mb-8">Run it again. See the difference.</p>
+
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Add a skill from your course tool</h2>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              You've already built a working tool in this course - a Custom GPT, a Gem, or a Project. The prompt that powers it is a skill. Pull it into your Manager OS so it lives alongside everything else.
+            </p>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
+              <li>Open your Custom GPT, Gem, or Project from earlier in the course. Copy the system prompt / instructions.</li>
+              <li>Create a new file in your Manager OS under <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For My Team/</span> with a descriptive name (e.g., <span className="font-mono bg-rose-100 px-1 text-sm">Deck reviewer.md</span> or <span className="font-mono bg-rose-100 px-1 text-sm">Email clarity coach.md</span>).</li>
+              <li>Paste the prompt into the file and save it.</li>
+            </ol>
+            <p className="text-stone-800 text-base leading-relaxed">
+              Now anyone on your team can run that skill from the same folder - no separate GPT link needed. And because the Manager OS has context about your team, the skill gets better automatically.
+            </p>
           </div>
         )}
 
         {webPlatform && (
           <div className="mb-16">
-            <h3 className="text-lg font-bold text-stone-800 mb-2">Set up your system</h3>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 3: Set up your system</h2>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-6 list-decimal list-inside">
               {webSetupSteps[webPlatform].map((step, i) => (
                 <li key={i}>{step}</li>
@@ -508,7 +519,7 @@ const Session: React.FC = () => {
             </ol>
             {webTips[webPlatform]}
 
-            <h3 className="text-lg font-bold text-stone-800 mb-2">Create a 30 Days of AI plan for your team</h3>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 4: Create a 30 Days of AI plan for your team</h2>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
               Your Manager OS folder includes a 30 Days of AI template (in the Projects folder) - a daily exercise program to build AI fluency. Now that the AI has your context, have it create a customized version with exercises specific to your team and their work.
             </p>
@@ -518,18 +529,31 @@ const Session: React.FC = () => {
               ))}
             </ol>
 
-            <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 5: Run the weekly update writer</h2>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {webWeeklySteps[webPlatform].map((step, i) => (
                 <li key={i}>{step}</li>
               ))}
             </ol>
 
-            <h3 className="text-lg font-bold text-stone-800 mb-2">
-              Make it better{(webPlatform === 'gemini' || webPlatform === 'copilot') && <> - this is where {webPlatformLabels[webPlatform]} has a real advantage</>}
-            </h3>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">
+              Step 6: Make it better{(webPlatform === 'gemini' || webPlatform === 'copilot') && <> - this is where {webPlatformLabels[webPlatform]} has a real advantage</>}
+            </h2>
             {webMakeBetter[webPlatform]}
-            <p className="text-stone-800 text-base leading-relaxed font-bold">Run it again. See the difference.</p>
+            <p className="text-stone-800 text-base leading-relaxed font-bold mb-8">Run it again. See the difference.</p>
+
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Add a skill from your course tool</h2>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              You've already built a working tool in this course - a Custom GPT, a Gem, or a Project. The prompt that powers it is a skill. Pull it into your Manager OS so it lives alongside everything else.
+            </p>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
+              <li>Open your Custom GPT, Gem, or Project from earlier in the course. Copy the system prompt / instructions.</li>
+              <li>Create a new file in your Manager OS under <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For My Team/</span> with a descriptive name (e.g., <span className="font-mono bg-rose-100 px-1 text-sm">Deck reviewer.md</span> or <span className="font-mono bg-rose-100 px-1 text-sm">Email clarity coach.md</span>).</li>
+              <li>Paste the prompt into the file and save it.</li>
+            </ol>
+            <p className="text-stone-800 text-base leading-relaxed">
+              Now anyone on your team can run that skill from the same folder - no separate GPT link needed. And because the Manager OS has context about your team, the skill gets better automatically.
+            </p>
           </div>
         )}
 
@@ -589,7 +613,7 @@ const Session: React.FC = () => {
 
             <p className="text-stone-800 text-base leading-relaxed">
               <a
-                href="https://maven.com/hilary-gridley/ai-powered-people-management/feb-2026/home#62887a"
+                href="https://maven.com/hilary-gridley/ai-powered-people-management/5/home#893c77"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold underline hover:text-stone-600"
@@ -602,7 +626,7 @@ const Session: React.FC = () => {
 
             <p className="text-stone-800 text-base leading-relaxed">
               <a
-                href="https://maven.com/hilary-gridley/ai-powered-people-management/feb-2026/home#275430"
+                href="https://maven.com/hilary-gridley/ai-powered-people-management/5/home#a7482b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold underline hover:text-stone-600"
@@ -621,6 +645,8 @@ const Session: React.FC = () => {
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-stone-800 mb-4">What's coming next</h2>
           <ul className="text-stone-800 text-base leading-relaxed space-y-2 list-disc list-inside">
+            <li>Lifetime access to all course materials and videos</li>
+            <li>Access to the alumni Slack community, where I share new resources as I make and update them</li>
             <li>Post-course video: how I use my whole system day-to-day</li>
             <li>Guide: ideas for things to vibe code</li>
             <li>Guide: ideas for automations and how to set them up</li>
