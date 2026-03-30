@@ -389,7 +389,7 @@ const Session: React.FC = () => {
         {/* Step 1: Pick your tool */}
         <div className="mb-12">
           <h2 className="text-xl font-bold text-stone-800 mb-1">Step 1: Pick your tool</h2>
-          <p className="text-stone-500 text-sm mb-3">The instructions below will update to match.</p>
+          <p className="text-stone-500 text-sm mb-3">Pick the AI tool you want to use. The instructions below will update to match.</p>
 
           <div className="mb-4">
             <p className="text-stone-500 text-xs font-medium uppercase tracking-wide mb-2">File-based tools <span className="normal-case tracking-normal font-normal">- read and write files directly</span></p>
@@ -432,7 +432,8 @@ const Session: React.FC = () => {
 
         {/* Step 2: Get the folder */}
         <div className="mb-12">
-          <h2 className="text-xl font-bold text-stone-800 mb-3">Step 2: Get the Manager OS folder</h2>
+          <h2 className="text-xl font-bold text-stone-800 mb-2">Step 2: Get the Manager OS folder</h2>
+          <p className="text-stone-500 text-sm mb-3">Download the folder and take a look at what's inside. This is the structure your AI tool will populate for you.</p>
           <p className="text-stone-700 text-lg mb-4">
             <a
               href="https://drive.google.com/drive/folders/1dhh25hgwlPN8ptESnWR6NlZdqU95Z5q_"
@@ -466,6 +467,7 @@ const Session: React.FC = () => {
         {filePlatform && (
           <div className="mb-16">
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 3: Set up your system</h2>
+            <p className="text-stone-500 text-sm mb-3">The Setup Interview will ask about you, your team, your manager, your projects, and your company. It uses your answers to generate all the context files in your Manager OS.</p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {fileSetupSteps[filePlatform].map((step, i) => (
                 <li key={i}>{step}</li>
@@ -483,6 +485,7 @@ const Session: React.FC = () => {
             </ol>
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 5: Run the weekly update writer</h2>
+            <p className="text-stone-500 text-sm mb-3">Your Manager OS includes a skill that writes a weekly update for your manager. Let's run it and see what it generates from the context you just created.</p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {fileWeeklySteps[filePlatform].map((step, i) => (
                 <li key={i}>{step}</li>
@@ -490,6 +493,7 @@ const Session: React.FC = () => {
             </ol>
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 6: Make it better</h2>
+            <p className="text-stone-500 text-sm mb-3">The first output is probably too generic. That's expected - it shows you what context is missing. Now you'll point the AI at richer sources so the next version is actually useful.</p>
             {fileMakeBetter[filePlatform]}
             <p className="text-stone-800 text-base leading-relaxed font-bold mb-8">Run it again. See the difference.</p>
 
@@ -514,8 +518,9 @@ const Session: React.FC = () => {
             </p>
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Add a skill from your course tool</h2>
+            <p className="text-stone-500 text-sm mb-3">The tool you built earlier in this course is powered by a prompt. That prompt is a skill - and it belongs in your Manager OS alongside everything else.</p>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
-              You've already built a working tool in this course - a Custom GPT, a Gem, or a Project. The prompt that powers it is a skill. Pull it into your Manager OS so it lives alongside everything else.
+              Pull the prompt from your Custom GPT, Gem, or Project into your Manager OS so your team can run it from the same folder.
             </p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
               <li>Open your Custom GPT, Gem, or Project from earlier in the course. Copy the system prompt / instructions.</li>
@@ -548,6 +553,7 @@ const Session: React.FC = () => {
             </ol>
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 5: Run the weekly update writer</h2>
+            <p className="text-stone-500 text-sm mb-3">Your Manager OS includes a skill that writes a weekly update for your manager. Let's run it and see what it generates from the context you just created.</p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {webWeeklySteps[webPlatform].map((step, i) => (
                 <li key={i}>{step}</li>
@@ -557,6 +563,7 @@ const Session: React.FC = () => {
             <h2 className="text-xl font-bold text-stone-800 mb-2">
               Step 6: Make it better{(webPlatform === 'gemini' || webPlatform === 'copilot') && <> - this is where {webPlatformLabels[webPlatform]} has a real advantage</>}
             </h2>
+            <p className="text-stone-500 text-sm mb-3">The first output is probably too generic. That's expected - it shows you what context is missing. Now you'll point the AI at richer sources so the next version is actually useful.</p>
             {webMakeBetter[webPlatform]}
             <p className="text-stone-800 text-base leading-relaxed font-bold mb-8">Run it again. See the difference.</p>
 
@@ -581,8 +588,9 @@ const Session: React.FC = () => {
             </p>
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Add a skill from your course tool</h2>
+            <p className="text-stone-500 text-sm mb-3">The tool you built earlier in this course is powered by a prompt. That prompt is a skill - and it belongs in your Manager OS alongside everything else.</p>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
-              You've already built a working tool in this course - a Custom GPT, a Gem, or a Project. The prompt that powers it is a skill. Pull it into your Manager OS so it lives alongside everything else.
+              Pull the prompt from your Custom GPT, Gem, or Project into your Manager OS so your team can run it from the same folder.
             </p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
               <li>Open your Custom GPT, Gem, or Project from earlier in the course. Copy the system prompt / instructions.</li>
