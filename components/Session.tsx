@@ -484,7 +484,18 @@ const Session: React.FC = () => {
               ))}
             </ol>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 5: Run the weekly update writer</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 5: Start a daily note</h2>
+            <p className="text-stone-500 text-sm mb-3">The weekly update writer needs raw material to work with. Daily notes are where that comes from - a running log of what you worked on, decisions made, and things worth remembering.</p>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              You don't have to write these yourself. Tell your AI tool to keep track of what you're working on together, and it will maintain the note for you.
+            </p>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
+              <li>Say: <InlinePrompt text="Create a daily note for today in my Daily Notes folder. As we work together, keep a running log of what we did, any decisions made, and anything worth flagging for my weekly update." /></li>
+              <li>That's it. As you use your AI tool throughout the day - drafting emails, prepping for meetings, thinking through problems - it adds to the note automatically.</li>
+              <li>At the end of your day, you can review it or just leave it. The weekly update writer will pull from it when you run it.</li>
+            </ol>
+
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 6: Run the weekly update writer</h2>
             <p className="text-stone-500 text-sm mb-3">Your Manager OS includes a skill that writes a weekly update for your manager. Let's run it and see what it generates from the context you just created.</p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {fileWeeklySteps[filePlatform].map((step, i) => (
@@ -492,12 +503,12 @@ const Session: React.FC = () => {
               ))}
             </ol>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 6: Make it better</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Make it better</h2>
             <p className="text-stone-500 text-sm mb-3">The first output is probably too generic. That's expected - it shows you what context is missing. Now you'll point the AI at richer sources so the next version is actually useful.</p>
             {fileMakeBetter[filePlatform]}
             <p className="text-stone-800 text-base leading-relaxed font-bold mb-8">Run it again. See the difference.</p>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Improve the system, not just the output</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Improve the system, not just the output</h2>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
               Imagine your manager replied to your weekly update with a few follow-up questions:
             </p>
@@ -517,7 +528,7 @@ const Session: React.FC = () => {
               The first one fixes the output. The second one fixes the machine. Your manager isn't just asking about this one update - they're telling you what they always want. Baking that into the skill means every future update gets better, not just this one.
             </p>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Add a skill from your course tool</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 9: Add a skill from your course tool</h2>
             <p className="text-stone-500 text-sm mb-3">The tool you built earlier in this course is powered by a prompt. That prompt is a skill - and it belongs in your Manager OS alongside everything else.</p>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
               Pull the prompt from your Custom GPT, Gem, or Project into your Manager OS so your team can run it from the same folder.
@@ -526,9 +537,20 @@ const Session: React.FC = () => {
               <li>Open your Custom GPT, Gem, or Project from earlier in the course. Copy the system prompt / instructions.</li>
               <li>Tell your AI tool: <InlinePrompt text="Save this as a new skill file in my Manager OS under Skills/For My Team/. Name it something descriptive like Deck reviewer or Email clarity coach." /> It will create the file for you.</li>
             </ol>
-            <p className="text-stone-800 text-base leading-relaxed">
+            <p className="text-stone-800 text-base leading-relaxed mb-8">
               Now anyone on your team can run that skill from the same folder - no separate GPT link needed. And because the Manager OS has context about your team, the skill gets better automatically.
             </p>
+
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 10: Make it yours</h2>
+            <p className="text-stone-500 text-sm mb-3">Take 5 minutes to explore. The system is set up - now think about what else you could do with it.</p>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              A few ideas to try:
+            </p>
+            <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+              <li><strong>Connect a tool you already use.</strong> Think of something you'd want the AI to pull from - your calendar, your email, a Notion database, a Google Sheet. Ask it: <InlinePrompt text="I want to connect [tool] to my Manager OS so you can pull context from it. Walk me through how to set that up." /></li>
+              <li><strong>Build another skill.</strong> What's something you do every week that follows a pattern? 1:1 prep? Meeting agendas? Sprint summaries? Write a skill for it.</li>
+              <li><strong>Add more context.</strong> What's missing from your Manager OS that would make the AI more useful? Team norms? Communication preferences? OKRs? Add it.</li>
+            </ul>
           </div>
         )}
 
@@ -552,7 +574,23 @@ const Session: React.FC = () => {
               ))}
             </ol>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 5: Run the weekly update writer</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 5: Start a daily note</h2>
+            <p className="text-stone-500 text-sm mb-3">The weekly update writer needs raw material to work with. Daily notes are where that comes from - a running log of what you worked on, decisions made, and things worth remembering.</p>
+            {webPlatform === 'gemini' ? (
+              <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
+                <li>Say: <InlinePrompt text="Create a daily note for today in my Daily Notes folder in Google Drive. Keep a running log of what we work on, any decisions made, and anything worth flagging for my weekly update." /></li>
+                <li>As you use Gemini throughout the day, it adds to the note in your Drive automatically.</li>
+                <li>At the end of your day, you can review it or just leave it. The weekly update writer will pull from it when you run it.</li>
+              </ol>
+            ) : (
+              <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
+                <li>At the end of a work session, say: <InlinePrompt text="Summarize what we worked on today - key decisions, things that got done, anything worth flagging. Format it as a daily note I can save." /></li>
+                <li>Save the output into your Daily Notes folder - download it, or copy it into a Google Doc.</li>
+                <li>The weekly update writer will pull from these when you run it. The more notes you have, the better the update.</li>
+              </ol>
+            )}
+
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 6: Run the weekly update writer</h2>
             <p className="text-stone-500 text-sm mb-3">Your Manager OS includes a skill that writes a weekly update for your manager. Let's run it and see what it generates from the context you just created.</p>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {webWeeklySteps[webPlatform].map((step, i) => (
@@ -561,13 +599,13 @@ const Session: React.FC = () => {
             </ol>
 
             <h2 className="text-xl font-bold text-stone-800 mb-2">
-              Step 6: Make it better{(webPlatform === 'gemini' || webPlatform === 'copilot') && <> - this is where {webPlatformLabels[webPlatform]} has a real advantage</>}
+              Step 7: Make it better{(webPlatform === 'gemini' || webPlatform === 'copilot') && <> - this is where {webPlatformLabels[webPlatform]} has a real advantage</>}
             </h2>
             <p className="text-stone-500 text-sm mb-3">The first output is probably too generic. That's expected - it shows you what context is missing. Now you'll point the AI at richer sources so the next version is actually useful.</p>
             {webMakeBetter[webPlatform]}
             <p className="text-stone-800 text-base leading-relaxed font-bold mb-8">Run it again. See the difference.</p>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Improve the system, not just the output</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Improve the system, not just the output</h2>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
               Imagine your manager replied to your weekly update with a few follow-up questions:
             </p>
@@ -587,7 +625,7 @@ const Session: React.FC = () => {
               The first one fixes the output. The second one fixes the machine. Your manager isn't just asking about this one update - they're telling you what they always want. Baking that into the skill means every future update gets better, not just this one.
             </p>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Add a skill from your course tool</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 9: Add a skill from your course tool</h2>
             <p className="text-stone-500 text-sm mb-3">The tool you built earlier in this course is powered by a prompt. That prompt is a skill - and it belongs in your Manager OS alongside everything else.</p>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
               Pull the prompt from your Custom GPT, Gem, or Project into your Manager OS so your team can run it from the same folder.
@@ -597,9 +635,20 @@ const Session: React.FC = () => {
               <li>Create a new doc in the <span className="font-mono bg-rose-100 px-1 text-sm">Skills/For My Team/</span> folder in your Manager OS. Name it something descriptive (e.g., "Deck reviewer" or "Email clarity coach"). A Google Doc, Word doc, or plain text file all work - the format doesn't matter, the AI just needs to be able to read it.</li>
               <li>Paste the prompt into the doc and save it.</li>
             </ol>
-            <p className="text-stone-800 text-base leading-relaxed">
+            <p className="text-stone-800 text-base leading-relaxed mb-8">
               Now anyone on your team can run that skill from the same folder - no separate GPT link needed. And because the Manager OS has context about your team, the skill gets better automatically.
             </p>
+
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 10: Make it yours</h2>
+            <p className="text-stone-500 text-sm mb-3">Take 5 minutes to explore. The system is set up - now think about what else you could do with it.</p>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              A few ideas to try:
+            </p>
+            <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+              <li><strong>Connect a tool you already use.</strong> Think of something you'd want the AI to pull from - your calendar, your email, a Notion database, a Google Sheet. Ask it: <InlinePrompt text="I want to connect [tool] to my Manager OS so you can pull context from it. Walk me through how to set that up." /></li>
+              <li><strong>Build another skill.</strong> What's something you do every week that follows a pattern? 1:1 prep? Meeting agendas? Sprint summaries? Write a skill for it.</li>
+              <li><strong>Add more context.</strong> What's missing from your Manager OS that would make the AI more useful? Team norms? Communication preferences? OKRs? Add it.</li>
+            </ul>
           </div>
         )}
 
