@@ -377,6 +377,25 @@ const Session: React.FC = () => {
           </p>
         </div>
 
+        {/* Arc of the course */}
+        <div className="mb-12">
+          <p className="text-stone-800 text-base font-bold mb-4">The arc of this course</p>
+          <div className="grid grid-cols-4 gap-3">
+            {[
+              { num: '1', title: 'Write the instructions', body: 'Take the thing you keep saying - the feedback, the bar, the "here\'s what good looks like" - and write it down clearly enough that an AI can follow it.' },
+              { num: '2', title: 'Build the tool', body: 'Turn those instructions into something other people can use. That requires product thinking: whose problem is this, when would they reach for it, does it actually make their life easier?' },
+              { num: '3', title: 'Build the software', body: 'Go from a conversation that gives answers to a thing that takes action. It saves results, logs progress, connects to how your team already works.' },
+              { num: '4', title: 'Build the system', body: 'The layer that makes everything else work: shared context about your team, portable skills anyone can run, and a feedback loop where every use makes the system smarter.' },
+            ].map((item) => (
+              <div key={item.num} className={`p-3 rounded-lg ${item.num === '4' ? 'bg-stone-800 text-white' : 'bg-white border border-stone-200'}`}>
+                <p className={`text-2xl font-bold mb-1 ${item.num === '4' ? 'text-stone-400' : 'text-stone-300'}`}>{item.num}</p>
+                <p className={`text-sm font-bold mb-1 ${item.num === '4' ? 'text-white' : 'text-stone-800'}`}>{item.title}</p>
+                <p className={`text-xs leading-relaxed ${item.num === '4' ? 'text-stone-300' : 'text-stone-500'}`}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Step 1: Pick your tool */}
         <div className="mb-12">
           <h2 className="text-xl font-bold text-stone-800 mb-1">Step 1: Pick your tool</h2>
