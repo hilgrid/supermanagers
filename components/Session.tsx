@@ -428,6 +428,15 @@ const Session: React.FC = () => {
               ))}
             </div>
           </div>
+
+          <div className="mt-6 bg-white border border-stone-200 rounded-lg p-5 text-sm text-stone-700 leading-relaxed space-y-3">
+            <p>
+              <strong className="text-stone-800">What's the difference?</strong> File-based tools can read and write real files on your computer. That means you can do things like run an interview and have it create a dozen files automatically, or tell it to keep a running daily note as you work. Today's session leans heavily on that.
+            </p>
+            <p>
+              Web tools can still do all of this, especially if you have Google Drive or OneDrive connected - it just takes a bit more copy-pasting and manual work. You'll still follow along, learn the same concepts, and walk away with a working system. It'll also help illustrate why so many people love tools like Claude Code and Cursor for this kind of work.
+            </p>
+          </div>
         </div>
 
         {/* Step 2: Get the folder */}
