@@ -532,15 +532,32 @@ const Session: React.FC = () => {
 
         <hr className="border-stone-300 mb-12" />
 
-        {/* Closing */}
+        {/* Things to notice */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">After you've run it twice</h2>
-          <p className="text-stone-800 text-lg leading-relaxed mb-4">
-            The gap between your first output and your second output is the whole lesson. The system got better because <strong>you told it where to find real context about your work.</strong>
-          </p>
-          <p className="text-stone-800 text-lg leading-relaxed">
-            That's how the Manager OS grows - not by architecting the perfect folder structure upfront, but by running into a gap, filling it, and running again. One use case at a time.
-          </p>
+          <h2 className="text-2xl font-bold text-stone-800 mb-6">Things to notice</h2>
+
+          <div className="space-y-6">
+            <div>
+              <p className="text-stone-800 text-base leading-relaxed font-bold mb-2">Context makes things better, but it has to be the right context.</p>
+              <p className="text-stone-800 text-base leading-relaxed">
+                You wouldn't add a file about your manager's communication preferences to a skill that preps you for a 1:1 with your direct report. But you absolutely need it for writing your weekly update. As you use each skill, you'll start to notice what context it's missing - and that tells you exactly what to add. The system gets smarter because you're specific about what each use case actually needs.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-stone-800 text-base leading-relaxed font-bold mb-2">You don't have to architect the system upfront.</p>
+              <p className="text-stone-800 text-base leading-relaxed">
+                You built this iteratively today: set up the interview, ran a skill, noticed what was missing, added context, ran it again. That's how the Manager OS grows in real life too. You try to send your weekly update, realize you need context about your manager's preferences, and add that. Then you think, "Wait, now that I have this, I could also use it to prep for my skip-level." So you build another skill. One use case leads to the next.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-stone-800 text-base leading-relaxed font-bold mb-2">You start thinking in systems.</p>
+              <p className="text-stone-800 text-base leading-relaxed">
+                The shift isn't just "I used AI to do a thing." It's "instead of just doing this thing once, how do I do it in a way where it gets easier every time?" That's working on the machine, not just running it. You notice a pattern - something you do repeatedly - and instead of prompting from scratch each time, you turn it into a skill. You add the right context files. You tighten the instructions after seeing what works. Over time, you're not just getting tasks done - you're building a system that makes every future task faster and better.
+              </p>
+            </div>
+          </div>
         </div>
 
         <hr className="border-stone-300 mb-12" />
