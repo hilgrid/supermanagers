@@ -662,18 +662,30 @@ const Session: React.FC = () => {
               <span className="text-stone-600">Bonus course videos on how to think about adoption, training, and getting your team to actually use these tools.</span>
             </p>
 
-            <p className="text-stone-800 text-base leading-relaxed">
-              <a
-                href="https://maven.com/hilary-gridley/ai-powered-people-management/5/home#a7482b"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold underline hover:text-stone-600"
-              >
-                Rate this course on Maven &rarr;
-              </a>
-              <br />
-              <span className="text-stone-600">Your ratings help other managers find this course. If it's been valuable, a 5-star review makes a real difference.</span>
+          </div>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Rating CTA */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">If this course has been valuable to you...</h2>
+          <div className="bg-white border-2 border-stone-300 rounded-lg p-6">
+            <p className="text-stone-800 text-base leading-relaxed font-bold mb-2">Your rating makes a real difference</p>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              Maven ratings are how other managers decide whether to take this course. I built this because I think every manager should know how to do this stuff, and ratings are the single biggest thing that helps new people find it.
             </p>
+            <p className="text-stone-800 text-base leading-relaxed mb-4">
+              If this has changed how you think about AI and your role as a leader, a 5-star review goes a long way. It takes 60 seconds.
+            </p>
+            <a
+              href="https://maven.com/hilary-gridley/ai-powered-people-management/5/home#a7482b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 text-base font-bold text-white bg-stone-800 hover:bg-stone-700 transition-colors"
+            >
+              Leave a review on Maven &rarr;
+            </a>
           </div>
         </div>
 
