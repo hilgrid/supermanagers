@@ -98,6 +98,54 @@ const fileSetupSteps: Record<FilePlatform, React.ReactNode[]> = {
   ],
 };
 
+const file30DaysSteps: Record<FilePlatform, React.ReactNode[]> = {
+  'claude-code': [
+    <>In the same conversation (while it still has all your context), say: <InlinePrompt text="Read the 30 Days of AI file in my Manager OS folder. Create a customized version for my team based on everything you know about us - our roles, our projects, and the kinds of work we do. Replace the generic examples with ones that are specific to my team." /></>,
+    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
+    <>When you're happy with it, ask it to save the customized version in your Manager OS folder.</>,
+  ],
+  cursor: [
+    <>In the same chat, type: <InlinePrompt text="Read the 30 Days of AI file. Create a customized version for my team based on everything you know about us - our roles, our projects, and the kinds of work we do. Replace the generic examples with ones that are specific to my team." /></>,
+    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
+    <>When you're happy with it, ask it to save the customized version in your Manager OS folder.</>,
+  ],
+  'claude-desktop': [
+    <>In the same conversation, say: <InlinePrompt text="Read the 30 Days of AI file in my Manager OS folder. Create a customized version for my team based on everything you know about us - our roles, our projects, and the kinds of work we do. Replace the generic examples with ones that are specific to my team." /></>,
+    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
+    <>When you're happy with it, ask it to save the customized version in your Manager OS folder.</>,
+  ],
+  cowork: [
+    <>Type: <InlinePrompt text="Read the 30 Days of AI file. Create a customized version for my team based on everything you know about us - our roles, our projects, and the kinds of work we do. Replace the generic examples with ones that are specific to my team." /></>,
+    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
+  ],
+};
+
+const web30DaysSteps: Record<WebPlatform, React.ReactNode[]> = {
+  chatgpt: [
+    <>Start a new chat. Attach the <span className="font-mono bg-rose-100 px-1 text-sm">30 Days of AI.md</span> file along with the context files the interview generated (your About file, team files, project summaries).</>,
+    <>Type: <InlinePrompt text="Use the attached 30 Days of AI template and my context files to create a customized version for my team. Replace the generic examples with ones that are specific to our roles, projects, and the kinds of work we do." /></>,
+    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
+    <>Copy the final version into a doc you can share with your team.</>,
+  ],
+  'claude-web': [
+    <>Start a new chat (or use your Project). Attach the <span className="font-mono bg-rose-100 px-1 text-sm">30 Days of AI.md</span> file along with your context files.</>,
+    <>Type: <InlinePrompt text="Use the attached 30 Days of AI template and my context files to create a customized version for my team. Replace the generic examples with ones that are specific to our roles, projects, and the kinds of work we do." /></>,
+    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
+    <>Copy the final version into a doc you can share with your team.</>,
+  ],
+  gemini: [
+    <>In a new chat, attach or reference the <span className="font-mono bg-rose-100 px-1 text-sm">30 Days of AI.md</span> file from your Drive.</>,
+    <>Type: <InlinePrompt text="Use the 30 Days of AI template and my Manager OS context in Google Drive to create a customized version for my team. Replace the generic examples with ones that are specific to our roles, projects, and the kinds of work we do." /></>,
+    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
+  ],
+  copilot: [
+    <>Start a new chat. Attach the <span className="font-mono bg-rose-100 px-1 text-sm">30 Days of AI.md</span> file along with your context files.</>,
+    <>Type: <InlinePrompt text="Use the attached 30 Days of AI template and my context files to create a customized version for my team. Replace the generic examples with ones that are specific to our roles, projects, and the kinds of work we do." /></>,
+    <>Review the output. Are the exercises relevant to what your team actually does? If not, tell it what to change.</>,
+    <>Copy the final version into a doc you can share with your team.</>,
+  ],
+};
+
 const fileWeeklySteps: Record<FilePlatform, React.ReactNode[]> = {
   'claude-code': [
     <>In the same conversation, say: <InlinePrompt text="Read my weekly update writer skill and run it" /></>,
@@ -427,6 +475,16 @@ const Session: React.FC = () => {
               ))}
             </ol>
 
+            <h3 className="text-lg font-bold text-stone-800 mb-2">Create a 30 Days of AI plan for your team</h3>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              Your Manager OS folder includes a 30 Days of AI template (in the Projects folder) - a daily exercise program to build AI fluency. Now that the AI knows about your team, have it create a customized version with exercises specific to your people and their work.
+            </p>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
+              {file30DaysSteps[filePlatform].map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
+
             <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
               {fileWeeklySteps[filePlatform].map((step, i) => (
@@ -449,6 +507,16 @@ const Session: React.FC = () => {
               ))}
             </ol>
             {webTips[webPlatform]}
+
+            <h3 className="text-lg font-bold text-stone-800 mb-2">Create a 30 Days of AI plan for your team</h3>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              Your Manager OS folder includes a 30 Days of AI template (in the Projects folder) - a daily exercise program to build AI fluency. Now that the AI has your context, have it create a customized version with exercises specific to your team and their work.
+            </p>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
+              {web30DaysSteps[webPlatform].map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
 
             <h3 className="text-lg font-bold text-stone-800 mb-2">Run the weekly update writer</h3>
             <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-8 list-decimal list-inside">
@@ -475,6 +543,27 @@ const Session: React.FC = () => {
           </p>
           <p className="text-stone-800 text-lg leading-relaxed">
             That's how the Manager OS grows - not by architecting the perfect folder structure upfront, but by running into a gap, filling it, and running again. One use case at a time.
+          </p>
+        </div>
+
+        <hr className="border-stone-300 mb-12" />
+
+        {/* Managing across a team */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">How do I manage this across a team?</h2>
+          <p className="text-stone-800 text-base leading-relaxed mb-4">
+            This space is evolving quickly. Today, keeping a shared set of context files and skills in sync across a team is still a bit imperfect - but all the frontier labs are actively working on making this easier.
+          </p>
+          <p className="text-stone-800 text-base leading-relaxed mb-4">
+            In the meantime, a few approaches that work:
+          </p>
+          <ul className="text-stone-800 text-base leading-relaxed space-y-2 mb-4 list-disc list-inside">
+            <li><strong>Shared cloud folder</strong> - Put your team's Manager OS in a shared Google Drive or Dropbox folder. Everyone points their tool at the same context files. Simple and works today.</li>
+            <li><strong>GitHub repository</strong> - If your team is comfortable with it, a shared repo lets you version-control your skills and context files. You can see what changed and when.</li>
+            <li><strong>Vibe-coded skills repository</strong> - Some teams are building simple internal tools (using Lovable, Replit, etc.) that serve as a shared library of skills and prompts anyone on the team can browse and use.</li>
+          </ul>
+          <p className="text-stone-800 text-base leading-relaxed">
+            Start with whatever's easiest for your team. The important thing is that everyone has access to the same context and the same skills - the infrastructure will catch up.
           </p>
         </div>
 
