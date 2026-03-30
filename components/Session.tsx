@@ -717,6 +717,19 @@ const Session: React.FC = () => {
 
             <p className="text-stone-800 text-base leading-relaxed">
               <a
+                href="https://www.youtube.com/watch?v=LJ1YZ3Uek3g&t=43s"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline hover:text-stone-600"
+              >
+                How I AI: Hilary Gridley on managing your day with an "anti-system system" &rarr;
+              </a>
+              <br />
+              <span className="text-stone-600">Interview with Claire Vo on how I actually use AI to manage my day.</span>
+            </p>
+
+            <p className="text-stone-800 text-base leading-relaxed">
+              <a
                 href="https://hils.substack.com/p/dont-start-by-sidelining-your-own"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -748,12 +761,12 @@ const Session: React.FC = () => {
 
         {/* Parting words */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-stone-800 mb-4">You're designing the future of work</h2>
+          <h2 className="text-2xl font-bold text-stone-800 mb-4">Parting thoughts</h2>
           <p className="text-stone-800 text-base leading-relaxed mb-4">
-            There's no clear answer yet about what happens to entry-level roles, or whether there's still value in human skill and craft. If you're working on the bleeding edge of this - and you are - you are designing what the future of work looks like. First at your company, then everywhere else.
+            There's no clear answer yet about what happens to entry-level roles, or whether there's still value in human skill and craft. But if you're working on the bleeding edge of this - and you are - you are designing what the future of work looks like. First at your company, then everywhere else.
           </p>
           <p className="text-stone-800 text-base leading-relaxed">
-            If we care about people, we have an obligation to find ways to use these tools that don't sideline them. I would not count on other companies to save us there.
+            That's a real responsibility. If we care about people, we have an obligation to find ways to use these tools that make them better at their jobs, not replaceable. No one else is going to figure that out for us. It's on managers like you.
           </p>
         </div>
 
