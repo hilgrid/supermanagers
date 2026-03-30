@@ -484,7 +484,27 @@ const Session: React.FC = () => {
             {fileMakeBetter[filePlatform]}
             <p className="text-stone-800 text-base leading-relaxed font-bold mb-8">Run it again. See the difference.</p>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Add a skill from your course tool</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Improve the system, not just the output</h2>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              Imagine your manager replied to your weekly update with this feedback:
+            </p>
+            <div className="bg-stone-100 border-l-4 border-stone-400 p-4 mb-4">
+              <p className="text-stone-700 text-base leading-relaxed italic">
+                "This is helpful, but I don't need the play-by-play of everything that happened. I want to know: what decisions are coming up that I should be aware of, what's at risk, and where you need my help. Lead with that."
+              </p>
+            </div>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              There are two things you can do with this feedback. Try both:
+            </p>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
+              <li>Fix this update: <InlinePrompt text="My manager gave me this feedback on my weekly update: [paste the feedback above]. Rewrite the update based on this." /></li>
+              <li>Fix the system: <InlinePrompt text="Based on that feedback, how should I update the weekly update writer skill so that all future updates incorporate this? Show me what to change." /></li>
+            </ol>
+            <p className="text-stone-800 text-base leading-relaxed mb-8">
+              The first one fixes the output. The second one fixes the machine. That's the difference between using AI and building with it - every piece of feedback makes the whole system better, not just the thing in front of you.
+            </p>
+
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Add a skill from your course tool</h2>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
               You've already built a working tool in this course - a Custom GPT, a Gem, or a Project. The prompt that powers it is a skill. Pull it into your Manager OS so it lives alongside everything else.
             </p>
@@ -531,7 +551,27 @@ const Session: React.FC = () => {
             {webMakeBetter[webPlatform]}
             <p className="text-stone-800 text-base leading-relaxed font-bold mb-8">Run it again. See the difference.</p>
 
-            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Add a skill from your course tool</h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 7: Improve the system, not just the output</h2>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              Imagine your manager replied to your weekly update with this feedback:
+            </p>
+            <div className="bg-stone-100 border-l-4 border-stone-400 p-4 mb-4">
+              <p className="text-stone-700 text-base leading-relaxed italic">
+                "This is helpful, but I don't need the play-by-play of everything that happened. I want to know: what decisions are coming up that I should be aware of, what's at risk, and where you need my help. Lead with that."
+              </p>
+            </div>
+            <p className="text-stone-800 text-base leading-relaxed mb-3">
+              There are two things you can do with this feedback. Try both:
+            </p>
+            <ol className="text-stone-800 text-base leading-relaxed space-y-3 mb-4 list-decimal list-inside">
+              <li>Fix this update: <InlinePrompt text="My manager gave me this feedback on my weekly update: [paste the feedback above]. Rewrite the update based on this." /></li>
+              <li>Fix the system: <InlinePrompt text="Based on that feedback, how should I update the weekly update writer skill so that all future updates incorporate this? Show me what to change." /></li>
+            </ol>
+            <p className="text-stone-800 text-base leading-relaxed mb-8">
+              The first one fixes the output. The second one fixes the machine. That's the difference between using AI and building with it - every piece of feedback makes the whole system better, not just the thing in front of you.
+            </p>
+
+            <h2 className="text-xl font-bold text-stone-800 mb-2">Step 8: Add a skill from your course tool</h2>
             <p className="text-stone-800 text-base leading-relaxed mb-3">
               You've already built a working tool in this course - a Custom GPT, a Gem, or a Project. The prompt that powers it is a skill. Pull it into your Manager OS so it lives alongside everything else.
             </p>
