@@ -12,6 +12,8 @@ import { SteeringWheelPage } from './components/steeringwheel/SteeringWheelPage'
 import Resources from './components/Resources';
 import ThirtyDays from './components/thirtydays/ThirtyDays';
 import HowIAI from './components/HowIAI';
+import Supermanager from './components/Supermanager';
+import ThinkingPartner from './components/ThinkingPartner';
 // import MozillaSession1 from './components/MozillaSession1';
 
 const App: React.FC = () => {
@@ -35,6 +37,8 @@ const App: React.FC = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/30days" element={<ThirtyDays />} />
         <Route path="/howiai" element={<HowIAI />} />
+        <Route path="/supermanager" element={<Supermanager />} />
+        <Route path="/thinking-partner" element={<ThinkingPartner />} />
         {/* <Route path="/mozilla" element={<MozillaSession1 />} /> */}
       </Routes>
       <Analytics />
