@@ -287,6 +287,47 @@ const Supermanager: React.FC = () => {
           )}
         </div>
 
+        {/* Ideas for What to Build - second locked unlock */}
+        <div className="mb-12">
+          {isUnlocked ? (
+            <div className="rounded-xl p-6 md:p-8 bg-gradient-to-br from-amber-50 to-white border-2 border-amber-300 shadow-sm transition-all duration-500">
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-amber-700 text-xs font-bold uppercase tracking-wider">Unlocked</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-stone-800 mb-2">
+                Ideas for What to Build
+              </h2>
+              <p className="text-stone-700 text-base leading-relaxed mb-6">
+                A library of Custom GPTs, applications, and skills tailored to your function. Pick yours and start building.
+              </p>
+              <Link
+                to="/ideas"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-stone-800 text-white rounded-lg font-medium text-base hover:bg-stone-700 transition-colors"
+              >
+                Browse ideas &rarr;
+              </Link>
+            </div>
+          ) : (
+            <div className="rounded-xl p-6 md:p-8 bg-stone-100 border border-stone-300 transition-all duration-500">
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-stone-500 text-xs font-bold uppercase tracking-wider">Locked</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-stone-700 mb-2">
+                Ideas for What to Build
+              </h2>
+              <p className="text-stone-600 text-base leading-relaxed">
+                A library of Custom GPTs, applications, and skills tailored to your function. Unlocks when you complete the course.
+              </p>
+            </div>
+          )}
+        </div>
+
         {/* Anytime references */}
         <div>
           <div className="flex items-baseline justify-between mb-4">

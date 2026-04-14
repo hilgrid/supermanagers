@@ -19,6 +19,7 @@ import Session2Notes from './components/Session2Notes';
 import Session3Notes from './components/Session3Notes';
 import Session4Notes from './components/Session4Notes';
 import FAQ from './components/FAQ';
+import IdeasForWhatToBuild from './components/IdeasForWhatToBuild';
 import PasswordGate from './components/PasswordGate';
 
 const App: React.FC = () => {
@@ -44,6 +45,7 @@ const App: React.FC = () => {
         <Route path="/session3-notes" element={<Session3Notes />} />
         <Route path="/session4-notes" element={<Session4Notes />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/ideas" element={<IdeasForWhatToBuild />} />
       </Routes>
       <Analytics />
     </div>
