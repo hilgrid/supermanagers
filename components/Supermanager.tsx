@@ -1,59 +1,113 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const weeks = [
+type ItemType = 'video' | 'prework' | 'guide' | 'notes' | 'prompting';
+
+interface WeekItem {
+  id: string;
+  type: ItemType;
+  label: string;
+  href: string;
+  external: boolean;
+}
+
+interface Week {
+  week: number;
+  title: string;
+  items: WeekItem[];
+}
+
+const typeLabels: Record<ItemType, string> = {
+  video: 'Video',
+  prework: 'Prework',
+  guide: 'Guide',
+  notes: 'Notes',
+  prompting: 'Prompting',
+};
+
+const mavenLinks = {
+  w1: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#ad6b79',
+  w2: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#6c9d2b',
+  w3: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#070230',
+  w4: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#e6c157',
+};
+
+const weeks: Week[] = [
   {
     week: 1,
     title: 'Scope & Build Your First Tool',
-    mavenLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#ad6b79',
-    videos: ['AI Foundations for Managers', 'AI as your strategic thinking partner'],
-    prework: 'Submit your first tool idea',
-    session: { path: '/session1', label: 'Scope & build your first tool' },
-    notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#7fb164',
-    resources: [
-      { path: '/thinking-partner', label: 'Prompting guide: AI as your strategic thinking partner', external: false },
-      { path: '/deciding-what-to-build', label: 'Prompting guide: Deciding what to build', external: false },
+    items: [
+      { id: 'w1-v1', type: 'video', label: 'AI Foundations for Managers', href: mavenLinks.w1, external: true },
+      { id: 'w1-v2', type: 'video', label: 'AI as your strategic thinking partner', href: mavenLinks.w1, external: true },
+      { id: 'w1-pre', type: 'prework', label: 'Submit your first tool idea', href: mavenLinks.w1, external: true },
+      { id: 'w1-guide', type: 'guide', label: 'Interactive session guide: Scope & build your first tool', href: '/session1', external: false },
+      { id: 'w1-notes', type: 'notes', label: 'Notes from live session 1', href: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#7fb164', external: true },
+      { id: 'w1-p1', type: 'prompting', label: 'AI as your strategic thinking partner', href: '/thinking-partner', external: false },
+      { id: 'w1-p2', type: 'prompting', label: 'Deciding what to build', href: '/deciding-what-to-build', external: false },
     ],
   },
   {
     week: 2,
     title: 'Getting Your First Tool from "OK" to "Great"',
-    mavenLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#6c9d2b',
-    videos: ['Build tools that scale your coaching'],
-    prework: 'Share your Custom GPT prompt',
-    session: { path: '/session2', label: 'Getting your first tool from "OK" to "Great"' },
-    notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#e10569',
-    resources: [
-      { path: '/build-evaluator', label: 'Prompting guide: Build an evaluator tool', external: false },
-      { path: '/build-coach', label: 'Prompting guide: Build a coaching tool', external: false },
+    items: [
+      { id: 'w2-v1', type: 'video', label: 'Build tools that scale your coaching', href: mavenLinks.w2, external: true },
+      { id: 'w2-pre', type: 'prework', label: 'Share your Custom GPT prompt', href: mavenLinks.w2, external: true },
+      { id: 'w2-guide', type: 'guide', label: 'Interactive session guide: Getting your first tool from "OK" to "Great"', href: '/session2', external: false },
+      { id: 'w2-notes', type: 'notes', label: 'Notes from live session 2', href: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#e10569', external: true },
+      { id: 'w2-p1', type: 'prompting', label: 'Build an evaluator tool', href: '/build-evaluator', external: false },
+      { id: 'w2-p2', type: 'prompting', label: 'Build a coaching tool', href: '/build-coach', external: false },
     ],
   },
   {
     week: 3,
     title: 'Vibe Coding: Build Real Applications',
-    mavenLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#070230',
-    videos: ['Vibe coding internal tools for managers', 'Managing up with AI'],
-    prework: 'Share your idea for your app for your team',
-    session: { path: '/session3', label: 'Vibe coding: Build real applications' },
-    notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#5679f4',
-    resources: [],
+    items: [
+      { id: 'w3-v1', type: 'video', label: 'Vibe coding internal tools for managers', href: mavenLinks.w3, external: true },
+      { id: 'w3-v2', type: 'video', label: 'Managing up with AI', href: mavenLinks.w3, external: true },
+      { id: 'w3-pre', type: 'prework', label: 'Share your idea for your app for your team', href: mavenLinks.w3, external: true },
+      { id: 'w3-guide', type: 'guide', label: 'Interactive session guide: Vibe coding: Build real applications', href: '/session3', external: false },
+      { id: 'w3-notes', type: 'notes', label: 'Notes from live session 3', href: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#5679f4', external: true },
+    ],
   },
   {
     week: 4,
     title: 'Agents & Your Manager OS',
-    mavenLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#e6c157',
-    videos: ['Agents: AI that does work for you'],
-    prework: null,
-    session: { path: '/session4', label: 'Agents & your Manager OS' },
-    notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#e6c157',
-    resources: [],
+    items: [
+      { id: 'w4-v1', type: 'video', label: 'Agents: AI that does work for you', href: mavenLinks.w4, external: true },
+      { id: 'w4-guide', type: 'guide', label: 'Interactive session guide: Agents & your Manager OS', href: '/session4', external: false },
+      { id: 'w4-notes', type: 'notes', label: 'Notes from live session 4', href: mavenLinks.w4, external: true },
+    ],
   },
 ];
+
+const STORAGE_KEY = 'supermanagers-progress';
+
+const loadProgress = (): Set<string> => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return new Set();
+    return new Set(JSON.parse(raw));
+  } catch {
+    return new Set();
+  }
+};
 
 const Supermanager: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [completed, setCompleted] = useState<Set<string>>(() => loadProgress());
+
+  const toggle = (id: string) => {
+    setCompleted((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(next)));
+      return next;
+    });
+  };
 
   return (
     <section
@@ -72,67 +126,72 @@ const Supermanager: React.FC = () => {
 
         {/* Weeks */}
         <div className="mb-12 space-y-10">
-          {weeks.map((week) => (
-            <div key={week.week}>
-              <h2 className="text-lg font-bold text-stone-800 mb-3">
-                Week {week.week}: {week.title}
-              </h2>
-              <div className="space-y-4">
-                <div>
-                  <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Videos</p>
-                  {week.videos.map((item, i) => (
-                    <a key={i} href={week.mavenLink} target="_blank" rel="noopener noreferrer" className="block text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">
-                      {item} &rarr;
-                    </a>
-                  ))}
+          {weeks.map((week) => {
+            const doneCount = week.items.filter((i) => completed.has(i.id)).length;
+            return (
+              <div key={week.week}>
+                <div className="flex items-baseline justify-between mb-4">
+                  <h2 className="text-lg font-bold text-stone-800">
+                    Week {week.week}: {week.title}
+                  </h2>
+                  <span className="text-stone-500 text-sm tabular-nums flex-shrink-0 ml-3">
+                    {doneCount}/{week.items.length}
+                  </span>
                 </div>
-                {week.prework && (
-                  <div>
-                    <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Prework</p>
-                    <a href={week.mavenLink} target="_blank" rel="noopener noreferrer" className="block text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">
-                      {week.prework} &rarr;
-                    </a>
-                  </div>
-                )}
-                <div>
-                  <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Live session</p>
-                  <Link
-                    to={week.session.path}
-                    className="block text-stone-800 text-base font-medium hover:text-stone-600 hover:underline transition-colors"
-                  >
-                    Interactive session guide: {week.session.label} &rarr;
-                  </Link>
-                  <a href={week.notesLink} target="_blank" rel="noopener noreferrer" className="block text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">
-                    Notes from live session {week.week} &rarr;
-                  </a>
-                </div>
-                {week.resources && week.resources.length > 0 ? (
-                  <div>
-                    <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Prompting guides</p>
-                    {week.resources.map((r, i) => (
-                      r.external ? (
-                        <a key={i} href={r.path} target="_blank" rel="noopener noreferrer" className="block text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">
-                          {r.label} &rarr;
-                        </a>
-                      ) : (
-                        <Link key={i} to={r.path} className="block text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">
-                          {r.label} &rarr;
-                        </Link>
-                      )
-                    ))}
-                  </div>
-                ) : (
-                  <div>
-                    <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Prompting guides</p>
-                    <p className="text-stone-400 text-base italic">Coming soon</p>
-                  </div>
-                )}
+                <ul className="divide-y divide-stone-200 border-t border-b border-stone-200">
+                  {week.items.map((item) => {
+                    const isDone = completed.has(item.id);
+                    return (
+                      <li key={item.id} className="flex items-center gap-3 py-3">
+                        <button
+                          onClick={() => toggle(item.id)}
+                          aria-label={isDone ? 'Mark as not done' : 'Mark as done'}
+                          className={`flex-shrink-0 w-5 h-5 rounded border transition-colors flex items-center justify-center ${
+                            isDone
+                              ? 'bg-stone-800 border-stone-800'
+                              : 'bg-white border-stone-400 hover:border-stone-600'
+                          }`}
+                        >
+                          {isDone && (
+                            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </button>
+                        <span className="flex-shrink-0 w-20 text-stone-500 text-xs font-medium uppercase tracking-wider">
+                          {typeLabels[item.type]}
+                        </span>
+                        {item.external ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex-1 text-base transition-colors ${
+                              isDone ? 'text-stone-400 line-through' : 'text-stone-800 hover:text-stone-600'
+                            }`}
+                          >
+                            {item.label} &rarr;
+                          </a>
+                        ) : (
+                          <Link
+                            to={item.href}
+                            className={`flex-1 text-base transition-colors ${
+                              isDone ? 'text-stone-400 line-through' : 'text-stone-800 hover:text-stone-600'
+                            }`}
+                          >
+                            {item.label} &rarr;
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Manager Copilot */}
+        {/* Tools */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-6">Tools</h2>
           <Link
@@ -159,7 +218,7 @@ const Supermanager: React.FC = () => {
           </Link>
         </div>
 
-        {/* Quick Links */}
+        {/* Resources */}
         <div>
           <h2 className="text-2xl font-bold text-stone-800 mb-6">Resources</h2>
           <div className="space-y-3">
