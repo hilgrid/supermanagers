@@ -23,7 +23,9 @@ const weeks = [
     prework: 'Share your Custom GPT prompt',
     session: { path: '/session2', label: 'Getting your first tool from "OK" to "Great"' },
     notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#e10569',
-    resources: [],
+    resources: [
+      { path: '/build-evaluator', label: 'Interactive guide: Build an evaluator tool', external: false },
+    ],
   },
   {
     week: 3,

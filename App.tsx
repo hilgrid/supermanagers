@@ -12,6 +12,7 @@ import Supermanager from './components/Supermanager';
 import ThinkingPartner from './components/ThinkingPartner';
 import DecidingWhatToBuild from './components/DecidingWhatToBuild';
 import PromptLibrary from './components/PromptLibrary';
+import BuildEvaluator from './components/BuildEvaluator';
 
 const App: React.FC = () => {
   return (
@@ -28,6 +29,7 @@ const App: React.FC = () => {
         <Route path="/thinking-partner" element={<ThinkingPartner />} />
         <Route path="/deciding-what-to-build" element={<DecidingWhatToBuild />} />
         <Route path="/prompt-library" element={<PromptLibrary />} />
+        <Route path="/build-evaluator" element={<BuildEvaluator />} />
       </Routes>
       <Analytics />
     </div>
