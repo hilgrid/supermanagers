@@ -58,14 +58,7 @@ const Supermanager: React.FC = () => {
       style={{ backgroundColor: '#faf8f5' }}
     >
       <div className="max-w-2xl mx-auto px-4 py-12">
-        <button
-          onClick={() => window.history.back()}
-          className="text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors"
-        >
-          &larr; Back
-        </button>
-
-        <div className="mt-8 mb-10">
+        <div className="mb-10">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
             How to Be a Supermanager with AI
           </h1>
