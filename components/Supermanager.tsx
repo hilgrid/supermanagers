@@ -25,6 +25,7 @@ const weeks = [
     notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#e10569',
     resources: [
       { path: '/build-evaluator', label: 'Interactive guide: Build an evaluator tool', external: false },
+      { path: '/build-coach', label: 'Interactive guide: Build a coaching tool', external: false },
     ],
   },
   {

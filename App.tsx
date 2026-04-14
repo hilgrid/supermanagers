@@ -13,6 +13,7 @@ import ThinkingPartner from './components/ThinkingPartner';
 import DecidingWhatToBuild from './components/DecidingWhatToBuild';
 import PromptLibrary from './components/PromptLibrary';
 import BuildEvaluator from './components/BuildEvaluator';
+import BuildCoach from './components/BuildCoach';
 
 const App: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/deciding-what-to-build" element={<DecidingWhatToBuild />} />
         <Route path="/prompt-library" element={<PromptLibrary />} />
         <Route path="/build-evaluator" element={<BuildEvaluator />} />
+        <Route path="/build-coach" element={<BuildCoach />} />
       </Routes>
       <Analytics />
     </div>
