@@ -133,6 +133,17 @@ const Supermanager: React.FC = () => {
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-stone-800 mb-6">Tools</h2>
           <Link
+            to="/steeringwheel"
+            className="block bg-white border border-stone-300 rounded-lg p-5 hover:border-stone-500 transition-colors mb-4"
+          >
+            <p className="text-stone-800 text-base font-bold mb-1">
+              Steering Wheel
+            </p>
+            <p className="text-stone-700 text-base leading-relaxed">
+              A visual decision-making tool for navigating tough calls.
+            </p>
+          </Link>
+          <Link
             to="/managercopilot"
             className="block bg-white border border-stone-300 rounded-lg p-5 hover:border-stone-500 transition-colors"
           >
