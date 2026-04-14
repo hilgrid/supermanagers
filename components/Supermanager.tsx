@@ -99,6 +99,12 @@ const Supermanager: React.FC = () => {
 
   const [completed, setCompleted] = useState<Set<string>>(() => loadProgress());
 
+  const allItemIds = weeks.flatMap((w) => w.items.map((i) => i.id));
+  const doneCount = allItemIds.filter((id) => completed.has(id)).length;
+  const totalCount = allItemIds.length;
+  const isUnlocked = doneCount === totalCount;
+  const percent = Math.round((doneCount / totalCount) * 100);
+
   const toggle = (id: string) => {
     setCompleted((prev) => {
       const next = new Set(prev);
@@ -127,68 +133,138 @@ const Supermanager: React.FC = () => {
         {/* Weeks */}
         <div className="mb-12 space-y-10">
           {weeks.map((week) => {
-            const doneCount = week.items.filter((i) => completed.has(i.id)).length;
+            const weekDone = week.items.filter((i) => completed.has(i.id)).length;
+            const phases: { label: string; types: ItemType[] }[] = [
+              { label: 'Before the live session', types: ['video', 'prework'] },
+              { label: 'During the live session', types: ['guide', 'notes'] },
+              { label: 'Resources', types: ['prompting'] },
+            ];
+            const renderRow = (item: WeekItem) => {
+              const isDone = completed.has(item.id);
+              return (
+                <li key={item.id} className="flex items-center gap-3 py-3">
+                  <button
+                    onClick={() => toggle(item.id)}
+                    aria-label={isDone ? 'Mark as not done' : 'Mark as done'}
+                    className={`flex-shrink-0 w-5 h-5 rounded border transition-colors flex items-center justify-center ${
+                      isDone
+                        ? 'bg-stone-800 border-stone-800'
+                        : 'bg-white border-stone-400 hover:border-stone-600'
+                    }`}
+                  >
+                    {isDone && (
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </button>
+                  <span className="flex-shrink-0 w-20 text-stone-500 text-xs font-medium uppercase tracking-wider">
+                    {typeLabels[item.type]}
+                  </span>
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex-1 text-base transition-colors ${
+                        isDone ? 'text-stone-400 line-through' : 'text-stone-800 hover:text-stone-600'
+                      }`}
+                    >
+                      {item.label} &rarr;
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className={`flex-1 text-base transition-colors ${
+                        isDone ? 'text-stone-400 line-through' : 'text-stone-800 hover:text-stone-600'
+                      }`}
+                    >
+                      {item.label} &rarr;
+                    </Link>
+                  )}
+                </li>
+              );
+            };
             return (
               <div key={week.week}>
-                <div className="flex items-baseline justify-between mb-4">
+                <div className="flex items-baseline justify-between mb-5">
                   <h2 className="text-lg font-bold text-stone-800">
                     Week {week.week}: {week.title}
                   </h2>
                   <span className="text-stone-500 text-sm tabular-nums flex-shrink-0 ml-3">
-                    {doneCount}/{week.items.length}
+                    {weekDone}/{week.items.length}
                   </span>
                 </div>
-                <ul className="divide-y divide-stone-200 border-t border-b border-stone-200">
-                  {week.items.map((item) => {
-                    const isDone = completed.has(item.id);
+                <div className="space-y-5">
+                  {phases.map((phase) => {
+                    const phaseItems = week.items.filter((i) => phase.types.includes(i.type));
+                    if (phaseItems.length === 0) return null;
                     return (
-                      <li key={item.id} className="flex items-center gap-3 py-3">
-                        <button
-                          onClick={() => toggle(item.id)}
-                          aria-label={isDone ? 'Mark as not done' : 'Mark as done'}
-                          className={`flex-shrink-0 w-5 h-5 rounded border transition-colors flex items-center justify-center ${
-                            isDone
-                              ? 'bg-stone-800 border-stone-800'
-                              : 'bg-white border-stone-400 hover:border-stone-600'
-                          }`}
-                        >
-                          {isDone && (
-                            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                          )}
-                        </button>
-                        <span className="flex-shrink-0 w-20 text-stone-500 text-xs font-medium uppercase tracking-wider">
-                          {typeLabels[item.type]}
-                        </span>
-                        {item.external ? (
-                          <a
-                            href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`flex-1 text-base transition-colors ${
-                              isDone ? 'text-stone-400 line-through' : 'text-stone-800 hover:text-stone-600'
-                            }`}
-                          >
-                            {item.label} &rarr;
-                          </a>
-                        ) : (
-                          <Link
-                            to={item.href}
-                            className={`flex-1 text-base transition-colors ${
-                              isDone ? 'text-stone-400 line-through' : 'text-stone-800 hover:text-stone-600'
-                            }`}
-                          >
-                            {item.label} &rarr;
-                          </Link>
-                        )}
-                      </li>
+                      <div key={phase.label}>
+                        <h3 className="text-stone-700 text-sm font-semibold mb-1">{phase.label}</h3>
+                        <ul className="divide-y divide-stone-200 border-t border-b border-stone-200">
+                          {phaseItems.map(renderRow)}
+                        </ul>
+                      </div>
                     );
                   })}
-                </ul>
+                </div>
               </div>
             );
           })}
+        </div>
+
+        {/* Manager Copilot - the culminating unlock */}
+        <div className="mb-12">
+          {isUnlocked ? (
+            <div className="rounded-xl p-6 md:p-8 bg-gradient-to-br from-amber-50 to-white border-2 border-amber-300 shadow-sm transition-all duration-500">
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-amber-700 text-xs font-bold uppercase tracking-wider">Unlocked</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-stone-800 mb-2">
+                Manager Copilot
+              </h2>
+              <p className="text-stone-700 text-base leading-relaxed mb-6">
+                The culmination of everything you've learned. Your AI-powered coaching tool for the hardest parts of management - hiring, firing, performance reviews, tough conversations. It's yours now.
+              </p>
+              <Link
+                to="/managercopilot"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-stone-800 text-white rounded-lg font-medium text-base hover:bg-stone-700 transition-colors"
+              >
+                Open Manager Copilot &rarr;
+              </Link>
+            </div>
+          ) : (
+            <div className="rounded-xl p-6 md:p-8 bg-stone-100 border border-stone-300 transition-all duration-500">
+              <div className="flex items-center gap-2 mb-3">
+                <svg className="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-stone-500 text-xs font-bold uppercase tracking-wider">Locked</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-stone-700 mb-2">
+                Manager Copilot
+              </h2>
+              <p className="text-stone-600 text-base leading-relaxed mb-5">
+                The culminating tool of the course. Complete everything above to unlock your AI-powered coaching tool for the hardest parts of management.
+              </p>
+              <div>
+                <div className="flex justify-between text-sm text-stone-600 mb-2">
+                  <span className="font-medium">{doneCount} of {totalCount} items complete</span>
+                  <span className="tabular-nums">{percent}%</span>
+                </div>
+                <div className="h-2 bg-stone-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-stone-600 transition-all duration-500 ease-out"
+                    style={{ width: `${percent}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Anytime references */}
@@ -202,7 +278,6 @@ const Supermanager: React.FC = () => {
           <ul className="divide-y divide-stone-200 border-t border-b border-stone-200">
             {[
               { href: '/steeringwheel', title: 'Steering Wheel', desc: 'A visual decision-making tool for navigating tough calls.' },
-              { href: '/managercopilot', title: 'Manager Copilot', desc: 'Your AI-powered coaching tool for management conversations.' },
               { href: '/prompt-library', title: 'Prompt & Custom GPT library', desc: 'Every prompt and Custom GPT from the course.' },
               { href: '/resources', title: 'Tools, glossary & cheat sheet', desc: 'Quick reference for tools, terms, and best practices.' },
             ].map((item) => (
