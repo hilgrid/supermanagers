@@ -14,6 +14,9 @@ import DecidingWhatToBuild from './components/DecidingWhatToBuild';
 import PromptLibrary from './components/PromptLibrary';
 import BuildEvaluator from './components/BuildEvaluator';
 import BuildCoach from './components/BuildCoach';
+import Session1Notes from './components/Session1Notes';
+import Session2Notes from './components/Session2Notes';
+import Session3Notes from './components/Session3Notes';
 import PasswordGate from './components/PasswordGate';
 
 const App: React.FC = () => {
@@ -34,6 +37,9 @@ const App: React.FC = () => {
         <Route path="/prompt-library" element={<PromptLibrary />} />
         <Route path="/build-evaluator" element={<BuildEvaluator />} />
         <Route path="/build-coach" element={<BuildCoach />} />
+        <Route path="/session1-notes" element={<Session1Notes />} />
+        <Route path="/session2-notes" element={<Session2Notes />} />
+        <Route path="/session3-notes" element={<Session3Notes />} />
       </Routes>
       <Analytics />
     </div>
