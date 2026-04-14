@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-type ItemType = 'video' | 'prework' | 'guide' | 'notes' | 'prompting';
+type ItemType = 'video' | 'prework' | 'guide' | 'notes' | 'prompting' | 'bonus';
 
 interface WeekItem {
   id: string;
@@ -24,6 +24,7 @@ const typeLabels: Record<ItemType, string> = {
   guide: 'Guide',
   notes: 'Notes',
   prompting: 'Prompting',
+  bonus: 'Video',
 };
 
 const mavenLinks = {
@@ -81,6 +82,7 @@ const weeks: Week[] = [
       { id: 'w4-v1', type: 'video', label: 'Agents: AI that does work for you', href: mavenLinks.w4, external: true },
       { id: 'w4-guide', type: 'guide', label: 'Interactive session guide: Agents & your Manager OS', href: '/session4', external: false },
       { id: 'w4-notes', type: 'notes', label: 'Notes from live session 4', href: mavenLinks.w4, external: true },
+      { id: 'w4-b1', type: 'bonus', label: 'Drive team adoption', href: mavenLinks.w4, external: true },
     ],
   },
 ];
@@ -145,6 +147,7 @@ const Supermanager: React.FC = () => {
               { label: 'To do before the live session', types: ['video', 'prework'] },
               { label: 'To use during the live session', types: ['guide', 'notes'] },
               { label: 'Resources for after the session', types: ['prompting'] },
+              { label: 'Bonus modules', types: ['bonus'] },
             ];
             const renderRow = (item: WeekItem) => {
               const tracked = isTracked(item.type);
@@ -294,22 +297,40 @@ const Supermanager: React.FC = () => {
           </div>
           <ul className="divide-y divide-stone-200 border-t border-b border-stone-200">
             {[
-              { href: '/steeringwheel', title: 'Steering Wheel', desc: 'A visual decision-making tool for navigating tough calls.' },
-              { href: '/prompt-library', title: 'Prompt & Custom GPT library', desc: 'Every prompt and Custom GPT from the course.' },
-              { href: '/resources', title: 'Tools, glossary & cheat sheet', desc: 'Quick reference for tools, terms, and best practices.' },
+              { href: '/steeringwheel', title: 'Steering Wheel', desc: 'A visual decision-making tool for navigating tough calls.', external: false },
+              { href: '/prompt-library', title: 'Prompt & Custom GPT library', desc: 'Every prompt and Custom GPT from the course.', external: false },
+              { href: 'https://couchto5k.ai/', title: 'Couch to 5K for AI', desc: 'A 30-day plan for building AI habits - the updated version of the original.', external: true },
+              { href: 'https://docs.google.com/spreadsheets/d/1zJ4rbi9YcQuGqGxc6-AQD0-44oT9l4Eyono0AdpgJbA/edit?gid=0#gid=0', title: 'Original 30 Days of GPT', desc: 'The original 30-day tracker for building your AI practice.', external: true },
+              { href: '/resources', title: 'Tools, glossary & cheat sheet', desc: 'Quick reference for tools, terms, and best practices.', external: false },
             ].map((item) => (
               <li key={item.href} className="py-3">
-                <Link
-                  to={item.href}
-                  className="block group"
-                >
-                  <p className="text-stone-800 text-base font-medium group-hover:text-stone-600 transition-colors">
-                    {item.title} &rarr;
-                  </p>
-                  <p className="text-stone-500 text-sm mt-0.5">
-                    {item.desc}
-                  </p>
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block group"
+                  >
+                    <p className="text-stone-800 text-base font-medium group-hover:text-stone-600 transition-colors">
+                      {item.title} &rarr;
+                    </p>
+                    <p className="text-stone-500 text-sm mt-0.5">
+                      {item.desc}
+                    </p>
+                  </a>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="block group"
+                  >
+                    <p className="text-stone-800 text-base font-medium group-hover:text-stone-600 transition-colors">
+                      {item.title} &rarr;
+                    </p>
+                    <p className="text-stone-500 text-sm mt-0.5">
+                      {item.desc}
+                    </p>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
