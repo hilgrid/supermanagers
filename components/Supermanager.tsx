@@ -99,9 +99,10 @@ const Supermanager: React.FC = () => {
 
   const [completed, setCompleted] = useState<Set<string>>(() => loadProgress());
 
-  const allItemIds = weeks.flatMap((w) => w.items.map((i) => i.id));
-  const doneCount = allItemIds.filter((id) => completed.has(id)).length;
-  const totalCount = allItemIds.length;
+  const isTracked = (t: ItemType) => t === 'video' || t === 'prework' || t === 'guide';
+  const allTrackedIds = weeks.flatMap((w) => w.items.filter((i) => isTracked(i.type)).map((i) => i.id));
+  const doneCount = allTrackedIds.filter((id) => completed.has(id)).length;
+  const totalCount = allTrackedIds.length;
   const isUnlocked = doneCount === totalCount;
   const percent = Math.round((doneCount / totalCount) * 100);
 
@@ -133,31 +134,37 @@ const Supermanager: React.FC = () => {
         {/* Weeks */}
         <div className="mb-12 space-y-10">
           {weeks.map((week) => {
-            const weekDone = week.items.filter((i) => completed.has(i.id)).length;
+            const trackedItems = week.items.filter((i) => isTracked(i.type));
+            const weekDone = trackedItems.filter((i) => completed.has(i.id)).length;
             const phases: { label: string; types: ItemType[] }[] = [
               { label: 'To do before the live session', types: ['video', 'prework'] },
               { label: 'To use during the live session', types: ['guide', 'notes'] },
               { label: 'Resources for after the session', types: ['prompting'] },
             ];
             const renderRow = (item: WeekItem) => {
-              const isDone = completed.has(item.id);
+              const tracked = isTracked(item.type);
+              const isDone = tracked && completed.has(item.id);
               return (
                 <li key={item.id} className="flex items-center gap-3 py-3">
-                  <button
-                    onClick={() => toggle(item.id)}
-                    aria-label={isDone ? 'Mark as not done' : 'Mark as done'}
-                    className={`flex-shrink-0 w-5 h-5 rounded border transition-colors flex items-center justify-center ${
-                      isDone
-                        ? 'bg-stone-800 border-stone-800'
-                        : 'bg-white border-stone-400 hover:border-stone-600'
-                    }`}
-                  >
-                    {isDone && (
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    )}
-                  </button>
+                  {tracked ? (
+                    <button
+                      onClick={() => toggle(item.id)}
+                      aria-label={isDone ? 'Mark as not done' : 'Mark as done'}
+                      className={`flex-shrink-0 w-5 h-5 rounded border transition-colors flex items-center justify-center ${
+                        isDone
+                          ? 'bg-stone-800 border-stone-800'
+                          : 'bg-white border-stone-400 hover:border-stone-600'
+                      }`}
+                    >
+                      {isDone && (
+                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </button>
+                  ) : (
+                    <div className="flex-shrink-0 w-5 h-5" aria-hidden="true" />
+                  )}
                   <span className="flex-shrink-0 w-20 text-stone-500 text-xs font-medium uppercase tracking-wider">
                     {typeLabels[item.type]}
                   </span>
@@ -192,7 +199,7 @@ const Supermanager: React.FC = () => {
                     Week {week.week}: {week.title}
                   </h2>
                   <span className="text-stone-500 text-sm tabular-nums flex-shrink-0 ml-3">
-                    {weekDone}/{week.items.length}
+                    {weekDone}/{trackedItems.length}
                   </span>
                 </div>
                 <div className="space-y-5">
