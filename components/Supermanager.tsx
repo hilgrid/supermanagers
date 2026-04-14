@@ -12,6 +12,7 @@ const weeks = [
     notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#7fb164',
     resources: [
       { path: '/thinking-partner', label: 'Interactive guide: AI as your strategic thinking partner', external: false },
+      { path: '/deciding-what-to-build', label: 'Interactive guide: Deciding what to build', external: false },
     ],
   },
   {
@@ -155,6 +156,12 @@ const Supermanager: React.FC = () => {
         <div>
           <h2 className="text-2xl font-bold text-stone-800 mb-6">Resources</h2>
           <div className="space-y-3">
+            <Link
+              to="/prompt-library"
+              className="block text-stone-800 text-base font-medium hover:text-stone-600 hover:underline transition-colors"
+            >
+              Prompt & Custom GPT library &rarr;
+            </Link>
             <Link
               to="/resources"
               className="block text-stone-800 text-base font-medium hover:text-stone-600 hover:underline transition-colors"

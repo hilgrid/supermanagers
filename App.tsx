@@ -14,6 +14,8 @@ import ThirtyDays from './components/thirtydays/ThirtyDays';
 import HowIAI from './components/HowIAI';
 import Supermanager from './components/Supermanager';
 import ThinkingPartner from './components/ThinkingPartner';
+import DecidingWhatToBuild from './components/DecidingWhatToBuild';
+import PromptLibrary from './components/PromptLibrary';
 // import MozillaSession1 from './components/MozillaSession1';
 
 const App: React.FC = () => {
@@ -39,6 +41,8 @@ const App: React.FC = () => {
         <Route path="/howiai" element={<HowIAI />} />
         <Route path="/supermanager" element={<Supermanager />} />
         <Route path="/thinking-partner" element={<ThinkingPartner />} />
+        <Route path="/deciding-what-to-build" element={<DecidingWhatToBuild />} />
+        <Route path="/prompt-library" element={<PromptLibrary />} />
         {/* <Route path="/mozilla" element={<MozillaSession1 />} /> */}
       </Routes>
       <Analytics />
