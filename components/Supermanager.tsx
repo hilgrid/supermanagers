@@ -14,6 +14,7 @@ interface WeekItem {
 interface Week {
   week: number;
   title: string;
+  blurb: string;
   items: WeekItem[];
 }
 
@@ -36,6 +37,7 @@ const weeks: Week[] = [
   {
     week: 1,
     title: 'Scope & Build Your First Tool',
+    blurb: 'Learn what Custom GPTs, Projects, and Gems actually are and when to use each. You\'ll scope a tool that solves a real problem on your team and build your first working version by the end of the session.',
     items: [
       { id: 'w1-v1', type: 'video', label: 'AI Foundations for Managers', href: mavenLinks.w1, external: true },
       { id: 'w1-v2', type: 'video', label: 'AI as your strategic thinking partner', href: mavenLinks.w1, external: true },
@@ -49,6 +51,7 @@ const weeks: Week[] = [
   {
     week: 2,
     title: 'Getting Your First Tool from "OK" to "Great"',
+    blurb: 'The difference between a tool that gets used once and one your team reaches for every week is how you iterate. You\'ll learn to codify your standards into clear criteria and use feedback loops to sharpen your prompt until the tool gives the kind of feedback you would.',
     items: [
       { id: 'w2-v1', type: 'video', label: 'Build tools that scale your coaching', href: mavenLinks.w2, external: true },
       { id: 'w2-pre', type: 'prework', label: 'Share your Custom GPT prompt', href: mavenLinks.w2, external: true },
@@ -61,6 +64,7 @@ const weeks: Week[] = [
   {
     week: 3,
     title: 'Vibe Coding: Build Real Applications',
+    blurb: 'Move beyond chat-based tools to building actual applications - apps your team can open in a browser, with buttons, forms, and saved data. No coding experience required. You\'ll also learn how to manage up with AI to make the case for your ideas.',
     items: [
       { id: 'w3-v1', type: 'video', label: 'Vibe coding internal tools for managers', href: mavenLinks.w3, external: true },
       { id: 'w3-v2', type: 'video', label: 'Managing up with AI', href: mavenLinks.w3, external: true },
@@ -72,6 +76,7 @@ const weeks: Week[] = [
   {
     week: 4,
     title: 'Agents & Your Manager OS',
+    blurb: 'Agents don\'t just respond - they take action. You\'ll set up your Manager OS: a system with shared context about your team, portable skills anyone can run, and a feedback loop where every use makes it smarter.',
     items: [
       { id: 'w4-v1', type: 'video', label: 'Agents: AI that does work for you', href: mavenLinks.w4, external: true },
       { id: 'w4-guide', type: 'guide', label: 'Interactive session guide: Agents & your Manager OS', href: '/session4', external: false },
@@ -194,13 +199,18 @@ const Supermanager: React.FC = () => {
             };
             return (
               <div key={week.week}>
-                <div className="flex items-baseline justify-between mb-5">
-                  <h2 className="text-lg font-bold text-stone-800">
-                    Week {week.week}: {week.title}
-                  </h2>
-                  <span className="text-stone-500 text-sm tabular-nums flex-shrink-0 ml-3">
-                    {weekDone}/{trackedItems.length}
-                  </span>
+                <div className="mb-5">
+                  <div className="flex items-baseline justify-between">
+                    <h2 className="text-lg font-bold text-stone-800">
+                      Week {week.week}: {week.title}
+                    </h2>
+                    <span className="text-stone-500 text-sm tabular-nums flex-shrink-0 ml-3">
+                      {weekDone}/{trackedItems.length}
+                    </span>
+                  </div>
+                  <p className="text-stone-600 text-base leading-relaxed mt-2">
+                    {week.blurb}
+                  </p>
                 </div>
                 <div className="space-y-5">
                   {phases.map((phase) => {
