@@ -302,6 +302,7 @@ const Supermanager: React.FC = () => {
               { href: 'https://couchto5k.ai/', title: 'Couch to 5K for AI', desc: 'A 30-day plan for building AI habits - the updated version of the original.', external: true },
               { href: 'https://docs.google.com/spreadsheets/d/1zJ4rbi9YcQuGqGxc6-AQD0-44oT9l4Eyono0AdpgJbA/edit?gid=0#gid=0', title: 'Original 30 Days of GPT', desc: 'The original 30-day tracker for building your AI practice.', external: true },
               { href: '/resources', title: 'Tools, glossary & cheat sheet', desc: 'Quick reference for tools, terms, and best practices.', external: false },
+              { href: '/faq', title: 'Student FAQ', desc: 'Common questions from past and current students.', external: false },
             ].map((item) => (
               <li key={item.href} className="py-3">
                 {item.external ? (

@@ -17,6 +17,7 @@ import BuildCoach from './components/BuildCoach';
 import Session1Notes from './components/Session1Notes';
 import Session2Notes from './components/Session2Notes';
 import Session3Notes from './components/Session3Notes';
+import FAQ from './components/FAQ';
 import PasswordGate from './components/PasswordGate';
 
 const App: React.FC = () => {
@@ -40,6 +41,7 @@ const App: React.FC = () => {
         <Route path="/session1-notes" element={<Session1Notes />} />
         <Route path="/session2-notes" element={<Session2Notes />} />
         <Route path="/session3-notes" element={<Session3Notes />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
       <Analytics />
     </div>
