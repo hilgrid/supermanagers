@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-type FunctionKey = 'product' | 'sales' | 'marketing' | 'operations' | 'hr';
+type FunctionKey = 'product' | 'design' | 'sales' | 'marketing' | 'operations' | 'hr';
 
 const functionLabels: Record<FunctionKey, string> = {
-  product: 'Product design',
+  product: 'Product',
+  design: 'Design',
   sales: 'Sales',
   marketing: 'Marketing',
   operations: 'Operations',
@@ -47,6 +48,11 @@ const content: Record<FunctionKey, FunctionContent> = {
         prompt: '# Weekly Product Update Writer\n\nPull context from:\n- Daily Notes/ (this week\'s notes)\n- Projects/ (active project statuses)\n- Team/ (what each direct report is working on)\n\nDraft an update with these sections:\n1. What shipped / what moved forward\n2. What\'s blocked or at risk (with specific asks)\n3. What\'s coming up next week\n\nKeep each section to 3-5 bullets. Flag any item that needs the manager\'s help with a clear, copy-paste-ready ask.\n\n[Replace with your own skill content]',
       },
     ],
+  },
+  design: {
+    customGPTs: [],
+    applications: [],
+    skills: [],
   },
   sales: {
     customGPTs: [],
