@@ -11,8 +11,8 @@ const weeks = [
     session: { path: '/session1', label: 'Scope & build your first tool' },
     notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#7fb164',
     resources: [
-      { path: '/thinking-partner', label: 'Interactive guide: AI as your strategic thinking partner', external: false },
-      { path: '/deciding-what-to-build', label: 'Interactive guide: Deciding what to build', external: false },
+      { path: '/thinking-partner', label: 'Prompting guide: AI as your strategic thinking partner', external: false },
+      { path: '/deciding-what-to-build', label: 'Prompting guide: Deciding what to build', external: false },
     ],
   },
   {
@@ -24,8 +24,8 @@ const weeks = [
     session: { path: '/session2', label: 'Getting your first tool from "OK" to "Great"' },
     notesLink: 'https://maven.com/hilary-gridley/ai-powered-people-management/6/home#e10569',
     resources: [
-      { path: '/build-evaluator', label: 'Interactive guide: Build an evaluator tool', external: false },
-      { path: '/build-coach', label: 'Interactive guide: Build a coaching tool', external: false },
+      { path: '/build-evaluator', label: 'Prompting guide: Build an evaluator tool', external: false },
+      { path: '/build-coach', label: 'Prompting guide: Build a coaching tool', external: false },
     ],
   },
   {
@@ -100,7 +100,7 @@ const Supermanager: React.FC = () => {
                     to={week.session.path}
                     className="block text-stone-800 text-base font-medium hover:text-stone-600 hover:underline transition-colors"
                   >
-                    Interactive guide: {week.session.label} &rarr;
+                    Interactive session guide: {week.session.label} &rarr;
                   </Link>
                   <a href={week.notesLink} target="_blank" rel="noopener noreferrer" className="block text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">
                     Notes from live session {week.week} &rarr;
@@ -108,7 +108,7 @@ const Supermanager: React.FC = () => {
                 </div>
                 {week.resources && week.resources.length > 0 ? (
                   <div>
-                    <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Additional resources</p>
+                    <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Prompting guides</p>
                     {week.resources.map((r, i) => (
                       r.external ? (
                         <a key={i} href={r.path} target="_blank" rel="noopener noreferrer" className="block text-stone-800 text-base hover:text-stone-600 hover:underline transition-colors">
@@ -123,7 +123,7 @@ const Supermanager: React.FC = () => {
                   </div>
                 ) : (
                   <div>
-                    <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Additional resources</p>
+                    <p className="text-stone-500 text-sm font-medium uppercase tracking-wide mb-1">Prompting guides</p>
                     <p className="text-stone-400 text-base italic">Coming soon</p>
                   </div>
                 )}
