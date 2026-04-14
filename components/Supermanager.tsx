@@ -191,50 +191,36 @@ const Supermanager: React.FC = () => {
           })}
         </div>
 
-        {/* Tools */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Tools</h2>
-          <Link
-            to="/steeringwheel"
-            className="block bg-white border border-stone-300 rounded-lg p-5 hover:border-stone-500 transition-colors mb-4"
-          >
-            <p className="text-stone-800 text-base font-bold mb-1">
-              Steering Wheel
-            </p>
-            <p className="text-stone-700 text-base leading-relaxed">
-              A visual decision-making tool for navigating tough calls.
-            </p>
-          </Link>
-          <Link
-            to="/managercopilot"
-            className="block bg-white border border-stone-300 rounded-lg p-5 hover:border-stone-500 transition-colors"
-          >
-            <p className="text-stone-800 text-base font-bold mb-1">
-              Manager Copilot
-            </p>
-            <p className="text-stone-700 text-base leading-relaxed">
-              Your AI-powered coaching tool for management conversations.
-            </p>
-          </Link>
-        </div>
-
-        {/* Resources */}
+        {/* Anytime references */}
         <div>
-          <h2 className="text-2xl font-bold text-stone-800 mb-6">Resources</h2>
-          <div className="space-y-3">
-            <Link
-              to="/prompt-library"
-              className="block text-stone-800 text-base font-medium hover:text-stone-600 hover:underline transition-colors"
-            >
-              Prompt & Custom GPT library &rarr;
-            </Link>
-            <Link
-              to="/resources"
-              className="block text-stone-800 text-base font-medium hover:text-stone-600 hover:underline transition-colors"
-            >
-              Tools, glossary & cheat sheet &rarr;
-            </Link>
+          <div className="flex items-baseline justify-between mb-4">
+            <h2 className="text-lg font-bold text-stone-800">Use anytime</h2>
+            <span className="text-stone-500 text-sm flex-shrink-0 ml-3">
+              Tools & references
+            </span>
           </div>
+          <ul className="divide-y divide-stone-200 border-t border-b border-stone-200">
+            {[
+              { href: '/steeringwheel', title: 'Steering Wheel', desc: 'A visual decision-making tool for navigating tough calls.' },
+              { href: '/managercopilot', title: 'Manager Copilot', desc: 'Your AI-powered coaching tool for management conversations.' },
+              { href: '/prompt-library', title: 'Prompt & Custom GPT library', desc: 'Every prompt and Custom GPT from the course.' },
+              { href: '/resources', title: 'Tools, glossary & cheat sheet', desc: 'Quick reference for tools, terms, and best practices.' },
+            ].map((item) => (
+              <li key={item.href} className="py-3">
+                <Link
+                  to={item.href}
+                  className="block group"
+                >
+                  <p className="text-stone-800 text-base font-medium group-hover:text-stone-600 transition-colors">
+                    {item.title} &rarr;
+                  </p>
+                  <p className="text-stone-500 text-sm mt-0.5">
+                    {item.desc}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
