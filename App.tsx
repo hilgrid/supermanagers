@@ -14,9 +14,11 @@ import DecidingWhatToBuild from './components/DecidingWhatToBuild';
 import PromptLibrary from './components/PromptLibrary';
 import BuildEvaluator from './components/BuildEvaluator';
 import BuildCoach from './components/BuildCoach';
+import PasswordGate from './components/PasswordGate';
 
 const App: React.FC = () => {
   return (
+    <PasswordGate>
     <div className="min-h-screen selection:bg-rose-200 selection:text-rose-900">
       <Routes>
         <Route path="/" element={<Supermanager />} />
@@ -35,6 +37,7 @@ const App: React.FC = () => {
       </Routes>
       <Analytics />
     </div>
+    </PasswordGate>
   );
 };
 
