@@ -135,9 +135,9 @@ const Supermanager: React.FC = () => {
           {weeks.map((week) => {
             const weekDone = week.items.filter((i) => completed.has(i.id)).length;
             const phases: { label: string; types: ItemType[] }[] = [
-              { label: 'Before the live session', types: ['video', 'prework'] },
-              { label: 'During the live session', types: ['guide', 'notes'] },
-              { label: 'Resources', types: ['prompting'] },
+              { label: 'To do before the live session', types: ['video', 'prework'] },
+              { label: 'To use during the live session', types: ['guide', 'notes'] },
+              { label: 'Resources for after the session', types: ['prompting'] },
             ];
             const renderRow = (item: WeekItem) => {
               const isDone = completed.has(item.id);
