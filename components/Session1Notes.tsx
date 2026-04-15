@@ -1,11 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const CodeBlock: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <pre className="bg-stone-100 border border-stone-300 rounded-lg p-4 my-4 overflow-x-auto">
-    <code className="text-stone-800 text-sm font-mono whitespace-pre-wrap">{children}</code>
-  </pre>
-);
+const CodeBlock: React.FC<{ children: string }> = ({ children }) => {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(children);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <div className="bg-stone-100 border border-stone-300 rounded-lg p-4 my-4 overflow-x-auto">
+      <pre>
+        <code className="text-stone-800 text-sm font-mono whitespace-pre-wrap">{children}</code>
+      </pre>
+      <button
+        onClick={handleCopy}
+        className="mt-3 px-3 py-1.5 text-sm font-medium text-stone-600 bg-white border border-stone-300 rounded-md hover:bg-stone-50 transition-colors"
+      >
+        {copied ? 'Copied!' : 'Copy'}
+      </button>
+    </div>
+  );
+};
 
 const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <h2 className="text-2xl font-bold text-stone-800 mt-12 mb-4">{children}</h2>

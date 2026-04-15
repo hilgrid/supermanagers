@@ -380,7 +380,7 @@ const IdeasForWhatToBuild: React.FC = () => {
 
   const Row = ({ idea, id }: { idea: Idea; id: string }) => {
     const isOpen = expanded.has(id);
-    const isKbOpen = kbOpen.has(`${id}-kb`);
+    const isKbOpen = kbOpen.has(id);
     return (
       <div className="border-b border-stone-200 last:border-b-0">
         <button
@@ -401,14 +401,14 @@ const IdeasForWhatToBuild: React.FC = () => {
           <div className="pb-4 px-1 space-y-3">
             <div>
               <p className="text-stone-500 text-xs font-medium uppercase tracking-wider mb-2">Main prompt</p>
-              <div className="bg-stone-100 border border-stone-300 rounded-lg p-4">
-                <pre className="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap font-mono">{idea.prompt}</pre>
+              <div className="relative bg-stone-100 border border-stone-300 rounded-lg p-4">
                 <button
                   onClick={() => copyToClipboard(idea.prompt, `${id}-prompt`)}
-                  className="mt-3 px-3 py-1.5 text-sm font-medium text-stone-600 bg-white border border-stone-300 rounded-md hover:bg-stone-50 transition-colors"
+                  className="absolute top-3 right-3 px-3 py-1.5 text-sm font-medium text-stone-600 bg-white border border-stone-300 rounded-md hover:bg-stone-50 transition-colors"
                 >
                   {copiedId === `${id}-prompt` ? 'Copied!' : 'Copy prompt'}
                 </button>
+                <pre className="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap font-mono pr-24">{idea.prompt}</pre>
               </div>
             </div>
             {idea.knowledgeBase && (
@@ -426,14 +426,14 @@ const IdeasForWhatToBuild: React.FC = () => {
                   </span>
                 </button>
                 {isKbOpen && (
-                  <div className="bg-stone-100 border border-t-0 border-stone-300 rounded-b-lg p-4 -mt-1">
-                    <pre className="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap font-mono max-h-96 overflow-y-auto">{idea.knowledgeBase}</pre>
+                  <div className="relative bg-stone-100 border border-t-0 border-stone-300 rounded-b-lg p-4 -mt-1">
                     <button
                       onClick={() => copyToClipboard(idea.knowledgeBase!, `${id}-kb`)}
-                      className="mt-3 px-3 py-1.5 text-sm font-medium text-stone-600 bg-white border border-stone-300 rounded-md hover:bg-stone-50 transition-colors"
+                      className="absolute top-3 right-3 z-10 px-3 py-1.5 text-sm font-medium text-stone-600 bg-white border border-stone-300 rounded-md hover:bg-stone-50 transition-colors"
                     >
                       {copiedId === `${id}-kb` ? 'Copied!' : 'Copy knowledge base'}
                     </button>
+                    <pre className="text-stone-800 text-sm leading-relaxed whitespace-pre-wrap font-mono max-h-96 overflow-y-auto pr-32">{idea.knowledgeBase}</pre>
                   </div>
                 )}
               </div>
