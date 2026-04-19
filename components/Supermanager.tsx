@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import KeyConceptsCarousel from './KeyConceptsCarousel';
 
 type ItemType = 'video' | 'prework' | 'guide' | 'notes' | 'prompting' | 'bonus';
 
@@ -82,7 +83,7 @@ const weeks: Week[] = [
       { id: 'w4-v1', type: 'video', label: 'Agents: AI that does work for you', href: mavenLinks.w4, external: true },
       { id: 'w4-guide', type: 'guide', label: 'Interactive session guide: Agents & your Manager OS', href: '/session4', external: false },
       { id: 'w4-notes', type: 'notes', label: 'Notes from live session 4', href: mavenLinks.w4, external: true },
-      { id: 'w4-b1', type: 'bonus', label: 'Drive team adoption', href: mavenLinks.w4, external: true },
+      { id: 'w4-b1', type: 'bonus', label: "Uplevel your team's AI skills", href: mavenLinks.w4, external: true },
     ],
   },
 ];
@@ -129,13 +130,18 @@ const Supermanager: React.FC = () => {
       style={{ backgroundColor: '#faf8f5' }}
     >
       <div className="max-w-2xl mx-auto px-4 py-12">
-        <div className="mb-10">
+        <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
             How to Be a Supermanager with AI
           </h1>
           <p className="text-stone-700 text-lg mt-4 leading-relaxed">
             Everything you need for the course, in one place.
           </p>
+        </div>
+
+        {/* Five Key Concepts */}
+        <div className="mb-10">
+          <KeyConceptsCarousel />
         </div>
 
         {/* Weeks */}
