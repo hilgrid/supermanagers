@@ -52,7 +52,7 @@ const weeks: Week[] = [
   {
     week: 2,
     title: 'Getting Your First Tool from "OK" to "Great"',
-    blurb: 'The difference between a tool that gets used once and one your team reaches for every week is how you iterate. You\'ll learn to codify your standards into clear criteria and use feedback loops to sharpen your prompt until the tool gives the kind of feedback you would.',
+    blurb: 'Last week you learned that building a tool is one thing — getting it to do reliably good work is another. This week, you\'ll learn to codify your standards into clear criteria and iterate on the prompt until the tool gives the kind of feedback you would.',
     items: [
       { id: 'w2-v1', type: 'video', label: 'Build tools that scale your coaching', href: mavenLinks.w2, external: true },
       { id: 'w2-pre', type: 'prework', label: 'Share your Custom GPT prompt', href: mavenLinks.w2, external: true },
